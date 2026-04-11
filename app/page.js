@@ -4,7 +4,6 @@ import { firmInfo } from '@/lib/data/team';
 import { services } from '@/lib/data/services';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
-import styles from './page.module.css';
 
 export const metadata = {
   title: 'Soaloan Tua Nababan & Partners — Law Firm Jakarta',
@@ -76,33 +75,37 @@ export default async function HomePage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className={styles.hero}>
-        {/* Background Video hosted on WordPress */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className={styles.heroVideo}
+      <section className="relative min-h-screen flex items-center justify-center bg-transparent">
+        {/* Background Video */}
+        <video
+          autoPlay loop muted playsInline
+          className="fixed top-0 left-0 w-full h-screen object-cover -z-20"
         >
-          {/* H.265 (HEVC) for highly-compressed modern playback (Safari/newer devices) */}
           <source src="/videos/hero-loop-hevc.mp4" type="video/mp4; codecs=hvc1" />
-          {/* Default H.264 fallback for broader compatibility */}
           <source src="/videos/hero-loop.mp4" type="video/mp4" />
         </video>
 
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroContent}>
-          <span className={styles.heroLabel}>Soaloan Tua Nababan & Partners</span>
-          <h1 className={styles.heroTitle}>
+        <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(135deg,rgba(10,22,40,0.88),rgba(10,22,40,0.70)),radial-gradient(ellipse_at_30%_50%,rgba(44,95,124,0.22)_0%,transparent_60%)]" />
+
+        <div className="relative z-[1] text-center max-w-[800px] px-8 pt-[calc(var(--nav-height)+4rem)] pb-16 animate-[fadeInUp_1s_var(--ease-out-custom)_both]">
+          <span className="
+            relative inline-block font-[family-name:var(--font-body)]
+            text-xs font-medium tracking-[0.3em] uppercase text-accent mb-8
+            before:content-[''] before:absolute before:top-1/2 before:right-[calc(100%+16px)] before:w-10 before:h-px before:bg-accent before:opacity-40
+            after:content-[''] after:absolute after:top-1/2 after:left-[calc(100%+16px)] after:w-10 after:h-px after:bg-accent after:opacity-40
+            max-sm:before:hidden max-sm:after:hidden
+          ">
+            Soaloan Tua Nababan & Partners
+          </span>
+          <h1 className="text-[clamp(2.8rem,6vw,5rem)] max-sm:text-[clamp(2rem,8vw,3rem)] font-bold text-white leading-[1.1] mb-8 tracking-[-0.01em]">
             Enforcing the Law<br />
-            <span className={styles.heroTitleAccent}>of Truth & Justice</span>
+            <span className="text-accent italic font-medium">of Truth & Justice</span>
           </h1>
-          <p className={styles.heroSubtitle}>
+          <p className="text-lg text-white/60 max-w-[580px] mx-auto mb-12 leading-[1.7]">
             A full-service Jakarta law firm providing strategic legal counsel
             across bankruptcy, litigation, corporate, and finance.
           </p>
-          <div className={styles.heroCtas}>
+          <div className="flex gap-4 justify-center flex-wrap max-sm:flex-col max-sm:items-center">
             <Link href="/contact" className="btn btn--primary">
               Free Consultation
             </Link>
@@ -112,32 +115,36 @@ export default async function HomePage() {
           </div>
         </div>
         {/* Scroll indicator */}
-        <div className={styles.scrollIndicator}>
-          <div className={styles.scrollLine} />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[2]">
+          <div className="w-px h-[60px] bg-gradient-to-b from-accent to-transparent animate-[scrollPulse_2s_ease-in-out_infinite]" />
         </div>
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`section ${styles.aboutSection}`}>
+      <section className="section">
         <div className="container">
-          <div className={styles.aboutGrid}>
-            <div className={styles.aboutLeft}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 max-lg:gap-12 items-start">
+            <div className="lg:pr-8">
               <span className="section-label">About Our Firm</span>
               <h2 className="section-title">Trusted Legal Partners Since 2018</h2>
               <hr className="divider divider--left" />
-              <p className={styles.aboutText}>
+              <p className="text-lg leading-[1.8] text-text-muted mt-6">
                 Founded by {firmInfo.founder}, Soaloan Tua Nababan & Partners has
                 established itself as a trusted legal practice in Jakarta. We combine
                 deep legal expertise with a client-focused approach, guided by three
                 core principles that define everything we do.
               </p>
             </div>
-            <div className={styles.principlesGrid}>
+            <div className="flex flex-col gap-6">
               {firmInfo.principles.map((p, i) => (
-                <BorderGlow key={i} className={styles.principleCard} glowColor="40 80 80" borderRadius={8}>
-                  <div className={styles.principleNumber}>0{i + 1}</div>
-                  <h4 className={styles.principleTitle}>{p.title}</h4>
-                  <p className={styles.principleDesc}>{p.description}</p>
+                <BorderGlow key={i} className="grid grid-cols-[auto_1fr] grid-rows-[auto_auto] gap-x-6 gap-y-1 p-8 bg-surface rounded-[var(--radius-md)] border border-border-light transition-all duration-300 hover:border-accent hover:shadow-md hover:translate-x-1 max-sm:grid-cols-1 max-sm:text-center" glowColor="40 80 80" borderRadius={8}>
+                  <div className="row-span-2 font-[family-name:var(--font-heading)] text-[2rem] font-bold text-accent leading-none self-center opacity-70 max-sm:row-span-1 max-sm:justify-self-center">
+                    0{i + 1}
+                  </div>
+                  <h4 className="font-[family-name:var(--font-heading)] text-[1.1rem] text-primary m-0">
+                    {p.title}
+                  </h4>
+                  <p className="text-sm text-text-muted leading-[1.6] m-0">{p.description}</p>
                 </BorderGlow>
               ))}
             </div>
@@ -146,7 +153,7 @@ export default async function HomePage() {
       </section>
 
       {/* ===== LEGAL SERVICES ===== */}
-      <section className={`section section--alt ${styles.servicesSection}`}>
+      <section className="section section--alt">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Practice Areas</span>
@@ -157,15 +164,21 @@ export default async function HomePage() {
               delivered with precision and dedication.
             </p>
           </div>
-          <div className={styles.servicesGrid}>
-            {services.map((service, i) => (
-              <BorderGlow key={service.id} className={styles.serviceCard} glowColor="40 80 80" borderRadius={8} fillOpacity={0.8}>
-                <div className={styles.serviceIcon}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <BorderGlow
+                key={service.id}
+                className="group relative overflow-hidden bg-surface p-10 rounded-[var(--radius-md)] border border-border-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-transparent before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-accent before:to-accent-light before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100"
+                glowColor="40 80 80"
+                borderRadius={8}
+                fillOpacity={0.8}
+              >
+                <div className="w-14 h-14 flex items-center justify-center mb-6 text-accent bg-[rgba(196,163,90,0.08)] rounded-[var(--radius-md)] p-3 [&_svg]:w-full [&_svg]:h-full">
                   {serviceIcons[service.icon]}
                 </div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDesc}>{service.description}</p>
-                <Link href="/legal-services" className={styles.serviceLink}>
+                <h3 className="text-[1.2rem] mb-2 text-primary">{service.title}</h3>
+                <p className="text-sm leading-[1.7] text-text-muted mb-6">{service.description}</p>
+                <Link href="/legal-services" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-[gap] duration-150 hover:gap-2.5">
                   Learn More
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
@@ -178,14 +191,16 @@ export default async function HomePage() {
       </section>
 
       {/* ===== QUOTE BANNER ===== */}
-      <section className={styles.quoteBanner}>
+      <section className="relative bg-primary py-24 text-center overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_center,rgba(196,163,90,0.06)_0%,transparent_70%)]">
         <div className="container">
-          <blockquote className={styles.blockquote}>
-            <span className={styles.quoteOpen}>&ldquo;</span>
+          <blockquote className="relative font-[family-name:var(--font-heading)] text-[clamp(1.5rem,3vw,2.2rem)] font-normal italic text-white/85 max-w-[700px] mx-auto leading-[1.5]">
+            <span className="text-[1.5em] text-accent not-italic">&ldquo;</span>
             {firmInfo.quote}
-            <span className={styles.quoteClose}>&rdquo;</span>
+            <span className="text-[1.5em] text-accent not-italic">&rdquo;</span>
           </blockquote>
-          <cite className={styles.quoteCite}>— {firmInfo.quoteAuthor}</cite>
+          <cite className="block font-[family-name:var(--font-body)] text-sm not-italic font-medium text-accent tracking-[0.05em] mt-6">
+            — {firmInfo.quoteAuthor}
+          </cite>
         </div>
       </section>
 
@@ -198,7 +213,7 @@ export default async function HomePage() {
               <h2 className="section-title">Latest Articles</h2>
               <hr className="divider" />
             </div>
-            <div className={styles.articlesGrid}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {latestPosts.map((post) => {
                 const featuredImg =
                   post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
@@ -211,12 +226,12 @@ export default async function HomePage() {
                 });
 
                 return (
-                  <BorderGlow key={post.id} className={styles.articleCard} glowColor="40 80 80" borderRadius={12}>
-                    <div className={styles.articleImage}>
+                  <BorderGlow key={post.id} className="group bg-surface rounded-[var(--radius-md)] overflow-hidden border border-border-light transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" glowColor="40 80 80" borderRadius={12}>
+                    <div className="relative aspect-[16/10] overflow-hidden bg-bg-alt">
                       {featuredImg ? (
-                        <img src={featuredImg} alt={post.title.rendered} />
+                        <img src={featuredImg} alt={post.title.rendered} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
-                        <div className={styles.articleImagePlaceholder}>
+                        <div className="w-full h-full flex items-center justify-center text-text-light">
                           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                             <rect x="3" y="3" width="18" height="18" rx="2" />
                             <circle cx="8.5" cy="8.5" r="1.5" />
@@ -224,16 +239,18 @@ export default async function HomePage() {
                           </svg>
                         </div>
                       )}
-                      <span className={styles.articleBadge}>{category}</span>
+                      <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold uppercase tracking-[0.05em] text-primary bg-accent rounded-[var(--radius-sm)]">
+                        {category}
+                      </span>
                     </div>
-                    <div className={styles.articleBody}>
-                      <time className={styles.articleDate}>{date}</time>
-                      <h3 className={styles.articleTitle}>
-                        <Link href={`/article/${post.slug}`}>
+                    <div className="p-6 pt-4">
+                      <time className="text-xs text-text-light uppercase tracking-[0.05em]">{date}</time>
+                      <h3 className="text-[1.15rem] my-2 text-primary leading-[1.3]">
+                        <Link href={`/article/${post.slug}`} className="hover:text-accent-dark">
                           {decodeHtmlEntities(post.title.rendered)}
                         </Link>
                       </h3>
-                      <p className={styles.articleExcerpt}>
+                      <p className="text-sm text-text-muted leading-[1.6] m-0">
                         {stripHtml(post.excerpt.rendered).substring(0, 120)}…
                       </p>
                     </div>
@@ -241,7 +258,7 @@ export default async function HomePage() {
                 );
               })}
             </div>
-            <div className={styles.articlesMore}>
+            <div className="text-center mt-16">
               <Link href="/article" className="btn btn--dark">
                 View All Articles
               </Link>
@@ -251,23 +268,23 @@ export default async function HomePage() {
       )}
 
       {/* ===== CONTACT CTA ===== */}
-      <section className={`section--dark ${styles.ctaSection}`}>
+      <section className="section--dark relative py-24 text-center overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_20%_50%,rgba(44,95,124,0.15),transparent_50%),radial-gradient(ellipse_at_80%_50%,rgba(196,163,90,0.08),transparent_50%)]">
         <div className="container">
-          <div className={styles.ctaContent}>
+          <div className="relative z-[1]">
             <span className="section-label">Get in Touch</span>
-            <h2 className={styles.ctaTitle}>
+            <h2 className="text-[var(--text-h2)] text-white mb-6">
               Ready to Discuss<br />Your Legal Needs?
             </h2>
-            <p className={styles.ctaText}>
+            <p className="text-lg text-white/60 max-w-[500px] mx-auto mb-12 leading-[1.7]">
               Schedule a consultation with our experienced legal team.
               We&rsquo;re here to help navigate your most complex legal challenges.
             </p>
-            <div className={styles.ctaActions}>
+            <div className="flex flex-col items-center gap-6">
               <Link href="/contact" className="btn btn--primary">
                 Schedule Consultation
               </Link>
-              <a href={`mailto:${firmInfo.email}`} className={styles.ctaEmail}>
-                or email us at <span>{firmInfo.email}</span>
+              <a href={`mailto:${firmInfo.email}`} className="text-sm text-white/50 hover:[&_span]:underline">
+                or email us at <span className="text-accent font-medium">{firmInfo.email}</span>
               </a>
             </div>
           </div>

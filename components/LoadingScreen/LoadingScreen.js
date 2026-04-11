@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import styles from './LoadingScreen.module.css';
 
 export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
@@ -52,46 +51,88 @@ export default function LoadingScreen({ onComplete }) {
 
   if (phase === 'done') return null;
 
+  const isRevealing = phase === 'reveal' || phase === 'exit';
+
   return (
-    <div className={`${styles.root} ${phase === 'exit' ? styles.exit : ''}`} aria-hidden="true">
+    <div
+      className={`fixed inset-0 z-[9999] overflow-hidden ${phase === 'exit' ? 'pointer-events-none' : 'pointer-events-auto'}`}
+      aria-hidden="true"
+    >
       {/* Left curtain panel */}
-      <div className={`${styles.panel} ${styles.panelLeft} ${phase === 'reveal' || phase === 'exit' ? styles.panelOpen : ''}`} />
+      <div
+        className={`
+          absolute top-0 bottom-0 left-0 w-1/2 bg-[#0A1628] z-[2]
+          transition-transform duration-[850ms] ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform
+          ${isRevealing ? '-translate-x-full' : 'translate-x-0'}
+        `}
+      />
       {/* Right curtain panel */}
-      <div className={`${styles.panel} ${styles.panelRight} ${phase === 'reveal' || phase === 'exit' ? styles.panelOpen : ''}`} />
+      <div
+        className={`
+          absolute top-0 bottom-0 right-0 w-1/2 bg-[#0A1628] z-[2]
+          transition-transform duration-[850ms] ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform
+          ${isRevealing ? 'translate-x-full' : 'translate-x-0'}
+        `}
+      />
 
       {/* Content (fades out on reveal) */}
-      <div className={`${styles.content} ${phase === 'reveal' || phase === 'exit' ? styles.contentFade : ''}`}>
-        {/* Top-left logo mark removed as Navbar sits on top */}
-        <div className={styles.topLeft}>
-        </div>
+      <div
+        className={`
+          absolute inset-0 z-[3] grid p-10 max-sm:p-6
+          transition-opacity duration-400 ease-linear
+          ${isRevealing ? 'opacity-0' : ''}
+        `}
+        style={{
+          gridTemplateAreas: `"tl . tr" ". c ." "bl . br"`,
+          gridTemplateRows: 'auto 1fr auto',
+          gridTemplateColumns: '1fr 1fr 1fr',
+        }}
+      >
+        {/* Top-left logo mark */}
+        <div style={{ gridArea: 'tl' }} className="flex items-start" />
 
         {/* Centre: large decorative logo */}
-        <div className={styles.centre}>
-          <div className={styles.logoWrap}>
+        <div style={{ gridArea: 'c' }} className="flex items-center justify-center">
+          <div className="flex flex-col items-center gap-6 animate-[logoReveal_0.9s_cubic-bezier(0.25,0.46,0.45,0.94)_both]">
             <Image
               src="/images/logo-dark.png"
               alt="Soaloan Tua Nababan & Partners"
               width={360}
               height={120}
               priority
-              className={styles.logoCentre}
+              className="object-contain brightness-0 invert h-auto w-[clamp(200px,30vw,360px)]"
             />
             {/* Gold shimmer line beneath logo */}
-            <div className={styles.shimmerLine}>
-              <div className={styles.shimmerFill} style={{ width: `${progress}%` }} />
+            <div className="w-[clamp(200px,30vw,360px)] h-px bg-[rgba(196,163,90,0.2)] rounded-full overflow-hidden relative">
+              <div
+                className="absolute left-0 top-0 h-full bg-gradient-to-r from-accent via-accent-light to-accent rounded-full shadow-[0_0_8px_rgba(196,163,90,0.6)]"
+                style={{ width: `${progress}%`, transition: 'width 0.08s linear' }}
+              />
             </div>
           </div>
         </div>
 
         {/* Bottom-right: loading percentage */}
-        <div className={styles.bottomRight}>
-          <span className={styles.loadingLabel}>Loading</span>
-          <span className={styles.percentage}>{progress}%</span>
+        <div
+          style={{ gridArea: 'br' }}
+          className="flex flex-col items-end justify-end gap-0.5 animate-[fadeUp_0.8s_0.2s_cubic-bezier(0.25,0.46,0.45,0.94)_both]"
+        >
+          <span className="font-[family-name:var(--font-body)] text-[0.6rem] font-medium tracking-[0.2em] uppercase text-[rgba(196,163,90,0.6)]">
+            Loading
+          </span>
+          <span className="font-[family-name:var(--font-body)] text-[0.9rem] font-semibold tracking-[0.1em] text-white/75 tabular-nums min-w-[3ch] text-right">
+            {progress}%
+          </span>
         </div>
 
         {/* Bottom-left: firm name */}
-        <div className={styles.bottomLeft}>
-          <span className={styles.firmName}>Soaloan Tua Nababan &amp; Partners</span>
+        <div
+          style={{ gridArea: 'bl' }}
+          className="flex items-end pb-1 animate-[fadeUp_0.8s_0.3s_cubic-bezier(0.25,0.46,0.45,0.94)_both]"
+        >
+          <span className="font-[family-name:var(--font-body)] text-[0.65rem] font-medium tracking-[0.15em] uppercase text-white/40">
+            Soaloan Tua Nababan &amp; Partners
+          </span>
         </div>
       </div>
     </div>

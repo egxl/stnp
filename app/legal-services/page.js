@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { services } from '@/lib/data/services';
-import styles from './page.module.css';
 
 export const metadata = {
   title: 'Legal Services',
@@ -60,13 +59,14 @@ export default function LegalServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className={styles.pageHero}>
-        <div className={styles.heroOverlay} />
+      <section className="relative overflow-hidden bg-primary" style={{ padding: `calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl)` }}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(44,95,124,0.2),transparent_60%),radial-gradient(ellipse_at_20%_80%,rgba(196,163,90,0.08),transparent_50%)]" />
+        <div className="absolute inset-0" />
         <div className="container">
-          <div className={styles.heroContent}>
-            <span className={styles.breadcrumb}>Home / Legal Services</span>
-            <h1 className={styles.heroTitle}>Legal Services</h1>
-            <p className={styles.heroSubtitle}>
+          <div className="relative z-[1]">
+            <span className="text-xs text-accent tracking-[0.1em] uppercase block mb-4">Home / Legal Services</span>
+            <h1 className="text-[var(--text-h1)] text-white mb-4">Legal Services</h1>
+            <p className="text-lg text-white/60 max-w-[600px]">
               Comprehensive legal solutions across six key practice areas, delivered with precision and unwavering dedication.
             </p>
           </div>
@@ -76,23 +76,31 @@ export default function LegalServicesPage() {
       {/* Services Detail */}
       <section className="section">
         <div className="container">
-          <div className={styles.servicesList}>
+          <div className="flex flex-col gap-24">
             {services.map((service, i) => (
               <div
                 key={service.id}
-                className={`${styles.serviceRow} ${i % 2 !== 0 ? styles.serviceRowReversed : ''}`}
+                className={`
+                  group grid gap-16 p-12 max-md:p-8 rounded-[var(--radius-lg)] bg-surface
+                  border border-border-light transition-all duration-300
+                  hover:border-accent hover:shadow-lg
+                  max-md:grid-cols-1 max-md:text-center
+                  ${i % 2 !== 0 ? 'grid-cols-[1fr_280px] md:grid-cols-[1fr_280px]' : 'grid-cols-[280px_1fr] md:grid-cols-[280px_1fr]'}
+                `}
               >
-                <div className={styles.serviceIconBlock}>
-                  <div className={styles.serviceIconLarge}>
+                <div className={`flex flex-col items-center gap-4 ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
+                  <div className="w-[120px] h-[120px] flex items-center justify-center bg-[rgba(196,163,90,0.06)] border border-[rgba(196,163,90,0.15)] rounded-[var(--radius-lg)] p-6 text-accent transition-all duration-300 group-hover:bg-[rgba(196,163,90,0.12)] group-hover:border-[rgba(196,163,90,0.3)] group-hover:scale-105 [&_svg]:w-full [&_svg]:h-full">
                     {serviceIcons[service.icon]}
                   </div>
-                  <div className={styles.serviceNumber}>0{i + 1}</div>
+                  <div className="font-[family-name:var(--font-heading)] text-2xl font-bold text-accent opacity-40">
+                    0{i + 1}
+                  </div>
                 </div>
-                <div className={styles.serviceInfo}>
-                  <h2 className={styles.serviceTitle}>{service.title}</h2>
-                  <hr className="divider divider--left" />
-                  <p className={styles.serviceDesc}>{service.description}</p>
-                  <Link href="/contact" className={styles.serviceCta}>
+                <div>
+                  <h2 className="text-[var(--text-h3)] text-primary mb-3">{service.title}</h2>
+                  <hr className="divider divider--left max-md:mx-auto" />
+                  <p className="text-lg leading-[1.8] text-text-muted mt-6">{service.description}</p>
+                  <Link href="/contact" className="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-accent uppercase tracking-[0.05em] transition-[gap] duration-150 hover:gap-3">
                     Discuss This Matter
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
@@ -106,13 +114,11 @@ export default function LegalServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className={`section--dark ${styles.ctaSection}`}>
-        <div className="container" style={{ textAlign: 'center' }}>
+      <section className="section--dark py-24">
+        <div className="container text-center">
           <span className="section-label">Need Legal Assistance?</span>
-          <h2 style={{ color: 'var(--color-white)', marginBottom: 'var(--space-md)' }}>
-            Let&apos;s Discuss Your Case
-          </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 500, margin: '0 auto var(--space-xl)', fontSize: 'var(--text-lg)' }}>
+          <h2 className="text-white mb-6">Let&apos;s Discuss Your Case</h2>
+          <p className="text-white/60 max-w-[500px] mx-auto mb-12 text-lg">
             Our experienced attorneys are ready to provide the strategic counsel you need.
           </p>
           <Link href="/contact" className="btn btn--primary">
