@@ -364,3 +364,91 @@ button {
     padding: 0 var(--space-sm);
   }
 }
+
+/* ===================================================
+   View Transitions — Page Navigation
+   Directional slides for nav-forward / nav-back,
+   subtle crossfade fallback for all other navigations.
+   =================================================== */
+
+:root {
+  --vt-exit-duration:  150ms;
+  --vt-enter-duration: 260ms;
+  --vt-slide-offset:   60px;
+}
+
+/* --- Forward: old exits left, new enters from right --- */
+::view-transition-old(.nav-forward) {
+  animation:
+    var(--vt-exit-duration) ease-in both vt-fade reverse,
+    var(--vt-exit-duration) ease-in both vt-slide-left reverse;
+}
+::view-transition-new(.nav-forward) {
+  animation:
+    var(--vt-enter-duration) ease-out var(--vt-exit-duration) both vt-fade,
+    400ms ease-in-out both vt-slide-right;
+}
+
+/* --- Back: old exits right, new enters from left --- */
+::view-transition-old(.nav-back) {
+  animation:
+    var(--vt-exit-duration) ease-in both vt-fade reverse,
+    var(--vt-exit-duration) ease-in both vt-slide-right reverse;
+}
+::view-transition-new(.nav-back) {
+  animation:
+    var(--vt-enter-duration) ease-out var(--vt-exit-duration) both vt-fade,
+    400ms ease-in-out both vt-slide-left;
+}
+
+/* --- Fallback crossfade (browser back/forward button, no transitionType) --- */
+::view-transition-old(.page-fade) {
+  animation: var(--vt-exit-duration) ease-in both vt-fade reverse;
+}
+::view-transition-new(.page-fade) {
+  animation: var(--vt-enter-duration) ease-out var(--vt-exit-duration) both vt-fade;
+}
+
+/* --- Anchor the navbar — it must not slide during transitions --- */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* --- Keyframes --- */
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes vt-slide-left {
+  from { translate: calc(-1 * var(--vt-slide-offset)) 0; }
+  to   { translate: 0 0; }
+}
+
+@keyframes vt-slide-right {
+  from { translate: var(--vt-slide-offset) 0; }
+  to   { translate: 0 0; }
+}
+
+/* --- Respect reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

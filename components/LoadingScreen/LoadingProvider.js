@@ -1,29 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { createContext, useContext, useState, useRef } from 'react';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 
-export default function LoadingProvider({ children }) {
-  const pathname = usePathname();
-  const [done, setDone] = useState(false);
-  const [currentPath, setCurrentPath] = useState(pathname);
+// Context so Navbar/Footer know when the intro is done
+export const LoadingContext = createContext({ isReady: true });
+export const useLoading = () => useContext(LoadingContext);
 
-  useEffect(() => {
-    // Reveal loading screen on route change
-    if (pathname !== currentPath) {
-      setDone(false);
-      setCurrentPath(pathname);
-    }
-  }, [pathname, currentPath]);
+export default function LoadingProvider({ children }) {
+  // Only show the curtain on the very first mount — never on route changes
+  const isFirstLoad = useRef(true);
+  const [isReady, setIsReady] = useState(false);
+
+  function handleComplete() {
+    isFirstLoad.current = false;
+    setIsReady(true);
+  }
 
   return (
-    <>
-      {!done && <LoadingScreen onComplete={() => setDone(true)} />}
-      {/* Content is no longer waiting to fade in; it sits underneath the curtains ready to be revealed */}
-      <div style={{ minHeight: '100vh' }}>
-        {children}
-      </div>
-    </>
+    <LoadingContext.Provider value={{ isReady }}>
+      {/* Curtain only renders once, on first load */}
+      {!isReady && <LoadingScreen onComplete={handleComplete} />}
+      {children}
+    </LoadingContext.Provider>
   );
 }

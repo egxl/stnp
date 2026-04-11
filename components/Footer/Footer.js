@@ -1,11 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import { firmInfo } from '@/lib/data/team';
 import { services } from '@/lib/data/services';
 import styles from './Footer.module.css';
+import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 
 export default function Footer() {
+  const { isReady } = useLoading();
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
+
+  if (!isReady) return null;
 
   return (
     <footer className={styles.footer}>

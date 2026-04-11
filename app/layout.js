@@ -1,3 +1,4 @@
+import { ViewTransition } from 'react';
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
@@ -48,7 +49,21 @@ export default function RootLayout({ children }) {
       <body>
         <LoadingProvider>
           <Navbar />
-          <main>{children}</main>
+          {/* ViewTransition wraps only the page content, not the anchored Navbar/Footer */}
+          <ViewTransition
+            enter={{
+              'nav-forward': 'nav-forward',
+              'nav-back': 'nav-back',
+              default: 'page-fade',
+            }}
+            exit={{
+              'nav-forward': 'nav-forward',
+              'nav-back': 'nav-back',
+              default: 'page-fade',
+            }}
+          >
+            <main style={{ minHeight: '100vh' }}>{children}</main>
+          </ViewTransition>
           <Footer />
           <TargetCursor
             targetSelector=".cursor-target, a, button, .btn"
