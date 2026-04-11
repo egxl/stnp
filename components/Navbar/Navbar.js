@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className={styles.logo} aria-label="Home">
           <img 
-            src="https://stnp.co.id/wp-content/uploads/2026/04/Soaloan-Tua-Nababan-Logo-White.png" 
+            src="/images/logo.png" 
             alt="Soaloan Tua Nababan & Partners Logo"
             className={styles.logoImage}
           />

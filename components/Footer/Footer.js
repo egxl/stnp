@@ -17,7 +17,7 @@ export default function Footer() {
         <div className={styles.col}>
           <div className={styles.footerLogo}>
             <img 
-              src="https://stnp.co.id/wp-content/uploads/2026/04/Soaloan-Tua-Nababan-Logo-White.png" 
+              src="/images/logo.png" 
               alt="Soaloan Tua Nababan & Partners Logo"
               className={styles.logoImage}
             />

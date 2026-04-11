@@ -2,6 +2,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
+import TargetCursor from "@/components/Animations/TargetCursor/TargetCursor";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -44,9 +46,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <LoadingProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <TargetCursor
+            targetSelector=".cursor-target, a, button, .btn"
+            parallaxOn={true}
+          />
+        </LoadingProvider>
       </body>
     </html>
   );

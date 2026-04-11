@@ -3,6 +3,7 @@ import { getPosts } from '@/lib/api';
 import { firmInfo } from '@/lib/data/team';
 import { services } from '@/lib/data/services';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
+import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -85,9 +86,9 @@ export default async function HomePage() {
           className={styles.heroVideo}
         >
           {/* H.265 (HEVC) for highly-compressed modern playback (Safari/newer devices) */}
-          <source src="https://stnp.co.id/wp-content/uploads/2026/04/output_h265.mp4" type="video/mp4; codecs=hvc1" />
-          {/* Default H.264 fallback for broader compatibility (Chrome, Firefox, older devices) */}
-          <source src="https://stnp.co.id/wp-content/uploads/2026/04/output_h264.mp4" type="video/mp4" />
+          <source src="/videos/hero-loop-hevc.mp4" type="video/mp4; codecs=hvc1" />
+          {/* Default H.264 fallback for broader compatibility */}
+          <source src="/videos/hero-loop.mp4" type="video/mp4" />
         </video>
 
         <div className={styles.heroOverlay} />
@@ -133,11 +134,11 @@ export default async function HomePage() {
             </div>
             <div className={styles.principlesGrid}>
               {firmInfo.principles.map((p, i) => (
-                <div key={i} className={styles.principleCard}>
+                <BorderGlow key={i} className={styles.principleCard} glowColor="40 80 80" borderRadius={8}>
                   <div className={styles.principleNumber}>0{i + 1}</div>
                   <h4 className={styles.principleTitle}>{p.title}</h4>
                   <p className={styles.principleDesc}>{p.description}</p>
-                </div>
+                </BorderGlow>
               ))}
             </div>
           </div>
@@ -158,7 +159,7 @@ export default async function HomePage() {
           </div>
           <div className={styles.servicesGrid}>
             {services.map((service, i) => (
-              <div key={service.id} className={styles.serviceCard}>
+              <BorderGlow key={service.id} className={styles.serviceCard} glowColor="40 80 80" borderRadius={8} fillOpacity={0.8}>
                 <div className={styles.serviceIcon}>
                   {serviceIcons[service.icon]}
                 </div>
@@ -170,7 +171,7 @@ export default async function HomePage() {
                     <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </Link>
-              </div>
+              </BorderGlow>
             ))}
           </div>
         </div>
@@ -210,7 +211,7 @@ export default async function HomePage() {
                 });
 
                 return (
-                  <article key={post.id} className={styles.articleCard}>
+                  <BorderGlow key={post.id} className={styles.articleCard} glowColor="40 80 80" borderRadius={12}>
                     <div className={styles.articleImage}>
                       {featuredImg ? (
                         <img src={featuredImg} alt={post.title.rendered} />
@@ -236,7 +237,7 @@ export default async function HomePage() {
                         {stripHtml(post.excerpt.rendered).substring(0, 120)}…
                       </p>
                     </div>
-                  </article>
+                  </BorderGlow>
                 );
               })}
             </div>
