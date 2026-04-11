@@ -1,20 +1,20 @@
 import { ViewTransition } from 'react';
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
-import TargetCursor from "@/components/Animations/TargetCursor/TargetCursor";
+import GrainOverlay from "@/components/Effects/GrainOverlay";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
@@ -45,7 +45,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <body>
         <LoadingProvider>
           <Navbar />
@@ -65,10 +65,7 @@ export default function RootLayout({ children }) {
             <main style={{ minHeight: '100vh' }}>{children}</main>
           </ViewTransition>
           <Footer />
-          <TargetCursor
-            targetSelector=".cursor-target, a, button, .btn"
-            parallaxOn={true}
-          />
+          <GrainOverlay />
         </LoadingProvider>
       </body>
     </html>

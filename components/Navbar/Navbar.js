@@ -50,7 +50,7 @@ export default function Navbar() {
     <header
       className={`
         fixed top-0 left-0 right-0 z-[1000] px-8 max-md:px-4
-        transition-all duration-300 ease-[var(--ease-out-custom)]
+        transition-[background-color,box-shadow,backdrop-filter] duration-200 ease-[var(--ease-out-custom)]
         animate-[navFadeIn_0.5s_var(--ease-out-custom)_both]
         ${scrolled
           ? 'bg-[rgba(10,22,40,0.95)] backdrop-blur-[12px] shadow-[0_2px_20px_rgba(0,0,0,0.15)]'
@@ -59,7 +59,7 @@ export default function Navbar() {
       `}
       style={{ viewTransitionName: 'site-header' }}
     >
-      <nav className="flex items-center justify-between max-w-[var(--max-width-wide)] mx-auto h-[var(--nav-height)]">
+      <nav className="flex items-center justify-between mx-auto h-[var(--nav-height)] max-w-[var(--max-width-wide)] px-4 lg:px-8">
         {/* Logo — going to Home is always nav-back */}
         <Link
           href="/"
@@ -70,45 +70,48 @@ export default function Navbar() {
           <img
             src="/images/logo.png"
             alt="Soaloan Tua Nababan & Partners Logo"
-            className="h-10 max-[480px]:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+            className="transition-transform duration-300 group-hover:scale-[1.03]"
+            style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
           />
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden lg:flex list-none gap-2">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="
-                  relative block px-4 py-2 text-sm font-medium text-white/80
-                  tracking-[0.02em] rounded-[var(--radius-sm)]
-                  transition-all duration-150 ease-[var(--ease-out-custom)]
-                  hover:text-white
-                  after:content-[''] after:absolute after:bottom-0.5 after:left-4 after:right-4
-                  after:h-px after:bg-accent after:scale-x-0 after:origin-left
-                  after:transition-transform after:duration-300
-                  hover:after:scale-x-100
-                "
-                transitionTypes={getTransitionType(pathname, link.href)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+        <ul className="hidden lg:flex list-none gap-4">
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === '/'
+                ? pathname === '/'
+                : pathname.startsWith(link.href);
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`
+                    relative block px-4 py-2 text-sm font-medium
+                    tracking-[0.02em] rounded-[var(--radius-sm)]
+                    transition-colors duration-[125ms] ease-[var(--ease-out-custom)]
+                    after:content-[''] after:absolute after:bottom-0.5 after:left-4 after:right-4
+                    after:h-px after:bg-accent after:origin-left
+                    after:transition-transform after:duration-200
+                    ${isActive
+                      ? 'after:scale-x-100'
+                      : 'after:scale-x-0 hover:after:scale-x-100'
+                    }
+                  `}
+                  style={{ color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.75)' }}
+                  transitionTypes={getTransitionType(pathname, link.href)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* CTA Button */}
         <Link
           href="/contact"
-          className="
-            hidden lg:inline-flex items-center px-6 py-2.5
-            text-xs font-semibold tracking-[0.1em] uppercase
-            text-primary bg-accent rounded-[var(--radius-sm)]
-            transition-all duration-300
-            hover:bg-accent-light hover:-translate-y-px
-            hover:shadow-[0_4px_16px_rgba(196,163,90,0.3)]
-          "
+          className="hidden lg:inline-flex btn btn--primary px-6 py-2.5 text-xs"
           transitionTypes={['nav-forward']}
         >
           Consultation
@@ -130,10 +133,11 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={`
-          fixed inset-0 bg-primary flex flex-col items-center justify-center gap-12
+          fixed inset-0 flex flex-col items-center justify-center gap-12
           transition-opacity duration-300 z-5
           ${mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}
         `}
+        style={{ backgroundColor: 'var(--color-primary)' }}
       >
         <ul className="list-none text-center flex flex-col gap-4">
           {navLinks.map((link, i) => (
@@ -159,15 +163,7 @@ export default function Navbar() {
         </ul>
         <Link
           href="/contact"
-          className="
-            inline-flex items-center justify-center gap-2 px-8 py-3.5
-            font-[family-name:var(--font-body)] text-sm font-semibold
-            tracking-[0.05em] uppercase rounded-[var(--radius-sm)]
-            bg-accent text-primary transition-all duration-300
-            hover:bg-accent-light hover:-translate-y-0.5
-            hover:shadow-[0_6px_20px_rgba(196,163,90,0.3)]
-            mt-4
-          "
+          className="inline-flex btn btn--primary px-8 py-3.5 mt-4"
           onClick={() => setMobileOpen(false)}
           transitionTypes={['nav-forward']}
         >

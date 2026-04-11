@@ -94,36 +94,36 @@ export default function ContactPage() {
                     <input
                       id="contact-name" name="name" type="text" required
                       value={formData.name} onChange={handleChange}
-                      className="px-4 py-3 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
+                      className="w-full h-12 px-4 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
                       placeholder="Your full name"
                     />
                   </div>
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1.5 h-full">
                     <label htmlFor="contact-email" className="text-sm font-medium text-text-body">Email *</label>
                     <input
                       id="contact-email" name="email" type="email" required
                       value={formData.email} onChange={handleChange}
-                      className="px-4 py-3 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
+                      className="w-full h-12 px-4 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1.5 h-full">
                     <label htmlFor="contact-phone" className="text-sm font-medium text-text-body">Phone</label>
                     <input
                       id="contact-phone" name="phone" type="tel"
                       value={formData.phone} onChange={handleChange}
-                      className="px-4 py-3 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
+                      className="w-full h-12 px-4 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
                       placeholder="+62 xxx xxxx xxxx"
                     />
                   </div>
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1.5 h-full">
                     <label htmlFor="contact-subject" className="text-sm font-medium text-text-body">Subject *</label>
                     <input
                       id="contact-subject" name="subject" type="text" required
                       value={formData.subject} onChange={handleChange}
-                      className="px-4 py-3 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
+                      className="w-full h-12 px-4 font-[family-name:var(--font-body)] text-base text-text-body bg-bg border border-border rounded-[var(--radius-sm)] outline-none transition-all duration-150 focus:border-accent focus:shadow-[0_0_0_3px_rgba(196,163,90,0.1)] placeholder:text-text-light"
                       placeholder="How can we help?"
                     />
                   </div>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                 <h3 className="font-[family-name:var(--font-body)] text-sm font-semibold uppercase tracking-[0.1em] text-primary mb-4 pb-3 border-b-2 border-accent inline-block">
                   Email
                 </h3>
-                <a href={`mailto:${firmInfo.email}`} className="text-base text-steel font-medium hover:text-accent">
+                <a href={`mailto:${firmInfo.email}`} className="block mt-2 text-base text-steel font-medium hover:text-accent">
                   {firmInfo.email}
                 </a>
               </div>

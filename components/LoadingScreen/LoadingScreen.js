@@ -10,8 +10,8 @@ export default function LoadingScreen({ onComplete }) {
   const startRef = useRef(null);
 
   useEffect(() => {
-    // Animate progress from 0 → 100 over ~1.6 s with easing
-    const duration = 1600;
+    // Animate progress from 0 → 100 over ~0.8 s with easing
+    const duration = 800;
 
     const tick = (timestamp) => {
       if (!startRef.current) startRef.current = timestamp;
@@ -26,7 +26,7 @@ export default function LoadingScreen({ onComplete }) {
         rafRef.current = requestAnimationFrame(tick);
       } else {
         // Hold briefly, then transition
-        setTimeout(() => setPhase('reveal'), 200);
+        setTimeout(() => setPhase('reveal'), 50);
       }
     };
 

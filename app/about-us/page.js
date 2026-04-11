@@ -74,7 +74,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Principles */}
+      {/* Principles (Z-Axis Cascade) */}
       <section className="section section--dark">
         <div className="container">
           <div className="section-header">
@@ -82,19 +82,30 @@ export default function AboutPage() {
             <h2 className="section-title">Guiding Principles</h2>
             <hr className="divider" />
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {firmInfo.principles.map((p, i) => (
-              <div key={i} className="group text-center p-12 max-lg:p-8 bg-white/[0.04] border border-white/[0.08] rounded-[var(--radius-md)] relative transition-all duration-300 hover:bg-white/[0.07] hover:border-[rgba(196,163,90,0.3)] hover:-translate-y-1">
-                <div className="w-14 h-14 rounded-full bg-[rgba(196,163,90,0.1)] border border-[rgba(196,163,90,0.2)] flex items-center justify-center mx-auto mb-6">
-                  <span className="font-[family-name:var(--font-heading)] text-[1.25rem] font-bold text-accent">
-                    0{i + 1}
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 pb-24 md:pb-48">
+            {firmInfo.principles.map((p, i) => {
+              const staggeredLayouts = [
+                "md:col-span-5 md:mt-0 lg:ml-0",
+                "md:col-span-4 md:mt-32 lg:mt-48",
+                "md:col-span-3 md:mt-16 lg:mt-24"
+              ];
+              return (
+                <div key={i} className={`relative p-1.5 bg-white/5 ring-1 ring-white/10 rounded-[2.5rem] transition-all duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] active:scale-[0.98] ${staggeredLayouts[i] || 'md:col-span-4'}`}>
+                  <div className="group h-full p-10 max-lg:p-8 bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[calc(2.5rem-0.375rem)] relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 rounded-full bg-[rgba(196,163,90,0.1)] border border-[rgba(196,163,90,0.2)] flex items-center justify-center mb-10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110">
+                        <span className="font-[family-name:var(--font-heading)] text-[1.25rem] font-bold text-accent">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="text-[1.4rem] text-white tracking-tight mb-4">{p.title}</h3>
+                      <p className="text-[0.95rem] text-white/50 leading-[1.8]">{p.description}</p>
+                    </div>
+                    <div className="w-full h-px bg-gradient-to-r from-accent to-transparent mt-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] translate-x-[-100%] group-hover:translate-x-0 group-hover:opacity-100" />
+                  </div>
                 </div>
-                <h3 className="text-[1.25rem] text-white mb-3">{p.title}</h3>
-                <p className="text-sm text-white/60 leading-[1.7]">{p.description}</p>
-                <div className="w-[30px] h-0.5 bg-accent mx-auto mt-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
