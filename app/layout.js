@@ -1,75 +1,31 @@
-import { ViewTransition } from 'react';
-import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
-import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
-import TargetCursor from "@/components/Animations/TargetCursor/TargetCursor";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata = {
-  title: {
-    template: "%s | Soaloan Tua Nababan & Partners",
-    default: "Soaloan Tua Nababan & Partners — Law Firm Jakarta",
-  },
-  description:
-    "STNP is a full-service law firm based in Jakarta, specializing in bankruptcy, commercial litigation, corporate law, project financing, infrastructure, and plantation law.",
-  keywords: [
-    "law firm jakarta",
-    "bankruptcy lawyer indonesia",
-    "commercial litigation",
-    "corporate law",
-    "STNP",
-    "Soaloan Tua Nababan",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://stnp.co.id",
-    siteName: "Soaloan Tua Nababan & Partners",
-  },
+  title: "STNP | Tailwind Rebuild",
+  description: "A brand new website build using Tailwind CSS",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body>
-        <LoadingProvider>
-          <Navbar />
-          {/* ViewTransition wraps only the page content, not the anchored Navbar/Footer */}
-          <ViewTransition
-            enter={{
-              'nav-forward': 'nav-forward',
-              'nav-back': 'nav-back',
-              default: 'page-fade',
-            }}
-            exit={{
-              'nav-forward': 'nav-forward',
-              'nav-back': 'nav-back',
-              default: 'page-fade',
-            }}
-          >
-            <main style={{ minHeight: '100vh' }}>{children}</main>
-          </ViewTransition>
-          <Footer />
-          <TargetCursor
-            targetSelector=".cursor-target, a, button, .btn"
-            parallaxOn={true}
-          />
-        </LoadingProvider>
+    <html lang="en">
+      <body className="antialiased font-sans flex flex-col min-h-screen">
+        <header className="w-full p-6 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center">
+          <h1 className="text-2xl font-bold tracking-tight">STNP</h1>
+          <nav className="flex gap-4">
+            <a href="#" className="text-sm font-medium hover:underline">Home</a>
+            <a href="#" className="text-sm font-medium hover:underline">Services</a>
+            <a href="#" className="text-sm font-medium hover:underline">About</a>
+            <a href="#" className="text-sm font-medium hover:underline">Contact</a>
+          </nav>
+        </header>
+
+        <main className="flex-1 flex flex-col items-center justify-center p-8">
+          {children}
+        </main>
+
+        <footer className="w-full p-6 text-center text-sm text-gray-500 border-t border-gray-200 dark:border-gray-800">
+          © {new Date().getFullYear()} STNP. All rights reserved.
+        </footer>
       </body>
     </html>
   );
