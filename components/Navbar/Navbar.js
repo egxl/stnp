@@ -2,31 +2,52 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { Globe } from '@phosphor-icons/react';
 import styles from './Navbar.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about-us', label: 'About' },
-  { href: '/legal-services', label: 'Services' },
-  { href: '/team-profile', label: 'Team' },
-  { href: '/article', label: 'Articles' },
-  { href: '/contact', label: 'Contact' },
-];
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 
 // Hierarchy order: links after index 0 are "forward" from Home
 // and "back" when navigating back to Home.
 function getTransitionType(fromPath, toHref) {
-  if (toHref === '/') return ['nav-back'];
+  if (toHref === '/' || toHref.endsWith('/')) return ['nav-back'];
   return ['nav-forward'];
 }
 
-export default function Navbar() {
+export default function Navbar({ navDict, lang = 'en' }) {
   const { isReady } = useLoading();
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const fallbackKeys = {
+    home: 'Home', about: 'About', services: 'Services',
+    team: 'Team', articles: 'Articles', contact: 'Contact',
+    consultation: 'Consultation', freeConsultation: 'Free Consultation'
+  };
+  const d = navDict || fallbackKeys;
+
+  const navLinks = [
+    { href: `/${lang}`, label: d.home },
+    { href: `/${lang}/about-us`, label: d.about },
+    { href: `/${lang}/legal-services`, label: d.services },
+    { href: `/${lang}/team-profile`, label: d.team },
+    { href: `/${lang}/article`, label: d.articles },
+    { href: `/${lang}/contact`, label: d.contact },
+  ];
+
+  const handleLanguageChange = (e) => {
+    const newLang = e.target.value;
+    const segments = pathname.split('/');
+    if (segments.length >= 2) {
+      segments[1] = newLang; // replace current lang segment
+      router.push(segments.join('/') || `/${newLang}`);
+    } else {
+      router.push(`/${newLang}`);
+    }
+  };
 
   // Hooks must always run — never conditionally
   useEffect(() => {
@@ -55,7 +76,7 @@ export default function Navbar() {
       <nav className={styles.nav}>
         {/* Logo — going to Home is always nav-back */}
         <Link
-          href="/"
+          href={`/${lang}`}
           className={styles.logo}
           aria-label="Home"
           transitionTypes={['nav-back']}
@@ -82,10 +103,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA Button */}
-        <Link href="/contact" className={styles.ctaButton} transitionTypes={['nav-forward']}>
-          Consultation
-        </Link>
+        {/* CTA Button, Language Switcher, and Theme Toggle */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'rgba(255,255,255,0.8)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', border: '1px solid rgba(255,255,255,0.2)', padding: '0.25rem 0.5rem', borderRadius: '4px' }} className="cursor-target">
+            <Globe weight="regular" size={18} />
+            <select
+              value={lang}
+              onChange={handleLanguageChange}
+              style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
+            >
+              <option value="en">EN</option>
+              <option value="id">ID</option>
+              <option value="zh">ZH</option>
+            </select>
+          </div>
+          <ThemeToggle />
+          <Link href={`/${lang}/contact`} className={styles.ctaButton} transitionTypes={['nav-forward']}>
+            {d.consultation}
+          </Link>
+        </div>
 
         {/* Mobile Toggle */}
         <button
@@ -116,14 +152,29 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <Link
-          href="/contact"
-          className={`btn btn--primary ${styles.mobileCta}`}
-          onClick={() => setMobileOpen(false)}
-          transitionTypes={['nav-forward']}
-        >
-          Free Consultation
-        </Link>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem', alignItems: 'flex-start', padding: '0 2rem', color: 'rgba(255,255,255,0.8)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Globe weight="regular" size={20} />
+            <select
+              value={lang}
+              onChange={handleLanguageChange}
+              style={{ background: 'transparent', color: 'inherit', border: '1px solid rgba(255,255,255,0.2)', padding: '0.25rem 0.5rem', borderRadius: '4px', outline: 'none', fontSize: '1rem' }}
+            >
+              <option value="en">English</option>
+              <option value="id">Bahasa Indonesia</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+          <ThemeToggle />
+          <Link
+            href={`/${lang}/contact`}
+            className={`btn btn--primary ${styles.mobileCta}`}
+            onClick={() => setMobileOpen(false)}
+            transitionTypes={['nav-forward']}
+          >
+            {d.freeConsultation}
+          </Link>
+        </div>
       </div>
     </header>
   );

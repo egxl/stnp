@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import { getDictionary } from '@/lib/dictionaries';
 import { getPosts } from '@/lib/api';
 import { firmInfo } from '@/lib/data/team';
-import { services } from '@/lib/data/services';
+import { serviceCategories } from '@/lib/data/services';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import styles from './page.module.css';
@@ -61,9 +62,59 @@ const serviceIcons = {
       <path d="M18 20c3 2 6 2 6 2M30 20c-3 2-6 2-6 2M16 28c4 2 8 2 8 2M32 28c-4 2-8 2-8 2" strokeLinecap="round" />
     </svg>
   ),
+  briefcase: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="8" y="16" width="32" height="24" rx="2" strokeLinejoin="round" />
+      <path d="M16 16v-4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4M8 24h32" strokeLinecap="round" />
+    </svg>
+  ),
+  flow: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="8" y="32" width="12" height="8" rx="1" />
+      <rect x="28" y="32" width="12" height="8" rx="1" />
+      <rect x="18" y="8" width="12" height="8" rx="1" />
+      <path d="M14 32v-8h20v8M24 24v-8" strokeLinejoin="round" />
+    </svg>
+  ),
+  shield: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M24 4L6 12v14c0 14 18 20 18 20s18-6 18-20V12L24 4z" strokeLinejoin="round" />
+      <path d="M24 16v16M18 24l6 6 6-12" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  bolt: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M26 4L10 26h14l-4 18 18-22H24l6-18z" strokeLinejoin="round" />
+    </svg>
+  ),
+  crane: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M6 42h36M12 42L24 8M36 42L24 8M24 8l16-4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 28h16M20 18h8M40 4v16" strokeLinecap="round" />
+    </svg>
+  ),
+  compass: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="24" cy="24" r="18" />
+      <path d="M16 16l6 16 10-6-6-16z" strokeLinejoin="round" />
+    </svg>
+  ),
+  heart: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M24 42l-2-2C10 28 6 22 6 15c0-6 5-11 11-11 4 0 8 3 10 7 2-4 6-7 10-7 6 0 11 5 11 11 0 7-4 13-16 25l-2 2z" strokeLinejoin="round" />
+    </svg>
+  ),
 };
 
-export default async function HomePage() {
+export default async function HomePage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
+  const getAllServices = () => {
+    return serviceCategories.reduce((acc, curr) => [...acc, ...curr.services], []);
+  };
+  const topServices = getAllServices().slice(0, 6);
+
   /* Fetch latest 3 articles from WordPress */
   let latestPosts = [];
   try {
@@ -93,21 +144,20 @@ export default async function HomePage() {
 
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <span className={styles.heroLabel}>Soaloan Tua Nababan & Partners</span>
+          <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
           <h1 className={styles.heroTitle}>
-            Enforcing the Law<br />
-            <span className={styles.heroTitleAccent}>of Truth & Justice</span>
+            {dict.home.heroTitle1}<br />
+            <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            A full-service Jakarta law firm providing strategic legal counsel
-            across bankruptcy, litigation, corporate, and finance.
+            {dict.home.heroSubtitle}
           </p>
           <div className={styles.heroCtas}>
-            <Link href="/contact" className="btn btn--primary">
-              Free Consultation
+            <Link href={`/${lang}/contact`} className="btn btn--primary">
+              {dict.nav.freeConsultation}
             </Link>
-            <Link href="/legal-services" className="btn btn--outline">
-              Our Services
+            <Link href={`/${lang}/legal-services`} className="btn btn--outline">
+              {dict.nav.services}
             </Link>
           </div>
         </div>
@@ -122,14 +172,11 @@ export default async function HomePage() {
         <div className="container">
           <div className={styles.aboutGrid}>
             <div className={styles.aboutLeft}>
-              <span className="section-label">About Our Firm</span>
-              <h2 className="section-title">Trusted Legal Partners Since 2018</h2>
+              <span className="section-label">{dict.home.aboutLabel}</span>
+              <h2 className="section-title">{dict.home.aboutTitle}</h2>
               <hr className="divider divider--left" />
               <p className={styles.aboutText}>
-                Founded by {firmInfo.founder}, Soaloan Tua Nababan & Partners has
-                established itself as a trusted legal practice in Jakarta. We combine
-                deep legal expertise with a client-focused approach, guided by three
-                core principles that define everything we do.
+                {dict.home.aboutText.replace('{founder}', firmInfo.founder)}
               </p>
             </div>
             <div className={styles.principlesGrid}>
@@ -149,24 +196,23 @@ export default async function HomePage() {
       <section className={`section section--alt ${styles.servicesSection}`}>
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Practice Areas</span>
-            <h2 className="section-title">Legal Services</h2>
+            <span className="section-label">{dict.home.servicesLabel}</span>
+            <h2 className="section-title">{dict.home.servicesTitle}</h2>
             <hr className="divider" />
             <p className="section-subtitle">
-              Comprehensive legal solutions across six key practice areas,
-              delivered with precision and dedication.
+              {dict.home.servicesSubtitle}
             </p>
           </div>
           <div className={styles.servicesGrid}>
-            {services.map((service, i) => (
+            {topServices.map((service, i) => (
               <BorderGlow key={service.id} className={styles.serviceCard} glowColor="40 80 80" borderRadius={8} fillOpacity={0.8}>
                 <div className={styles.serviceIcon}>
                   {serviceIcons[service.icon]}
                 </div>
                 <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDesc}>{service.description}</p>
-                <Link href="/legal-services" className={styles.serviceLink}>
-                  Learn More
+                <p className={styles.serviceDesc}>{service.description.substring(0, 110)}...</p>
+                <Link href={`/${lang}/legal-services`} className={styles.serviceLink}>
+                  {dict.home.learnMore}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -179,13 +225,23 @@ export default async function HomePage() {
 
       {/* ===== QUOTE BANNER ===== */}
       <section className={styles.quoteBanner}>
+        <div className={styles.quotePortrait}>
+          <img src="/images/quotes/portrait.webp" alt="Thomas Jefferson Portrait" />
+        </div>
         <div className="container">
-          <blockquote className={styles.blockquote}>
-            <span className={styles.quoteOpen}>&ldquo;</span>
-            {firmInfo.quote}
-            <span className={styles.quoteClose}>&rdquo;</span>
-          </blockquote>
-          <cite className={styles.quoteCite}>— {firmInfo.quoteAuthor}</cite>
+          <div className={styles.quoteContent}>
+            <blockquote className={styles.blockquote}>
+              <span className={styles.quoteOpen}>&ldquo;</span>
+              {firmInfo.quote}
+              <span className={styles.quoteClose}>&rdquo;</span>
+            </blockquote>
+            <div className={styles.quoteAuthorInfo}>
+              <cite className={styles.quoteCite}>{firmInfo.quoteAuthor}</cite>
+              <div className={styles.quoteSignature}>
+                <img src="/images/quotes/signature.svg" alt="Thomas Jefferson Signature" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -194,8 +250,8 @@ export default async function HomePage() {
         <section className="section">
           <div className="container">
             <div className="section-header">
-              <span className="section-label">Insights</span>
-              <h2 className="section-title">Latest Articles</h2>
+              <span className="section-label">{dict.home.insightsLabel}</span>
+              <h2 className="section-title">{dict.home.articlesTitle}</h2>
               <hr className="divider" />
             </div>
             <div className={styles.articlesGrid}>
@@ -204,11 +260,11 @@ export default async function HomePage() {
                   post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
                 const category =
                   post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Article';
-                const date = new Date(post.date).toLocaleDateString('en-US', {
+                const date = new Date(post.date).toLocaleDateString(lang === 'id' ? 'id-ID' : lang === 'zh' ? 'zh-CN' : 'en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
-                });
+                 });
 
                 return (
                   <BorderGlow key={post.id} className={styles.articleCard} glowColor="40 80 80" borderRadius={12}>
@@ -229,7 +285,7 @@ export default async function HomePage() {
                     <div className={styles.articleBody}>
                       <time className={styles.articleDate}>{date}</time>
                       <h3 className={styles.articleTitle}>
-                        <Link href={`/article/${post.slug}`}>
+                        <Link href={`/${lang}/article/${post.slug}`}>
                           {decodeHtmlEntities(post.title.rendered)}
                         </Link>
                       </h3>
@@ -242,8 +298,8 @@ export default async function HomePage() {
               })}
             </div>
             <div className={styles.articlesMore}>
-              <Link href="/article" className="btn btn--dark">
-                View All Articles
+              <Link href={`/${lang}/article`} className="btn btn--dark">
+                {dict.home.viewAll}
               </Link>
             </div>
           </div>
@@ -254,20 +310,19 @@ export default async function HomePage() {
       <section className={`section--dark ${styles.ctaSection}`}>
         <div className="container">
           <div className={styles.ctaContent}>
-            <span className="section-label">Get in Touch</span>
+            <span className="section-label">{dict.home.ctaLabel}</span>
             <h2 className={styles.ctaTitle}>
-              Ready to Discuss<br />Your Legal Needs?
+              {dict.home.ctaTitle}
             </h2>
             <p className={styles.ctaText}>
-              Schedule a consultation with our experienced legal team.
-              We&rsquo;re here to help navigate your most complex legal challenges.
+              {dict.home.ctaText}
             </p>
             <div className={styles.ctaActions}>
-              <Link href="/contact" className="btn btn--primary">
-                Schedule Consultation
+              <Link href={`/${lang}/contact`} className="btn btn--primary">
+                {dict.home.schedule}
               </Link>
               <a href={`mailto:${firmInfo.email}`} className={styles.ctaEmail}>
-                or email us at <span>{firmInfo.email}</span>
+                {dict.home.orEmail} <span>{firmInfo.email}</span>
               </a>
             </div>
           </div>

@@ -76,7 +76,7 @@
 
 .logoMark {
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Forces white */
+  /* filter: brightness(0) invert(1); */
   opacity: 0.9;
   height: 32px;
   width: auto;
@@ -100,7 +100,7 @@
 
 .logoCentre {
   object-fit: contain;
-  filter: brightness(0) invert(1); /* White on navy */
+  /* filter: brightness(0) invert(1); -- Removed to allow original logo colors */
   height: auto;
   width: clamp(200px, 30vw, 360px);
 }
@@ -185,12 +185,13 @@
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.97);
-    filter: brightness(0) invert(1) blur(4px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: brightness(0) invert(1) blur(0);
+    /* filter: blur(0); */
+    filter: blur(0);
   }
 }
 

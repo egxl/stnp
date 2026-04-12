@@ -46,6 +46,10 @@
   --text-lg: 1.125rem;
   --text-sm: 0.875rem;
   --text-xs: 0.75rem;
+  
+  /* Font Weights */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
 
   --leading-tight: 1.2;
   --leading-normal: 1.6;
@@ -73,15 +77,15 @@
   --radius-lg: 12px;
   --radius-xl: 20px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+  /* Shadows - Navy Tinted */
+  --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.06);
+  --shadow-md: 0 4px 12px rgba(10, 22, 40, 0.08);
+  --shadow-lg: 0 12px 40px rgba(10, 22, 40, 0.12);
+  --shadow-xl: 0 20px 60px rgba(10, 22, 40, 0.15);
 
-  /* Transitions */
-  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  /* Transitions - Custom Easing */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --transition-fast: 150ms var(--ease-out);
   --transition-base: 300ms var(--ease-out);
   --transition-slow: 500ms var(--ease-in-out);
@@ -94,6 +98,31 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* --- Persistent Dark Scrollbar --- */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060E1A; /* Primary Dark Background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3048; /* Border Navy */
+  border: 4px solid #060E1A;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2C5F7C; /* Steel Blue */
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1E3048 #060E1A;
 }
 
 html {
@@ -109,6 +138,18 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   overflow-x: hidden;
+  transition: background-color 0.4s var(--ease-in-out), color 0.4s var(--ease-in-out);
+}
+
+/* Subtle grain overlay for surface texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
 }
 
 /* --- Typography --- */
@@ -117,6 +158,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: var(--leading-tight);
   color: var(--color-primary);
+  text-wrap: balance;
+}
+
+h1, h2 {
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: var(--text-h1); }
@@ -128,6 +174,11 @@ h5 { font-size: var(--text-h5); }
 p {
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
+  max-width: 65ch;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 a {
@@ -170,6 +221,7 @@ button {
   position: relative;
   z-index: 0;
   background-color: var(--color-bg); /* Solid — covers the fixed video beneath */
+  transition: background-color 0.4s var(--ease-in-out), color 0.4s var(--ease-in-out), border-color 0.4s var(--ease-in-out);
 }
 
 .section--dark {
@@ -177,6 +229,7 @@ button {
   color: var(--color-white);
   position: relative;
   z-index: 0;
+  transition: background-color 0.4s var(--ease-in-out), color 0.4s var(--ease-in-out), border-color 0.4s var(--ease-in-out);
 }
 
 .section--dark h2,
@@ -191,6 +244,7 @@ button {
 
 .section--alt {
   background-color: var(--color-bg-alt);
+  transition: background-color 0.4s var(--ease-in-out);
 }
 
 /* --- Section Headers --- */
@@ -242,23 +296,21 @@ button {
   padding: 14px 32px;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: var(--radius-sm);
-  transition: all var(--transition-base);
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
   white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn--primary {
   background: var(--color-accent);
   color: var(--color-primary);
-}
-
-.btn--primary:hover {
-  background: var(--color-accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(196, 163, 90, 0.3);
 }
 
 .btn--outline {
@@ -267,20 +319,28 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn--outline:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
 .btn--dark {
   background: var(--color-primary);
   color: var(--color-white);
 }
 
-.btn--dark:hover {
-  background: var(--color-primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover {
+    background: var(--color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 163, 90, 0.3);
+  }
+
+  .btn--outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn--dark:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 /* --- Animations --- */
@@ -445,10 +505,45 @@ button {
 
 /* --- Respect reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
   ::view-transition-old(*),
   ::view-transition-new(*),
   ::view-transition-group(*) {
     animation-duration: 0s !important;
     animation-delay: 0s !important;
   }
+}
+
+/* --- Dark Mode Overrides --- */
+.dark {
+  --color-bg: #060E1A;
+  --color-bg-alt: #0A1628;
+  --color-surface: #101c30;
+  
+  --color-text: #FAFBFC;
+  --color-text-muted: #9CA3AF;
+  --color-text-light: #6B7280;
+
+  --color-border: #1E3048;
+  --color-border-light: #16253A;
+  
+  --color-primary-light: #E5E7EB;
+  --color-primary-dark: #FFFFFF;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--color-white);
+}
+
+.dark .section--dark {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }

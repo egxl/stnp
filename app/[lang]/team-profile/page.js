@@ -9,7 +9,8 @@ export const metadata = {
 
 export default function TeamPage() {
   const partners = team.filter((m) => m.role === 'partner');
-  const allAssociates = team.filter((m) => m.role === 'senior_associate' || m.role === 'associate');
+  const seniorAssociates = team.filter((m) => m.role === 'senior_associate');
+  const associates = team.filter((m) => m.role === 'associate');
 
   const renderCard = (member) => (
     <div key={member.id} className={styles.teamCard}>
@@ -64,8 +65,22 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Associates (Combined) */}
+      {/* Senior Associates */}
       <section className={`section ${styles.associatesSection}`}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Experienced Counsel</span>
+            <h2 className="section-title">Senior Associates</h2>
+            <hr className="divider" />
+          </div>
+          <div className={styles.teamGrid}>
+            {seniorAssociates.map(renderCard)}
+          </div>
+        </div>
+      </section>
+
+      {/* Associates */}
+      <section className="section">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Our Team</span>
@@ -73,7 +88,7 @@ export default function TeamPage() {
             <hr className="divider" />
           </div>
           <div className={styles.teamGrid}>
-            {allAssociates.map(renderCard)}
+            {associates.map(renderCard)}
           </div>
         </div>
       </section>

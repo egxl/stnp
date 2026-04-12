@@ -27,6 +27,9 @@
   height: 100vh;
   object-fit: cover;
   z-index: -2;
+  /* Consolidate grayscale and brightness here — much faster than backdrop-filter */
+  filter: grayscale(1) brightness(0.7) contrast(1.1);
+  will-change: filter; /* Hint to browser to use GPU */
 }
 
 .heroOverlay {
@@ -36,13 +39,10 @@
   width: 100%;
   height: 100vh;
   z-index: -1; /* above video, below everything else */
-  background:
-    linear-gradient(135deg, rgba(10, 22, 40, 0.88), rgba(10, 22, 40, 0.70)),
-    radial-gradient(
-      ellipse at 30% 50%,
-      rgba(44, 95, 124, 0.22) 0%,
-      transparent 60%
-    );
+  background: 
+    radial-gradient(circle at center, rgba(10, 22, 40, 0.65) 0%, rgba(10, 22, 40, 0.98) 100%),
+    linear-gradient(135deg, rgba(44, 95, 124, 0.12) 0%, transparent 50%);
+  /* backdrop-filter is removed as it's extremely expensive over moving video */
 }
 
 .heroContent {
@@ -127,8 +127,8 @@
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
-  50% { opacity: 1; transform: scaleY(1); }
+  0%, 100% { opacity: 0.2; transform: scaleY(0.7); }
+  50% { opacity: 0.8; transform: scaleY(1); }
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -167,13 +167,19 @@
   background: var(--color-surface);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-light);
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
 
-.principleCard:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-  transform: translateX(4px);
+.principleCard:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .principleCard:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+  }
 }
 
 .principleNumber {
@@ -215,9 +221,13 @@
   padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-light);
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
   position: relative;
   overflow: hidden;
+}
+
+.serviceCard:active {
+  transform: scale(0.97);
 }
 
 .serviceCard::before {
@@ -230,17 +240,19 @@
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--transition-base);
+  transition: transform 200ms var(--ease-out);
 }
 
-.serviceCard:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
+@media (hover: hover) and (pointer: fine) {
+  .serviceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
 
-.serviceCard:hover::before {
-  transform: scaleX(1);
+  .serviceCard:hover::before {
+    transform: scaleX(1);
+  }
 }
 
 .serviceIcon {
@@ -290,52 +302,119 @@
 
 /* ===== QUOTE BANNER ===== */
 .quoteBanner {
-  background: var(--color-primary);
-  padding: var(--space-3xl) 0;
+  background: #080d16; /* Darker navy for better contrast */
+  padding: var(--space-4xl) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  min-height: 500px;
 }
 
-.quoteBanner::before {
-  content: '';
+.quotePortrait {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(196, 163, 90, 0.06) 0%,
-    transparent 70%
-  );
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.quotePortrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center -80px; /* Force the image up to crop out the empty top space */
+  filter: grayscale(1) contrast(1.2) brightness(0.7);
+  transform: scale(1.15); /* Slightly scale up to give more room for vertical adjustment */
+  mask-image: linear-gradient(to left, black 0%, transparent 100%),
+              linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.quoteContent {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .blockquote {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 300;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.3;
   position: relative;
+  margin-bottom: var(--space-xl);
 }
 
 .quoteOpen,
 .quoteClose {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: var(--color-accent);
   font-style: normal;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.quoteAuthorInfo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .quoteCite {
-  display: block;
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-accent);
-  letter-spacing: 0.05em;
-  margin-top: var(--space-md);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.quoteSignature {
+  width: 180px;
+  height: auto;
+  opacity: 0.8;
+  filter: invert(1) brightness(1.2) sepia(0.5) hue-rotate(30deg); /* Make it look like gold ink on dark */
+  margin-top: -10px;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.quoteSignature img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .quotePortrait {
+    width: 100%;
+    opacity: 0.1;
+  }
+  
+  .quoteBanner {
+    min-height: auto;
+    padding: var(--space-3xl) 0;
+  }
+  
+  .blockquote {
+    font-size: 1.5rem;
+  }
+  
+  .quoteSignature {
+    width: 140px;
+  }
 }
 
 /* ===== ARTICLES ===== */
@@ -350,12 +429,11 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--color-border-light);
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
 
-.articleCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.articleCard:active {
+  transform: scale(0.97);
 }
 
 .articleImage {
@@ -369,11 +447,18 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  transition: transform 400ms var(--ease-out);
 }
 
-.articleCard:hover .articleImage img {
-  transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+  .articleCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .articleCard:hover .articleImage img {
+    transform: scale(1.03);
+  }
 }
 
 .articleImagePlaceholder {

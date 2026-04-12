@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "team": "Tim",
+    "articles": "Artikel",
+    "contact": "Kontak",
+    "consultation": "Konsultasi",
+    "freeConsultation": "Konsultasi Gratis"
+  },
+  "home": {
+    "heroLabel": "Soaloan Tua Nababan & Partners",
+    "heroTitle1": "Menegakkan Hukum",
+    "heroTitle2": "Kebenaran & Keadilan",
+    "heroSubtitle": "Firma hukum Jakarta dengan layanan penuh yang memberikan nasihat hukum strategis di bidang kepailitan, litigasi, korporasi, dan keuangan.",
+    "aboutLabel": "Tentang Firma Kami",
+    "aboutTitle": "Mitra Hukum Terpercaya Sejak 2018",
+    "aboutText": "Didirikan oleh {founder}, Soaloan Tua Nababan & Partners telah memantapkan diri sebagai praktik hukum terpercaya di Jakarta. Kami menggabungkan keahlian hukum yang mendalam dengan pendekatan yang berfokus pada klien, dipandu oleh tiga prinsip inti yang mendefinisikan semua yang kami lakukan.",
+    "servicesLabel": "Bidang Praktik",
+    "servicesTitle": "Layanan Hukum",
+    "servicesSubtitle": "Solusi hukum yang komprehensif di enam bidang praktik utama, yang disampaikan dengan ketepatan dan dedikasi tinggi.",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "insightsLabel": "Wawasan",
+    "articlesTitle": "Artikel Terbaru",
+    "viewAll": "Lihat Semua Artikel",
+    "ctaLabel": "Hubungi Kami",
+    "ctaTitle": "Siap Mendiskusikan Kebutuhan Hukum Anda?",
+    "ctaText": "Jadwalkan konsultasi dengan tim hukum berpengalaman kami. Kami di sini untuk membantu Anda menavigasi tantangan hukum Anda yang paling kompleks.",
+    "schedule": "Jadwalkan Konsultasi",
+    "orEmail": "atau email kami di"
+  },
+  "footer": {
+    "quickLinks": "Tautan Cepat",
+    "practiceAreas": "Bidang Praktik",
+    "contactUs": "Hubungi Kami",
+    "aboutUs": "Tentang Kami",
+    "legalServices": "Layanan Hukum",
+    "ourTeam": "Tim Kami",
+    "articles": "Artikel",
+    "contact": "Kontak",
+    "disclaimer": "Situs web ini hanya untuk tujuan informasi dan bukan merupakan nasihat hukum atau membentuk hubungan klien-pengacara. Hasil masa lalu tidak menjamin hasil yang sama. STNP melepaskan tanggung jawab atas tindakan yang diambil berdasarkan konten situs ini."
+  }
+}

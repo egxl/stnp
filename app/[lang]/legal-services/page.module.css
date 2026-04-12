@@ -44,6 +44,27 @@
   max-width: 600px;
 }
 
+/* ===== CATEGORIES ===== */
+.categorySection {
+  margin-bottom: var(--space-3xl);
+}
+
+.categoryHeader {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.categoryTitle {
+  font-size: var(--text-h2);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.proBonoSection .serviceRow {
+  background: var(--color-bg-alt);
+  border-color: var(--color-accent-light);
+}
+
 /* ===== SERVICES LIST ===== */
 .servicesList {
   display: flex;
@@ -60,12 +81,18 @@
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   border: 1px solid var(--color-border-light);
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 
-.serviceRow:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-lg);
+.serviceRow:active {
+  transform: scale(0.99);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .serviceRow:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 .serviceRowReversed {
@@ -94,13 +121,15 @@
   border-radius: var(--radius-lg);
   padding: 24px;
   color: var(--color-accent);
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
 }
 
-.serviceRow:hover .serviceIconLarge {
-  background: rgba(196, 163, 90, 0.12);
-  border-color: rgba(196, 163, 90, 0.3);
-  transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+  .serviceRow:hover .serviceIconLarge {
+    background: rgba(196, 163, 90, 0.12);
+    border-color: rgba(196, 163, 90, 0.3);
+    transform: scale(1.05);
+  }
 }
 
 .serviceIconLarge svg {
@@ -142,8 +171,14 @@
   transition: gap var(--transition-fast);
 }
 
-.serviceCta:hover {
-  gap: 12px;
+.serviceCta:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .serviceCta:hover {
+    gap: 12px;
+  }
 }
 
 /* CTA Section */

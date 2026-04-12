@@ -78,13 +78,19 @@
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   text-align: center;
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
 
-.statCard:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+.statCard:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .statCard:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .statNumber {
@@ -118,13 +124,19 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   position: relative;
-  transition: all var(--transition-base);
+  transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
 }
 
-.principleCard:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(196, 163, 90, 0.3);
-  transform: translateY(-4px);
+.principleCard:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .principleCard:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(196, 163, 90, 0.3);
+    transform: translateY(-4px);
+  }
 }
 
 .principleIcon {
@@ -167,8 +179,10 @@
   transition: opacity var(--transition-base);
 }
 
-.principleCard:hover .principleAccent {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .principleCard:hover .principleAccent {
+    opacity: 1;
+  }
 }
 
 /* ===== LOCATION ===== */
@@ -215,10 +229,18 @@
 .contactItem a {
   color: var(--color-steel);
   font-weight: 500;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
 }
 
-.contactItem a:hover {
-  color: var(--color-accent);
+.contactItem a:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contactItem a:hover {
+    color: var(--color-accent);
+  }
 }
 
 .mapPlaceholder {

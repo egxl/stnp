@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "team": "Team",
+    "articles": "Articles",
+    "contact": "Contact",
+    "consultation": "Consultation",
+    "freeConsultation": "Free Consultation"
+  },
+  "home": {
+    "heroLabel": "Soaloan Tua Nababan & Partners",
+    "heroTitle1": "Enforcing the Law",
+    "heroTitle2": "of Truth & Justice",
+    "heroSubtitle": "A full-service Jakarta law firm providing strategic legal counsel across bankruptcy, litigation, corporate, and finance.",
+    "aboutLabel": "About Our Firm",
+    "aboutTitle": "Trusted Legal Partners Since 2018",
+    "aboutText": "Founded by {founder}, Soaloan Tua Nababan & Partners has established itself as a trusted legal practice in Jakarta. We combine deep legal expertise with a client-focused approach, guided by three core principles that define everything we do.",
+    "servicesLabel": "Practice Areas",
+    "servicesTitle": "Legal Services",
+    "servicesSubtitle": "Comprehensive legal solutions across six key practice areas, delivered with precision and dedication.",
+    "learnMore": "Learn More",
+    "insightsLabel": "Insights",
+    "articlesTitle": "Latest Articles",
+    "viewAll": "View All Articles",
+    "ctaLabel": "Get in Touch",
+    "ctaTitle": "Ready to Discuss Your Legal Needs?",
+    "ctaText": "Schedule a consultation with our experienced legal team. We’re here to help navigate your most complex legal challenges.",
+    "schedule": "Schedule Consultation",
+    "orEmail": "or email us at"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "practiceAreas": "Practice Areas",
+    "contactUs": "Contact Us",
+    "aboutUs": "About Us",
+    "legalServices": "Legal Services",
+    "ourTeam": "Our Team",
+    "articles": "Articles",
+    "contact": "Contact",
+    "disclaimer": "This website is for informational purposes only and does not constitute legal advice or establish an attorney-client relationship. Prior results do not guarantee similar outcomes. STNP disclaims all liability for actions taken based on this site's content."
+  }
+}

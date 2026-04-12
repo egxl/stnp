@@ -2,6 +2,8 @@
   background: var(--color-primary);
   color: rgba(255, 255, 255, 0.75);
   padding-top: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .accentLine {
@@ -21,6 +23,21 @@
   gap: var(--space-2xl);
   padding-top: var(--space-3xl);
   padding-bottom: var(--space-3xl);
+  position: relative;
+  z-index: 2;
+  pointer-events: none; /* Let clicks pass through if needed, but the links should be interactive */
+}
+
+/* Re-enable pointer events for footer content */
+.grid > *, .bottom > * {
+  pointer-events: auto;
+}
+
+.beamsWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.6;
 }
 
 /* --- Columns --- */
@@ -107,15 +124,21 @@
 .linkList a {
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.6);
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.linkList a:hover {
-  color: var(--color-accent);
-  transform: translateX(4px);
+.linkList a:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .linkList a:hover {
+    color: var(--color-accent);
+    transform: translateX(4px);
+  }
 }
 
 /* --- Contact / Address --- */
@@ -142,11 +165,18 @@
 
 .addressItem a {
   color: rgba(255, 255, 255, 0.6);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
 }
 
-.addressItem a:hover {
-  color: var(--color-accent);
+.addressItem a:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .addressItem a:hover {
+    color: var(--color-accent);
+  }
 }
 
 /* --- Bottom Bar --- */
@@ -158,7 +188,39 @@
 .copyright {
   font-size: var(--text-xs);
   color: rgba(255, 255, 255, 0.35);
-  text-align: center;
+  white-space: nowrap;
+}
+
+.bottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-xl);
+}
+
+.disclaimer {
+  font-size: 10px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: right;
+  max-width: 700px;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 900px) {
+  .bottomContent {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .copyright, .disclaimer {
+    text-align: center;
+    max-width: 100%;
+    white-space: normal;
+  }
 }
 
 /* --- Responsive --- */

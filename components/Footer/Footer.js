@@ -5,16 +5,43 @@ import { firmInfo } from '@/lib/data/team';
 import { services } from '@/lib/data/services';
 import styles from './Footer.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
+import Beams from './Beams';
 
-export default function Footer() {
+export default function Footer({ dict, lang = 'en' }) {
   const { isReady } = useLoading();
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
+
+  const d = dict?.footer || {
+    quickLinks: "Quick Links",
+    practiceAreas: "Practice Areas",
+    contactUs: "Contact Us",
+    aboutUs: "About Us",
+    legalServices: "Legal Services",
+    ourTeam: "Our Team",
+    articles: "Articles",
+    contact: "Contact",
+    disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia."
+  };
 
   if (!isReady) return null;
 
   return (
     <footer className={styles.footer}>
+      {/* Dynamic Background */}
+      <div className={styles.beamsWrapper}>
+        <Beams
+          beamWidth={2}
+          beamHeight={30}
+          beamNumber={20}
+          lightColor="#C4A35A"
+          speed={4}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
+
       {/* Gold accent line */}
       <div className={styles.accentLine} />
 
@@ -40,23 +67,23 @@ export default function Footer() {
 
         {/* Column 2: Quick Links */}
         <div className={styles.col}>
-          <h4 className={styles.colTitle}>Quick Links</h4>
+          <h4 className={styles.colTitle}>{d.quickLinks}</h4>
           <ul className={styles.linkList}>
-            <li><Link href="/about-us">About Us</Link></li>
-            <li><Link href="/legal-services">Legal Services</Link></li>
-            <li><Link href="/team-profile">Our Team</Link></li>
-            <li><Link href="/article">Articles</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href={`/${lang}/about-us`}>{d.aboutUs}</Link></li>
+            <li><Link href={`/${lang}/legal-services`}>{d.legalServices}</Link></li>
+            <li><Link href={`/${lang}/team-profile`}>{d.ourTeam}</Link></li>
+            <li><Link href={`/${lang}/article`}>{d.articles}</Link></li>
+            <li><Link href={`/${lang}/contact`}>{d.contact}</Link></li>
           </ul>
         </div>
 
         {/* Column 3: Practice Areas */}
         <div className={styles.col}>
-          <h4 className={styles.colTitle}>Practice Areas</h4>
+          <h4 className={styles.colTitle}>{d.practiceAreas}</h4>
           <ul className={styles.linkList}>
             {services.map((s) => (
               <li key={s.id}>
-                <Link href="/legal-services">{s.title}</Link>
+                <Link href={`/${lang}/legal-services`}>{s.title}</Link>
               </li>
             ))}
           </ul>
@@ -64,7 +91,7 @@ export default function Footer() {
 
         {/* Column 4: Contact */}
         <div className={styles.col}>
-          <h4 className={styles.colTitle}>Contact Us</h4>
+          <h4 className={styles.colTitle}>{d.contactUs}</h4>
           <address className={styles.address}>
             <div className={styles.addressItem}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -99,9 +126,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className={styles.bottom}>
-        <div className="container">
+        <div className={`container ${styles.bottomContent}`}>
           <p className={styles.copyright}>
             &copy; {currentYear} {firmInfo.fullName}. All rights reserved.
+          </p>
+          <p className={styles.disclaimer}>
+            {d.disclaimer}
           </p>
         </div>
       </div>

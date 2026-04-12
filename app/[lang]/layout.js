@@ -1,10 +1,12 @@
 import { ViewTransition } from 'react';
 import { Playfair_Display, Inter } from "next/font/google";
-import "./globals.css";
+import { getDictionary } from '@/lib/dictionaries';
+import "../globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import TargetCursor from "@/components/Animations/TargetCursor/TargetCursor";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -43,12 +45,15 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang={lang} className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
-        <LoadingProvider>
-          <Navbar />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <LoadingProvider>
+          <Navbar navDict={dict.nav} lang={lang} />
           {/* ViewTransition wraps only the page content, not the anchored Navbar/Footer */}
           <ViewTransition
             enter={{
@@ -64,12 +69,13 @@ export default function RootLayout({ children }) {
           >
             <main style={{ minHeight: '100vh' }}>{children}</main>
           </ViewTransition>
-          <Footer />
+          <Footer dict={dict} lang={lang} />
           <TargetCursor
             targetSelector=".cursor-target, a, button, .btn"
             parallaxOn={true}
           />
         </LoadingProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

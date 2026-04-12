@@ -54,6 +54,7 @@ const TargetCursor = ({
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
       document.body.style.cursor = 'none';
+      document.body.classList.add('hide-default-cursor');
     }
 
     const cursor = cursorRef.current;
@@ -212,6 +213,7 @@ const TargetCursor = ({
         gsap.to(corner, {
           x: targetCornerPositionsRef.current[i].x - cursorX,
           y: targetCornerPositionsRef.current[i].y - cursorY,
+          opacity: 1,
           duration: 0.2,
           ease: 'power2.out'
         });
@@ -242,6 +244,7 @@ const TargetCursor = ({
               {
                 x: positions[index].x,
                 y: positions[index].y,
+                opacity: 0,
                 duration: 0.3,
                 ease: 'power3.out'
               },
@@ -296,6 +299,9 @@ const TargetCursor = ({
 
       spinTl.current?.kill();
       document.body.style.cursor = originalCursor;
+      if (hideDefaultCursor) {
+        document.body.classList.remove('hide-default-cursor');
+      }
 
       isActiveRef.current = false;
       targetCornerPositionsRef.current = null;

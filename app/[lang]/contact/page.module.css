@@ -188,10 +188,13 @@
   font-size: var(--text-body);
   color: var(--color-steel);
   font-weight: 500;
+  transition: color var(--transition-fast);
 }
 
-.infoEmail:hover {
-  color: var(--color-accent);
+@media (hover: hover) and (pointer: fine) {
+  .infoEmail:hover {
+    color: var(--color-accent);
+  }
 }
 
 /* Responsive */

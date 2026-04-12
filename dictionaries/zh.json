@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "法律服务",
+    "team": "专业团队",
+    "articles": "最新文章",
+    "contact": "联系我们",
+    "consultation": "法律咨询",
+    "freeConsultation": "免费咨询"
+  },
+  "home": {
+    "heroLabel": "Soaloan Tua Nababan & Partners",
+    "heroTitle1": "捍卫法律",
+    "heroTitle2": "真理与正义",
+    "heroSubtitle": "雅加达提供全方位服务的律师事务所，为破产、诉讼、企业和金融领域提供战略性法律咨询。",
+    "aboutLabel": "关于我们事务所",
+    "aboutTitle": "值得信赖的法律合作伙伴 (自2018年起)",
+    "aboutText": "在 {founder} 的创立下，Soaloan Tua Nababan & Partners 已在雅加达确立了其作为值得信赖的律师事务所的地位。我们将深厚的法律专业知识与以客户为中心的方法相结合，并在指导我们所有行动的三个核心原则的指引下前行。",
+    "servicesLabel": "业务领域",
+    "servicesTitle": "我们的法律服务",
+    "servicesSubtitle": "在六个主要业务领域提供全面的法律解决方案，以精准和奉献精神交付。",
+    "learnMore": "了解更多",
+    "insightsLabel": "洞察与见解",
+    "articlesTitle": "最新文章",
+    "viewAll": "查看所有文章",
+    "ctaLabel": "建立联系",
+    "ctaTitle": "准备好讨论您的法律需求了吗？",
+    "ctaText": "安排与我们经验丰富的法律团队进行咨询交流。我们随时为您解决最复杂的法律挑战。",
+    "schedule": "安排专业咨询",
+    "orEmail": "或者发送电子邮件至"
+  },
+  "footer": {
+    "quickLinks": "快速链接",
+    "practiceAreas": "业务领域",
+    "contactUs": "联系我们",
+    "aboutUs": "关于我们",
+    "legalServices": "法律服务",
+    "ourTeam": "我们的团队",
+    "articles": "文章",
+    "contact": "联系",
+    "disclaimer": "本网站仅供参考，不构成法律意见，也不建立律师-客户关系。过往结果不保证类似结果。STNP 对因依赖本网站内容而采取的行动概不负责。"
+  }
+}

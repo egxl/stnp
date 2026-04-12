@@ -69,7 +69,7 @@ export default function LoadingScreen({ onComplete }) {
         <div className={styles.centre}>
           <div className={styles.logoWrap}>
             <Image
-              src="/images/logo-dark.png"
+              src="/images/logo.png"
               alt="Soaloan Tua Nababan & Partners"
               width={360}
               height={120}
