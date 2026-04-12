@@ -1,6 +1,7 @@
 import { ViewTransition } from 'react';
 import { Playfair_Display, Inter } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
+import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";

@@ -209,8 +209,8 @@ export default async function HomePage({ params }) {
                 <div className={styles.serviceIcon}>
                   {serviceIcons[service.icon]}
                 </div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDesc}>{service.description.substring(0, 110)}...</p>
+                <h3 className={styles.serviceTitle}>{service.title[lang] || service.title.en}</h3>
+                <p className={styles.serviceDesc}>{(service.description[lang] || service.description.en).substring(0, 110)}...</p>
                 <Link href={`/${lang}/legal-services`} className={styles.serviceLink}>
                   {dict.home.learnMore}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -39,6 +39,17 @@
     "ourTeam": "Our Team",
     "articles": "Articles",
     "contact": "Contact",
-    "disclaimer": "This website is for informational purposes only and does not constitute legal advice or establish an attorney-client relationship. Prior results do not guarantee similar outcomes. STNP disclaims all liability for actions taken based on this site's content."
+    "disclaimer": "This website is for informational purposes only and does not constitute legal advice or establish an attorney-client relationship. Prior results do not guarantee similar outcomes. STNP disclaims all liability for actions taken based on this site's content.",
+    "disclaimerButton": "Legal Disclaimer",
+    "disclaimerFull": {
+      "title": "Legal Disclaimer",
+      "p1": "The materials provided on this website have been prepared by Soaloan Tua Nababan & Partners (\"STNP\") for general informational purposes only. This content does not constitute legal advice, and you should not rely on it as such. The information presented here is not a substitute for consulting with a qualified attorney regarding your specific legal situation. STNP expressly disclaims all liability with respect to actions taken or not taken based on any or all of the contents of this website.",
+      "p2": "Accessing, reading, or interacting with the information on this website does not establish an attorney-client relationship between you and Soaloan Tua Nababan & Partners. Such a relationship can only be formed through a formal, written agreement signed by our firm. If you require legal advice or have specific legal questions, please consult with one of our attorneys or seek legal counsel from a qualified professional in your jurisdiction.",
+      "confidentialityTitle": "Confidentiality Notice",
+      "confidentiality": "Do not send confidential information to us through this website or by email until you have established a formal attorney-client relationship with our firm.",
+      "p3": "You should assume that STNP may have professional relationships with providers of goods and services mentioned within this website. STNP does not necessarily endorse, and is not responsible for, any third-party content that may be accessed through this website.",
+      "p4": "The use of this website and the information it contains is also subject to the terms and conditions outlined in our Privacy Policy. If you have any questions regarding these terms, please contact us at admin@stnp.co.id.",
+      "closeButton": "I Understand"
+    }
   }
 }

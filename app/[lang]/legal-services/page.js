@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { serviceCategories, proBono } from '@/lib/data/services';
+import { getDictionary } from '@/lib/dictionaries';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -98,7 +99,10 @@ const serviceIcons = {
   ),
 };
 
-export default function LegalServicesPage() {
+export default async function LegalServicesPage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
     <>
       {/* Hero */}
@@ -106,10 +110,10 @@ export default function LegalServicesPage() {
         <div className={styles.heroOverlay} />
         <div className="container">
           <div className={styles.heroContent}>
-            <span className={styles.breadcrumb}>Home / Legal Services</span>
-            <h1 className={styles.heroTitle}>Legal Services</h1>
+            <span className={styles.breadcrumb}>{dict.nav.home} / {dict.nav.services}</span>
+            <h1 className={styles.heroTitle}>{dict.nav.services}</h1>
             <p className={styles.heroSubtitle}>
-              Comprehensive legal solutions across all major practice areas, delivered with precision and unwavering dedication.
+              {dict.home.servicesSubtitle}
             </p>
           </div>
         </div>
@@ -121,7 +125,7 @@ export default function LegalServicesPage() {
           {serviceCategories.map((category) => (
             <div key={category.id} className={styles.categorySection}>
               <div className={styles.categoryHeader}>
-                <h2 className={styles.categoryTitle}>{category.title}</h2>
+                <h2 className={styles.categoryTitle}>{category.title[lang] || category.title.en}</h2>
                 <hr className="divider" />
               </div>
               <div className={styles.servicesList}>
@@ -137,11 +141,11 @@ export default function LegalServicesPage() {
                       <div className={styles.serviceNumber}>0{i + 1}</div>
                     </div>
                     <div className={styles.serviceInfo}>
-                      <h3 className={styles.serviceTitle}>{service.title}</h3>
+                      <h3 className={styles.serviceTitle}>{service.title[lang] || service.title.en}</h3>
                       <hr className="divider divider--left" />
-                      <p className={styles.serviceDesc}>{service.description}</p>
-                      <Link href="/contact" className={styles.serviceCta}>
-                        Discuss This Matter
+                      <p className={styles.serviceDesc}>{service.description[lang] || service.description.en}</p>
+                      <Link href={`/${lang}/contact`} className={styles.serviceCta}>
+                        {dict.home.learnMore}
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -156,7 +160,7 @@ export default function LegalServicesPage() {
           {/* Pro Bono Section */}
           <div className={`${styles.categorySection} ${styles.proBonoSection}`} style={{ marginTop: 'var(--space-3xl)' }}>
             <div className={styles.categoryHeader}>
-              <h2 className={styles.categoryTitle}>{proBono.title}</h2>
+              <h2 className={styles.categoryTitle}>{proBono.title[lang] || proBono.title.en}</h2>
               <hr className="divider" />
             </div>
             <div className={styles.servicesList}>
@@ -167,11 +171,11 @@ export default function LegalServicesPage() {
                   </div>
                 </div>
                 <div className={styles.serviceInfo}>
-                  <h3 className={styles.serviceTitle}>{proBono.title}</h3>
+                  <h3 className={styles.serviceTitle}>{proBono.title[lang] || proBono.title.en}</h3>
                   <hr className="divider divider--left" />
-                  <p className={styles.serviceDesc}>{proBono.description}</p>
-                  <Link href="/contact" className={styles.serviceCta}>
-                    Request Legal Aid
+                  <p className={styles.serviceDesc}>{proBono.description[lang] || proBono.description.en}</p>
+                  <Link href={`/${lang}/contact`} className={styles.serviceCta}>
+                    {dict.home.schedule}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -186,15 +190,15 @@ export default function LegalServicesPage() {
       {/* CTA */}
       <section className={`section--dark ${styles.ctaSection}`}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <span className="section-label">Need Legal Assistance?</span>
+          <span className="section-label">{dict.home.ctaLabel}</span>
           <h2 style={{ color: 'var(--color-white)', marginBottom: 'var(--space-md)' }}>
-            Let&apos;s Discuss Your Case
+            {dict.home.ctaTitle}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 500, margin: '0 auto var(--space-xl)', fontSize: 'var(--text-lg)' }}>
-            Our experienced attorneys are ready to provide the strategic counsel you need.
+            {dict.home.ctaText}
           </p>
-          <Link href="/contact" className="btn btn--primary">
-            Schedule Consultation
+          <Link href={`/${lang}/contact`} className="btn btn--primary">
+            {dict.home.schedule}
           </Link>
         </div>
       </section>

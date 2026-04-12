@@ -1,14 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { firmInfo } from '@/lib/data/team';
 import { services } from '@/lib/data/services';
 import styles from './Footer.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import Beams from './Beams';
+import DisclaimerModal from './DisclaimerModal';
 
 export default function Footer({ dict, lang = 'en' }) {
   const { isReady } = useLoading();
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
 
@@ -21,7 +24,8 @@ export default function Footer({ dict, lang = 'en' }) {
     ourTeam: "Our Team",
     articles: "Articles",
     contact: "Contact",
-    disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia."
+    disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia.",
+    disclaimerButton: "Legal Disclaimer"
   };
 
   if (!isReady) return null;
@@ -83,7 +87,7 @@ export default function Footer({ dict, lang = 'en' }) {
           <ul className={styles.linkList}>
             {services.map((s) => (
               <li key={s.id}>
-                <Link href={`/${lang}/legal-services`}>{s.title}</Link>
+                <Link href={`/${lang}/legal-services`}>{s.title[lang] || s.title.en}</Link>
               </li>
             ))}
           </ul>
@@ -130,11 +134,25 @@ export default function Footer({ dict, lang = 'en' }) {
           <p className={styles.copyright}>
             &copy; {currentYear} {firmInfo.fullName}. All rights reserved.
           </p>
-          <p className={styles.disclaimer}>
-            {d.disclaimer}
-          </p>
+          <div className={styles.disclaimerGroup}>
+            <p className={styles.disclaimer}>
+              {d.disclaimer}
+            </p>
+            <button 
+              className={styles.disclaimerBtn}
+              onClick={() => setIsDisclaimerOpen(true)}
+            >
+              {d.disclaimerButton}
+            </button>
+          </div>
         </div>
       </div>
+
+      <DisclaimerModal 
+        isOpen={isDisclaimerOpen} 
+        onClose={() => setIsDisclaimerOpen(false)} 
+        dict={dict} 
+      />
     </footer>
   );
 }

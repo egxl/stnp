@@ -7,6 +7,7 @@ import { Globe } from '@phosphor-icons/react';
 import styles from './Navbar.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
 
 // Hierarchy order: links after index 0 are "forward" from Home
 // and "back" when navigating back to Home.
@@ -37,17 +38,6 @@ export default function Navbar({ navDict, lang = 'en' }) {
     { href: `/${lang}/article`, label: d.articles },
     { href: `/${lang}/contact`, label: d.contact },
   ];
-
-  const handleLanguageChange = (e) => {
-    const newLang = e.target.value;
-    const segments = pathname.split('/');
-    if (segments.length >= 2) {
-      segments[1] = newLang; // replace current lang segment
-      router.push(segments.join('/') || `/${newLang}`);
-    } else {
-      router.push(`/${newLang}`);
-    }
-  };
 
   // Hooks must always run — never conditionally
   useEffect(() => {
@@ -105,18 +95,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
 
         {/* CTA Button, Language Switcher, and Theme Toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'rgba(255,255,255,0.8)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', border: '1px solid rgba(255,255,255,0.2)', padding: '0.25rem 0.5rem', borderRadius: '4px' }} className="cursor-target">
-            <Globe weight="regular" size={18} />
-            <select
-              value={lang}
-              onChange={handleLanguageChange}
-              style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', cursor: 'pointer', fontSize: '0.9rem' }}
-            >
-              <option value="en">EN</option>
-              <option value="id">ID</option>
-              <option value="zh">ZH</option>
-            </select>
-          </div>
+          <LanguageSwitcher lang={lang} pathname={pathname} router={router} />
           <ThemeToggle />
           <Link href={`/${lang}/contact`} className={styles.ctaButton} transitionTypes={['nav-forward']}>
             {d.consultation}
@@ -153,17 +132,8 @@ export default function Navbar({ navDict, lang = 'en' }) {
           ))}
         </ul>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem', alignItems: 'flex-start', padding: '0 2rem', color: 'rgba(255,255,255,0.8)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Globe weight="regular" size={20} />
-            <select
-              value={lang}
-              onChange={handleLanguageChange}
-              style={{ background: 'transparent', color: 'inherit', border: '1px solid rgba(255,255,255,0.2)', padding: '0.25rem 0.5rem', borderRadius: '4px', outline: 'none', fontSize: '1rem' }}
-            >
-              <option value="en">English</option>
-              <option value="id">Bahasa Indonesia</option>
-              <option value="zh">中文</option>
-            </select>
+          <div style={{ transform: 'translateX(-8px)' }}>
+            <LanguageSwitcher lang={lang} pathname={pathname} router={router} />
           </div>
           <ThemeToggle />
           <Link
