@@ -28,7 +28,9 @@
     "ctaTitle": "Ready to Discuss Your Legal Needs?",
     "ctaText": "Schedule a consultation with our experienced legal team. We’re here to help navigate your most complex legal challenges.",
     "schedule": "Schedule Consultation",
-    "orEmail": "or email us at"
+    "orEmail": "or email us at",
+    "clientsLabel": "Past Clients",
+    "clientsTitle": "Trusted by Industry Leaders"
   },
   "footer": {
     "quickLinks": "Quick Links",

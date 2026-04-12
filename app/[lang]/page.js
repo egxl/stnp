@@ -3,6 +3,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { getPosts } from '@/lib/api';
 import { firmInfo } from '@/lib/data/team';
 import { serviceCategories } from '@/lib/data/services';
+import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import styles from './page.module.css';
@@ -188,6 +189,36 @@ export default async function HomePage({ params }) {
                 </BorderGlow>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PAST CLIENTS ===== */}
+      <section className={`section ${styles.clientsSection}`}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">{dict.home.clientsLabel}</span>
+            <h2 className="section-title">{dict.home.clientsTitle}</h2>
+            <hr className="divider" />
+          </div>
+          <div className={styles.clientsGrid}>
+            {pastClients.map((client, i) => (
+              <BorderGlow 
+                key={i} 
+                className={styles.clientCard}
+                style={{ '--index': i }}
+                glowColor="40 10% 50%" 
+                borderRadius={8} 
+                fillOpacity={0.05} 
+                glowIntensity={0.3}
+              >
+                <img 
+                  src={client.logo} 
+                  alt={client.name} 
+                  className={styles.clientLogo} 
+                />
+              </BorderGlow>
+            ))}
           </div>
         </div>
       </section>
