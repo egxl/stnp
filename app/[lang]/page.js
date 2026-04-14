@@ -6,6 +6,7 @@ import { serviceCategories } from '@/lib/data/services';
 import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
+import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -127,8 +128,9 @@ export default async function HomePage({ params }) {
 
   return (
     <>
+      <ScrollHijack />
       {/* ===== HERO ===== */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} ${styles.snapSection}`}>
         {/* Background Video hosted on WordPress */}
         <video 
           autoPlay 
@@ -169,7 +171,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`section ${styles.aboutSection}`}>
+      <section className={`section ${styles.aboutSection} ${styles.snapSection}`}>
         <div className="container">
           <div className={styles.aboutGrid}>
             <div className={styles.aboutLeft}>
@@ -194,7 +196,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== PAST CLIENTS ===== */}
-      <section className={`section ${styles.clientsSection}`}>
+      <section className={`section ${styles.clientsSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.clientsLabel}</span>
@@ -224,7 +226,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== LEGAL SERVICES ===== */}
-      <section className={`section section--alt ${styles.servicesSection}`}>
+      <section className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>
@@ -255,7 +257,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== QUOTE BANNER ===== */}
-      <section className={styles.quoteBanner}>
+      <section className={`${styles.quoteBanner} ${styles.snapSection}`}>
         <div className={styles.quotePortrait}>
           <img src="/images/quotes/portrait.webp" alt="Thomas Jefferson Portrait" />
         </div>
@@ -278,7 +280,7 @@ export default async function HomePage({ params }) {
 
       {/* ===== LATEST ARTICLES ===== */}
       {latestPosts.length > 0 && (
-        <section className="section">
+        <section className={`section ${styles.snapSection}`}>
           <div className="container">
             <div className="section-header">
               <span className="section-label">{dict.home.insightsLabel}</span>
@@ -338,7 +340,7 @@ export default async function HomePage({ params }) {
       )}
 
       {/* ===== CONTACT CTA ===== */}
-      <section className={`section--dark ${styles.ctaSection}`}>
+      <section className={`section--dark ${styles.ctaSection} ${styles.snapSection}`}>
         <div className="container">
           <div className={styles.ctaContent}>
             <span className="section-label">{dict.home.ctaLabel}</span>
