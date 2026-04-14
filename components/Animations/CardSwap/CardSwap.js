@@ -1,0 +1,165 @@
+'use client';
+
+import React, { Children, cloneElement, forwardRef, isValidElement, useMemo, useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './CardSwap.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const Card = forwardRef(({ customClass, ...rest }, ref) => (
+  <div ref={ref} {...rest} className={`card-swap-item ${customClass ?? ''} ${rest.className ?? ''}`.trim()} />
+));
+Card.displayName = 'Card';
+
+const makeSlot = (i, distX, distY, total) => ({
+  x: i * distX,
+  y: -i * distY,
+  z: -i * distX * 4.0, // Increased Z-distance to prevent 3D clipping/leaking
+  zIndex: total - i
+});
+
+const placeNow = (el, slot, skew) =>
+  gsap.set(el, {
+    x: slot.x,
+    y: slot.y,
+    z: slot.z,
+    xPercent: -50,
+    yPercent: -50,
+    skewY: skew,
+    transformOrigin: 'center center',
+    zIndex: slot.zIndex,
+    opacity: 1,
+    visibility: 'visible',
+    force3D: true
+  });
+
+const CardSwap = ({
+  width = 500,
+  height = 400,
+  cardDistance = 40,
+  verticalDistance = 50,
+  skewAmount = 4,
+  children
+}) => {
+  const container = useRef(null);
+  const triggerRef = useRef(null);
+  const childArr = useMemo(() => Children.toArray(children), [children]);
+  const refs = useRef([]);
+  
+  // Ensure refs array is as long as children
+  if (refs.current.length !== childArr.length) {
+    refs.current = childArr.map((_, i) => refs.current[i] || React.createRef());
+  }
+
+  useLayoutEffect(() => {
+    const total = childArr.length;
+    const elements = refs.current.map(r => r.current);
+    
+    // Initial placement
+    elements.forEach((el, i) => {
+      placeNow(el, makeSlot(i, cardDistance, verticalDistance, total), skewAmount);
+    });
+
+    const ctx = gsap.context(() => {
+      const sectionTrigger = triggerRef.current.closest('.card-swap-section') || triggerRef.current.closest('section');
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionTrigger,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+          invalidateOnRefresh: true,
+        }
+      });
+
+      const cards = [...elements];
+      const numSwaps = total - 1; 
+
+      for (let s = 0; s < numSwaps; s++) {
+        const front = cards.shift();
+        const rest = [...cards];
+        
+        const label = `swap${s}`;
+        tl.addLabel(label, s * 1.0); // Force label to exactly the integer second
+
+        // Boost z-index immediately so the dropping card doesn't clip through others
+        tl.set(front, { zIndex: 100 }, label);
+
+        // Step 1: Drop the front card down (without fading out to prevent transparency leak)
+        tl.to(front, {
+          y: 400, // Drop it lower so it clears the viewport cleanly
+          opacity: 1, // Force opacity 1 to prevent leaking
+          scale: 0.85,
+          duration: 0.4,
+          ease: 'power2.inOut'
+        }, label);
+
+        // Step 2: Smoothly bring the rest of the cards forward
+        rest.forEach((el, i) => {
+          const slot = makeSlot(i, cardDistance, verticalDistance, total);
+          // Set their correct structural z-index mid-animation to avoid pops
+          tl.set(el, { zIndex: slot.zIndex }, `${label}+=0.3`);
+          tl.to(el, {
+            x: slot.x,
+            y: slot.y,
+            z: slot.z,
+            duration: 0.8,
+            ease: 'power2.inOut'
+          }, `${label}+=0.1`);
+        });
+
+        // Step 3: Loop the dropped card to the back of the stack
+        const backIdx = total - 1;
+        const backSlot = makeSlot(backIdx, cardDistance, verticalDistance, total);
+        
+        // Hide behind stack before making it re-appear
+        tl.set(front, { zIndex: backSlot.zIndex }, `${label}+=0.5`);
+        tl.to(front, {
+          x: backSlot.x,
+          y: backSlot.y,
+          z: backSlot.z,
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out'
+        }, `${label}+=0.5`);
+        
+        cards.push(front);
+      }
+      
+      // Pad out the end just in case GSAP truncates
+      tl.set({}, {}, numSwaps * 1.0);
+    }, triggerRef);
+
+    return () => ctx.revert();
+  }, [childArr.length, cardDistance, verticalDistance, skewAmount]);
+
+  const rendered = childArr.map((child, i) =>
+    isValidElement(child)
+      ? cloneElement(child, {
+          key: i,
+          ref: refs.current[i],
+          style: { 
+            width, 
+            height, 
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            ...(child.props.style ?? {}) 
+          }
+        })
+      : child
+  );
+
+  return (
+    <div ref={triggerRef} className="card-swap-trigger">
+      <div ref={container} className="card-swap-container" style={{ width, height }}>
+        {rendered}
+      </div>
+    </div>
+  );
+};
+
+export default CardSwap;

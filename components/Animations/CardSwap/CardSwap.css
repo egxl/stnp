@@ -1,0 +1,57 @@
+.card-swap-trigger {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* overflow: hidden is removed to let the 3D stacking flow naturally without ugly clipping */
+}
+
+.card-swap-container {
+  position: relative;
+  perspective: 1400px; /* Enhanced perspective for premium depth */
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+
+.card-swap-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 480px;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  
+  /* Taste Skill: Absolute Solid Material - Forcing 100% Opaque Hex to fix consistency */
+  background: #0a0c12; /* Solid Hex Base */
+  opacity: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 40px 100px -10px rgba(0, 0, 0, 0.7);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-swap-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 50px 120px -10px rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure mobile responsiveness if needed */
+@media (max-width: 768px) {
+  .card-swap-item {
+    width: 90vw;
+    padding: 2rem 1.5rem;
+  }
+}

@@ -7,6 +7,7 @@ import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
+import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -171,27 +172,38 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`section ${styles.aboutSection} ${styles.snapSection}`}>
-        <div className="container">
-          <div className={styles.aboutGrid}>
-            <div className={styles.aboutLeft}>
-              <span className="section-label">{dict.home.aboutLabel}</span>
-              <h2 className="section-title">{dict.home.aboutTitle}</h2>
-              <hr className="divider divider--left" />
-              <p className={styles.aboutText}>
-                {dict.home.aboutText.replace('{founder}', firmInfo.founder)}
-              </p>
-            </div>
-            <div className={styles.principlesGrid}>
-              {firmInfo.principles.map((p, i) => (
-                <BorderGlow key={i} className={styles.principleCard} glowColor="40 80 80" borderRadius={8}>
-                  <div className={styles.principleNumber}>0{i + 1}</div>
-                  <h4 className={styles.principleTitle}>{p.title}</h4>
-                  <p className={styles.principleDesc}>{p.description}</p>
-                </BorderGlow>
-              ))}
+      <section className={`section ${styles.aboutSection} card-swap-section`}>
+        <div className={styles.aboutSticky}>
+          <div className="container">
+            <div className={styles.aboutGrid}>
+              <div className={styles.aboutLeft}>
+                <span className="section-label">{dict.home.aboutLabel}</span>
+                <h2 className="section-title">{dict.home.aboutTitle}</h2>
+                <hr className="divider divider--left" />
+                <p className={styles.aboutText}>
+                  {dict.home.aboutText.replace('{founder}', firmInfo.founder)}
+                </p>
+              </div>
+              <div className={styles.aboutRight}>
+                <CardSwap width="100%" height="auto">
+                  {firmInfo.principles.map((p, i) => (
+                    <Card key={i} className={styles.principleCardWrapper}>
+                      <div className={styles.principleHeader}>
+                        <div className={styles.principleNumber}>0{i + 1}</div>
+                        <h4 className={styles.principleTitle}>{p.title}</h4>
+                      </div>
+                      <p className={styles.principleDesc}>{p.description}</p>
+                    </Card>
+                  ))}
+                </CardSwap>
+              </div>
             </div>
           </div>
+        </div>
+        <div className={styles.aboutSnapTrack}>
+          {firmInfo.principles.map((_, i) => (
+            <div key={i} className={styles.snapPoint} />
+          ))}
         </div>
       </section>
 
