@@ -6,6 +6,7 @@ import { serviceCategories } from '@/lib/data/services';
 import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
+import ScrollStack, { ScrollStackItem } from '@/components/Animations/ScrollStack/ScrollStack';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -128,7 +129,7 @@ export default async function HomePage({ params }) {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} ${styles.snapSection}`}>
         {/* Background Video hosted on WordPress */}
         <video 
           autoPlay 
@@ -168,8 +169,10 @@ export default async function HomePage({ params }) {
         </div>
       </section>
 
-      {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`section ${styles.aboutSection}`}>
+      <ScrollStack useWindowScroll={true} itemStackDistance={40} stackPosition="15%" scaleEndPosition="5%" blurAmount={2}>
+        <ScrollStackItem>
+          {/* ===== ABOUT SUMMARY ===== */}
+          <section className={`section ${styles.aboutSection} ${styles.snapSection}`}>
         <div className="container">
           <div className={styles.aboutGrid}>
             <div className={styles.aboutLeft}>
@@ -191,10 +194,12 @@ export default async function HomePage({ params }) {
             </div>
           </div>
         </div>
-      </section>
+          </section>
+        </ScrollStackItem>
 
-      {/* ===== PAST CLIENTS ===== */}
-      <section className={`section ${styles.clientsSection}`}>
+        <ScrollStackItem>
+          {/* ===== PAST CLIENTS ===== */}
+          <section className={`section ${styles.clientsSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.clientsLabel}</span>
@@ -221,10 +226,12 @@ export default async function HomePage({ params }) {
             ))}
           </div>
         </div>
-      </section>
+          </section>
+        </ScrollStackItem>
 
-      {/* ===== LEGAL SERVICES ===== */}
-      <section className={`section section--alt ${styles.servicesSection}`}>
+        <ScrollStackItem>
+          {/* ===== LEGAL SERVICES ===== */}
+          <section className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>
@@ -252,10 +259,12 @@ export default async function HomePage({ params }) {
             ))}
           </div>
         </div>
-      </section>
+          </section>
+        </ScrollStackItem>
 
-      {/* ===== QUOTE BANNER ===== */}
-      <section className={styles.quoteBanner}>
+        <ScrollStackItem>
+          {/* ===== QUOTE BANNER ===== */}
+          <section className={`${styles.quoteBanner} ${styles.snapSection}`}>
         <div className={styles.quotePortrait}>
           <img src="/images/quotes/portrait.webp" alt="Thomas Jefferson Portrait" />
         </div>
@@ -274,11 +283,13 @@ export default async function HomePage({ params }) {
             </div>
           </div>
         </div>
-      </section>
+          </section>
+        </ScrollStackItem>
 
-      {/* ===== LATEST ARTICLES ===== */}
-      {latestPosts.length > 0 && (
-        <section className="section">
+        {/* ===== LATEST ARTICLES ===== */}
+        {latestPosts.length > 0 && (
+          <ScrollStackItem>
+            <section className={`section ${styles.snapSection}`}>
           <div className="container">
             <div className="section-header">
               <span className="section-label">{dict.home.insightsLabel}</span>
@@ -334,11 +345,13 @@ export default async function HomePage({ params }) {
               </Link>
             </div>
           </div>
-        </section>
-      )}
+            </section>
+          </ScrollStackItem>
+        )}
 
-      {/* ===== CONTACT CTA ===== */}
-      <section className={`section--dark ${styles.ctaSection}`}>
+        <ScrollStackItem>
+          {/* ===== CONTACT CTA ===== */}
+          <section className={`section--dark ${styles.ctaSection} ${styles.snapSection}`}>
         <div className="container">
           <div className={styles.ctaContent}>
             <span className="section-label">{dict.home.ctaLabel}</span>
@@ -358,7 +371,9 @@ export default async function HomePage({ params }) {
             </div>
           </div>
         </div>
-      </section>
+          </section>
+        </ScrollStackItem>
+      </ScrollStack>
     </>
   );
 }
