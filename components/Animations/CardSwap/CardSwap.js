@@ -66,6 +66,7 @@ const CardSwap = ({
       
       const tl = gsap.timeline({
         scrollTrigger: {
+          id: 'cardSwapTrigger',
           trigger: sectionTrigger,
           start: 'top top',
           end: 'bottom bottom',
@@ -136,6 +137,30 @@ const CardSwap = ({
     return () => ctx.revert();
   }, [childArr.length, cardDistance, verticalDistance, skewAmount]);
 
+  const prevBtnRef = useRef(null);
+  const nextBtnRef = useRef(null);
+  
+  // onUpdate logic appended separately because it needs refs that might be null initially
+  useLayoutEffect(() => {
+    const trigger = ScrollTrigger.getById('cardSwapTrigger'); // Define ID so we can fetch it
+    if (trigger) {
+      trigger.vars.onUpdate = (self) => {
+        const p = self.progress;
+        if (prevBtnRef.current) {
+          prevBtnRef.current.style.opacity = p <= 0.05 ? '0.3' : '1';
+          prevBtnRef.current.style.pointerEvents = p <= 0.05 ? 'none' : 'auto';
+        }
+        if (nextBtnRef.current) {
+          nextBtnRef.current.style.opacity = p >= 0.95 ? '0.3' : '1';
+          nextBtnRef.current.style.pointerEvents = p >= 0.95 ? 'none' : 'auto';
+        }
+      };
+    }
+  }, []);
+
+  const handleNext = () => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+  const handlePrev = () => window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+
   const rendered = childArr.map((child, i) =>
     isValidElement(child)
       ? cloneElement(child, {
@@ -157,6 +182,19 @@ const CardSwap = ({
     <div ref={triggerRef} className="card-swap-trigger">
       <div ref={container} className="card-swap-container" style={{ width, height }}>
         {rendered}
+      </div>
+      
+      <div className="card-swap-controls">
+        <button ref={prevBtnRef} onClick={handlePrev} className="card-swap-btn" aria-label="Previous Card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button ref={nextBtnRef} onClick={handleNext} className="card-swap-btn" aria-label="Next Card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </div>
   );

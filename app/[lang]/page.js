@@ -8,6 +8,7 @@ import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
+import Prism from '@/components/Animations/Prism/Prism';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -174,6 +175,13 @@ export default async function HomePage({ params }) {
       {/* ===== ABOUT SUMMARY ===== */}
       <section className={`section ${styles.aboutSection} card-swap-section`}>
         <div className={styles.aboutSticky}>
+          <Prism 
+            animationType="3drotate" 
+            glow={0.5} 
+            colorFrequency={0.2} 
+            bloom={0.5} 
+            timeScale={0.3} 
+          />
           <div className="container">
             <div className={styles.aboutGrid}>
               <div className={styles.aboutLeft}>
