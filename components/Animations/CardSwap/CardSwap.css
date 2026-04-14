@@ -25,13 +25,10 @@
   backface-visibility: hidden;
   will-change: transform, opacity;
   
-  /* Taste Skill: Absolute Solid Material - Forcing 100% Opaque Hex to fix consistency */
-  background: #0a0c12; /* Solid Hex Base */
-  opacity: 1;
-  border: 1px solid rgba(255, 255, 255, 0.1); 
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.15),
-    0 40px 100px -10px rgba(0, 0, 0, 0.7);
+  /* Base Light Mode - Premium Bento White */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05); /* Soft, airy diffusion shadow */
   border-radius: 24px;
   padding: 3rem 2.5rem;
   
@@ -39,10 +36,30 @@
   flex-direction: column;
   justify-content: center;
   transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1; /* Retain JS locking requirement natively */
 }
 
+/* Base Light Hover */
 .card-swap-item:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Dark Mode Overrides for Cards --- */
+:global(.dark) .card-swap-item,
+[data-theme='dark'] .card-swap-item,
+.dark .card-swap-item {
+  background: #0a0c12; 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 40px 100px -10px rgba(0, 0, 0, 0.7);
+}
+
+:global(.dark) .card-swap-item:hover,
+[data-theme='dark'] .card-swap-item:hover,
+.dark .card-swap-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.25),
     0 50px 120px -10px rgba(0, 0, 0, 0.8);
@@ -74,27 +91,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   cursor: pointer;
   
-  /* Solid Glass aesthetics following taste skill */
-  background: rgba(14, 20, 32, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(0, 0, 0, 0.3);
+  /* Light Mode Base Aesthetics */
+  color: #1a202c;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
 }
 
 .card-swap-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 15px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .card-swap-btn:active {
   transform: translateY(1px);
+}
+
+/* --- Dark Mode Overrides for Buttons --- */
+:global(.dark) .card-swap-btn,
+[data-theme='dark'] .card-swap-btn,
+.dark .card-swap-btn {
+  color: white;
+  background: rgba(14, 20, 32, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .card-swap-btn:hover,
+[data-theme='dark'] .card-swap-btn:hover,
+.dark .card-swap-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 15px 40px rgba(0, 0, 0, 0.4);
 }
