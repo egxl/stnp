@@ -31,7 +31,7 @@ const placeNow = (el, slot, skew) =>
     zIndex: slot.zIndex,
     opacity: 1,
     visibility: 'visible',
-    force3D: true
+    /* force3D: true removed. Forcing layer composition explicitly breaks backdrop-filter blurred backgrounds in Safari/Chrome. */
   });
 
 const CardSwap = ({

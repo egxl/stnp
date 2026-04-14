@@ -11,7 +11,7 @@
 .card-swap-container {
   position: relative;
   perspective: 1400px; /* Enhanced perspective for premium depth */
-  transform-style: preserve-3d;
+  /* transform-style: preserve-3d; Removed to fix backdrop-filter bug */
   width: 100%;
   height: 100%;
 }
@@ -22,13 +22,16 @@
   left: 50%;
   width: 90%;
   max-width: 480px;
-  backface-visibility: hidden;
-  will-change: transform, opacity;
+  /* Hardware acceleration flags removed as they brutally kill backdrop-filter in Safari/Chrome */
   
-  /* Base Light Mode - Premium Bento White */
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05); /* Soft, airy diffusion shadow */
+  /* Light Mode Glassmorphism */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Refractive edge */
+  box-shadow: 
+    0 15px 35px -5px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3); /* Inner bevel */
   border-radius: 24px;
   padding: 3rem 2.5rem;
   
@@ -36,30 +39,34 @@
   flex-direction: column;
   justify-content: center;
   transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 1; /* Retain JS locking requirement natively */
 }
 
 /* Base Light Hover */
 .card-swap-item:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.08);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 20px 45px -5px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 /* --- Dark Mode Overrides for Cards --- */
 :global(.dark) .card-swap-item,
 [data-theme='dark'] .card-swap-item,
 .dark .card-swap-item {
-  background: #0a0c12; 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Dark Mode Glassmorphism */
+  background: rgba(14, 20, 32, 0.75); 
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Frost edge */
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
     0 40px 100px -10px rgba(0, 0, 0, 0.7);
 }
 
 :global(.dark) .card-swap-item:hover,
 [data-theme='dark'] .card-swap-item:hover,
 .dark .card-swap-item:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.25),
     0 50px 120px -10px rgba(0, 0, 0, 0.8);
