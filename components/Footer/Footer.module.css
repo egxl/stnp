@@ -4,6 +4,7 @@
   padding-top: 0;
   position: relative;
   overflow: hidden;
+  scroll-snap-align: end;
 }
 
 .accentLine {
