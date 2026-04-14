@@ -7,9 +7,7 @@ import styles from './Navbar.module.css';
 const languages = [
   { code: 'en', label: 'English', flagCode: 'us' },
   { code: 'id', label: 'Indonesian', flagCode: 'id' },
-  { code: 'zh', label: '中文', flagCode: 'cn' },
-  { code: 'es', label: 'Español', flagCode: 'es' },
-  { code: 'ja', label: '日本語', flagCode: 'jp' }
+  { code: 'zh', label: '中文', flagCode: 'cn' }
 ];
 
 export default function LanguageSwitcher({ lang, pathname, router }) {
