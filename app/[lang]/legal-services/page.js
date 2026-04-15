@@ -123,7 +123,7 @@ export default async function LegalServicesPage({ params }) {
       <section className="section">
         <div className="container">
           {serviceCategories.map((category) => (
-            <div key={category.id} className={styles.categorySection}>
+            <div key={category.id} id={category.id} className={styles.categorySection}>
               <div className={styles.categoryHeader}>
                 <h2 className={styles.categoryTitle}>{category.title[lang] || category.title.en}</h2>
                 <hr className="divider" />

@@ -337,8 +337,10 @@
   }
 }
 
-/* ===== SERVICES ===== */
-.servicesSection {}
+/* ===== SERVICES (3 Category Pillars) ===== */
+.servicesSection {
+  /* Inherits .snapSection's min-height: 100vh + flex centering */
+}
 
 .servicesGrid {
   display: grid;
@@ -346,46 +348,61 @@
   gap: var(--space-lg);
 }
 
-.serviceCard {
+.categoryPillar {
   background: var(--color-surface);
   padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-light);
-  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  transform: translateY(8px);
+  animation: pillarFadeIn 400ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: calc(var(--index, 0) * 80ms);
+
+  transition:
+    transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.serviceCard:active {
+.categoryPillar:active {
   transform: scale(0.97);
 }
 
-.serviceCard::before {
+.categoryPillar::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 200ms var(--ease-out);
+  transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes pillarFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .serviceCard:hover {
+  .categoryPillar:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: transparent;
   }
-
-  .serviceCard:hover::before {
+  .categoryPillar:hover::before {
     transform: scaleX(1);
   }
 }
 
-.serviceIcon {
+.pillarIcon {
   width: 56px;
   height: 56px;
   display: flex;
@@ -398,36 +415,54 @@
   padding: 12px;
 }
 
-.serviceIcon svg {
+.pillarIcon svg {
   width: 100%;
   height: 100%;
 }
 
-.serviceTitle {
+.pillarTitle {
   font-size: 1.2rem;
   margin-bottom: var(--space-xs);
   color: var(--color-primary);
 }
 
-.serviceDesc {
-  font-size: var(--text-sm);
-  line-height: 1.7;
-  color: var(--color-text-muted);
+.pillarTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
   margin-bottom: var(--space-md);
 }
 
-.serviceLink {
+.pillarTag {
+  font-size: var(--text-xs);
+  padding: 4px 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 100px;
+  color: var(--color-text-muted);
+  transition: opacity 150ms ease-out;
+}
+
+.pillarCta {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-accent);
-  transition: gap var(--transition-fast);
+  margin-top: auto;
+  transition: gap 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.serviceLink:hover {
+.pillarCta:hover {
   gap: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categoryPillar {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ===== QUOTE BANNER ===== */

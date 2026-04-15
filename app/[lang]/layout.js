@@ -1,4 +1,4 @@
-import { ViewTransition } from 'react';
+import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
 import { Playfair_Display, Inter } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
@@ -6,7 +6,6 @@ import "../globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
-import TargetCursor from "@/components/Animations/TargetCursor/TargetCursor";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const playfair = Playfair_Display({
@@ -56,25 +55,13 @@ export default async function RootLayout({ children, params }) {
           <LoadingProvider>
           <Navbar navDict={dict.nav} lang={lang} />
           {/* ViewTransition wraps only the page content, not the anchored Navbar/Footer */}
-          <ViewTransition
-            enter={{
-              'nav-forward': 'nav-forward',
-              'nav-back': 'nav-back',
-              default: 'page-fade',
-            }}
-            exit={{
-              'nav-forward': 'nav-forward',
-              'nav-back': 'nav-back',
-              default: 'page-fade',
-            }}
+          <ViewTransitionGuard
+            enter="page-fade"
+            exit="page-fade"
           >
             <main style={{ minHeight: '100vh' }}>{children}</main>
-          </ViewTransition>
+          </ViewTransitionGuard>
           <Footer dict={dict} lang={lang} />
-          <TargetCursor
-            targetSelector=".cursor-target, a, button, .btn"
-            parallaxOn={true}
-          />
         </LoadingProvider>
         </ThemeProvider>
       </body>

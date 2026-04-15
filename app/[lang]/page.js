@@ -115,10 +115,7 @@ export default async function HomePage({ params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  const getAllServices = () => {
-    return serviceCategories.reduce((acc, curr) => [...acc, ...curr.services], []);
-  };
-  const topServices = getAllServices().slice(0, 6);
+
 
   /* Fetch latest 3 articles from WordPress */
   let latestPosts = [];
@@ -258,14 +255,32 @@ export default async function HomePage({ params }) {
             </p>
           </div>
           <div className={styles.servicesGrid}>
-            {topServices.map((service, i) => (
-              <BorderGlow key={service.id} className={styles.serviceCard} glowColor="40 80 80" borderRadius={8} fillOpacity={0.8}>
-                <div className={styles.serviceIcon}>
-                  {serviceIcons[service.icon]}
+            {serviceCategories.map((category, catIndex) => (
+              <BorderGlow
+                key={category.id}
+                className={styles.categoryPillar}
+                style={{ '--index': catIndex }}
+                glowColor="40 80 80"
+                borderRadius={8}
+                fillOpacity={0.8}
+              >
+                <div className={styles.pillarIcon}>
+                  {serviceIcons[category.services[0].icon]}
                 </div>
-                <h3 className={styles.serviceTitle}>{service.title[lang] || service.title.en}</h3>
-                <p className={styles.serviceDesc}>{(service.description[lang] || service.description.en).substring(0, 110)}...</p>
-                <Link href={`/${lang}/legal-services`} className={styles.serviceLink}>
+                <h3 className={styles.pillarTitle}>
+                  {category.title[lang] || category.title.en}
+                </h3>
+                <div className={styles.pillarTags}>
+                  {category.services.map(s => (
+                    <span key={s.id} className={styles.pillarTag}>
+                      {s.title[lang] || s.title.en}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={`/${lang}/legal-services#${category.id}`}
+                  className={styles.pillarCta}
+                >
                   {dict.home.learnMore}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
