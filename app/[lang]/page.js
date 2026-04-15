@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { Syne } from 'next/font/google';
 import { getDictionary } from '@/lib/dictionaries';
 import { getPosts } from '@/lib/api';
 import { firmInfo } from '@/lib/data/team';
@@ -13,6 +13,12 @@ import Prism from '@/components/Animations/Prism/Prism';
 import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import styles from './page.module.css';
+
+const clientWordmark = Syne({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Soaloan Tua Nababan & Partners — Law Firm Jakarta',
@@ -116,7 +122,6 @@ const serviceIcons = {
 export default async function HomePage({ params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const clientCount = String(pastClients.length).padStart(2, '0');
 
 
 
@@ -225,31 +230,14 @@ export default async function HomePage({ params }) {
               <span className={`section-label ${styles.clientsLabel}`}>{dict.home.clientsLabel}</span>
               <h2 className={`section-title ${styles.clientsTitle}`}>{dict.home.clientsTitle}</h2>
               <hr className={`divider divider--left ${styles.clientsDivider}`} />
-
-              <div className={styles.clientsStats}>
-                <div className={styles.clientStat}>
-                  <span className={styles.clientStatValue}>{clientCount}</span>
-                  <span className={styles.clientStatLabel}>{dict.home.clientsLabel}</span>
-                </div>
-                <div className={styles.clientStat}>
-                  <span className={styles.clientStatValue}>2018</span>
-                  <span className={styles.clientStatLabel}>STNP</span>
-                </div>
-              </div>
             </div>
 
             <div className={styles.clientsGrid}>
               {pastClients.map((client, i) => (
                 <div key={client.name} className={styles.clientCard} style={{ '--index': i }}>
-                  <div className={styles.clientLogoWrap}>
-                    <Image
-                      src={client.logo}
-                      alt={client.name}
-                      fill
-                      sizes="(max-width: 767px) 40vw, (max-width: 1199px) 22vw, 180px"
-                      className={styles.clientLogo}
-                    />
-                  </div>
+                  <span className={`${styles.clientWordmark} ${clientWordmark.className}`}>
+                    {client.name}
+                  </span>
                 </div>
               ))}
             </div>
