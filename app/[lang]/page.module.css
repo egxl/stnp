@@ -150,6 +150,7 @@
 .aboutSection {
   position: relative;
   background: var(--color-bg);
+  z-index: 0;
 }
 
 .aboutSticky {

@@ -171,7 +171,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`section ${styles.aboutSection} card-swap-section`}>
+      <section className={`${styles.aboutSection} card-swap-section`}>
         <div className={styles.aboutSticky}>
           <Prism 
             animationType="3drotate" 
