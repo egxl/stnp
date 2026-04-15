@@ -15,7 +15,7 @@ Card.displayName = 'Card';
 const makeSlot = (i, distX, distY, total) => ({
   x: i * distX,
   y: -i * distY,
-  z: -i * distX * 4.0, // Increased Z-distance to prevent 3D clipping/leaking
+  scale: 1 - (i * 0.05),
   zIndex: total - i
 });
 
@@ -23,15 +23,14 @@ const placeNow = (el, slot, skew) =>
   gsap.set(el, {
     x: slot.x,
     y: slot.y,
-    z: slot.z,
+    scale: slot.scale,
     xPercent: -50,
     yPercent: -50,
     skewY: skew,
     transformOrigin: 'center center',
     zIndex: slot.zIndex,
     opacity: 1,
-    visibility: 'visible',
-    force3D: true
+    visibility: 'visible'
   });
 
 const CardSwap = ({
@@ -88,10 +87,10 @@ const CardSwap = ({
         // Boost z-index immediately so the dropping card doesn't clip through others
         tl.set(front, { zIndex: 100 }, label);
 
-        // Step 1: Drop the front card down (without fading out to prevent transparency leak)
+        // Step 1: Drop the front card down and fade it out to prevent layout popping
         tl.to(front, {
           y: 400, // Drop it lower so it clears the viewport cleanly
-          opacity: 1, // Force opacity 1 to prevent leaking
+          opacity: 0, // Fade out so moving its zIndex is invisible
           scale: 0.85,
           duration: 0.4,
           ease: 'power2.inOut'
@@ -105,7 +104,7 @@ const CardSwap = ({
           tl.to(el, {
             x: slot.x,
             y: slot.y,
-            z: slot.z,
+            scale: slot.scale,
             duration: 0.8,
             ease: 'power2.inOut'
           }, `${label}+=0.1`);
@@ -115,16 +114,19 @@ const CardSwap = ({
         const backIdx = total - 1;
         const backSlot = makeSlot(backIdx, cardDistance, verticalDistance, total);
         
-        // Hide behind stack before making it re-appear
-        tl.set(front, { zIndex: backSlot.zIndex }, `${label}+=0.5`);
-        tl.to(front, {
+        // Move it quietly to the back while it is invisible
+        tl.set(front, { 
+          zIndex: backSlot.zIndex,
           x: backSlot.x,
           y: backSlot.y,
-          z: backSlot.z,
+          scale: backSlot.scale
+        }, `${label}+=0.45`);
+        
+        // Fade it back in at its new position in the back
+        tl.to(front, {
           opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          ease: 'power2.out'
+          duration: 0.3,
+          ease: 'power1.inOut'
         }, `${label}+=0.5`);
         
         cards.push(front);
