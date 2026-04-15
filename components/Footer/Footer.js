@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { firmInfo } from '@/lib/data/team';
-import { services } from '@/lib/data/services';
+import { serviceCategories, proBono } from '@/lib/data/services';
 import styles from './Footer.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import Beams from './Beams';
@@ -12,6 +12,9 @@ import DisclaimerModal from './DisclaimerModal';
 export default function Footer({ dict, lang = 'en' }) {
   const { isReady } = useLoading();
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const [openPracticeArea, setOpenPracticeArea] = useState(null);
+  const [panelHeights, setPanelHeights] = useState({});
+  const panelRefs = useRef({});
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
 
@@ -27,6 +30,26 @@ export default function Footer({ dict, lang = 'en' }) {
     disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia.",
     disclaimerButton: "Legal Disclaimer"
   };
+
+  useEffect(() => {
+    const measurePanels = () => {
+      const nextHeights = {};
+
+      serviceCategories.forEach((category) => {
+        const panel = panelRefs.current[category.id];
+        if (panel) {
+          nextHeights[category.id] = panel.scrollHeight;
+        }
+      });
+
+      setPanelHeights(nextHeights);
+    };
+
+    measurePanels();
+    window.addEventListener('resize', measurePanels);
+
+    return () => window.removeEventListener('resize', measurePanels);
+  }, [lang]);
 
   if (!isReady) return null;
 
@@ -84,13 +107,72 @@ export default function Footer({ dict, lang = 'en' }) {
         {/* Column 3: Practice Areas */}
         <div className={styles.col}>
           <h4 className={styles.colTitle}>{d.practiceAreas}</h4>
-          <ul className={styles.linkList}>
-            {services.map((s) => (
-              <li key={s.id}>
-                <Link href={`/${lang}/legal-services`}>{s.title[lang] || s.title.en}</Link>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.practiceAccordion}>
+            {serviceCategories.map((category) => {
+              const isOpen = openPracticeArea === category.id;
+
+              return (
+                <div key={category.id} className={styles.practiceGroup}>
+                  <div className={styles.practiceGroupHeader}>
+                    <Link
+                      href={`/${lang}/legal-services#${category.id}`}
+                      className={styles.practiceGroupTitleLink}
+                    >
+                      {category.title[lang] || category.title.en}
+                    </Link>
+                    <button
+                      type="button"
+                      className={styles.practiceGroupToggle}
+                      aria-expanded={isOpen}
+                      aria-label={`Toggle ${category.title[lang] || category.title.en}`}
+                      onClick={() =>
+                        setOpenPracticeArea(isOpen ? null : category.id)
+                      }
+                    >
+                      <span
+                        className={`${styles.practiceGroupArrow} ${isOpen ? styles.practiceGroupArrowOpen : ''}`}
+                        aria-hidden="true"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    className={`${styles.practiceGroupPanel} ${isOpen ? styles.practiceGroupPanelOpen : ''}`}
+                    aria-hidden={!isOpen}
+                    style={{ height: isOpen ? `${panelHeights[category.id] || 0}px` : '0px' }}
+                  >
+                    <div
+                      ref={(node) => {
+                        panelRefs.current[category.id] = node;
+                      }}
+                    >
+                      <ul className={styles.practiceServiceList}>
+                        {category.services.map((service) => (
+                          <li key={service.id}>
+                            <Link href={`/${lang}/legal-services#${category.id}`}>
+                              {service.title[lang] || service.title.en}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className={styles.practiceGroup}>
+              <Link
+                href={`/${lang}/legal-services#${proBono.id}`}
+                className={styles.practiceGroupTitleLink}
+              >
+                {proBono.title[lang] || proBono.title.en}
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Column 4: Contact */}
