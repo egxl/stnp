@@ -10,6 +10,7 @@ import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import Prism from '@/components/Animations/Prism/Prism';
 import MagicRings from '@/components/Animations/MagicRings/MagicRings';
+import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -147,6 +148,12 @@ export default async function HomePage({ params }) {
 
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
+          <img 
+            src="/images/logo.png" 
+            alt="Soaloan Tua Nababan & Partners Logo" 
+            className={styles.heroLogo} 
+          />
+          <hr className={styles.heroDivider} />
           <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
           <h1 className={styles.heroTitle}>
             {dict.home.heroTitle1}<br />
@@ -155,19 +162,9 @@ export default async function HomePage({ params }) {
           <p className={styles.heroSubtitle}>
             {dict.home.heroSubtitle}
           </p>
-          <div className={styles.heroCtas}>
-            <Link href={`/${lang}/contact`} className="btn btn--primary">
-              {dict.nav.freeConsultation}
-            </Link>
-            <Link href={`/${lang}/legal-services`} className="btn btn--outline">
-              {dict.nav.services}
-            </Link>
-          </div>
         </div>
-        {/* Scroll indicator */}
-        <div className={styles.scrollIndicator}>
-          <div className={styles.scrollLine} />
-        </div>
+        
+        <HeroScrollButton />
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}

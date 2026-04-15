@@ -8,8 +8,8 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* Background is transparent — the fixed video sits beneath everything */
+  justify-content: flex-start;
+  padding-left: clamp(var(--space-lg), 8vw, 12vw);
   background: transparent;
 }
 
@@ -48,10 +48,49 @@
 .heroContent {
   position: relative;
   z-index: 1; /* sits above the fixed overlay */
-  text-align: center;
-  max-width: 800px;
-  padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-lg) var(--space-2xl);
-  animation: fadeInUp 1s var(--ease-out) both;
+  text-align: left;
+  max-width: 700px;
+  padding-top: var(--nav-height);
+  width: 100%;
+}
+
+/* Staggered Entrance Animation Cascade */
+@keyframes heroCascadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.heroLogo,
+.heroDivider,
+.heroLabel,
+.heroTitle,
+.heroSubtitle {
+  opacity: 0;
+  animation: heroCascadeIn 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.heroLogo {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin-bottom: var(--space-xl);
+  animation-delay: 0ms;
+}
+
+.heroDivider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  border: none;
+  margin-bottom: var(--space-md);
+  margin-left: 0;
+  animation-delay: 50ms;
 }
 
 .heroLabel {
@@ -62,23 +101,9 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: var(--space-lg);
-  position: relative;
+  margin-bottom: var(--space-md);
+  animation-delay: 100ms;
 }
-
-.heroLabel::before,
-.heroLabel::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background: var(--color-accent);
-  opacity: 0.4;
-}
-
-.heroLabel::before { right: calc(100% + 16px); }
-.heroLabel::after { left: calc(100% + 16px); }
 
 .heroTitle {
   font-size: clamp(2.8rem, 6vw, 5rem);
@@ -87,6 +112,7 @@
   line-height: 1.1;
   margin-bottom: var(--space-lg);
   letter-spacing: -0.01em;
+  animation-delay: 150ms;
 }
 
 .heroTitleAccent {
@@ -99,36 +125,20 @@
   font-size: var(--text-lg);
   color: rgba(255, 255, 255, 0.6);
   max-width: 580px;
-  margin: 0 auto var(--space-xl);
   line-height: 1.7;
+  margin-bottom: 0;
+  animation-delay: 200ms;
 }
 
-.heroCtas {
-  display: flex;
-  gap: var(--space-sm);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Scroll indicator */
-.scrollIndicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.scrollLine {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, var(--color-accent), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.2; transform: scaleY(0.7); }
-  50% { opacity: 0.8; transform: scaleY(1); }
+@media (prefers-reduced-motion: reduce) {
+  .heroLogo,
+  .heroDivider,
+  .heroLabel,
+  .heroTitle,
+  .heroSubtitle {
+    animation-name: fadeIn;
+    transform: none;
+  }
 }
 
 /* ===== SCROLL BEHAVIOR ===== */
@@ -772,18 +782,18 @@
 }
 
 @media (max-width: 640px) {
+  .hero {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+  
+  .heroLogo {
+    max-width: 280px;
+    margin-bottom: var(--space-lg);
+  }
+
   .heroTitle {
     font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  .heroLabel::before,
-  .heroLabel::after {
-    display: none;
-  }
-
-  .heroCtas {
-    flex-direction: column;
-    align-items: center;
   }
 
   .servicesGrid {
