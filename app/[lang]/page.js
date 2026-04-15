@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
 import { getPosts } from '@/lib/api';
@@ -115,6 +116,7 @@ const serviceIcons = {
 export default async function HomePage({ params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
+  const clientCount = String(pastClients.length).padStart(2, '0');
 
 
 
@@ -218,29 +220,39 @@ export default async function HomePage({ params }) {
       {/* ===== PAST CLIENTS ===== */}
       <section className={`section ${styles.clientsSection} ${styles.snapSection}`}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-label">{dict.home.clientsLabel}</span>
-            <h2 className="section-title">{dict.home.clientsTitle}</h2>
-            <hr className="divider" />
-          </div>
-          <div className={styles.clientsGrid}>
-            {pastClients.map((client, i) => (
-              <BorderGlow 
-                key={i} 
-                className={styles.clientCard}
-                style={{ '--index': i }}
-                glowColor="40 10% 50%" 
-                borderRadius={8} 
-                fillOpacity={0.05} 
-                glowIntensity={0.3}
-              >
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  className={styles.clientLogo} 
-                />
-              </BorderGlow>
-            ))}
+          <div className={styles.clientsShell}>
+            <div className={styles.clientsIntro}>
+              <span className={`section-label ${styles.clientsLabel}`}>{dict.home.clientsLabel}</span>
+              <h2 className={`section-title ${styles.clientsTitle}`}>{dict.home.clientsTitle}</h2>
+              <hr className={`divider divider--left ${styles.clientsDivider}`} />
+
+              <div className={styles.clientsStats}>
+                <div className={styles.clientStat}>
+                  <span className={styles.clientStatValue}>{clientCount}</span>
+                  <span className={styles.clientStatLabel}>{dict.home.clientsLabel}</span>
+                </div>
+                <div className={styles.clientStat}>
+                  <span className={styles.clientStatValue}>2018</span>
+                  <span className={styles.clientStatLabel}>STNP</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.clientsGrid}>
+              {pastClients.map((client, i) => (
+                <div key={client.name} className={styles.clientCard} style={{ '--index': i }}>
+                  <div className={styles.clientLogoWrap}>
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      fill
+                      sizes="(max-width: 767px) 40vw, (max-width: 1199px) 22vw, 180px"
+                      className={styles.clientLogo}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
