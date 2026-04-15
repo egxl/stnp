@@ -150,7 +150,6 @@ export default async function HomePage({ params }) {
         <div className={styles.heroShell}>
           <div className={styles.heroNarrative}>
             <hr className={styles.heroDivider} />
-            <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
             <h1 className={styles.heroTitle}>
               {dict.home.heroTitle1}<br />
               <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
@@ -161,13 +160,11 @@ export default async function HomePage({ params }) {
           </div>
           <div className={styles.heroBrandPanel}>
             <div className={styles.heroBrandFrame}>
-              <span className={styles.heroBrandEyebrow}>{dict.home.heroLabel}</span>
               <img 
                 src="/images/logo.png" 
                 alt="Soaloan Tua Nababan & Partners Logo" 
                 className={styles.heroLogo} 
               />
-              <div className={styles.heroBrandRule} />
             </div>
           </div>
         </div>

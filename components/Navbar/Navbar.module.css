@@ -43,6 +43,25 @@
   gap: 12px;
   text-decoration: none;
   z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 220ms var(--ease-out),
+    transform 260ms var(--ease-out),
+    visibility 0ms linear;
+  will-change: transform, opacity;
+}
+
+.logoHidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    visibility 0ms linear 220ms;
 }
 
 .logoImage {

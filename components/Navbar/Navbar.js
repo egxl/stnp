@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import styles from './Navbar.module.css';
@@ -20,6 +20,8 @@ export default function Navbar({ navDict, lang = 'en' }) {
   const { isReady } = useLoading();
   const pathname = usePathname();
   const router = useRouter();
+  const isHomeRoute = pathname === `/${lang}`;
+  const [hideLogo, setHideLogo] = useState(false);
 
   const fallbackKeys = {
     home: 'Home', about: 'About', services: 'Services',
@@ -48,6 +50,32 @@ export default function Navbar({ navDict, lang = 'en' }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isHomeRoute) {
+      setHideLogo(false);
+      return;
+    }
+
+    const hero = document.querySelector('[class*="hero"]');
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHideLogo(entry.isIntersecting);
+      },
+      {
+        threshold: 0.45,
+      }
+    );
+
+    observer.observe(hero);
+
+    return () => {
+      observer.disconnect();
+      setHideLogo(false);
+    };
+  }, [isHomeRoute]);
+
   // Hide until the loading curtain finishes
   if (!isReady) return null;
 
@@ -61,7 +89,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
         {/* Logo — going to Home is always nav-back */}
         <Link
           href={`/${lang}`}
-          className={styles.logo}
+          className={`${styles.logo} ${hideLogo ? styles.logoHidden : ''}`}
           aria-label="Home"
           transitionTypes={['nav-back']}
         >
