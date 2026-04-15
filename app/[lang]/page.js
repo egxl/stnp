@@ -9,6 +9,7 @@ import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import Prism from '@/components/Animations/Prism/Prism';
+import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -361,6 +362,23 @@ export default async function HomePage({ params }) {
 
       {/* ===== CONTACT CTA ===== */}
       <section className={`section--dark ${styles.ctaSection} ${styles.snapSection}`}>
+        <div className={styles.magicRingsWrapper}>
+          <MagicRings
+            color="#2c5f7c"
+            colorTwo="#c4a35a"
+            ringCount={5}
+            speed={0.8}
+            attenuation={12}
+            lineThickness={1.5}
+            baseRadius={0.25}
+            radiusStep={0.15}
+            opacity={0.6}
+            followMouse={true}
+            mouseInfluence={0.05}
+            hoverScale={1.1}
+            parallax={0.03}
+          />
+        </div>
         <div className="container">
           <div className={styles.ctaContent}>
             <span className="section-label">{dict.home.ctaLabel}</span>
