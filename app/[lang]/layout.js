@@ -1,5 +1,4 @@
 import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
-import { Playfair_Display, Inter } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
@@ -7,20 +6,6 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata = {
   title: {
@@ -49,7 +34,7 @@ export default async function RootLayout({ children, params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return (
-    <html lang={lang} className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LoadingProvider>

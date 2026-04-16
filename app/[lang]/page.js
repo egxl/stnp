@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Syne } from 'next/font/google';
 import { getDictionary } from '@/lib/dictionaries';
 import { getPosts } from '@/lib/api';
 import { firmInfo } from '@/lib/data/team';
@@ -14,11 +13,39 @@ import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import styles from './page.module.css';
 
-const clientWordmark = Syne({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  display: 'swap',
-});
+function splitClientName(name) {
+  const normalized = name.trim();
+  const words = normalized.split(/\s+/);
+  const isLong = normalized.length > 24 || words.length >= 4;
+
+  if (!isLong) {
+    return { type: 'single', primary: normalized, secondary: '' };
+  }
+
+  if (words.length === 1) {
+    const midpoint = Math.ceil(normalized.length / 2);
+    return {
+      type: 'split',
+      primary: normalized.slice(0, midpoint).trim(),
+      secondary: normalized.slice(midpoint).trim(),
+    };
+  }
+
+  if (words[0] === 'PT' && words.length > 2) {
+    return {
+      type: 'split',
+      primary: 'PT',
+      secondary: words.slice(1).join(' '),
+    };
+  }
+
+  const midpoint = Math.ceil(words.length / 2);
+  return {
+    type: 'split',
+    primary: words.slice(0, midpoint).join(' '),
+    secondary: words.slice(midpoint).join(' '),
+  };
+}
 
 export const metadata = {
   title: 'Soaloan Tua Nababan & Partners — Law Firm Jakarta',
@@ -234,11 +261,25 @@ export default async function HomePage({ params }) {
 
             <div className={styles.clientsGrid}>
               {pastClients.map((client, i) => (
-                <div key={client.name} className={styles.clientCard} style={{ '--index': i }}>
-                  <span className={`${styles.clientWordmark} ${clientWordmark.className}`}>
-                    {client.name}
-                  </span>
-                </div>
+                (() => {
+                  const wordmark = splitClientName(client.name);
+                  return (
+                    <div
+                      key={client.name}
+                      className={`${styles.clientCard} ${wordmark.type === 'split' ? styles.clientCardSplit : ''}`}
+                      style={{ '--index': i }}
+                    >
+                      {wordmark.type === 'split' ? (
+                        <div className={styles.clientWordmarkSplit}>
+                          <span className={styles.clientWordmarkLead}>{wordmark.primary}</span>
+                          <span className={styles.clientWordmarkMain}>{wordmark.secondary}</span>
+                        </div>
+                      ) : (
+                        <span className={styles.clientWordmark}>{client.name}</span>
+                      )}
+                    </div>
+                  );
+                })()
               ))}
             </div>
           </div>
