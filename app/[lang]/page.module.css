@@ -317,7 +317,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.6fr);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  align-items: start;
 }
 
 .clientsIntro {
@@ -325,6 +325,8 @@
   gap: var(--space-lg);
   align-content: center;
   max-width: 360px;
+  position: sticky;
+  top: calc(var(--nav-height, 80px) + 15vh);
 }
 
 .clientsLabel {
