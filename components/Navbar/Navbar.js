@@ -1,13 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import {
+  BookOpenText,
+  Building2,
+  Landmark,
+  Mail,
+  Newspaper,
+  Scale,
+  ShieldCheck,
+  Users,
+} from 'lucide-react';
 import styles from './Navbar.module.css';
 import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import StaggeredMenu from './StaggeredMenu';
+import DropdownNavigation from '@/components/ui/dropdown-navigation';
 
 // Hierarchy order: links after index 0 are "forward" from Home
 // and "back" when navigating back to Home.
@@ -16,12 +27,152 @@ function getTransitionType(fromPath, toHref) {
   return ['nav-forward'];
 }
 
+const submenuCopy = {
+  en: {
+    firm: 'Learn who we are, how we work, and what anchors our counsel.',
+    services: 'Explore the firm’s core legal services and strategic capabilities.',
+    team: 'Meet the advocates behind STNP’s litigation and advisory work.',
+    insights: 'Read the latest firm articles, commentary, and legal updates.',
+    contact: 'Reach the firm directly to discuss your matter or schedule a consultation.',
+    consultation: 'Start a conversation with STNP about your legal needs.',
+    profile: 'Review the professionals representing the firm across key matters.',
+    expertise: 'See the practice areas where STNP advises and litigates.',
+  },
+  id: {
+    firm: 'Pelajari siapa kami, cara kami bekerja, dan dasar pendekatan hukum kami.',
+    services: 'Jelajahi layanan hukum utama dan kapabilitas strategis STNP.',
+    team: 'Kenali para advokat di balik pekerjaan litigasi dan advisory STNP.',
+    insights: 'Baca artikel, ulasan, dan pembaruan hukum terbaru dari firma kami.',
+    contact: 'Hubungi firma secara langsung untuk membahas kebutuhan hukum Anda.',
+    consultation: 'Mulai percakapan dengan STNP mengenai kebutuhan hukum Anda.',
+    profile: 'Tinjau para profesional yang mewakili firma dalam berbagai perkara penting.',
+    expertise: 'Lihat bidang praktik tempat STNP memberikan nasihat dan pendampingan.',
+  },
+  zh: {
+    firm: '了解我们的事务所、工作方式，以及支撑法律服务的方法。',
+    services: '查看 STNP 的核心法律服务与战略能力。',
+    team: '认识负责 STNP 诉讼与顾问业务的专业律师团队。',
+    insights: '阅读事务所最新文章、评论与法律动态。',
+    contact: '直接联系事务所，讨论您的法律需求或预约咨询。',
+    consultation: '就您的法律事务与 STNP 展开初步沟通。',
+    profile: '查看代表本所在重要事务中提供服务的专业人士。',
+    expertise: '了解 STNP 提供咨询与代理的主要业务领域。',
+  },
+};
+
+function buildDropdownNavItems(d, lang) {
+  const copy = submenuCopy[lang] || submenuCopy.en;
+
+  return [
+    {
+      id: 1,
+      label: d.home,
+      href: `/${lang}`,
+    },
+    {
+      id: 2,
+      label: d.about,
+      subMenus: [
+        {
+          title: d.aboutUs || d.about,
+          items: [
+            {
+              label: d.aboutUs || d.about,
+              description: copy.firm,
+              href: `/${lang}/about-us`,
+              icon: Building2,
+            },
+            {
+              label: d.contact,
+              description: copy.contact,
+              href: `/${lang}/contact`,
+              icon: Mail,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 3,
+      label: d.services,
+      subMenus: [
+        {
+          title: d.legalServices || d.services,
+          items: [
+            {
+              label: d.legalServices || d.services,
+              description: copy.expertise,
+              href: `/${lang}/legal-services`,
+              icon: Scale,
+            },
+            {
+              label: d.consultation,
+              description: copy.consultation,
+              href: `/${lang}/contact`,
+              icon: ShieldCheck,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 4,
+      label: d.team,
+      subMenus: [
+        {
+          title: d.ourTeam || d.team,
+          items: [
+            {
+              label: d.ourTeam || d.team,
+              description: copy.profile,
+              href: `/${lang}/team-profile`,
+              icon: Users,
+            },
+            {
+              label: d.aboutUs || d.about,
+              description: copy.firm,
+              href: `/${lang}/about-us`,
+              icon: Landmark,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 5,
+      label: d.articles,
+      subMenus: [
+        {
+          title: d.articles,
+          items: [
+            {
+              label: d.articles,
+              description: copy.insights,
+              href: `/${lang}/article`,
+              icon: Newspaper,
+            },
+            {
+              label: d.contact,
+              description: copy.contact,
+              href: `/${lang}/contact`,
+              icon: BookOpenText,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 6,
+      label: d.contact,
+      href: `/${lang}/contact`,
+    },
+  ];
+}
+
 export default function Navbar({ navDict, lang = 'en' }) {
   const { isReady } = useLoading();
   const pathname = usePathname();
   const router = useRouter();
-  const isHomeRoute = pathname === `/${lang}`;
-  const [hideLogo, setHideLogo] = useState(false);
 
   const fallbackKeys = {
     home: 'Home', about: 'About', services: 'Services',
@@ -39,6 +190,8 @@ export default function Navbar({ navDict, lang = 'en' }) {
     { href: `/${lang}/contact`, label: d.contact },
   ];
 
+  const dropdownNavItems = buildDropdownNavItems(d, lang);
+
   // Scroll detection for glassmorphism header
   useEffect(() => {
     const header = document.getElementById('site-header');
@@ -46,35 +199,10 @@ export default function Navbar({ navDict, lang = 'en' }) {
     const onScroll = () => {
       header.classList.toggle(styles.scrolled, window.scrollY > 40);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => {
-    if (!isHomeRoute) {
-      setHideLogo(false);
-      return;
-    }
-
-    const hero = document.querySelector('[class*="hero"]');
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setHideLogo(entry.isIntersecting);
-      },
-      {
-        threshold: 0.45,
-      }
-    );
-
-    observer.observe(hero);
-
-    return () => {
-      observer.disconnect();
-      setHideLogo(false);
-    };
-  }, [isHomeRoute]);
 
   // Hide until the loading curtain finishes
   if (!isReady) return null;
@@ -89,7 +217,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
         {/* Logo — going to Home is always nav-back */}
         <Link
           href={`/${lang}`}
-          className={`${styles.logo} ${hideLogo ? styles.logoHidden : ''}`}
+          className={styles.logo}
           aria-label="Home"
           transitionTypes={['nav-back']}
         >
@@ -100,20 +228,13 @@ export default function Navbar({ navDict, lang = 'en' }) {
           />
         </Link>
 
-        {/* Desktop Nav */}
-        <ul className={styles.desktopLinks}>
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={styles.navLink}
-                transitionTypes={getTransitionType(pathname, link.href)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.desktopNavigation}>
+          <DropdownNavigation
+            navItems={dropdownNavItems}
+            currentPath={pathname}
+            getTransitionType={getTransitionType}
+          />
+        </div>
 
         {/* Desktop: CTA Button, Language Switcher, and Theme Toggle */}
         <div className={styles.desktopControls}>

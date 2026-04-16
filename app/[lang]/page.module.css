@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--nav-height) + var(--space-xl)) clamp(var(--space-md), 5vw, var(--space-3xl)) var(--space-2xl);
+  padding: calc(var(--nav-height) + clamp(2rem, 4vw, 3.5rem)) clamp(var(--space-md), 5vw, var(--space-3xl)) var(--space-2xl);
   background: transparent;
   overflow: clip;
 }
@@ -27,24 +27,9 @@
   width: 100%;
   height: 100dvh;
   object-fit: cover;
-  object-position: 68% center;
+  object-position: 64% center;
   z-index: -2;
-  /* Consolidate grayscale and brightness here — much faster than backdrop-filter */
-  filter: grayscale(1) brightness(0.52) contrast(1.05);
-}
-
-.heroOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  z-index: -1; /* above video, below everything else */
-  background: 
-    linear-gradient(90deg, rgba(6, 14, 26, 0.96) 0%, rgba(6, 14, 26, 0.86) 42%, rgba(6, 14, 26, 0.48) 68%, rgba(6, 14, 26, 0.78) 100%),
-    radial-gradient(circle at 22% 38%, rgba(44, 95, 124, 0.2), transparent 34%),
-    radial-gradient(circle at 78% 28%, rgba(196, 163, 90, 0.14), transparent 24%),
-    linear-gradient(180deg, rgba(6, 14, 26, 0.12), rgba(6, 14, 26, 0.4));
+  filter: brightness(0.9) contrast(1.04) saturate(1.03);
 }
 
 .heroShell {
@@ -54,69 +39,36 @@
   max-width: 1360px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.78fr);
-  gap: clamp(var(--space-xl), 5vw, 5rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(2rem, 5vw, 6rem);
   align-items: center;
-}
-
-.heroNarrative,
-.heroBrandPanel {
-  opacity: 0;
-  animation: heroReveal 540ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  min-height: calc(100dvh - var(--nav-height) - clamp(3rem, 7vw, 5rem));
 }
 
 .heroNarrative {
+  position: relative;
+  isolation: isolate;
+  max-width: 36rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  max-width: 620px;
+  padding: clamp(1.25rem, 2vw, 2rem) 0;
+  opacity: 0;
+  animation: heroReveal 540ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
   animation-delay: 40ms;
 }
 
-.heroBrandPanel {
-  display: flex;
-  justify-content: flex-end;
-  animation-delay: 120ms;
-}
-
-.heroBrandFrame {
-  position: relative;
-  width: 100%;
-  max-width: 510px;
-  min-height: clamp(360px, 42vw, 560px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(var(--space-lg), 3vw, var(--space-xl));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-    linear-gradient(145deg, rgba(44, 95, 124, 0.14), rgba(10, 22, 40, 0.16));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 24px 80px rgba(6, 14, 26, 0.3);
-  backdrop-filter: blur(12px);
-}
-
-.heroBrandFrame::before,
-.heroBrandFrame::after {
+.heroNarrative::before {
   content: '';
   position: absolute;
+  inset: -1.25rem auto -1rem -1rem;
+  width: min(78vw, 38rem);
+  background: radial-gradient(circle at 16% 42%, rgba(6, 14, 26, 0.12), transparent 70%);
+  filter: blur(28px);
+  opacity: 0.55;
+  z-index: -1;
   pointer-events: none;
-}
-
-.heroBrandFrame::before {
-  inset: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.heroBrandFrame::after {
-  top: -1px;
-  bottom: -1px;
-  left: 24px;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(196, 163, 90, 0), rgba(196, 163, 90, 0.7), rgba(196, 163, 90, 0));
 }
 
 @keyframes heroReveal {
@@ -130,18 +82,8 @@
   }
 }
 
-.heroLogo {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: 0 auto;
-  filter: drop-shadow(0 18px 36px rgba(6, 14, 26, 0.32));
-}
-
 .heroDivider {
-  width: min(100%, 160px);
+  width: min(100%, 140px);
   height: 1px;
   background: linear-gradient(90deg, var(--color-accent), rgba(196, 163, 90, 0.18));
   border: none;
@@ -170,6 +112,7 @@
   margin-bottom: var(--space-md);
   letter-spacing: -0.045em;
   text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(6, 14, 26, 0.38);
 }
 
 .heroTitleAccent {
@@ -180,15 +123,15 @@
 
 .heroSubtitle {
   font-size: clamp(1rem, 1.15vw, 1.16rem);
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.8);
   max-width: 46ch;
   line-height: 1.8;
   margin-bottom: 0;
+  text-shadow: 0 1px 16px rgba(6, 14, 26, 0.28);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroNarrative,
-  .heroBrandPanel {
+  .heroNarrative {
     animation: none;
     opacity: 1;
     transform: none;
@@ -1048,16 +991,7 @@
   .heroShell {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
-  }
-
-  .heroBrandPanel {
-    justify-content: flex-start;
-    order: -1;
-  }
-
-  .heroBrandFrame {
-    max-width: 460px;
-    min-height: 300px;
+    min-height: auto;
   }
 
   .heroTitle {
@@ -1102,23 +1036,11 @@
 
   .heroShell {
     gap: var(--space-lg);
+    min-height: auto;
   }
 
-  .heroBrandFrame {
-    min-height: 240px;
-    padding: var(--space-md);
-  }
-
-  .heroBrandFrame::before {
-    inset: 12px;
-  }
-
-  .heroBrandFrame::after {
-    left: 16px;
-  }
-
-  .heroLogo {
-    max-width: 220px;
+  .heroNarrative {
+    max-width: 32rem;
   }
 
   .heroTitle {

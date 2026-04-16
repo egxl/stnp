@@ -317,9 +317,9 @@ export default async function HomePage({ params }) {
           <source src="/videos/hero-loop-hevc.mp4" type="video/mp4; codecs=hvc1" />
           {/* Default H.264 fallback for broader compatibility */}
           <source src="/videos/hero-loop.mp4" type="video/mp4" />
+          Your browser does not support the timelapse background video.
         </video>
 
-        <div className={styles.heroOverlay} />
         <div className={styles.heroShell}>
           <div className={styles.heroNarrative}>
             <hr className={styles.heroDivider} />
@@ -330,15 +330,6 @@ export default async function HomePage({ params }) {
             <p className={styles.heroSubtitle}>
               {dict.home.heroSubtitle}
             </p>
-          </div>
-          <div className={styles.heroBrandPanel}>
-            <div className={styles.heroBrandFrame}>
-              <img 
-                src="/images/logo.png" 
-                alt="Soaloan Tua Nababan & Partners Logo" 
-                className={styles.heroLogo} 
-              />
-            </div>
           </div>
         </div>
         
