@@ -216,7 +216,7 @@ const Beams = ({
         <DirLight color={lightColor} position={[0, 3, 10]} />
       </group>
       <ambientLight intensity={1} />
-      <color attach="background" args={['#0A1628']} />
+      <color attach="background" args={['#000000']} />
       <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={30} />
     </CanvasWrapper>
   );
