@@ -13,8 +13,6 @@ export default function Footer({ dict, lang = 'en' }) {
   const { isReady } = useLoading();
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [openPracticeArea, setOpenPracticeArea] = useState(null);
-  const [panelHeights, setPanelHeights] = useState({});
-  const panelRefs = useRef({});
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
 
@@ -31,25 +29,7 @@ export default function Footer({ dict, lang = 'en' }) {
     disclaimerButton: "Legal Disclaimer"
   };
 
-  useEffect(() => {
-    const measurePanels = () => {
-      const nextHeights = {};
 
-      serviceCategories.forEach((category) => {
-        const panel = panelRefs.current[category.id];
-        if (panel) {
-          nextHeights[category.id] = panel.scrollHeight;
-        }
-      });
-
-      setPanelHeights(nextHeights);
-    };
-
-    measurePanels();
-    window.addEventListener('resize', measurePanels);
-
-    return () => window.removeEventListener('resize', measurePanels);
-  }, [lang]);
 
   if (!isReady) return null;
 
@@ -142,13 +122,8 @@ export default function Footer({ dict, lang = 'en' }) {
                   <div
                     className={`${styles.practiceGroupPanel} ${isOpen ? styles.practiceGroupPanelOpen : ''}`}
                     aria-hidden={!isOpen}
-                    style={{ height: isOpen ? `${panelHeights[category.id] || 0}px` : '0px' }}
                   >
-                    <div
-                      ref={(node) => {
-                        panelRefs.current[category.id] = node;
-                      }}
-                    >
+                    <div className={styles.practiceGroupPanelInner}>
                       <ul className={styles.practiceServiceList}>
                         {category.services.map((service) => (
                           <li key={service.id}>

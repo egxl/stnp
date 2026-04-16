@@ -1,4 +1,5 @@
 import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
+import { Geist, Newsreader } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
@@ -6,6 +7,18 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+
+const geist = Geist({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+});
 
 export const metadata = {
   title: {
@@ -34,7 +47,11 @@ export default async function RootLayout({ children, params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html
+      lang={lang}
+      suppressHydrationWarning
+      className={`${geist.variable} ${newsreader.variable}`}
+    >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LoadingProvider>

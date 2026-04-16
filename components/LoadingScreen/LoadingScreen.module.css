@@ -141,7 +141,7 @@
 }
 
 .firmName {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body-family);
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -161,7 +161,7 @@
 }
 
 .loadingLabel {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body-family);
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -170,7 +170,7 @@
 }
 
 .percentage {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body-family);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.1em;

@@ -36,9 +36,13 @@
 
 .beamsWrapper {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2000px;
   z-index: 1;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 /* --- Columns --- */
@@ -202,15 +206,20 @@
 }
 
 .practiceGroupPanel {
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  overflow: hidden;
-  transition: height 280ms ease, opacity 220ms ease;
-  will-change: height, opacity;
+  transition: grid-template-rows 280ms ease, opacity 220ms ease;
+  will-change: grid-template-rows, opacity;
 }
 
 .practiceGroupPanelOpen {
+  grid-template-rows: 1fr;
   opacity: 1;
+}
+
+.practiceGroupPanelInner {
+  overflow: hidden;
 }
 
 .practiceServiceList {
