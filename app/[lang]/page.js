@@ -13,13 +13,21 @@ import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import styles from './page.module.css';
 
-const MONOGRAM_TAG_CLIENTS = new Set([
-  'Toba Sejahtra',
-  'Sony Music Indonesia',
-  'Security AI Limited',
-  'Bank Negara Indonesia',
-  'Bumiputera',
-]);
+const CLIENT_PRESENTATION_OVERRIDES = {
+  'Bank Negara Indonesia': { variant: 'monogram-tag', tag: 'BNI' },
+  'PT PLN (Persero)': {
+    variant: 'registry-line',
+    tag: 'PT',
+    main: 'PLN',
+    tail: '(Persero)',
+  },
+  'Kartanegara Energi Perkasa': {
+    variant: 'editorial-split',
+    lead: 'Kartanegara',
+    main: 'Energi',
+    tail: 'Perkasa',
+  },
+};
 
 function buildMonogram(name) {
   const tokens = name
@@ -34,60 +42,105 @@ function buildMonogram(name) {
     .join('');
 }
 
+function getClientDisplayName(name) {
+  if (name.trim() === 'PT PLN (Persero)') {
+    return 'PT PLN (Persero)';
+  }
+
+  return name.trim().replace(/^PT\s+/i, '').trim();
+}
+
 function splitClientName(name) {
-  const normalized = name.trim();
+  const normalized = getClientDisplayName(name);
   const words = normalized.split(/\s+/);
-  const midpoint = Math.ceil(words.length / 2);
 
   if (words.length <= 1) {
     return { lead: normalized, main: '', tail: '' };
   }
 
-  if (words[0] === 'PT' && words.length >= 3) {
-    const tailToken = words[words.length - 1];
-    const hasTail = /^(Tbk\.?|\(Persero\)|Persero)$/i.test(tailToken);
-    const coreWords = hasTail ? words.slice(1, -1) : words.slice(1);
-    const coreMidpoint = Math.ceil(coreWords.length / 2);
+  const tailToken = words[words.length - 1];
+  const hasTail = /^(Tbk\.?|\(Persero\)|Persero)$/i.test(tailToken);
+  const coreWords = hasTail ? words.slice(0, -1) : words;
 
+  if (coreWords.length <= 1) {
     return {
-      lead: 'PT',
-      main: coreWords.slice(0, coreMidpoint).join(' '),
-      tail: hasTail ? [coreWords.slice(coreMidpoint).join(' '), tailToken].filter(Boolean).join(' ') : coreWords.slice(coreMidpoint).join(' '),
+      lead: coreWords.join(' '),
+      main: '',
+      tail: hasTail ? tailToken : '',
     };
   }
 
+  if (coreWords.length === 2) {
+    return {
+      lead: coreWords[0],
+      main: coreWords[1],
+      tail: hasTail ? tailToken : '',
+    };
+  }
+
+  const lead = coreWords[0];
+  const main = coreWords[1];
+  const tail = [coreWords.slice(2).join(' '), hasTail ? tailToken : ''].filter(Boolean).join(' ');
+
   return {
-    lead: words.slice(0, midpoint).join(' '),
-    main: words.slice(midpoint).join(' '),
-    tail: '',
+    lead,
+    main,
+    tail,
   };
 }
 
 function getClientPresentation(name) {
   const normalized = name.trim();
-  const words = normalized.split(/\s+/);
-  const isFormalEntity = words[0] === 'PT';
-  const isLong = normalized.length > 24 || words.length >= 4;
+  const displayName = getClientDisplayName(normalized);
+  const override = CLIENT_PRESENTATION_OVERRIDES[normalized];
+  const words = displayName.split(/\s+/);
+  const isLong = displayName.length > 24 || words.length >= 4;
+  const prefersThreeLine = words.length >= 3 || /\b(Tbk\.?|\(Persero\)|Persero)\b/i.test(displayName);
 
-  if (MONOGRAM_TAG_CLIENTS.has(normalized)) {
+  if (override?.variant === 'monogram-tag') {
     return {
       variant: 'monogram-tag',
-      tag: buildMonogram(normalized),
-      name: normalized,
+      tag: override.tag || buildMonogram(displayName),
+      name: displayName,
     };
   }
 
-  if (isFormalEntity && !isLong) {
+  if (override?.variant === 'editorial-split') {
+    return {
+      variant: 'editorial-split',
+      lead: override.lead,
+      main: override.main,
+      tail: override.tail || '',
+    };
+  }
+
+  if (override?.variant === 'condensed-block') {
+    return {
+      variant: 'condensed-block',
+      name: override.name || displayName,
+    };
+  }
+
+  if (override?.variant === 'registry-line') {
+    return {
+      variant: 'registry-line',
+      tag: override.tag,
+      main: override.main,
+      tail: override.tail || '',
+    };
+  }
+
+  if (!isLong && normalized !== displayName) {
     const registry = splitClientName(normalized);
     return {
       variant: 'registry-line',
       tag: registry.lead,
-      main: registry.main,
+      main: registry.main || registry.lead,
       tail: registry.tail,
     };
   }
 
-  if (isLong) {
+  if (isLong || prefersThreeLine) {
     const editorial = splitClientName(normalized);
     return {
       variant: 'editorial-split',
@@ -99,7 +152,7 @@ function getClientPresentation(name) {
 
   return {
     variant: 'condensed-block',
-    name: normalized,
+    name: displayName,
   };
 }
 
@@ -116,10 +169,7 @@ function renderClientSignature(presentation) {
     case 'registry-line':
       return (
         <div className={styles.clientRegistry}>
-          <div className={styles.clientRegistryBar}>
-            <span className={styles.clientRegistryTag}>{presentation.tag}</span>
-            <span className={styles.clientRegistryRule} />
-          </div>
+          <span className={styles.clientRegistryTag}>{presentation.tag}</span>
           <span className={styles.clientRegistryMain}>{presentation.main}</span>
           {presentation.tail ? <span className={styles.clientRegistryTail}>{presentation.tail}</span> : null}
         </div>
