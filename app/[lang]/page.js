@@ -11,6 +11,7 @@ import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import Prism from '@/components/Animations/Prism/Prism';
 import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
+import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import styles from './page.module.css';
 
 const CLIENT_PRESENTATION_OVERRIDES = {
@@ -320,20 +321,22 @@ export default async function HomePage({ params }) {
           Your browser does not support the timelapse background video.
         </video>
 
-        <div className={styles.heroShell}>
-          <div className={styles.heroNarrative}>
-            <hr className={styles.heroDivider} />
-            <h1 className={styles.heroTitle}>
-              {dict.home.heroTitle1}<br />
-              <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
-            </h1>
-            <p className={styles.heroSubtitle}>
-              {dict.home.heroSubtitle}
-            </p>
-          </div>
+        <div className={styles.heroSticky}>
+          <HeroParallax className={styles.heroShell}>
+            <div className={styles.heroNarrative}>
+              <hr className={styles.heroDivider} />
+              <h1 className={styles.heroTitle}>
+                {dict.home.heroTitle1}<br />
+                <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
+              </h1>
+              <p className={styles.heroSubtitle}>
+                {dict.home.heroSubtitle}
+              </p>
+            </div>
+          </HeroParallax>
+          
+          <HeroScrollButton />
         </div>
-        
-        <HeroScrollButton />
       </section>
 
       {/* ===== ABOUT SUMMARY ===== */}
