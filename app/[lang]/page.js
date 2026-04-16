@@ -13,38 +13,127 @@ import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import styles from './page.module.css';
 
+const MONOGRAM_TAG_CLIENTS = new Set([
+  'Toba Sejahtra',
+  'Sony Music Indonesia',
+  'Security AI Limited',
+  'Bank Negara Indonesia',
+  'Bumiputera',
+]);
+
+function buildMonogram(name) {
+  const tokens = name
+    .replace(/^PT\s+/i, '')
+    .replace(/\b(Tbk\.?|Persero|Limited|Indonesia)\b/gi, '')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  return tokens
+    .slice(0, 2)
+    .map((token) => token[0]?.toUpperCase() || '')
+    .join('');
+}
+
 function splitClientName(name) {
   const normalized = name.trim();
   const words = normalized.split(/\s+/);
+  const midpoint = Math.ceil(words.length / 2);
+
+  if (words.length <= 1) {
+    return { lead: normalized, main: '', tail: '' };
+  }
+
+  if (words[0] === 'PT' && words.length >= 3) {
+    const tailToken = words[words.length - 1];
+    const hasTail = /^(Tbk\.?|\(Persero\)|Persero)$/i.test(tailToken);
+    const coreWords = hasTail ? words.slice(1, -1) : words.slice(1);
+    const coreMidpoint = Math.ceil(coreWords.length / 2);
+
+    return {
+      lead: 'PT',
+      main: coreWords.slice(0, coreMidpoint).join(' '),
+      tail: hasTail ? [coreWords.slice(coreMidpoint).join(' '), tailToken].filter(Boolean).join(' ') : coreWords.slice(coreMidpoint).join(' '),
+    };
+  }
+
+  return {
+    lead: words.slice(0, midpoint).join(' '),
+    main: words.slice(midpoint).join(' '),
+    tail: '',
+  };
+}
+
+function getClientPresentation(name) {
+  const normalized = name.trim();
+  const words = normalized.split(/\s+/);
+  const isFormalEntity = words[0] === 'PT';
   const isLong = normalized.length > 24 || words.length >= 4;
 
-  if (!isLong) {
-    return { type: 'single', primary: normalized, secondary: '' };
-  }
-
-  if (words.length === 1) {
-    const midpoint = Math.ceil(normalized.length / 2);
+  if (MONOGRAM_TAG_CLIENTS.has(normalized)) {
     return {
-      type: 'split',
-      primary: normalized.slice(0, midpoint).trim(),
-      secondary: normalized.slice(midpoint).trim(),
+      variant: 'monogram-tag',
+      tag: buildMonogram(normalized),
+      name: normalized,
     };
   }
 
-  if (words[0] === 'PT' && words.length > 2) {
+  if (isFormalEntity && !isLong) {
+    const registry = splitClientName(normalized);
     return {
-      type: 'split',
-      primary: 'PT',
-      secondary: words.slice(1).join(' '),
+      variant: 'registry-line',
+      tag: registry.lead,
+      main: registry.main,
+      tail: registry.tail,
     };
   }
 
-  const midpoint = Math.ceil(words.length / 2);
+  if (isLong) {
+    const editorial = splitClientName(normalized);
+    return {
+      variant: 'editorial-split',
+      lead: editorial.lead,
+      main: editorial.main,
+      tail: editorial.tail,
+    };
+  }
+
   return {
-    type: 'split',
-    primary: words.slice(0, midpoint).join(' '),
-    secondary: words.slice(midpoint).join(' '),
+    variant: 'condensed-block',
+    name: normalized,
   };
+}
+
+function renderClientSignature(presentation) {
+  switch (presentation.variant) {
+    case 'editorial-split':
+      return (
+        <div className={styles.clientEditorial}>
+          <span className={styles.clientEditorialLead}>{presentation.lead}</span>
+          <span className={styles.clientEditorialMain}>{presentation.main}</span>
+          {presentation.tail ? <span className={styles.clientEditorialTail}>{presentation.tail}</span> : null}
+        </div>
+      );
+    case 'registry-line':
+      return (
+        <div className={styles.clientRegistry}>
+          <div className={styles.clientRegistryBar}>
+            <span className={styles.clientRegistryTag}>{presentation.tag}</span>
+            <span className={styles.clientRegistryRule} />
+          </div>
+          <span className={styles.clientRegistryMain}>{presentation.main}</span>
+          {presentation.tail ? <span className={styles.clientRegistryTail}>{presentation.tail}</span> : null}
+        </div>
+      );
+    case 'monogram-tag':
+      return (
+        <div className={styles.clientMonogram}>
+          <span className={styles.clientMonogramTag}>{presentation.tag}</span>
+          <span className={styles.clientMonogramName}>{presentation.name}</span>
+        </div>
+      );
+    default:
+      return <span className={styles.clientCondensed}>{presentation.name}</span>;
+  }
 }
 
 export const metadata = {
@@ -260,27 +349,22 @@ export default async function HomePage({ params }) {
             </div>
 
             <div className={styles.clientsGrid}>
-              {pastClients.map((client, i) => (
-                (() => {
-                  const wordmark = splitClientName(client.name);
-                  return (
-                    <div
-                      key={client.name}
-                      className={`${styles.clientCard} ${wordmark.type === 'split' ? styles.clientCardSplit : ''}`}
-                      style={{ '--index': i }}
-                    >
-                      {wordmark.type === 'split' ? (
-                        <div className={styles.clientWordmarkSplit}>
-                          <span className={styles.clientWordmarkLead}>{wordmark.primary}</span>
-                          <span className={styles.clientWordmarkMain}>{wordmark.secondary}</span>
-                        </div>
-                      ) : (
-                        <span className={styles.clientWordmark}>{client.name}</span>
-                      )}
-                    </div>
-                  );
-                })()
-              ))}
+              {pastClients.map((client, i) => {
+                const presentation = getClientPresentation(client.name);
+
+                return (
+                  <div
+                    key={client.name}
+                    className={`${styles.clientCard} ${styles[`clientCard${presentation.variant
+                      .split('-')
+                      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+                      .join('')}`]}`}
+                    style={{ '--index': i }}
+                  >
+                    {renderClientSignature(presentation)}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

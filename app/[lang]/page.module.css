@@ -376,6 +376,22 @@
     box-shadow 200ms var(--ease-out);
 }
 
+.clientCardCondensedBlock {
+  justify-content: flex-start;
+}
+
+.clientCardEditorialSplit {
+  align-items: stretch;
+}
+
+.clientCardRegistryLine {
+  align-items: stretch;
+}
+
+.clientCardMonogramTag {
+  justify-content: flex-start;
+}
+
 .clientCard:active {
   transform: scale(0.96);
 }
@@ -387,35 +403,41 @@
   }
 }
 
-.clientWordmark {
+.clientCondensed,
+.clientEditorialLead,
+.clientEditorialMain,
+.clientEditorialTail,
+.clientRegistryTag,
+.clientRegistryMain,
+.clientRegistryTail,
+.clientMonogramTag,
+.clientMonogramName {
+  font-family: 'Avenir Next Condensed', 'Franklin Gothic Medium', 'Helvetica Neue Condensed',
+    'Arial Narrow', 'SF Pro Text', sans-serif;
+}
+
+.clientCondensed {
   display: block;
   width: 100%;
   margin: 0;
   color: rgba(248, 249, 252, 0.96);
-  font-family: 'Avenir Next Condensed', 'Franklin Gothic Medium', 'Helvetica Neue Condensed',
-    'Arial Narrow', 'SF Pro Text', sans-serif;
-  font-size: clamp(1.12rem, 0.9rem + 0.32vw, 1.34rem);
+  font-size: clamp(1.16rem, 0.92rem + 0.38vw, 1.46rem);
   font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.055em;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
   text-wrap: balance;
 }
 
-.clientCardSplit {
-  align-items: stretch;
-}
-
-.clientWordmarkSplit {
+.clientEditorial {
   display: grid;
+  align-content: center;
   gap: 0.35rem;
   width: 100%;
 }
 
-.clientWordmarkLead {
+.clientEditorialLead {
   display: block;
   color: rgba(212, 185, 122, 0.84);
-  font-family: 'Avenir Next Condensed', 'Franklin Gothic Medium', 'Helvetica Neue Condensed',
-    'Arial Narrow', 'SF Pro Text', sans-serif;
   font-size: clamp(0.76rem, 0.68rem + 0.14vw, 0.92rem);
   font-weight: 700;
   letter-spacing: 0.24em;
@@ -423,14 +445,106 @@
   line-height: 1;
 }
 
-.clientWordmarkMain {
+.clientEditorialMain {
   display: block;
   color: rgba(248, 249, 252, 0.96);
-  font-family: 'Avenir Next Condensed', 'Franklin Gothic Medium', 'Helvetica Neue Condensed',
-    'Arial Narrow', 'SF Pro Text', sans-serif;
-  font-size: clamp(1.08rem, 0.86rem + 0.3vw, 1.3rem);
+  font-size: clamp(1.1rem, 0.88rem + 0.32vw, 1.34rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.clientEditorialTail {
+  display: block;
+  color: rgba(224, 231, 240, 0.62);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.clientRegistry {
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.clientRegistryBar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.clientRegistryTag {
+  color: rgba(212, 185, 122, 0.92);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.clientRegistryRule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196, 163, 90, 0.55), rgba(196, 163, 90, 0));
+}
+
+.clientRegistryMain {
+  display: block;
+  color: rgba(248, 249, 252, 0.96);
+  font-size: clamp(1rem, 0.84rem + 0.22vw, 1.18rem);
   font-weight: 700;
   line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.clientRegistryTail {
+  display: block;
+  color: rgba(224, 231, 240, 0.68);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.clientMonogram {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.clientMonogramTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0 0.6rem;
+  border: 1px solid rgba(212, 185, 122, 0.2);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(196, 163, 90, 0.14), rgba(196, 163, 90, 0.04));
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.clientMonogramName {
+  display: block;
+  color: rgba(248, 249, 252, 0.96);
+  font-size: clamp(0.98rem, 0.82rem + 0.24vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.03;
   letter-spacing: -0.05em;
   text-wrap: balance;
 }
@@ -447,8 +561,16 @@
       0 20px 36px rgba(1, 7, 15, 0.18);
   }
 
-  .clientCard:hover .clientWordmark {
+  .clientCard:hover .clientCondensed,
+  .clientCard:hover .clientEditorialMain,
+  .clientCard:hover .clientRegistryMain,
+  .clientCard:hover .clientMonogramName {
     color: var(--color-white);
+  }
+
+  .clientCard:hover .clientMonogramTag {
+    border-color: rgba(212, 185, 122, 0.34);
+    background: linear-gradient(180deg, rgba(196, 163, 90, 0.2), rgba(196, 163, 90, 0.07));
   }
 }
 
@@ -482,18 +604,32 @@
     padding: 1.05rem 1rem;
   }
 
-  .clientWordmark {
+  .clientCondensed {
     font-size: 1rem;
     letter-spacing: -0.04em;
   }
 
-  .clientWordmarkLead {
+  .clientEditorialLead,
+  .clientRegistryTag,
+  .clientRegistryTail {
     font-size: 0.72rem;
     letter-spacing: 0.18em;
   }
 
-  .clientWordmarkMain {
+  .clientEditorialMain,
+  .clientRegistryMain,
+  .clientMonogramName {
     font-size: 0.98rem;
+  }
+
+  .clientMonogram {
+    gap: 0.7rem;
+  }
+
+  .clientMonogramTag {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.82rem;
   }
 }
 
