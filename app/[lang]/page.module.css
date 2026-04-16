@@ -1067,6 +1067,19 @@
     gap: var(--space-xl);
   }
 
+  .aboutSticky {
+    top: var(--nav-height);
+    height: calc(100vh - var(--nav-height));
+  }
+
+  .aboutSnapTrack {
+    margin-top: calc(-100vh + var(--nav-height));
+  }
+
+  .snapPoint {
+    height: calc(100vh - var(--nav-height));
+  }
+
   .aboutLeft {
     padding-right: 0;
   }
