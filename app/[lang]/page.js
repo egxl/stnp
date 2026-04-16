@@ -324,7 +324,6 @@ export default async function HomePage({ params }) {
         <div className={styles.heroSticky}>
           <HeroParallax className={styles.heroShell}>
             <div className={styles.heroNarrative}>
-              <hr className={styles.heroDivider} />
               <h1 className={styles.heroTitle}>
                 {dict.home.heroTitle1}<br />
                 <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
