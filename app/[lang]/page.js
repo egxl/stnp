@@ -6,7 +6,6 @@ import { serviceCategories } from '@/lib/data/services';
 import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
-import ScrollHijack from '@/components/Animations/ScrollHijack/ScrollHijack';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import Prism from '@/components/Animations/Prism/Prism';
 import MagicRings from '@/components/Animations/MagicRings/MagicRings';
@@ -242,7 +241,6 @@ export default async function HomePage({ params }) {
 
   return (
     <>
-      <ScrollHijack />
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} ${styles.snapSection}`}>
         {/* Background Video hosted on WordPress */}
