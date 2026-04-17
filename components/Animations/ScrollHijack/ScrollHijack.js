@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export default function ScrollHijack() {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Mount: Enable strict scroll snapping and smooth behavior
     document.documentElement.style.scrollSnapType = 'y mandatory';
     document.documentElement.style.scrollBehavior = 'smooth';

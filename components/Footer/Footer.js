@@ -5,12 +5,10 @@ import Link from 'next/link';
 import { firmInfo } from '@/lib/data/team';
 import { serviceCategories, proBono } from '@/lib/data/services';
 import styles from './Footer.module.css';
-import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import Beams from './Beams';
 import DisclaimerModal from './DisclaimerModal';
 
 export default function Footer({ dict, lang = 'en' }) {
-  const { isReady } = useLoading();
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [openPracticeArea, setOpenPracticeArea] = useState(null);
   const currentYear = new Date().getFullYear();
@@ -28,11 +26,6 @@ export default function Footer({ dict, lang = 'en' }) {
     disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia.",
     disclaimerButton: "Legal Disclaimer"
   };
-
-
-
-  if (!isReady) return null;
-
   return (
     <footer id="site-footer" className={styles.footer}>
       {/* Dynamic Background */}

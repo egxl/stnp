@@ -14,7 +14,6 @@ import {
   Users,
 } from 'lucide-react';
 import styles from './Navbar.module.css';
-import { useLoading } from '@/components/LoadingScreen/LoadingProvider';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import StaggeredMenu from './StaggeredMenu';
@@ -116,7 +115,6 @@ function buildDropdownNavItems(d, lang) {
 }
 
 export default function Navbar({ navDict, lang = 'en' }) {
-  const { isReady } = useLoading();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -170,9 +168,6 @@ export default function Navbar({ navDict, lang = 'en' }) {
       window.removeEventListener('resize', onScroll);
     };
   }, [pathname, lang]);
-
-  // Hide until the loading curtain finishes
-  if (!isReady) return null;
 
   return (
     <header
