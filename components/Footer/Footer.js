@@ -34,7 +34,7 @@ export default function Footer({ dict, lang = 'en' }) {
   if (!isReady) return null;
 
   return (
-    <footer className={styles.footer}>
+    <footer id="site-footer" className={styles.footer}>
       {/* Dynamic Background */}
       <div className={styles.beamsWrapper}>
         <Beams

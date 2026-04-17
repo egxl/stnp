@@ -205,11 +205,24 @@ export default function Navbar({ navDict, lang = 'en' }) {
       const threshold = isHome ? 150 : 20;
       
       header.classList.toggle('is-scrolled', window.scrollY > threshold);
+
+      // Strict bottom detection: scrollHeight - scrollTop == clientHeight
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = Math.ceil(window.scrollY);
+      const clientHeight = window.innerHeight;
+      
+      const isAtBottom = (scrollTop + clientHeight) >= scrollHeight;
+      header.classList.toggle('is-at-footer', isAtBottom);
     };
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [pathname, lang]);
 
   // Hide until the loading curtain finishes
