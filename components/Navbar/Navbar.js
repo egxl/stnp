@@ -72,25 +72,7 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 2,
       label: d.about,
-      subMenus: [
-        {
-          title: d.aboutUs || d.about,
-          items: [
-            {
-              label: d.aboutUs || d.about,
-              description: copy.firm,
-              href: `/${lang}/about-us`,
-              icon: Building2,
-            },
-            {
-              label: d.contact,
-              description: copy.contact,
-              href: `/${lang}/contact`,
-              icon: Mail,
-            },
-          ],
-        },
-      ],
+      href: `/${lang}/about-us`,
     },
     {
       id: 3,
@@ -106,10 +88,10 @@ function buildDropdownNavItems(d, lang) {
               icon: Scale,
             },
             {
-              label: d.consultation,
-              description: copy.consultation,
+              label: d.contact,
+              description: copy.contact,
               href: `/${lang}/contact`,
-              icon: ShieldCheck,
+              icon: Mail,
             },
           ],
         },
@@ -118,48 +100,12 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 4,
       label: d.team,
-      subMenus: [
-        {
-          title: d.ourTeam || d.team,
-          items: [
-            {
-              label: d.ourTeam || d.team,
-              description: copy.profile,
-              href: `/${lang}/team-profile`,
-              icon: Users,
-            },
-            {
-              label: d.aboutUs || d.about,
-              description: copy.firm,
-              href: `/${lang}/about-us`,
-              icon: Landmark,
-            },
-          ],
-        },
-      ],
+      href: `/${lang}/team-profile`,
     },
     {
       id: 5,
-      label: d.articles,
-      subMenus: [
-        {
-          title: d.articles,
-          items: [
-            {
-              label: d.articles,
-              description: copy.insights,
-              href: `/${lang}/article`,
-              icon: Newspaper,
-            },
-            {
-              label: d.contact,
-              description: copy.contact,
-              href: `/${lang}/contact`,
-              icon: BookOpenText,
-            },
-          ],
-        },
-      ],
+      label: d.insights,
+      href: `/${lang}/insights`,
     },
     {
       id: 6,
@@ -176,7 +122,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
 
   const fallbackKeys = {
     home: 'Home', about: 'About', services: 'Services',
-    team: 'Team', articles: 'Articles', contact: 'Contact',
+    team: 'Team', insights: 'Insights', contact: 'Contact',
     consultation: 'Consultation', freeConsultation: 'Free Consultation'
   };
   const d = navDict || fallbackKeys;
@@ -186,7 +132,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
     { href: `/${lang}/about-us`, label: d.about },
     { href: `/${lang}/legal-services`, label: d.services },
     { href: `/${lang}/team-profile`, label: d.team },
-    { href: `/${lang}/article`, label: d.articles },
+    { href: `/${lang}/insights`, label: d.insights },
     { href: `/${lang}/contact`, label: d.contact },
   ];
 
@@ -261,9 +207,6 @@ export default function Navbar({ navDict, lang = 'en' }) {
         <div className={styles.desktopControls}>
           <LanguageSwitcher lang={lang} pathname={pathname} router={router} />
           <ThemeToggle />
-          <Link href={`/${lang}/contact`} className={styles.ctaButton} transitionTypes={['nav-forward']}>
-            {d.consultation}
-          </Link>
         </div>
 
         {/* Mobile/Tablet: StaggeredMenu — replaces the bugged hamburger */}

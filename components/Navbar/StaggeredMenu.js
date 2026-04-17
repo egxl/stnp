@@ -437,14 +437,6 @@ export default function StaggeredMenu({
               <LanguageSwitcher lang={lang} pathname={pathname} router={router} />
               <ThemeToggle />
             </div>
-            <Link
-              href={`/${lang}/contact`}
-              className="sm-panel-cta"
-              onClick={closeMenu}
-              transitionTypes={['nav-forward']}
-            >
-              {navDict.freeConsultation || 'Free Consultation'}
-            </Link>
           </div>
         </div>
       </aside>

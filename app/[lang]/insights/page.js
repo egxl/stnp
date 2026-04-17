@@ -24,8 +24,8 @@ export default async function ArticlesPage() {
         <div className={styles.heroOverlay} />
         <div className="container">
           <div className={styles.heroContent}>
-            <span className={styles.breadcrumb}>Home / Articles</span>
-            <h1 className={styles.heroTitle}>Articles & Insights</h1>
+            <span className={styles.breadcrumb}>Home / Insights</span>
+            <h1 className={styles.heroTitle}>Insights</h1>
             <p className={styles.heroSubtitle}>
               Stay informed with the latest legal perspectives from our team.
             </p>
@@ -80,14 +80,14 @@ export default async function ArticlesPage() {
                     <div className={styles.postBody}>
                       <time className={styles.postDate}>{date}</time>
                       <h3 className={styles.postTitle}>
-                        <Link href={`/article/${post.slug}`}>
+                        <Link href={`/insights/${post.slug}`}>
                           {decodeHtmlEntities(post.title.rendered)}
                         </Link>
                       </h3>
                       <p className={styles.postExcerpt}>
                         {stripHtml(post.excerpt.rendered).substring(0, 150)}…
                       </p>
-                      <Link href={`/article/${post.slug}`} className={styles.readMore}>
+                      <Link href={`/insights/${post.slug}`} className={styles.readMore}>
                         Read More
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
@@ -100,7 +100,7 @@ export default async function ArticlesPage() {
             </div>
           ) : (
             <div className={styles.empty}>
-              <p>No articles published yet. Check back soon.</p>
+              <p>No insights published yet. Check back soon.</p>
             </div>
           )}
         </div>

@@ -23,7 +23,7 @@ export default function Footer({ dict, lang = 'en' }) {
     aboutUs: "About Us",
     legalServices: "Legal Services",
     ourTeam: "Our Team",
-    articles: "Articles",
+    insights: "Insights",
     contact: "Contact",
     disclaimer: "Soaloan Tua Nababan & Partners (STNP) is an independent legal practice based in Jakarta, Indonesia.",
     disclaimerButton: "Legal Disclaimer"
@@ -79,7 +79,7 @@ export default function Footer({ dict, lang = 'en' }) {
             <li><Link href={`/${lang}/about-us`}>{d.aboutUs}</Link></li>
             <li><Link href={`/${lang}/legal-services`}>{d.legalServices}</Link></li>
             <li><Link href={`/${lang}/team-profile`}>{d.ourTeam}</Link></li>
-            <li><Link href={`/${lang}/article`}>{d.articles}</Link></li>
+            <li><Link href={`/${lang}/insights`}>{d.insights}</Link></li>
             <li><Link href={`/${lang}/contact`}>{d.contact}</Link></li>
           </ul>
         </div>

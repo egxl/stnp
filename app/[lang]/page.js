@@ -290,8 +290,6 @@ export default async function HomePage({ params }) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-
-
   /* Fetch latest 3 articles from WordPress */
   let latestPosts = [];
   try {
@@ -524,7 +522,7 @@ export default async function HomePage({ params }) {
                     <div className={styles.articleBody}>
                       <time className={styles.articleDate}>{date}</time>
                       <h3 className={styles.articleTitle}>
-                        <Link href={`/${lang}/article/${post.slug}`}>
+                        <Link href={`/${lang}/insights/${post.slug}`}>
                           {decodeHtmlEntities(post.title.rendered)}
                         </Link>
                       </h3>
@@ -537,7 +535,7 @@ export default async function HomePage({ params }) {
               })}
             </div>
             <div className={styles.articlesMore}>
-              <Link href={`/${lang}/article`} className="btn btn--dark">
+              <Link href={`/${lang}/insights`} className="btn btn--dark">
                 {dict.home.viewAll}
               </Link>
             </div>

@@ -31,7 +31,7 @@ export default async function ArticlePage({ params }) {
         <div className="container">
           <h1>Article Not Found</h1>
           <p>The article you&apos;re looking for doesn&apos;t exist.</p>
-          <Link href="/article" className="btn btn--dark">Back to Articles</Link>
+          <Link href="/insights" className="btn btn--dark">Back to Insights</Link>
         </div>
       </div>
     );
@@ -83,11 +83,11 @@ export default async function ArticlePage({ params }) {
 
           {/* Back link */}
           <div className={styles.backLink}>
-            <Link href="/article">
+            <Link href="/insights">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              Back to Articles
+              Back to Insights
             </Link>
           </div>
         </div>
