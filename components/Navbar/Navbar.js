@@ -187,6 +187,14 @@ export default function Navbar({ navDict, lang = 'en' }) {
           className={styles.logo}
           aria-label="Home"
           transitionTypes={['nav-back']}
+          onClick={(e) => {
+            const homePath = `/${lang}`;
+            const normalizedCurrent = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+            if (normalizedCurrent === homePath) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
         >
           <img
             src="/images/logo.png"

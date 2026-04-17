@@ -36,6 +36,17 @@ export function DropdownNavigation({
   const [openMenu, setOpenMenu] = React.useState(null);
   const [hoveredId, setHoveredId] = React.useState(null);
 
+  const handleLinkClick = (e, href) => {
+    if (!href) return;
+    const normalizedHref = href.endsWith("/") && href !== "/" ? href.slice(0, -1) : href;
+    const normalizedCurrent = currentPath.endsWith("/") && currentPath !== "/" ? currentPath.slice(0, -1) : currentPath;
+
+    if (normalizedHref === normalizedCurrent) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav
       className={`${styles.navigation} ${className}`.trim()}
@@ -91,6 +102,7 @@ export function DropdownNavigation({
                   }
                   onMouseEnter={() => setHoveredId(navItem.id)}
                   onMouseLeave={() => setHoveredId(null)}
+                  onClick={(e) => handleLinkClick(e, navItem.href)}
                 >
                   <span>{navItem.label}</span>
                   {(isHovered || isActive) && (
@@ -136,6 +148,7 @@ export function DropdownNavigation({
                                           ? getTransitionType(currentPath, item.href)
                                           : undefined
                                       }
+                                      onClick={(e) => handleLinkClick(e, item.href)}
                                     >
                                       <div className={styles.iconWrap}>
                                         <Icon className={styles.icon} aria-hidden="true" />

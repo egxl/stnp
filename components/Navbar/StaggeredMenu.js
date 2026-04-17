@@ -329,6 +329,19 @@ export default function StaggeredMenu({
     animateText(false);
   }, [playClose, animateIcon, animateColor, animateText]);
 
+  const handleLinkClick = useCallback((e, href) => {
+    closeMenu();
+    
+    if (!href) return;
+    const normalizedHref = href.endsWith("/") && href !== "/" ? href.slice(0, -1) : href;
+    const normalizedCurrent = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+
+    if (normalizedHref === normalizedCurrent) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [closeMenu, pathname]);
+
   /* ------------------------------------------------------------------ */
   /* Click-away to close                                                  */
   /* ------------------------------------------------------------------ */
@@ -420,7 +433,7 @@ export default function StaggeredMenu({
                   className="sm-panel-item"
                   aria-label={`Go to ${link.label}`}
                   data-index={idx + 1}
-                  onClick={closeMenu}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   transitionTypes={
                     getTransitionType ? getTransitionType(pathname, link.href) : undefined
                   }

@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default async function RootLayout({ children, params }) {
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LoadingProvider>
+          <ScrollReset />
           <Navbar navDict={dict.nav} lang={lang} />
           {/* ViewTransition wraps only the page content, not the anchored Navbar/Footer */}
           <ViewTransitionGuard
@@ -66,6 +68,7 @@ export default async function RootLayout({ children, params }) {
           <Footer dict={dict} lang={lang} />
         </LoadingProvider>
         </ThemeProvider>
+
       </body>
     </html>
   );
