@@ -196,13 +196,21 @@ export default function Navbar({ navDict, lang = 'en' }) {
   useEffect(() => {
     const header = document.getElementById('site-header');
     if (!header) return;
+
     const onScroll = () => {
-      header.classList.toggle(styles.scrolled, window.scrollY > 40);
+      const pathSegments = pathname.split('/').filter(Boolean);
+      const isHome = pathSegments.length <= 1;
+      
+      // Home threshold lowered to 150px to ensure it transitions early enough
+      const threshold = isHome ? 150 : 20;
+      
+      header.classList.toggle('is-scrolled', window.scrollY > threshold);
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [pathname, lang]);
 
   // Hide until the loading curtain finishes
   if (!isReady) return null;
