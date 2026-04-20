@@ -1,0 +1,249 @@
+.trustStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xl);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.trustStat {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: statReveal 600ms var(--ease-out) forwards;
+}
+
+.trustStat:nth-child(1) { animation-delay: 100ms; }
+.trustStat:nth-child(2) { animation-delay: 200ms; }
+.trustStat:nth-child(3) { animation-delay: 300ms; }
+.trustStat:nth-child(4) { animation-delay: 400ms; }
+
+.trustStatNumber {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--color-accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--space-xs);
+}
+
+.trustStatLabel {
+  font-family: var(--font-body-family);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes statReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.marqueeZone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  position: relative;
+}
+
+.marqueeRow {
+  padding: var(--space-sm) 0;
+}
+
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.marqueeDiamond {
+  color: var(--color-accent);
+  font-size: 0.6rem;
+  opacity: 0.6;
+}
+
+.marqueeName {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.05em;
+}
+
+.industryTagsContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.industryTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  max-width: 800px;
+}
+
+.industryTag {
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 150ms cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
+              color 150ms cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.6;
+}
+
+.industryTag.industryTagActive {
+  opacity: 1;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .industryTag:not(.industryTagActive):hover {
+    opacity: 0.8;
+  }
+}
+
+.spotlightWrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.spotlightWrapper.spotlightActive {
+    pointer-events: auto;
+}
+
+.spotlightPanel {
+    background: rgba(6, 14, 26, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    width: 100%;
+    max-width: 900px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.spotlightHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-md);
+}
+
+.spotlightTitle {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.spotlightTitle strong {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.spotlightClose {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .spotlightClose:hover {
+        color: var(--color-white);
+    }
+}
+
+.spotlightGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+@keyframes spotlightEnter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.spotlightCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  animation: spotlightEnter 240ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: calc(var(--i) * 40ms);
+  opacity: 0;
+}
+
+.spotlightCardName {
+  font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+  .trustStats {
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .trustStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .marqueeItem {
+    gap: 1.5rem;
+  }
+
+  .marqueeName {
+    font-size: 1.1rem;
+  }
+  
+  .spotlightPanel {
+      padding: var(--space-lg);
+  }
+  
+  .spotlightGrid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trustStat, .spotlightCard {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .industryTag {
+      transition: none;
+  }
+}
