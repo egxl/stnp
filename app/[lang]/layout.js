@@ -1,5 +1,5 @@
 import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
-import { Geist, Newsreader } from "next/font/google";
+import { Geist, Newsreader, Julius_Sans_One } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
@@ -19,6 +19,13 @@ const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading",
+});
+
+const juliusSansOne = Julius_Sans_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-julius",
 });
 
 export const metadata = {
@@ -51,7 +58,7 @@ export default async function RootLayout({ children, params }) {
     <html
       lang={lang}
       suppressHydrationWarning
-      className={`${geist.variable} ${newsreader.variable}`}
+      className={`${geist.variable} ${newsreader.variable} ${juliusSansOne.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { WarningCircle, X } from '@phosphor-icons/react';
+import { ShieldWarning, X } from '@phosphor-icons/react';
 import styles from './DisclaimerModal.module.css';
 
 export default function DisclaimerModal({ isOpen, onClose, dict }) {
@@ -18,6 +18,11 @@ export default function DisclaimerModal({ isOpen, onClose, dict }) {
       };
       
       window.addEventListener('keydown', handleEscape);
+      
+      // Focus the modal for accessibility
+      if (modalRef.current) {
+        modalRef.current.focus();
+      }
       
       return () => {
         document.body.style.overflow = '';
@@ -37,13 +42,20 @@ export default function DisclaimerModal({ isOpen, onClose, dict }) {
 
   return (
     <div className={styles.overlay} onClick={handleBackdropClick}>
-      <div className={styles.modal} ref={modalRef} role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+      <div
+        className={styles.modal}
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="disclaimer-title"
+        tabIndex={-1}
+      >
         <button className={styles.closeIcon} onClick={onClose} aria-label="Close">
-          <X size={24} />
+          <X size={18} weight="bold" />
         </button>
 
         <div className={styles.header}>
-          <WarningCircle size={48} className={styles.icon} weight="light" />
+          <ShieldWarning size={44} className={styles.icon} weight="light" />
           <h2 id="disclaimer-title" className={styles.title}>{d.title}</h2>
         </div>
 
@@ -52,14 +64,14 @@ export default function DisclaimerModal({ isOpen, onClose, dict }) {
           <p>{d.p2}</p>
           
           <div className={styles.callout}>
-            <strong className={styles.calloutTitle}>{d.confidentialityTitle}</strong>
+            <strong className={styles.calloutTitle}>
+              {d.confidentialityTitle}
+            </strong>
             <p>{d.confidentiality}</p>
           </div>
 
           <p>{d.p3}</p>
-          <p>
-            {d.p4}
-          </p>
+          <p>{d.p4}</p>
         </div>
 
         <div className={styles.footer}>
