@@ -7,8 +7,6 @@ import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
-import Prism from '@/components/Animations/Prism/Prism';
-import MagicRings from '@/components/Animations/MagicRings/MagicRings';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import { 
@@ -288,13 +286,7 @@ export default async function HomePage({ params }) {
       {/* ===== ABOUT SUMMARY ===== */}
       <section className={`${styles.aboutSection} card-swap-section`}>
         <div className={styles.aboutSticky}>
-          <Prism 
-            animationType="3drotate" 
-            glow={0.5} 
-            colorFrequency={0.2} 
-            bloom={0.5} 
-            timeScale={0.3} 
-          />
+
           <div className="container">
             <div className={styles.aboutGrid}>
               <div className={styles.aboutLeft}>
@@ -521,23 +513,7 @@ export default async function HomePage({ params }) {
 
       {/* ===== CONTACT CTA ===== */}
       <section className={`section--dark ${styles.ctaSection} ${styles.snapSection}`}>
-        <div className={styles.magicRingsWrapper}>
-          <MagicRings
-            color="#2c5f7c"
-            colorTwo="#c4a35a"
-            ringCount={5}
-            speed={0.8}
-            attenuation={12}
-            lineThickness={1.5}
-            baseRadius={0.25}
-            radiusStep={0.15}
-            opacity={0.6}
-            followMouse={true}
-            mouseInfluence={0.05}
-            hoverScale={1.1}
-            parallax={0.03}
-          />
-        </div>
+
         <div className="container">
           <div className={styles.ctaContent}>
             <span className="section-label">{dict.home.ctaLabel}</span>
