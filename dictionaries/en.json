@@ -32,7 +32,11 @@
     "clientsLabel": "Featured Clients",
     "clientsTitle": "Trusted by Industry Leaders",
     "heroCtaPrimary": "Schedule Consultation",
-    "heroCtaSecondary": "Our Practice Areas"
+    "heroCtaSecondary": "Our Practice Areas",
+    "clientsStatClients": "Clients",
+    "clientsStatIndustries": "Industries",
+    "clientsStatYears": "Years",
+    "clientsStatSince": "Since"
   },
   "footer": {
     "quickLinks": "Quick Links",

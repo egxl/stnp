@@ -32,7 +32,11 @@
     "clientsLabel": "特色客户",
     "clientsTitle": "深受行业领导者信赖",
     "heroCtaPrimary": "预约咨询",
-    "heroCtaSecondary": "我们的业务领域"
+    "heroCtaSecondary": "我们的业务领域",
+    "clientsStatClients": "客户",
+    "clientsStatIndustries": "行业",
+    "clientsStatYears": "年",
+    "clientsStatSince": "自"
   },
   "footer": {
     "quickLinks": "快速链接",

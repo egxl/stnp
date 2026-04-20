@@ -9,6 +9,7 @@ import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
+import InfiniteMarquee from '@/components/Animations/InfiniteMarquee/InfiniteMarquee';
 import { 
   Scales, 
   Gavel, 
@@ -351,6 +352,62 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>
+
+      {/* ===== FEATURED CLIENTS (NEW TRUST MARQUEE) ===== */}
+      <section className={`section ${styles.trustSection} ${styles.snapSection}`}>
+        <div className="container">
+          <div className={styles.trustHeader}>
+            <span className={`section-label ${styles.trustLabel}`}>{dict.home.clientsLabel}</span>
+            <h2 className={`section-title ${styles.trustTitle}`}>{dict.home.clientsTitle}</h2>
+            <hr className={`divider divider--left ${styles.trustDivider}`} />
+          </div>
+
+          <div className={styles.trustStats}>
+            <div className={styles.trustStat}>
+              <span className={styles.trustStatNumber}>24+</span>
+              <span className={styles.trustStatLabel}>{dict.home.clientsStatClients}</span>
+            </div>
+            <div className={styles.trustStat}>
+              <span className={styles.trustStatNumber}>7+</span>
+              <span className={styles.trustStatLabel}>{dict.home.clientsStatIndustries}</span>
+            </div>
+            <div className={styles.trustStat}>
+              <span className={styles.trustStatNumber}>8+</span>
+              <span className={styles.trustStatLabel}>{dict.home.clientsStatYears}</span>
+            </div>
+            <div className={styles.trustStat}>
+              <span className={styles.trustStatNumber}>2018</span>
+              <span className={styles.trustStatLabel}>{dict.home.clientsStatSince}</span>
+            </div>
+          </div>
+
+          <div className={styles.marqueeZone}>
+            <InfiniteMarquee speed={45} direction="left" className={styles.marqueeRow}>
+              {pastClients.slice(0, Math.ceil(pastClients.length / 2)).map((client, i) => (
+                <div key={i} className={styles.marqueeItem}>
+                  <span className={styles.marqueeDiamond}>◆</span>
+                  <span className={styles.marqueeName}>{client.name}</span>
+                </div>
+              ))}
+            </InfiniteMarquee>
+            <InfiniteMarquee speed={50} direction="right" className={styles.marqueeRow}>
+              {pastClients.slice(Math.ceil(pastClients.length / 2)).map((client, i) => (
+                <div key={i} className={styles.marqueeItem}>
+                  <span className={styles.marqueeDiamond}>◆</span>
+                  <span className={styles.marqueeName}>{client.name}</span>
+                </div>
+              ))}
+            </InfiniteMarquee>
+          </div>
+
+          <div className={styles.industryTags}>
+            {[...new Set(pastClients.map(c => c.industry))].filter(Boolean).map((industry, i) => (
+              <span key={i} className={styles.industryTag}>{industry}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* ===== LEGAL SERVICES ===== */}
       <section id="practice-areas" className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>

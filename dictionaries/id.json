@@ -32,7 +32,11 @@
     "clientsLabel": "Klien Unggulan",
     "clientsTitle": "Dipercaya oleh Pemimpin Industri",
     "heroCtaPrimary": "Jadwalkan Konsultasi",
-    "heroCtaSecondary": "Bidang Praktik Kami"
+    "heroCtaSecondary": "Bidang Praktik Kami",
+    "clientsStatClients": "Klien",
+    "clientsStatIndustries": "Industri",
+    "clientsStatYears": "Tahun",
+    "clientsStatSince": "Sejak"
   },
   "footer": {
     "quickLinks": "Tautan Cepat",
