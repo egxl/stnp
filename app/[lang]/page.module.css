@@ -67,8 +67,15 @@
   height: 100dvh;
   object-fit: cover;
   object-position: 64% center;
-  z-index: -2;
+  z-index: -1;
   filter: brightness(0.9) contrast(1.04) saturate(1.03);
+  opacity: 0;
+  transition: opacity 1s var(--ease-out);
+  pointer-events: none;
+}
+
+.videoVisible {
+  opacity: 1;
 }
 
 .heroShell {

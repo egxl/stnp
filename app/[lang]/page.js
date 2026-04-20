@@ -10,6 +10,7 @@ import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
+import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import { 
   Scales, 
   Gavel, 
@@ -71,20 +72,11 @@ export default async function HomePage({ params }) {
     <>
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} ${styles.snapSection}`}>
-        {/* Background Video hosted on WordPress */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className={styles.heroVideo}
-        >
-          {/* H.265 (HEVC) for highly-compressed modern playback (Safari/newer devices) */}
-          <source src="/videos/hero-loop-hevc.mp4" type="video/mp4; codecs=hvc1" />
-          {/* Default H.264 fallback for broader compatibility */}
-          <source src="/videos/hero-loop.mp4" type="video/mp4" />
-          Your browser does not support the timelapse background video.
-        </video>
+        {/* Background Video Component */}
+        <HeroVideo 
+          className={styles.heroVideo} 
+          visibleClass={styles.videoVisible} 
+        />
 
         <div className={styles.heroSticky}>
           <HeroParallax className={styles.heroShell}>
