@@ -92,6 +92,7 @@
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
+  justify-content: flex-end;
   min-height: auto;
 }
 
@@ -99,14 +100,14 @@
   position: relative;
   isolation: isolate;
   overflow: visible;
-  width: min(58vw, 860px);
+  width: min(56vw, 46rem);
   min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   justify-content: flex-start;
-  padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem) clamp(4rem, 6vw, 5.5rem);
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 3rem) 0 clamp(3rem, 5vw, 5.5rem);
   border-radius: 0;
   background: transparent;
   backdrop-filter: none;
@@ -130,32 +131,31 @@
 .heroTitle {
   max-width: 100%;
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
-  font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  font-weight: 500;
   color: var(--color-white);
-  line-height: 0.92;
+  line-height: 0.88;
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.04em;
   text-shadow: 0 2px 24px rgba(6, 14, 26, 0.38);
   text-wrap: balance;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   position: relative;
   z-index: 1;
-  margin-right: clamp(1rem, 3vw, 2rem);
 }
 
 .heroTitleAccent {
   color: var(--color-accent);
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .heroSubtitle {
-  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 46ch;
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 34ch;
+  line-height: 1.65;
   margin-bottom: 0;
   text-shadow: 0 1px 16px rgba(6, 14, 26, 0.28);
   position: relative;
@@ -1137,27 +1137,29 @@
 
 @media (max-width: 640px) {
   .hero {
-    padding: calc(var(--nav-height) + var(--space-lg)) var(--space-sm) var(--space-xl);
+    padding: calc(var(--nav-height) + var(--space-sm)) var(--space-sm) var(--space-xl);
   }
 
   .heroShell {
-    gap: var(--space-lg);
+    justify-content: flex-start;
     min-height: auto;
   }
 
   .heroNarrative {
-    max-width: 32rem;
-    border-radius: 1.5rem;
-    padding: 1.2rem;
+    width: 100%;
+    max-width: 36rem;
+    border-radius: 0;
+    padding: 0;
   }
 
   .heroTitle {
-    font-size: clamp(2rem, 8vw, 3rem);
-    max-width: 12ch;
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    max-width: 13ch;
+    letter-spacing: -0.03em;
   }
 
   .heroSubtitle {
-    max-width: 34ch;
+    max-width: 28ch;
   }
 
   .servicesGrid {
