@@ -261,6 +261,7 @@ export default async function HomePage({ params }) {
         <div className={styles.heroSticky}>
           <HeroParallax className={styles.heroShell}>
             <div className={styles.heroNarrative}>
+              <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
               <h1 className={styles.heroTitle}>
                 {dict.home.heroTitle1}<br />
                 <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
@@ -268,6 +269,15 @@ export default async function HomePage({ params }) {
               <p className={styles.heroSubtitle}>
                 {dict.home.heroSubtitle}
               </p>
+              <hr className={styles.heroDivider} />
+              <div className={styles.heroCta}>
+                <Link href={`/${lang}/contact`} className="btn btn--primary">
+                  {dict.home.heroCtaPrimary}
+                </Link>
+                <Link href={`/${lang}/legal-services`} className={styles.heroCtaOutline}>
+                  {dict.home.heroCtaSecondary}
+                </Link>
+              </div>
             </div>
           </HeroParallax>
           
