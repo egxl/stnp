@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './page.module.css';
+import { Button05 } from '@/components/ui/arrow-dots-button';
 
 const slugify = (text) => {
   return text
@@ -76,13 +77,7 @@ export default function TeamRoster({ team, lang }) {
                     <h3 className={styles.memberName}>{member.name}</h3>
                     <span className={styles.memberTitle}>{Array.isArray(member.title) ? member.title[0] : member.title}</span>
                   </div>
-                  <Link href={`/${lang}/team-profile/${memberSlug}`} className={styles.detailBtn}>
-                    <span>Detail</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14" />
-                      <path d="M12 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  <Button05 href={`/${lang}/team-profile/${memberSlug}`} text="Detail" />
                 </div>
               </motion.div>
             );
