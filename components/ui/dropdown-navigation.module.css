@@ -57,6 +57,26 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
+:global(.light) .navTrigger,
+:global(.light) .navLink {
+  color: rgba(30, 41, 59, 0.8);
+  text-shadow: none;
+}
+
+:global(.light) .navTriggerActive,
+:global(.light) .navTrigger:hover,
+:global(.light) .navLink:hover {
+  color: #000;
+}
+
+:global(.light) .hoverBackground {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)),
+    rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
 .chevron {
   width: 0.9rem;
   height: 0.9rem;

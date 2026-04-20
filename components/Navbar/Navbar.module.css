@@ -39,23 +39,17 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* State class for scroll transition (global to ensure JS toggle works correctly) */
+/* State class for scroll transition */
 :global(.is-scrolled) {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%) !important;
+  border-bottom: none !important;
   box-shadow: none !important;
 }
 
-:global(.is-at-footer) {
-  transform: translateY(-100%) !important;
-  transition-duration: 0.8s;
-}
-
-:global(.is-at-footer:hover) {
-  transform: translateY(0) !important;
-  transition-duration: 0.4s;
+:global(.light) :global(.is-scrolled) {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 .nav {
@@ -66,6 +60,8 @@
   max-width: var(--max-width-wide);
   margin: 0 auto;
   height: var(--nav-height);
+  position: relative;
+  z-index: 10;
 }
 
 /* --- Logo --- */
@@ -87,6 +83,27 @@
   object-fit: contain;
   transition: transform var(--transition-base);
   filter: drop-shadow(0 2px 10px rgba(6, 14, 26, 0.22));
+}
+
+.logoLight {
+  display: none;
+}
+
+:global(.light) .logoDark {
+  display: none;
+}
+
+:global(.light) .logoLight {
+  display: block;
+}
+
+:global(.light) .header {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global(.light) .desktopControls {
+  color: #1e293b;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -184,6 +201,20 @@
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
   color: var(--color-white);
+}
+
+:global(.light) .switcherToggle {
+  color: #1e293b;
+  border-color: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.05);
+  text-shadow: none;
+}
+
+:global(.light) .switcherToggle:hover,
+:global(.light) .switcherToggle.active {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000;
+  border-color: rgba(0,0,0,0.2);
 }
 
 .switcherIcon {

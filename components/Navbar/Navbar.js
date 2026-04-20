@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -18,6 +18,7 @@ import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import StaggeredMenu from './StaggeredMenu';
 import DropdownNavigation from '@/components/ui/dropdown-navigation';
+import GradualBlur from './GradualBlur';
 
 // Hierarchy order: links after index 0 are "forward" from Home
 // and "back" when navigating back to Home.
@@ -135,28 +136,16 @@ export default function Navbar({ navDict, lang = 'en' }) {
   ];
 
   const dropdownNavItems = buildDropdownNavItems(d, lang);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Scroll detection for glassmorphism header
   useEffect(() => {
-    const header = document.getElementById('site-header');
-    if (!header) return;
-
     const onScroll = () => {
       const pathSegments = pathname.split('/').filter(Boolean);
       const isHome = pathSegments.length <= 1;
       
-      // Home threshold lowered to 150px to ensure it transitions early enough
-      const threshold = isHome ? 150 : 20;
-      
-      header.classList.toggle('is-scrolled', window.scrollY > threshold);
-
-      // Strict bottom detection: scrollHeight - scrollTop == clientHeight
-      const scrollHeight = document.documentElement.scrollHeight;
-      const scrollTop = Math.ceil(window.scrollY);
-      const clientHeight = window.innerHeight;
-      
-      const isAtBottom = (scrollTop + clientHeight) >= scrollHeight;
-      header.classList.toggle('is-at-footer', isAtBottom);
+      // Hero section logic
+      const threshold = isHome ? window.innerHeight - 100 : 20;
+      setIsScrolled(window.scrollY > threshold);
     };
 
     onScroll();
@@ -167,14 +156,23 @@ export default function Navbar({ navDict, lang = 'en' }) {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [pathname, lang]);
+  }, [pathname]);
 
   return (
     <header
       id="site-header"
-      className={`${styles.header} ${styles.ready}`}
+      className={`${styles.header} ${styles.ready} ${isScrolled ? 'is-scrolled' : ''}`}
       style={{ viewTransitionName: 'site-header' }}
     >
+      <GradualBlur
+        preset="header"
+        zIndex={0}
+        divCount={3}
+        exponential={true}
+        curve="ease-out"
+        height="5.5rem"
+        strength={2}
+      />
       <nav className={styles.nav}>
         {/* Logo — going to Home is always nav-back */}
         <Link
@@ -194,7 +192,12 @@ export default function Navbar({ navDict, lang = 'en' }) {
           <img
             src="/images/logo.png"
             alt="Soaloan Tua Nababan & Partners Logo"
-            className={styles.logoImage}
+            className={`${styles.logoImage} ${styles.logoDark}`}
+          />
+          <img
+            src="/images/logo-dark.png"
+            alt="Soaloan Tua Nababan & Partners Logo"
+            className={`${styles.logoImage} ${styles.logoLight}`}
           />
         </Link>
 
