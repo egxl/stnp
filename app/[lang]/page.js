@@ -274,7 +274,7 @@ export default async function HomePage({ params }) {
                 <Link href={`/${lang}/contact`} className="btn btn--primary">
                   {dict.home.heroCtaPrimary}
                 </Link>
-                <Link href={`/${lang}/legal-services`} className={styles.heroCtaOutline}>
+                <Link href="#practice-areas" className={styles.heroCtaOutline}>
                   {dict.home.heroCtaSecondary}
                 </Link>
               </div>
@@ -361,7 +361,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* ===== LEGAL SERVICES ===== */}
-      <section className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
+      <section id="practice-areas" className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>
