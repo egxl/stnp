@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './NotFound.module.css';
 
-export default function NotFound() {
+export default function NotFound({ showNav = false, lang = 'en' }) {
   useEffect(() => {
     document.body.classList.add('hide-footer');
     return () => document.body.classList.remove('hide-footer');
@@ -47,7 +47,7 @@ export default function NotFound() {
           </p>
 
           <div className={styles.waypoints}>
-            <Link href="/en" className={styles.waypointCard}>
+            <Link href={`/${lang}`} className={styles.waypointCard}>
               <div className={styles.waypointIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="12" cy="12" r="10"></circle>
@@ -58,7 +58,7 @@ export default function NotFound() {
               <p className={styles.waypointDesc}>Return to the main deck</p>
             </Link>
 
-            <Link href="/en/services" className={styles.waypointCard}>
+            <Link href={`/${lang}/legal-services`} className={styles.waypointCard}>
               <div className={styles.waypointIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="12" cy="5" r="3"></circle>
@@ -70,7 +70,7 @@ export default function NotFound() {
               <p className={styles.waypointDesc}>Chart your legal course</p>
             </Link>
 
-            <Link href="/en/contact" className={styles.waypointCard}>
+            <Link href={`/${lang}/contact`} className={styles.waypointCard}>
               <div className={styles.waypointIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>

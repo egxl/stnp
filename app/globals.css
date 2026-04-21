@@ -21,17 +21,21 @@
   --color-steel-light: #3D7A9E;
   --color-steel-dark: #1E4A63;
 
-  /* Neutrals */
-  --color-bg: #C7C8CA;
-  --color-bg-alt: #BDBEC0;
-  --color-surface: #D1D2D4;
-  --color-text: #1A1A2E;
-  --color-text-muted: #374151; /* Darkened for better contrast on grey background */
-  --color-text-light: #4B5563; /* Darkened for better contrast on grey background */
-  --color-border: #ABACAF;
-  --color-border-light: #B8B9BC;
+  /* Neutrals — Dark Mode Defaults */
+  --color-bg: #060E1A;
+  --color-bg-alt: #0A1628;
+  --color-surface: #101c30;
+  --color-text: #FAFBFC;
+  --color-text-muted: #9CA3AF;
+  --color-text-light: #6B7280;
+  --color-border: #1E3048;
+  --color-border-light: #16253A;
   --color-white: #FFFFFF;
-  --color-overlay: rgba(10, 22, 40, 0.7);
+  --color-overlay: rgba(10, 22, 40, 0.85);
+
+  /* Swapped primary variants for dark mode legacy support */
+  --color-primary-light: #E5E7EB;
+  --color-primary-dark: #FFFFFF;
 
   /* Typography */
   --font-heading-family: var(--font-heading), 'Times New Roman', serif;
@@ -164,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading-family);
   font-weight: 700;
   line-height: var(--leading-tight);
-  color: var(--color-primary);
+  color: var(--color-white);
   text-wrap: balance;
 }
 
@@ -182,6 +186,7 @@ p {
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
   max-width: 65ch;
+  transition: color 0.4s var(--ease-in-out);
 }
 
 .tabular-nums {
@@ -239,7 +244,8 @@ button {
 }
 
 .section--dark {
-  background-color: var(--color-primary);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
   color: var(--color-white);
   position: relative;
   z-index: 0;
@@ -253,7 +259,7 @@ button {
 }
 
 .section--dark p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-muted);
 }
 
 .section--alt {
@@ -536,28 +542,44 @@ button {
   }
 }
 
-/* --- Dark Mode Overrides --- */
-.dark {
-  --color-bg: #060E1A;
-  --color-bg-alt: #0A1628;
-  --color-surface: #101c30;
+/* --- Light Mode Overrides --- */
+.light {
+  --color-bg: #C7C8CA;
+  --color-bg-alt: #BDBEC0;
+  --color-surface: #D1D2D4;
   
-  --color-text: #FAFBFC;
-  --color-text-muted: #9CA3AF;
-  --color-text-light: #6B7280;
+  --color-text: #1A1A2E;
+  --color-text-muted: #374151;
+  --color-text-light: #4B5563;
 
-  --color-border: #1E3048;
-  --color-border-light: #16253A;
+  --color-border: #ABACAF;
+  --color-border-light: #B8B9BC;
   
-  --color-primary-light: #E5E7EB;
-  --color-primary-dark: #FFFFFF;
+  --color-primary-light: #1A2744;
+  --color-primary-dark: #060E1A;
 }
 
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: var(--color-primary);
+}
+
+.light p {
+  color: var(--color-text-muted);
+}
+
+.light .section--dark {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-top: none;
+}
+
+.light .section--dark h1,
+.light .section--dark h2,
+.light .section--dark h3,
+.light .section--dark h4 {
   color: var(--color-white);
 }
 
-.dark .section--dark {
-  background-color: var(--color-bg);
-  border-top: 1px solid var(--color-border);
+.light .section--dark p {
+  color: rgba(255, 255, 255, 0.7);
 }

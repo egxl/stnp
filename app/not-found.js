@@ -1,10 +1,11 @@
 import NotFoundComponent from "@/components/NotFound/NotFound";
-import { Jost, Newsreader, Julius_Sans_One, Michroma } from "next/font/google";
+import { Jost, Newsreader, Julius_Sans_One, Michroma, Syncopate } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import Navbar from "@/components/Navbar/Navbar";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
+import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
 
 const jost = Jost({
@@ -33,6 +34,13 @@ const michroma = Michroma({
   variable: "--font-michroma",
 });
 
+const syncopate = Syncopate({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-syncopate",
+});
+
 export const metadata = {
   title: "Page Not Found | Soaloan Tua Nababan & Partners",
   description: "The page you are looking for has been moved or does not exist.",
@@ -46,10 +54,10 @@ export default async function GlobalNotFound() {
     <html
       lang={lang}
       suppressHydrationWarning
-      className={`${jost.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable}`}
+      className={`${jost.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
     >
       <body style={{ backgroundColor: 'transparent' }}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>
           <ScrollReset />
           <Navbar navDict={dict.nav} lang={lang} />
           <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
