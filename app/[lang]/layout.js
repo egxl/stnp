@@ -1,5 +1,5 @@
 import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
-import { Geist, Newsreader, Julius_Sans_One, Michroma, Syncopate } from "next/font/google";
+import { Antic_Didone, Newsreader, Julius_Sans_One, Michroma, Syncopate } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
@@ -9,8 +9,9 @@ import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
 
-const geist = Geist({
+const anticDidone = Antic_Didone({
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
   variable: "--font-body",
 });
@@ -72,7 +73,7 @@ export default async function RootLayout({ children, params }) {
     <html
       lang={lang}
       suppressHydrationWarning
-      className={`${geist.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
+      className={`${anticDidone.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>

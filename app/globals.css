@@ -37,6 +37,7 @@
   --font-heading-family: var(--font-heading), 'Times New Roman', serif;
   --font-body-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
+
   --text-h1: clamp(2.5rem, 5vw, 4rem);
   --text-h2: clamp(2rem, 4vw, 3rem);
   --text-h3: clamp(1.5rem, 3vw, 2rem);
@@ -185,6 +186,12 @@ p {
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+.antic-didone-regular {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
 }
 
 a {

@@ -1,5 +1,5 @@
 import NotFoundComponent from "@/components/NotFound/NotFound";
-import { Geist, Newsreader, Julius_Sans_One, Michroma } from "next/font/google";
+import { Antic_Didone, Newsreader, Julius_Sans_One, Michroma } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import Navbar from "@/components/Navbar/Navbar";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
@@ -7,8 +7,9 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
 import "./globals.css";
 
-const geist = Geist({
+const anticDidone = Antic_Didone({
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
   variable: "--font-body",
 });
@@ -46,7 +47,7 @@ export default async function GlobalNotFound() {
     <html
       lang={lang}
       suppressHydrationWarning
-      className={`${geist.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable}`}
+      className={`${anticDidone.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable}`}
     >
       <body style={{ backgroundColor: 'transparent' }}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
