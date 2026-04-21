@@ -1,12 +1,12 @@
 .container {
-  min-height: 100vh;
-  width: 100vw;
+  flex: 1;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: var(--color-white);
   overflow: hidden;
-  background-color: #060E1A; /* Fallback */
+  background-color: var(--color-primary-dark);
 }
 
 /* Background Image Layer */
@@ -29,7 +29,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(6, 14, 26, 0.1) 0%, rgba(6, 14, 26, 0.8) 100%);
+  background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.1) 0%, var(--color-primary-dark) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -38,7 +38,7 @@
 .overlayDark {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(6,14,26,0.3) 0%, transparent 40%, transparent 60%, rgba(6,14,26,0.6) 100%);
+  background: linear-gradient(to bottom, rgba(var(--color-primary-rgb),0.3) 0%, transparent 40%, transparent 60%, rgba(var(--color-primary-rgb),0.6) 100%);
   z-index: 1;
 }
 

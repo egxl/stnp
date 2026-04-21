@@ -1,8 +1,16 @@
+'use client';
+
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './NotFound.module.css';
 
-export default function NotFound() {
+export default function NotFound({ showNav = false }) {
+  useEffect(() => {
+    document.body.classList.add('hide-footer');
+    return () => document.body.classList.remove('hide-footer');
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.background}>
@@ -18,12 +26,14 @@ export default function NotFound() {
         <div className={styles.overlayDark}></div>
       </div>
 
-      <nav className={styles.nav}>
-        <div className={styles.logo}>STNP</div>
-        <div className={styles.navAction}>
-          <Link href="/">+ Menu</Link>
-        </div>
-      </nav>
+      {showNav && (
+        <nav className={styles.nav}>
+          <div className={styles.logo}>STNP</div>
+          <div className={styles.navAction}>
+            <Link href="/">+ Menu</Link>
+          </div>
+        </nav>
+      )}
 
       <main className={styles.content}>
         <div className={styles.errorCode}>404</div>

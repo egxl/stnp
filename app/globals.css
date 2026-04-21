@@ -142,6 +142,11 @@ body {
   transition: background-color 0.4s var(--ease-in-out), color 0.4s var(--ease-in-out);
 }
 
+/* 404 Page Overrides */
+body.hide-footer #site-footer {
+  display: none !important;
+}
+
 /* Subtle grain overlay for surface texture */
 body::after {
   content: '';
