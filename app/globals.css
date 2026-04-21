@@ -22,14 +22,14 @@
   --color-steel-dark: #1E4A63;
 
   /* Neutrals */
-  --color-bg: #FAFBFC;
-  --color-bg-alt: #F0F2F5;
-  --color-surface: #FFFFFF;
+  --color-bg: #C7C8CA;
+  --color-bg-alt: #BDBEC0;
+  --color-surface: #D1D2D4;
   --color-text: #1A1A2E;
-  --color-text-muted: #6B7280;
-  --color-text-light: #9CA3AF;
-  --color-border: #E5E7EB;
-  --color-border-light: #F3F4F6;
+  --color-text-muted: #374151; /* Darkened for better contrast on grey background */
+  --color-text-light: #4B5563; /* Darkened for better contrast on grey background */
+  --color-border: #ABACAF;
+  --color-border-light: #B8B9BC;
   --color-white: #FFFFFF;
   --color-overlay: rgba(10, 22, 40, 0.7);
 

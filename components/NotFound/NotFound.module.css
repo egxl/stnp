@@ -139,7 +139,7 @@
   align-items: center;
   padding: 2rem 1.5rem;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.45); /* Refined sweet-spot for light glass */
+  background: rgba(199, 200, 202, 0.45); /* Refined sweet-spot for grey glass */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -156,7 +156,7 @@
 .waypointCard:hover {
   border-color: var(--color-accent);
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(199, 200, 202, 0.6);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
