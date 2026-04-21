@@ -50,13 +50,11 @@ export default async function GlobalNotFound() {
     >
       <body style={{ backgroundColor: 'transparent' }}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <LoadingProvider>
-            <ScrollReset />
-            <Navbar navDict={dict.nav} lang={lang} />
-            <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-              <NotFoundComponent showNav={false} />
-            </main>
-          </LoadingProvider>
+          <ScrollReset />
+          <Navbar navDict={dict.nav} lang={lang} />
+          <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <NotFoundComponent showNav={false} />
+          </main>
         </ThemeProvider>
       </body>
     </html>
