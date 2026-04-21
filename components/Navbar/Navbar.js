@@ -202,11 +202,11 @@ export default function Navbar({ navDict, lang = 'en' }) {
       <GradualBlur
         preset="header"
         zIndex={0}
-        divCount={3}
+        divCount={2}
         exponential={true}
         curve="ease-out"
         height="5.5rem"
-        strength={2}
+        strength={1.5}
       />
       <nav className={styles.nav}>
         {/* Logo — going to Home is always nav-back */}

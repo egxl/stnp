@@ -27,9 +27,11 @@
   padding: 0.6rem 0.95rem;
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.78);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.02em;
+  font-family: var(--font-syncopate);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   transition: color var(--transition-fast);
   text-shadow: 0 1px 10px rgba(6, 14, 26, 0.22);
 }

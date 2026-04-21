@@ -1,5 +1,5 @@
 import ViewTransitionGuard from "@/components/Components/ViewTransitionGuard/ViewTransitionGuard";
-import { Geist, Newsreader, Julius_Sans_One, Michroma } from "next/font/google";
+import { Geist, Newsreader, Julius_Sans_One, Michroma, Syncopate } from "next/font/google";
 import { getDictionary } from '@/lib/dictionaries';
 import "flag-icons/css/flag-icons.min.css";
 import "../globals.css";
@@ -35,6 +35,13 @@ const michroma = Michroma({
   variable: "--font-michroma",
 });
 
+const syncopate = Syncopate({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-syncopate",
+});
+
 export const metadata = {
   title: {
     template: "%s | Soaloan Tua Nababan & Partners",
@@ -65,10 +72,10 @@ export default async function RootLayout({ children, params }) {
     <html
       lang={lang}
       suppressHydrationWarning
-      className={`${geist.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable}`}
+      className={`${geist.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
     >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>
           <LoadingProvider>
           <ScrollReset />
           <Navbar navDict={dict.nav} lang={lang} />

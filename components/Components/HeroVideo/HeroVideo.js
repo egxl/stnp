@@ -70,9 +70,7 @@ export default function HeroVideo({ className, visibleClass }) {
       playsInline 
       className={`${className} ${isVisible ? visibleClass : ''}`}
     >
-      {/* H.265 (HEVC) for modern playback */}
-      <source src="/videos/hero-loop-hevc.mp4" type="video/mp4; codecs=hvc1" />
-      {/* Default H.264 fallback */}
+      {/* Default H.264 source — more stable across drivers */}
       <source src="/videos/hero-loop.mp4" type="video/mp4" />
       Your browser does not support the timelapse background video.
     </video>
