@@ -117,55 +117,95 @@ export function DropdownNavigation({
               <AnimatePresence>
                 {isOpen && hasSubMenus ? (
                   <motion.div
-                    className={styles.dropdownWrap}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
+                    className={`${styles.dropdownWrap} ${navItem.aside ? styles.dropdownWrapMega : ""}`}
+                    initial={{ opacity: 0, x: "-50%", y: 12 }}
+                    animate={{ opacity: 1, x: "-50%", y: 0 }}
+                    exit={{ opacity: 0, x: "-50%", y: 10 }}
                     transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                   >
                     <motion.div
-                      className={styles.dropdownPanel}
+                      className={`${styles.dropdownPanel} ${navItem.aside ? styles.dropdownPanelMega : ""}`}
                       layoutId="stnp-dropdown-panel"
                     >
-                      <div className={styles.dropdownInner}>
-                        {navItem.subMenus.map((subMenu) => (
-                          <div className={styles.groupColumn} key={subMenu.title}>
-                            <h3 className={styles.groupTitle}>{subMenu.title}</h3>
-                            <ul className={styles.groupList}>
-                              {subMenu.items.map((item) => {
-                                const Icon = item.icon;
-                                const isSubItemActive = hrefMatchesPath(currentPath, item.href);
-
-                                return (
-                                  <li key={`${subMenu.title}-${item.label}`}>
-                                    <Link
-                                      href={item.href}
-                                      className={`${styles.subMenuLink} ${
-                                        isSubItemActive ? styles.subMenuLinkActive : ""
-                                      }`}
-                                      transitionTypes={
-                                        getTransitionType
-                                          ? getTransitionType(currentPath, item.href)
-                                          : undefined
-                                      }
-                                      onClick={(e) => handleLinkClick(e, item.href)}
-                                    >
-                                      <div className={styles.iconWrap}>
-                                        <Icon className={styles.icon} aria-hidden="true" />
-                                      </div>
-                                      <div className={styles.copyWrap}>
-                                        <p className={styles.subMenuLabel}>{item.label}</p>
-                                        <p className={styles.subMenuDescription}>
-                                          {item.description}
-                                        </p>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
+                      <div className={navItem.aside ? styles.megaMenuSplit : styles.dropdownInner}>
+                        {navItem.aside && (
+                          <div className={styles.dropdownAside}>
+                            <h2 className={styles.dropdownAsideTitle}>{navItem.aside.title}</h2>
+                            <p className={styles.dropdownAsideDesc}>{navItem.aside.description}</p>
+                            {navItem.aside.cta && (
+                              <Link 
+                                href={navItem.aside.cta.href}
+                                className={styles.dropdownAsideCta}
+                                onClick={(e) => handleLinkClick(e, navItem.aside.cta.href)}
+                              >
+                                <span>{navItem.aside.cta.label}</span>
+                                <ChevronDown className={styles.ctaArrow} aria-hidden="true" />
+                              </Link>
+                            )}
                           </div>
-                        ))}
+                        )}
+
+                        <div className={navItem.aside ? styles.rightPane : ""}>
+                          <div className={styles.dropdownInner}>
+                            {navItem.subMenus.map((subMenu) => (
+                              <div className={styles.groupColumn} key={subMenu.title}>
+                                <h3 className={styles.groupTitle}>{subMenu.title}</h3>
+                                <ul className={styles.groupList}>
+                                  {subMenu.items.map((item) => {
+                                    const Icon = item.icon;
+                                    const isSubItemActive = hrefMatchesPath(currentPath, item.href);
+
+                                    return (
+                                      <li key={`${subMenu.title}-${item.label}`}>
+                                        <Link
+                                          href={item.href}
+                                          className={`${styles.subMenuLink} ${
+                                            navItem.aside ? styles.subMenuLinkCompact : ""
+                                          } ${isSubItemActive ? styles.subMenuLinkActive : ""}`}
+                                          transitionTypes={
+                                            getTransitionType
+                                              ? getTransitionType(currentPath, item.href)
+                                              : undefined
+                                          }
+                                          onClick={(e) => handleLinkClick(e, item.href)}
+                                        >
+                                          {Icon && !navItem.aside && (
+                                            <div className={styles.iconWrap}>
+                                              <Icon className={styles.icon} aria-hidden="true" />
+                                            </div>
+                                          )}
+                                          <div className={styles.copyWrap}>
+                                            <p className={styles.subMenuLabel}>{item.label}</p>
+                                            {item.description && !navItem.aside && (
+                                              <p className={styles.subMenuDescription}>
+                                                {item.description}
+                                              </p>
+                                            )}
+                                          </div>
+                                        </Link>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+
+                          {navItem.footer && (
+                            <div className={styles.dropdownFooter}>
+                              <Link 
+                                href={navItem.footer.href}
+                                className={styles.footerLink}
+                                onClick={(e) => handleLinkClick(e, navItem.footer.href)}
+                              >
+                                {navItem.footer.icon && (
+                                  <navItem.footer.icon className={styles.footerIcon} aria-hidden="true" />
+                                )}
+                                <span>{navItem.footer.label}</span>
+                              </Link>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </motion.div>
                   </motion.div>

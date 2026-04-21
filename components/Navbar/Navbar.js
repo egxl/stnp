@@ -4,14 +4,20 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
-  BookOpenText,
-  Building2,
+  Gavel,
   Landmark,
-  Mail,
-  Newspaper,
   Scale,
-  ShieldCheck,
-  Users,
+  Briefcase,
+  Building2,
+  GitMerge,
+  BarChart3,
+  Shield,
+  Zap,
+  Construction,
+  Leaf,
+  Compass,
+  Heart,
+  Mail,
 } from 'lucide-react';
 import styles from './Navbar.module.css';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
@@ -19,6 +25,26 @@ import LanguageSwitcher from './LanguageSwitcher';
 import StaggeredMenu from './StaggeredMenu';
 import DropdownNavigation from '@/components/ui/dropdown-navigation';
 import GradualBlur from './GradualBlur';
+import { serviceCategories, proBono } from '@/lib/data/services';
+
+const SERVICE_ICON_MAP = {
+  'dispute-resolution': Scale,
+  'corporate-commercial': Building2,
+  'industry-focus': Landmark,
+  litigation: Gavel,
+  'banking-finance': Landmark,
+  bankruptcy: Scale,
+  'industrial-relations': Briefcase,
+  corporate: Building2,
+  mergers: GitMerge,
+  financing: BarChart3,
+  ip: Shield,
+  'energy-mining': Zap,
+  infrastructure: Construction,
+  plantation: Leaf,
+  tourism: Compass,
+  'pro-bono': Heart,
+};
 
 // Hierarchy order: links after index 0 are "forward" from Home
 // and "back" when navigating back to Home.
@@ -37,6 +63,9 @@ const submenuCopy = {
     consultation: 'Start a conversation with STNP about your legal needs.',
     profile: 'Review the professionals representing the firm across key matters.',
     expertise: 'See the practice areas where STNP advises and litigates.',
+    practiceAreas: 'Practice Areas',
+    practiceAreasDesc: 'Comprehensive legal expertise tailored to the complex Indonesian commercial landscape.',
+    viewAll: 'View All Services',
   },
   id: {
     firm: 'Pelajari siapa kami, cara kami bekerja, dan dasar pendekatan hukum kami.',
@@ -47,6 +76,9 @@ const submenuCopy = {
     consultation: 'Mulai percakapan dengan STNP mengenai kebutuhan hukum Anda.',
     profile: 'Tinjau para profesional yang mewakili firma dalam berbagai perkara penting.',
     expertise: 'Lihat bidang praktik tempat STNP memberikan nasihat dan pendampingan.',
+    practiceAreas: 'Bidang Praktik',
+    practiceAreasDesc: 'Keahlian hukum komprehensif yang disesuaikan dengan lanskap komersial Indonesia yang kompleks.',
+    viewAll: 'Lihat Semua Layanan',
   },
   zh: {
     firm: '了解我们的事务所、工作方式，以及支撑法律服务的方法。',
@@ -54,9 +86,12 @@ const submenuCopy = {
     team: '认识负责 STNP 诉讼与顾问业务的专业律师团队。',
     insights: '阅读事务所最新文章、评论与法律动态。',
     contact: '直接联系事务所，讨论您的法律需求或预约咨询。',
-    consultation: '就您的法律事务与 STNP 展开初步沟通。',
+    consultation: '就您的法律事务 with STNP 展开初步沟通。',
     profile: '查看代表本所在重要事务中提供服务的专业人士。',
     expertise: '了解 STNP 提供咨询与代理的主要业务领域。',
+    practiceAreas: '业务领域',
+    practiceAreasDesc: '针对印度尼西亚复杂的商业环境量身定制的综合法律专业知识。',
+    viewAll: '查看所有服务',
   },
 };
 
@@ -77,25 +112,25 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 3,
       label: d.services,
-      subMenus: [
-        {
-          title: d.legalServices || d.services,
-          items: [
-            {
-              label: d.legalServices || d.services,
-              description: copy.expertise,
-              href: `/${lang}/legal-services`,
-              icon: Scale,
-            },
-            {
-              label: d.contact,
-              description: copy.contact,
-              href: `/${lang}/contact`,
-              icon: Mail,
-            },
-          ],
-        },
-      ],
+      aside: {
+        title: copy.practiceAreas,
+        description: copy.practiceAreasDesc,
+        cta: { label: copy.viewAll, href: `/${lang}/legal-services` },
+      },
+      subMenus: serviceCategories.map((category) => ({
+        title: category.title[lang] || category.title.en,
+        items: category.services.map((service) => ({
+          label: service.title[lang] || service.title.en,
+          href: `/${lang}/legal-services#${category.id}`, // Anchor per category as requested
+          icon: SERVICE_ICON_MAP[service.id] || Scale,
+          description: '', // Optional: keeping it clean
+        })),
+      })),
+      footer: {
+        label: proBono.title[lang] || proBono.title.en,
+        href: `/${lang}/legal-services#${proBono.id}`,
+        icon: Heart,
+      },
     },
     {
       id: 4,
