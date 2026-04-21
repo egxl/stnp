@@ -93,8 +93,8 @@
 .sm-panel-item {
   position: relative;
   color: #FFFFFF;
-  font-family: var(--font-heading, Georgia, serif);
-  font-weight: 600;
+  font-family: var(--font-julius), sans-serif;
+  font-weight: 400;
   font-size: clamp(2.2rem, 8vw, 3.5rem);
   cursor: pointer;
   line-height: 1;
