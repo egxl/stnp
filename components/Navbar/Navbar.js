@@ -205,7 +205,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
         divCount={2}
         exponential={true}
         curve="ease-out"
-        height="5.5rem"
+        height="100%"
         strength={1.5}
       />
       <nav className={styles.nav}>
