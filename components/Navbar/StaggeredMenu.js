@@ -80,9 +80,6 @@ export default function StaggeredMenu({
       gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 });
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
       gsap.set(textInner, { yPercent: 0 });
-      if (toggleBtnRef.current) {
-        gsap.set(toggleBtnRef.current, { color: 'rgba(255,255,255,0.85)' });
-      }
     });
     return () => ctx.revert();
   }, []);
@@ -257,15 +254,7 @@ export default function StaggeredMenu({
   /* Animate button colour                                                */
   /* ------------------------------------------------------------------ */
   const animateColor = useCallback(opening => {
-    const btn = toggleBtnRef.current;
-    if (!btn) return;
-    colorTweenRef.current?.kill();
-    colorTweenRef.current = gsap.to(btn, {
-      color: 'rgba(255,255,255,0.85)',
-      delay: 0.18,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
+    // Color handled by CSS transition
   }, []);
 
   /* ------------------------------------------------------------------ */
