@@ -12,6 +12,7 @@ import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
+import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
 import { 
   Scales, 
   Gavel, 
@@ -167,8 +168,12 @@ export default async function HomePage({ params }) {
           </HeroParallax>
           
           <HeroScrollButton />
+          
+          <AuthorityStrip dict={dict} />
         </div>
       </section>
+
+      {/* ===== AUTHORITY STRIP MOVED INSIDE HERO ===== */}
 
 
 

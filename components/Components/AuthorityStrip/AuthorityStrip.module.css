@@ -1,0 +1,78 @@
+.authorityStrip {
+  width: 100%;
+  background-color: transparent;
+  border-bottom: none;
+  padding: 1.5rem 0 0 0;
+  position: relative;
+  z-index: 5;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.label {
+  font-family: var(--font-body-family);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+.logoGrid {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.logoItem {
+  height: clamp(24px, 3.5vw, 32px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  opacity: 0.35;
+  transition: opacity 0.4s var(--ease-out), filter 0.4s var(--ease-out);
+  /* Solid White Monochromatic */
+  filter: brightness(0) invert(1);
+}
+
+.logoItem:hover {
+  opacity: 0.9;
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  
+  .logoGrid {
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .logoItem {
+    height: 24px;
+  }
+}

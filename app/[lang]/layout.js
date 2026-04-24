@@ -74,7 +74,7 @@ export default async function RootLayout({ children, params }) {
       suppressHydrationWarning
       className={`${jost.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>
           <LoadingProvider>
           <ScrollReset />
