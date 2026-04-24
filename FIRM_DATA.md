@@ -51,7 +51,7 @@ Detailed biographies and specializations of our leadership and legal team.
 
 #### **Oswald Anggi Soaloan, S.H.** | *Managing Partner*
 *   **Education**: Bachelor of Law (2009) from Gadjah Mada University (UGM).
-*   **Credentials**: Advocate license (PERADI); Capital Market Legal Consultant (Konsultan Hukum Pasar Modal) course.
+*   **Credentials**: Advocate license (PERADI); Financial Sector Legal Consultant (HKHSK - formerly Capital Market Legal Consultant/HKHPM) course.
 *   **Background**: Prior to STNP, worked at several firms handling high-profile litigation and projects.
 *   **Specialization**: Commercial litigation, bankruptcy, mining, plantation, and energy.
 
@@ -254,7 +254,7 @@ Profil lengkap para pendiri firma dalam Bahasa Indonesia, termasuk riwayat pendi
 Oswald memperoleh gelar Sarjana Hukum pada tahun 2008 dari Universitas Gadjah Mada, salah satu universitas terbaik di Indonesia. Setelah menyelesaikan pendidikan formalnya, pada tahun 2014 Oswald resmi disumpah pada Pengadilan Tinggi Bandung sebagai Advokat.
 
 #### Pendidikan Non-Formal
-*   Pendidikan Konsultan Pasar Modal **Tingkat I dan Tingkat II** – Lembaga Manajemen Keuangan dan Akuntansi
+*   Pendidikan Konsultan Hukum Sektor Keuangan (**HKHSK** - dahulu Konsultan Hukum Pasar Modal/**HKHPM**) Tingkat I dan Tingkat II – Lembaga Manajemen Keuangan dan Akuntansi
 *   Pendidikan Hukum Mineral dan Pertambangan – Yayasan Lembaga Bantuan Hukum Indonesia
 *   Pendidikan Kurator dan Pengurus – Asosiasi Kurator dan Pengurus Indonesia (AKPI)
 
