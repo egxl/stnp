@@ -33,10 +33,14 @@
     "clientsTitle": "Dipercaya oleh Pemimpin Industri",
     "heroCtaPrimary": "Jadwalkan Konsultasi",
     "heroCtaSecondary": "Bidang Praktik Kami",
-    "clientsStatClients": "Klien",
-    "clientsStatIndustries": "Industri",
-    "clientsStatYears": "Tahun",
-    "clientsStatSince": "Sejak"
+    "clientsKeyword1": "Strategis",
+    "clientsKeyword1Sub": "Resolusi",
+    "clientsKeyword2": "Berprinsip",
+    "clientsKeyword2Sub": "Efisiensi",
+    "clientsKeyword3": "Terbukti",
+    "clientsKeyword3Sub": "Hasil",
+    "clientsKeyword4": "Tanpa Henti",
+    "clientsKeyword4Sub": "Advokasi"
   },
   "footer": {
     "quickLinks": "Tautan Cepat",

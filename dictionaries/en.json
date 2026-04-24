@@ -33,10 +33,14 @@
     "clientsTitle": "Trusted by Industry Leaders",
     "heroCtaPrimary": "Schedule Consultation",
     "heroCtaSecondary": "Our Practice Areas",
-    "clientsStatClients": "Clients",
-    "clientsStatIndustries": "Industries",
-    "clientsStatYears": "Years",
-    "clientsStatSince": "Since"
+    "clientsKeyword1": "Strategic",
+    "clientsKeyword1Sub": "Resolution",
+    "clientsKeyword2": "Principled",
+    "clientsKeyword2Sub": "Efficiency",
+    "clientsKeyword3": "Proven",
+    "clientsKeyword3Sub": "Results",
+    "clientsKeyword4": "Relentless",
+    "clientsKeyword4Sub": "Advocacy"
   },
   "footer": {
     "quickLinks": "Quick Links",

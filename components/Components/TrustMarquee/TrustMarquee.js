@@ -24,20 +24,20 @@ export default function TrustMarquee({ clients, dict }) {
     <>
       <div className={styles.trustStats}>
         <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>24+</span>
-          <span className={styles.trustStatLabel}>{dict.clientsStatClients}</span>
+          <span className={styles.trustStatNumber}>{dict.clientsKeyword1}</span>
+          <span className={styles.trustStatLabel}>{dict.clientsKeyword1Sub}</span>
         </div>
         <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>7+</span>
-          <span className={styles.trustStatLabel}>{dict.clientsStatIndustries}</span>
+          <span className={styles.trustStatNumber}>{dict.clientsKeyword2}</span>
+          <span className={styles.trustStatLabel}>{dict.clientsKeyword2Sub}</span>
         </div>
         <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>8+</span>
-          <span className={styles.trustStatLabel}>{dict.clientsStatYears}</span>
+          <span className={styles.trustStatNumber}>{dict.clientsKeyword3}</span>
+          <span className={styles.trustStatLabel}>{dict.clientsKeyword3Sub}</span>
         </div>
         <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>2018</span>
-          <span className={styles.trustStatLabel}>{dict.clientsStatSince}</span>
+          <span className={styles.trustStatNumber}>{dict.clientsKeyword4}</span>
+          <span className={styles.trustStatLabel}>{dict.clientsKeyword4Sub}</span>
         </div>
       </div>
 
