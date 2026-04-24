@@ -55,19 +55,20 @@ export const metadata = {
 
 const heroTitleLayouts = {
   en: [
-    { text: 'Trusted Counsel', accent: true },
-    { text: 'for the Matters That', nowrap: true },
-    { text: 'Define Your Business', accent: true },
+    { text: 'Trusted Counsel', accent: true, nowrap: true },
+    { text: 'for the Matters', nowrap: true },
+    { text: 'that Define', accent: true, nowrap: true },
+    { text: 'Your Business', accent: true, nowrap: true },
   ],
   id: [
-    { text: 'Penasihat Terpercaya', accent: true },
-    { text: 'untuk Perkara yang' },
-    { text: 'Menentukan Bisnis Anda', accent: true },
+    { text: 'Penasihat Terpercaya', accent: true, nowrap: true },
+    { text: 'untuk Perkara yang', nowrap: true },
+    { text: 'Menentukan Bisnis Anda', accent: true, nowrap: true },
   ],
   zh: [
-    { text: '值得信赖的法律顾问', accent: true },
-    { text: '为您业务的' },
-    { text: '关键事务', accent: true },
+    { text: '值得信赖的法律顾问', accent: true, nowrap: true },
+    { text: '为您业务的', nowrap: true },
+    { text: '关键事务', accent: true, nowrap: true },
   ],
 };
 
