@@ -121,11 +121,11 @@
 .heroTitle {
   max-width: 100%;
   font-family: var(--font-julius), sans-serif;
-  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.8rem);
   font-weight: 400;
   color: var(--color-white);
-  line-height: 1.1;
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.15;
+  margin-bottom: 0;
   letter-spacing: 0.02em;
   text-shadow: 0 2px 24px rgba(6, 14, 26, 0.38);
   text-wrap: balance;
@@ -150,13 +150,13 @@
   color: rgba(255, 255, 255, 0.82);
   max-width: 34ch;
   line-height: 1.65;
-  margin-bottom: 0;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   text-shadow: 0 1px 20px rgba(6, 14, 26, 0.5);
   position: relative;
   z-index: 1;
   opacity: 0;
   animation: heroReveal 560ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: 320ms;
+  animation-delay: 380ms;
 }
 
 .heroDivider {
@@ -164,10 +164,10 @@
   height: 2px;
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
   border: none;
-  margin: clamp(1.2rem, 2vw, 1.8rem) 0;
+  margin: clamp(1.4rem, 2.5vw, 2rem) 0;
   opacity: 0;
   animation: heroReveal 400ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: 440ms;
+  animation-delay: 280ms;
 }
 
 .heroCta {
@@ -176,7 +176,7 @@
   gap: var(--space-md);
   opacity: 0;
   animation: heroReveal 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: 540ms;
+  animation-delay: 480ms;
 }
 
 .heroCtaOutline {

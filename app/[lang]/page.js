@@ -11,7 +11,6 @@ import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrol
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
-import HeroSecondary from '@/components/Components/HeroSecondary/HeroSecondary';
 import { 
   Scales, 
   Gavel, 
@@ -84,19 +83,18 @@ export default async function HomePage({ params }) {
             <div className={styles.heroNarrative}>
               <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
               <h1 className={styles.heroTitle}>
-                {dict.home.heroTitle1}<br />
-                <span className={styles.heroTitleAccent}>{dict.home.heroTitle2}</span>
+                {dict.home.secondaryTitle}
               </h1>
-              <p className={styles.heroSubtitle}>
-                {dict.home.heroSubtitle}
-              </p>
               <hr className={styles.heroDivider} />
+              <p className={styles.heroSubtitle}>
+                {dict.home.secondarySub}
+              </p>
               <div className={styles.heroCta}>
-                <Link href={`/${lang}/contact`} className="btn btn--primary">
-                  {dict.home.heroCtaPrimary}
+                <Link href={`/${lang}/team-profile`} className="btn btn--primary">
+                  {dict.home.secondaryCta1}
                 </Link>
-                <Link href="#practice-areas" className={styles.heroCtaOutline}>
-                  {dict.home.heroCtaSecondary}
+                <Link href={`/${lang}/legal-services`} className="btn btn--outline">
+                  {dict.home.secondaryCta2}
                 </Link>
               </div>
             </div>
@@ -105,9 +103,6 @@ export default async function HomePage({ params }) {
           <HeroScrollButton />
         </div>
       </section>
-
-      {/* ===== SECONDARY HERO ===== */}
-      <HeroSecondary lang={lang} dict={dict} />
 
       {/* ===== ABOUT SUMMARY ===== */}
       <section className={`${styles.aboutSection} card-swap-section`}>

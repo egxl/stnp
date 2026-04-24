@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 
 export default function LoadingProvider({ children }) {
-  const [isReady, setIsReady] = useState(() => {
-    // Check if we've already booted in this session
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('stnp-site-ready') === 'true' || false;
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('stnp-site-ready') === 'true') {
+      setIsReady(true);
     }
-    return false;
-  });
+  }, []);
 
   const handleComplete = () => {
     setIsReady(true);
