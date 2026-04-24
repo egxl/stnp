@@ -7,7 +7,7 @@ import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 
 
-import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
+
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
@@ -167,7 +167,7 @@ export default async function HomePage({ params }) {
             </div>
           </HeroParallax>
           
-          <HeroScrollButton />
+
           
           <AuthorityStrip dict={dict} />
         </div>
