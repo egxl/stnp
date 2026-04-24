@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     viewTransition: true,
+    cssChunking: 'strict',
   },
   images: {
     remotePatterns: [
