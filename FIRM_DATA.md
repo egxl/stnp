@@ -124,6 +124,36 @@ The firm provides a wide range of legal expertise categorized across various pra
 
 ---
 
+## 🤝 Our Clients
+
+The firm has represented a diverse range of clients across various industries, including:
+
+*   **Toba Sejahtra**
+*   **Sony Music Indonesia**
+*   **PT Kharisma Starvision Plus**
+*   **PT East Vorich International**
+*   **PT Prospek Duta Sukses**
+*   **PT Indonesian Paradise Property, Tbk.**
+*   **Toba Pengembang Sejahtra**
+*   **PT Sentul City Tbk**
+*   **PT Sukaputra Graha Cemerlang**
+*   **PT Gentamulia Infra**
+*   **Kartanegara Energi Perkas**
+*   **Delimuda Perkasa**
+*   **PT Advanced Agri Indonesia**
+*   **PT PLN (Persero)**
+*   **PT Manado Maju Wisata**
+*   **PT Marksindo Sukses Jaya**
+*   **PT Arinofa Visi Karya Indonesia**
+*   **PT Danisindo Semesta Logistik**
+*   **Security AI Limited**
+*   **Bank Negara Indonesia (BNI)**
+*   **PT Mandiri Utama Finance**
+*   **PT Timor Properti Investindo**
+*   **Bumiputera**
+
+---
+
 ## 📋 Partner Expertise & Track Record
 
 A comprehensive overview of the professional qualifications, expertise, and track records of the partners at Soaloan Tua Nababan & Partners. These profiles highlight extensive experience in handling complex legal matters ranging from commercial litigation and dispute resolution to corporate restructuring, banking finance, and industrial relations.

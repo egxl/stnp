@@ -8,7 +8,9 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:emilkowal.ski)",
       "Bash(npm show *)",
-      "WebFetch(domain:claude.ai)"
+      "WebFetch(domain:claude.ai)",
+      "Bash(npm install *)",
+      "Bash(npm search *)"
     ]
   }
 }

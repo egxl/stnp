@@ -11,6 +11,7 @@ import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrol
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
+import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
 import { 
   Scales, 
   Gavel, 
@@ -57,7 +58,13 @@ const heroTitleLayouts = {
   en: [
     { text: 'Trusted Counsel', accent: true, nowrap: true },
     { text: 'for the Matters', nowrap: true },
-    { text: 'that Define', accent: true, nowrap: true },
+    { 
+      text: [
+        { text: 'that ' },
+        { text: 'Define', accent: true }
+      ], 
+      nowrap: true 
+    },
     { text: 'Your Business', accent: true, nowrap: true },
   ],
   id: [
@@ -79,18 +86,33 @@ function renderHeroTitle(title, lang, styles) {
     return <span className={styles.heroTitleLine}>{title}</span>;
   }
 
-  return lines.map((line, index) => (
-    <span
-      key={`${lang}-${index}`}
-      className={[
-        styles.heroTitleLine,
-        line.accent ? styles.heroTitleAccent : '',
-        line.nowrap ? styles.heroTitleLineNoWrap : '',
-      ].filter(Boolean).join(' ')}
-    >
-      {line.text}
-    </span>
-  ));
+  return lines.map((line, index) => {
+    const isArray = Array.isArray(line.text);
+    
+    return (
+      <span
+        key={`${lang}-${index}`}
+        className={[
+          styles.heroTitleLine,
+          !isArray && line.accent ? styles.heroTitleAccent : '',
+          line.nowrap ? styles.heroTitleLineNoWrap : '',
+        ].filter(Boolean).join(' ')}
+      >
+        {isArray ? (
+          line.text.map((part, pIdx) => (
+            <span 
+              key={pIdx} 
+              className={part.accent ? styles.heroTitleAccent : ''}
+            >
+              {part.text}
+            </span>
+          ))
+        ) : (
+          line.text
+        )}
+      </span>
+    );
+  });
 }
 
 export default async function HomePage({ params }) {
@@ -110,10 +132,16 @@ export default async function HomePage({ params }) {
     <>
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} ${styles.snapSection}`}>
-        {/* Background Video Component */}
-        <HeroVideo 
+        {/* Background Video Component - BACKUP */}
+        {/* <HeroVideo 
           className={styles.heroVideo} 
           visibleClass={styles.videoVisible} 
+        /> */}
+
+        <FloatingLines 
+          className={`${styles.heroVideo} ${styles.videoVisible}`} 
+          linesGradient={['#C4A35A', '#2C5F7C', '#051020']}
+          mixBlendMode="screen"
         />
 
         <div className={styles.heroSticky}>
