@@ -27,9 +27,9 @@
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--color-accent);
   white-space: nowrap;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .logoGrid {

@@ -596,3 +596,64 @@ button {
 .light .section--dark p {
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* ── Dark Sections Override ──────────────────────────────────────────────────
+   Some sections (Hero, Trust Marquee, Quote Banner, CTA) consistently use
+   dark backgrounds. We force their text to remain light/gold in light mode.
+────────────────────────────────────────────────────────────────────────── */
+:where(.light) [class*="hero"],
+:where(.light) [class*="pageHero"],
+:where(.light) [class*="trustSection"],
+:where(.light) [class*="quoteBanner"],
+:where(.light) [class*="ctaSection"] {
+  color: var(--color-white);
+}
+
+:where(.light) [class*="hero"] h1,
+:where(.light) [class*="pageHero"] h1,
+:where(.light) [class*="hero"] h2,
+:where(.light) [class*="pageHero"] h2,
+:where(.light) [class*="trustSection"] h2,
+:where(.light) [class*="quoteBanner"] h2,
+:where(.light) [class*="ctaSection"] h2,
+:where(.light) [class*="heroTitle"]:not([class*="Accent"]) {
+  color: var(--color-white) !important;
+}
+
+:where(.light) [class*="heroTitle"][class*="Accent"],
+:where(.light) [class*="heroLabel"],
+:where(.light) [class*="trustLabel"],
+:where(.light) [class*="quoteOpen"],
+:where(.light) [class*="quoteClose"],
+:where(.light) [class*="quoteCite"] {
+  color: var(--color-accent) !important;
+}
+
+:where(.light) [class*="hero"] p,
+:where(.light) [class*="pageHero"] p,
+:where(.light) [class*="heroSubtitle"],
+:where(.light) [class*="trustHeader"] p,
+:where(.light) [class*="quoteContent"] p,
+:where(.light) [class*="ctaText"] {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+:where(.light) [class*="breadcrumb"] {
+  color: var(--color-accent) !important;
+}
+
+:where(.light) [class*="heroLabel"]::before {
+  background-color: var(--color-accent) !important;
+}
+
+:where(.light) [class*="hero"] .btn--outline,
+:where(.light) [class*="pageHero"] .btn--outline {
+  color: var(--color-white) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+:where(.light) [class*="hero"] .btn--outline:hover,
+:where(.light) [class*="pageHero"] .btn--outline:hover {
+  color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
