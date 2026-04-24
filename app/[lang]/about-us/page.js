@@ -1,4 +1,6 @@
 import { firmInfo } from '@/lib/data/team';
+import { getDictionary } from '@/lib/dictionaries';
+import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -7,7 +9,10 @@ export const metadata = {
     'Learn about Soaloan Tua Nababan & Partners — a full-service Jakarta law firm founded in 2018, dedicated to truth, justice, and excellence.',
 };
 
-export default function AboutPage() {
+export default async function AboutPage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
     <>
       {/* Hero Banner */}
@@ -21,6 +26,42 @@ export default function AboutPage() {
               A legacy of excellence in legal services since 2018
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ===== ABOUT SUMMARY (Moved from Home) ===== */}
+      <section className={`${styles.aboutSection} card-swap-section`}>
+        <div className={styles.aboutSticky}>
+          <div className="container">
+            <div className={styles.aboutGrid}>
+              <div className={styles.aboutLeft}>
+                <span className="section-label">{dict.home.aboutLabel}</span>
+                <h2 className="section-title">{dict.home.aboutTitle}</h2>
+                <hr className="divider divider--left" />
+                <p className={styles.aboutText}>
+                  {dict.home.aboutText.replace('{founder}', firmInfo.founder)}
+                </p>
+              </div>
+              <div className={styles.aboutRight}>
+                <CardSwap width="100%" height="auto">
+                  {firmInfo.principles.map((p, i) => (
+                    <Card key={i} className={styles.principleCardWrapper}>
+                      <div className={styles.principleHeader}>
+                        <div className={styles.principleNumber}>0{i + 1}</div>
+                        <h4 className={styles.principleTitle}>{p.title}</h4>
+                      </div>
+                      <p className={styles.principleDesc}>{p.description}</p>
+                    </Card>
+                  ))}
+                </CardSwap>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.aboutSnapTrack}>
+          {firmInfo.principles.map((_, i) => (
+            <div key={i} className={styles.snapPoint} />
+          ))}
         </div>
       </section>
 

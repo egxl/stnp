@@ -273,3 +273,98 @@
     gap: var(--space-sm);
   }
 }
+
+/* ===== ABOUT SECTION (Moved from Home) ===== */
+.aboutSection {
+  position: relative;
+  background: var(--color-bg);
+  z-index: 0;
+}
+
+.aboutSticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.aboutSnapTrack {
+  margin-top: -100vh;
+  width: 100%;
+  pointer-events: none;
+}
+
+.snapPoint {
+  height: 100vh;
+  width: 100%;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  /* Center aligning fixes the ugly top-lock */
+}
+
+.aboutLeft {
+  padding-right: var(--space-lg);
+}
+
+.aboutText {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-top: var(--space-md);
+}
+
+.aboutRight {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Premium Typography for Cards */
+.principleHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  /* Dynamic separator */
+  padding-bottom: var(--space-md);
+}
+
+.principleNumber {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  /* Accent remains dynamic */
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.principleTitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 400;
+  /* Sophisticated medium/regular weight */
+  /* Reverting color to inherit native H4 styling so it works in both Light and Dark */
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.principleDesc {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  /* Dynamic text color */
+  line-height: 1.7;
+  margin: 0;
+}

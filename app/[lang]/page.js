@@ -6,7 +6,7 @@ import { serviceCategories } from '@/lib/data/services';
 import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
 
-import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
+
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
@@ -53,7 +53,44 @@ export const metadata = {
     'STNP is a full-service Jakarta law firm specializing in bankruptcy, commercial litigation, corporate law, project financing, infrastructure, and plantation.',
 };
 
+const heroTitleLayouts = {
+  en: [
+    { text: 'Trusted Counsel', accent: true },
+    { text: 'for the Matters That', nowrap: true },
+    { text: 'Define Your Business', accent: true },
+  ],
+  id: [
+    { text: 'Penasihat Terpercaya', accent: true },
+    { text: 'untuk Perkara yang' },
+    { text: 'Menentukan Bisnis Anda', accent: true },
+  ],
+  zh: [
+    { text: '值得信赖的法律顾问', accent: true },
+    { text: '为您业务的' },
+    { text: '关键事务', accent: true },
+  ],
+};
 
+function renderHeroTitle(title, lang, styles) {
+  const lines = heroTitleLayouts[lang];
+
+  if (!lines?.length) {
+    return <span className={styles.heroTitleLine}>{title}</span>;
+  }
+
+  return lines.map((line, index) => (
+    <span
+      key={`${lang}-${index}`}
+      className={[
+        styles.heroTitleLine,
+        line.accent ? styles.heroTitleAccent : '',
+        line.nowrap ? styles.heroTitleLineNoWrap : '',
+      ].filter(Boolean).join(' ')}
+    >
+      {line.text}
+    </span>
+  ));
+}
 
 export default async function HomePage({ params }) {
   const { lang } = await params;
@@ -83,7 +120,7 @@ export default async function HomePage({ params }) {
             <div className={styles.heroNarrative}>
               <span className={styles.heroLabel}>{dict.home.heroLabel}</span>
               <h1 className={styles.heroTitle}>
-                {dict.home.secondaryTitle}
+                {renderHeroTitle(dict.home.secondaryTitle, lang, styles)}
               </h1>
               <hr className={styles.heroDivider} />
               <p className={styles.heroSubtitle}>
@@ -101,43 +138,6 @@ export default async function HomePage({ params }) {
           </HeroParallax>
           
           <HeroScrollButton />
-        </div>
-      </section>
-
-      {/* ===== ABOUT SUMMARY ===== */}
-      <section className={`${styles.aboutSection} card-swap-section`}>
-        <div className={styles.aboutSticky}>
-
-          <div className="container">
-            <div className={styles.aboutGrid}>
-              <div className={styles.aboutLeft}>
-                <span className="section-label">{dict.home.aboutLabel}</span>
-                <h2 className="section-title">{dict.home.aboutTitle}</h2>
-                <hr className="divider divider--left" />
-                <p className={styles.aboutText}>
-                  {dict.home.aboutText.replace('{founder}', firmInfo.founder)}
-                </p>
-              </div>
-              <div className={styles.aboutRight}>
-                <CardSwap width="100%" height="auto">
-                  {firmInfo.principles.map((p, i) => (
-                    <Card key={i} className={styles.principleCardWrapper}>
-                      <div className={styles.principleHeader}>
-                        <div className={styles.principleNumber}>0{i + 1}</div>
-                        <h4 className={styles.principleTitle}>{p.title}</h4>
-                      </div>
-                      <p className={styles.principleDesc}>{p.description}</p>
-                    </Card>
-                  ))}
-                </CardSwap>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.aboutSnapTrack}>
-          {firmInfo.principles.map((_, i) => (
-            <div key={i} className={styles.snapPoint} />
-          ))}
         </div>
       </section>
 
