@@ -11,6 +11,7 @@ import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrol
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
+import HeroSecondary from '@/components/Components/HeroSecondary/HeroSecondary';
 import { 
   Scales, 
   Gavel, 
@@ -104,6 +105,9 @@ export default async function HomePage({ params }) {
           <HeroScrollButton />
         </div>
       </section>
+
+      {/* ===== SECONDARY HERO ===== */}
+      <HeroSecondary lang={lang} dict={dict} />
 
       {/* ===== ABOUT SUMMARY ===== */}
       <section className={`${styles.aboutSection} card-swap-section`}>
