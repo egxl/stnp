@@ -300,6 +300,48 @@
   animation-delay: 480ms;
 }
 
+/* ── Light Mode Overrides for Hero ──────────────────────────────────────────
+   The hero background remains dark even in light mode, so we force
+   text colors to maintain their high-contrast light values.
+────────────────────────────────────────────────────────────────────────── */
+:global(.light) .heroLabel {
+  color: var(--color-accent);
+}
+
+:global(.light) .heroLabel::before {
+  background-color: var(--color-accent);
+}
+
+:global(.light) .heroTitle {
+  color: var(--color-white) !important;
+}
+
+:global(.light) .heroTitleLine {
+  color: rgba(250, 247, 239, 0.98) !important;
+}
+
+:global(.light) .heroTitleAccent {
+  color: var(--color-accent) !important;
+}
+
+:global(.light) .heroSubtitle {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+:global(.light) .heroCtaOutline {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+:global(.light) .heroCta :global(.btn--outline) {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+:global(.light) .heroCta :global(.btn--outline:hover) {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 .heroCtaOutline {
   display: inline-flex;
   align-items: center;
