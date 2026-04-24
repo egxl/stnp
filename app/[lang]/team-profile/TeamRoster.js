@@ -6,14 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './page.module.css';
 import { Button05 } from '@/components/ui/arrow-dots-button';
 
-const slugify = (text) => {
-  return text
-    .toLowerCase()
-    .replace(/[\s.,]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-};
-
 const filterOptions = [
   { id: 'all', label: 'All' },
   { id: 'partner', label: 'Partners' },
@@ -45,7 +37,8 @@ export default function TeamRoster({ team, lang }) {
       <motion.div layout className={styles.teamGrid}>
         <AnimatePresence mode="popLayout">
           {filteredTeam.map((member) => {
-            const memberSlug = slugify(member.name);
+            const profileHref = `/${lang}/team-profile/${member.slug}`;
+            
             return (
               <motion.div
                 key={member.id}
@@ -77,7 +70,7 @@ export default function TeamRoster({ team, lang }) {
                     <h3 className={styles.memberName}>{member.name}</h3>
                     <span className={styles.memberTitle}>{Array.isArray(member.title) ? member.title[0] : member.title}</span>
                   </div>
-                  <Button05 href={`/${lang}/team-profile/${memberSlug}`} text="Detail" />
+                  <Button05 href={profileHref} text="Detail" />
                 </div>
               </motion.div>
             );
