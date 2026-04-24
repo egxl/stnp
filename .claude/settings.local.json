@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx skills *)"
+      "Bash(npx skills *)",
+      "Bash(npx *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:emilkowal.ski)",
+      "Bash(npm show *)",
+      "WebFetch(domain:claude.ai)"
     ]
   }
 }

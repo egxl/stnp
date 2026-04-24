@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "d823593e24d7493ab740db8f082cbe3b148ed29af9e804d11f5302ad79e4b96d"
     },
+    "emil-design-eng": {
+      "source": "emilkowalski/skill",
+      "sourceType": "github",
+      "computedHash": "ac3fc5b4e206488ffc408a2806f829bb2e5eaf518fded09be34790685c2b3a0d"
+    },
     "full-output-enforcement": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
@@ -25,6 +30,11 @@
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "computedHash": "6b53207f7b1cc3f0d806ec60675c83d9ec74363a547649b2fac1a088838c37d4"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "computedHash": "6894a8e7c14df9b063925cb134c73b2ca8c912c015710ac36f2f250d7c7ab998"
     },
     "industrial-brutalist-ui": {
       "source": "Leonxlnx/taste-skill",

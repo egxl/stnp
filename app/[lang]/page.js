@@ -5,7 +5,7 @@ import { firmInfo } from '@/lib/data/team';
 import { serviceCategories } from '@/lib/data/services';
 import { pastClients } from '@/lib/data/clients';
 import { decodeHtmlEntities, stripHtml } from '@/lib/utils';
-import BorderGlow from '@/components/Components/BorderGlow/BorderGlow';
+
 import CardSwap, { Card } from '@/components/Animations/CardSwap/CardSwap';
 import HeroScrollButton from '@/components/Components/HeroScrollButton/HeroScrollButton';
 import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
@@ -278,7 +278,7 @@ export default async function HomePage({ params }) {
                  });
 
                 return (
-                  <BorderGlow key={post.id} className={styles.articleCard} glowColor="40 80 80" borderRadius={12}>
+                  <div key={post.id} className={styles.articleCard}>
                     <div className={styles.articleImage}>
                       {featuredImg ? (
                         <img src={featuredImg} alt={post.title.rendered} />
@@ -304,7 +304,7 @@ export default async function HomePage({ params }) {
                         {stripHtml(post.excerpt.rendered).substring(0, 120)}…
                       </p>
                     </div>
-                  </BorderGlow>
+                  </div>
                 );
               })}
             </div>
