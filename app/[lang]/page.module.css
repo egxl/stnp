@@ -626,10 +626,11 @@
 }
 
 .quoteAuthorInfo {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
 }
 
 .quoteCite {
@@ -656,6 +657,45 @@
 .quoteSignature img {
   width: 100%;
   height: auto;
+}
+
+.quoteCta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.quoteLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 0.85rem 2.2rem;
+  background: rgba(196, 163, 90, 0.05);
+  border: 1px solid rgba(196, 163, 90, 0.2);
+  border-radius: 100px;
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.quoteLink:hover {
+  background: rgba(196, 163, 90, 0.12);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(196, 163, 90, 0.3);
+}
+
+.quoteLink svg {
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.quoteLink:hover svg {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {

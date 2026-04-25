@@ -1,0 +1,67 @@
+.principlesSection {
+  background: #080d16;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-xl) 0;
+}
+
+.principlesRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: var(--space-lg) 0;
+}
+
+.principle {
+  flex: 1;
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.principleLabel {
+  display: block;
+  font-family: var(--font-body-family);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.principleRule {
+  width: 1px;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .principlesRow {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .principleRule {
+    display: none;
+  }
+
+  .principle {
+    padding: var(--space-sm) 0;
+  }
+}
+
+:global(.light) .principlesSection {
+  background: #f8f9fa;
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+:global(.light) .principleLabel {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+:global(.light) .principleRule {
+  background: rgba(0, 0, 0, 0.08);
+}

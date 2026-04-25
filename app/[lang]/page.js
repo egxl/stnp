@@ -14,6 +14,8 @@ import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
 import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
 import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
+import FirmPrinciples from '@/components/Components/FirmPrinciples/FirmPrinciples';
+import PracticeAccordion from '@/components/Components/PracticeAccordion/PracticeAccordion';
 import { 
   Scales, 
   Gavel, 
@@ -27,7 +29,8 @@ import {
   Lightning, 
   HardHat, 
   Compass, 
-  Heart 
+  Heart,
+  CaretRight
 } from '@phosphor-icons/react/dist/ssr';
 import styles from './page.module.css';
 
@@ -191,15 +194,15 @@ export default async function HomePage({ params }) {
       </section>
 
 
-      {/* ===== LEGAL SERVICES ===== */}
+      {/* ===== LEGAL SERVICES (CURRENT) ===== */}
       <section id="practice-areas" className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>
-            <h2 className="section-title">{dict.home.servicesTitle}</h2>
+            <h2 className="section-title">Legal Services (Current)</h2>
             <hr className="divider" />
             <p className="section-subtitle">
-              {dict.home.servicesSubtitle}
+              Strategic legal counsel across three core disciplines — from courtroom to boardroom.
             </p>
           </div>
           <div className={styles.atlasContainer}>
@@ -267,6 +270,29 @@ export default async function HomePage({ params }) {
         </div>
       </section>
 
+      {/* ===== WHAT WE DO (NEW ACCORDION - REVIEW MODE) ===== */}
+      <section className={`section ${styles.snapSection}`}>
+        <div className="container">
+          <div style={{ display: 'inline-block', padding: '4px 12px', background: 'var(--color-accent)', color: 'var(--color-primary-dark)', fontSize: '0.7rem', fontWeight: 'bold', borderRadius: '4px', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            Review Mode: Option B (Accordion)
+          </div>
+          <div className="section-header">
+            <span className="section-label">{dict.home.servicesLabel}</span>
+            <h2 className="section-title">{dict.home.servicesTitle}</h2>
+            <hr className="divider" />
+            <p className="section-subtitle">
+              {dict.home.servicesSubtitle}
+            </p>
+          </div>
+          
+          <PracticeAccordion 
+            serviceCategories={serviceCategories} 
+            dict={dict.home} 
+            lang={lang} 
+          />
+        </div>
+      </section>
+
       {/* ===== QUOTE BANNER ===== */}
       <section className={`${styles.quoteBanner} ${styles.snapSection}`}>
         <div className={styles.quotePortrait}>
@@ -285,9 +311,18 @@ export default async function HomePage({ params }) {
                 <img src="/images/quotes/signature.svg" alt="Thomas Jefferson Signature" />
               </div>
             </div>
+            
+            <div className={styles.quoteCta}>
+              <Link href={`/${lang}/about-us`} className={styles.quoteLink}>
+                <span>{dict.home.clientsLearnMore}</span>
+                <CaretRight size={14} weight="bold" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
+      <FirmPrinciples dict={dict.home} />
 
       {/* ===== LATEST ARTICLES ===== */}
       {latestPosts.length > 0 && (

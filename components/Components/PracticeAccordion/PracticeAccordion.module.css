@@ -1,0 +1,332 @@
+.accordionContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  width: 100%;
+}
+
+.accordionRow {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 200ms var(--ease-out);
+}
+
+.accordionRow:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.accordionRow:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Header Trigger */
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 160ms var(--ease-out);
+}
+
+.accordionHeader:active {
+  transform: scale(0.995);
+}
+
+.headerMain {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.categoryIndex {
+  font-family: var(--font-body-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.categoryTitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--color-white);
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 200ms var(--ease-out);
+}
+
+.accordionRowExpanded .categoryTitle {
+  color: var(--color-accent);
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.serviceCount {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  opacity: 0.5;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.accordionRowExpanded .serviceCount {
+  opacity: 1;
+}
+
+.expandHint {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.expandHintText {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out);
+}
+
+.accordionHeader:hover .expandHintText {
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+.accordionRowExpanded .expandHintText {
+  opacity: 0 !important;
+}
+
+.iconWrapper {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-accent);
+  transition: border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), transform 250ms var(--ease-out);
+}
+
+.accordionHeader:hover .iconWrapper {
+  border-color: var(--color-accent);
+  background-color: rgba(196, 163, 90, 0.05);
+}
+
+.accordionRowExpanded .iconWrapper {
+  transform: rotate(180deg);
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
+/* Content Body */
+.accordionContentWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.accordionRowExpanded .accordionContentWrapper {
+  grid-template-rows: 1fr;
+}
+
+.accordionContent {
+  min-height: 0;
+}
+
+.contentInner {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+  padding-left: clamp(3rem, 8vw, 5.5rem);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+}
+
+/* Lead Service */
+.leadService {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out) 100ms, transform 500ms var(--ease-out) 100ms;
+}
+
+.accordionRowExpanded .leadService {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leadIcon {
+  color: var(--color-accent);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.leadTitle {
+  font-family: var(--font-heading-family);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.leadDesc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 55ch;
+}
+
+.learnMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: color 200ms var(--ease-out);
+}
+
+.arrowIcon {
+  transition: transform 300ms var(--ease-out);
+}
+
+.learnMoreLink:hover .arrowIcon {
+  transform: translateX(6px);
+}
+
+/* Branch Services */
+.branchServices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out) 200ms, transform 500ms var(--ease-out) 200ms;
+}
+
+.accordionRowExpanded .branchServices {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.branchLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.branchLink:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--color-white);
+  transform: translateX(4px);
+}
+
+.branchIcon {
+  opacity: 0.3;
+  transition: opacity 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+
+.branchLink:hover .branchIcon {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.branchTitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contentInner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerMain {
+    gap: 1rem;
+  }
+  
+  .categoryIndex {
+    display: none;
+  }
+  
+  .headerInfo {
+    gap: 1rem;
+  }
+  
+  .serviceCount {
+    display: none;
+  }
+
+  .contentInner {
+    padding-left: 0;
+  }
+
+  .leadService {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ===== Light Mode Overrides ===== */
+:global(.light) .accordionRow {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:global(.light) .accordionRow:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+:global(.light) .categoryTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .iconWrapper {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:global(.light) .accordionRowExpanded .iconWrapper {
+  background-color: var(--color-accent-dark);
+  color: var(--color-white);
+}
+
+:global(.light) .leadTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .branchLink:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  color: var(--color-primary);
+}
+
+:global(.light) .branchLink {
+  color: rgba(0, 0, 0, 0.6);
+}
