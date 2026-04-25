@@ -156,41 +156,55 @@
   gap: 4rem;
 }
 
-/* Lead Service */
-.leadService {
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.serviceItem {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 500ms var(--ease-out) 100ms, transform 500ms var(--ease-out) 100ms;
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  transition-delay: calc(var(--item-index) * 100ms + 100ms);
 }
 
-.accordionRowExpanded .leadService {
+.accordionRowExpanded .serviceItem {
   opacity: 1;
   transform: translateY(0);
 }
 
-.leadIcon {
+.serviceIcon {
   color: var(--color-accent);
   opacity: 0.8;
   flex-shrink: 0;
+  padding-top: 0.25rem;
 }
 
-.leadTitle {
+.serviceText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.serviceTitle {
   font-family: var(--font-heading-family);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--color-white);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-.leadDesc {
-  font-size: 1.05rem;
-  line-height: 1.7;
+.serviceDesc {
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
-  max-width: 55ch;
+  margin-bottom: 1.25rem;
+  max-width: 65ch;
 }
 
 .learnMoreLink {
@@ -212,53 +226,6 @@
 
 .learnMoreLink:hover .arrowIcon {
   transform: translateX(6px);
-}
-
-/* Branch Services */
-.branchServices {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 500ms var(--ease-out) 200ms, transform 500ms var(--ease-out) 200ms;
-}
-
-.accordionRowExpanded .branchServices {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.branchLink {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
-  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 200ms var(--ease-out);
-}
-
-.branchLink:hover {
-  background-color: rgba(255, 255, 255, 0.03);
-  color: var(--color-white);
-  transform: translateX(4px);
-}
-
-.branchIcon {
-  opacity: 0.3;
-  transition: opacity 200ms var(--ease-out), color 200ms var(--ease-out);
-}
-
-.branchLink:hover .branchIcon {
-  opacity: 1;
-  color: var(--color-accent);
-}
-
-.branchTitle {
-  font-size: 0.9rem;
-  font-weight: 500;
 }
 
 /* Responsive */

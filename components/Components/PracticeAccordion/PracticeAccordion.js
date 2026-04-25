@@ -48,9 +48,6 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
     <div className={styles.accordionContainer}>
       {serviceCategories.map((category, index) => {
         const isExpanded = expandedId === category.id;
-        const leadService = category.services[0];
-        const LeadIcon = iconMapping[leadService.icon] || Bank;
-        const remainingServices = category.services.slice(1);
         const displayIndex = (index + 1).toString().padStart(2, '0');
 
         return (
@@ -88,45 +85,34 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
             <div className={styles.accordionContentWrapper}>
               <div className={styles.accordionContent}>
                 <div className={styles.contentInner}>
-                  {/* Lead Service */}
-                  <div className={styles.leadService}>
-                    <div className={styles.leadIcon}>
-                      <LeadIcon size={48} weight="light" />
-                    </div>
-                    <div className={styles.leadText}>
-                      <h4 className={styles.leadTitle}>
-                        {leadService.title[lang] || leadService.title.en}
-                      </h4>
-                      <p className={styles.leadDesc}>
-                        {leadService.description[lang] || leadService.description.en}
-                      </p>
-                      <Link 
-                        href={`/${lang}/legal-services#${category.id}`}
-                        className={styles.learnMoreLink}
-                      >
-                        <span>{dict.learnMore}</span>
-                        <ArrowRight size={16} weight="bold" className={styles.arrowIcon} />
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Branch Services */}
-                  <div className={styles.branchServices}>
-                    {remainingServices.map((service) => {
-                      const BranchIcon = iconMapping[service.icon] || Bank;
+                  <div className={styles.servicesList}>
+                    {category.services.map((service, sIndex) => {
+                      const ServiceIcon = iconMapping[service.icon] || Bank;
                       return (
-                        <Link 
-                          key={service.id}
-                          href={`/${lang}/legal-services#${service.id}`}
-                          className={styles.branchLink}
+                        <div 
+                          key={service.id} 
+                          className={styles.serviceItem}
+                          style={{ '--item-index': sIndex }}
                         >
-                          <div className={styles.branchIcon}>
-                            <BranchIcon size={20} weight="regular" />
+                          <div className={styles.serviceIcon}>
+                            <ServiceIcon size={32} weight="light" />
                           </div>
-                          <span className={styles.branchTitle}>
-                            {service.title[lang] || service.title.en}
-                          </span>
-                        </Link>
+                          <div className={styles.serviceText}>
+                            <h4 className={styles.serviceTitle}>
+                              {service.title[lang] || service.title.en}
+                            </h4>
+                            <p className={styles.serviceDesc}>
+                              {service.description[lang] || service.description.en}
+                            </p>
+                            <Link 
+                              href={`/${lang}/legal-services#${service.id}`}
+                              className={styles.learnMoreLink}
+                            >
+                              <span>{dict.learnMore}</span>
+                              <ArrowRight size={16} weight="bold" className={styles.arrowIcon} />
+                            </Link>
+                          </div>
+                        </div>
                       );
                     })}
                   </div>

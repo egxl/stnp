@@ -207,10 +207,6 @@ export default async function HomePage({ params }) {
           </div>
           <div className={styles.atlasContainer}>
             {serviceCategories.map((category, catIndex) => {
-              const leadService = category.services[0];
-              const LeadIcon = iconMapping[leadService.icon] || Bank;
-              const remainingServices = category.services.slice(1);
-              
               return (
                 <div 
                   key={category.id} 
@@ -223,43 +219,32 @@ export default async function HomePage({ params }) {
                     </h3>
                   </div>
                   
-                  <div className={styles.atlasLead}>
-                    <div className={styles.atlasLeadIcon}>
-                      <LeadIcon weight="light" size={40} />
-                    </div>
-                    <div className={styles.atlasLeadContent}>
-                      <h4 className={styles.atlasLeadTitle}>
-                        {leadService.title[lang] || leadService.title.en}
-                      </h4>
-                      <p className={styles.atlasLeadDesc}>
-                        {leadService.description[lang] || leadService.description.en}
-                      </p>
-                      <Link 
-                        href={`/${lang}/legal-services#${category.id}`}
-                        className={styles.atlasLeadLink}
-                      >
-                        {dict.home.learnMore}
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className={styles.atlasBranches}>
-                    {remainingServices.map(s => {
-                      const BranchIcon = iconMapping[s.icon] || Bank;
+                  <div className={styles.atlasServicesGrid}>
+                    {category.services.map((service) => {
+                      const ServiceIcon = iconMapping[service.icon] || Bank;
                       return (
-                        <Link 
-                          key={s.id} 
-                          href={`/${lang}/legal-services#${s.id}`}
-                          className={styles.atlasBranch}
-                        >
-                          <BranchIcon size={20} weight="regular" className={styles.atlasBranchIcon} />
-                          <span className={styles.atlasBranchTitle}>
-                            {s.title[lang] || s.title.en}
-                          </span>
-                        </Link>
+                        <div key={service.id} className={styles.atlasServiceItem}>
+                          <div className={styles.atlasServiceTop}>
+                            <div className={styles.atlasServiceIcon}>
+                              <ServiceIcon weight="light" size={32} />
+                            </div>
+                            <h4 className={styles.atlasServiceTitle}>
+                              {service.title[lang] || service.title.en}
+                            </h4>
+                          </div>
+                          <p className={styles.atlasServiceDesc}>
+                            {service.shortDescription?.[lang] || service.shortDescription?.en || (service.description[lang] || service.description.en).substring(0, 100) + '...'}
+                          </p>
+                          <Link 
+                            href={`/${lang}/legal-services#${service.id}`}
+                            className={styles.atlasServiceLink}
+                          >
+                            <span>{dict.home.learnMore}</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </Link>
+                        </div>
                       );
                     })}
                   </div>
