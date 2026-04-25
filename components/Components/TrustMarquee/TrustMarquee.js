@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import InfiniteMarquee from '@/components/Animations/InfiniteMarquee/InfiniteMarquee';
+import Link from 'next/link';
 import styles from './TrustMarquee.module.css';
 
-export default function TrustMarquee({ clients, dict }) {
+export default function TrustMarquee({ clients, dict, lang }) {
   const [selectedIndustry, setSelectedIndustry] = useState(null);
 
   const industries = [...new Set(clients.map(c => c.industry))].filter(Boolean);
@@ -22,23 +23,8 @@ export default function TrustMarquee({ clients, dict }) {
 
   return (
     <>
-      <div className={styles.trustStats}>
-        <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>{dict.clientsKeyword1}</span>
-          <span className={styles.trustStatLabel}>{dict.clientsKeyword1Sub}</span>
-        </div>
-        <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>{dict.clientsKeyword2}</span>
-          <span className={styles.trustStatLabel}>{dict.clientsKeyword2Sub}</span>
-        </div>
-        <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>{dict.clientsKeyword3}</span>
-          <span className={styles.trustStatLabel}>{dict.clientsKeyword3Sub}</span>
-        </div>
-        <div className={styles.trustStat}>
-          <span className={styles.trustStatNumber}>{dict.clientsKeyword4}</span>
-          <span className={styles.trustStatLabel}>{dict.clientsKeyword4Sub}</span>
-        </div>
+      <div className={styles.introContainer}>
+        <p className={styles.introText}>{dict.clientsIntro}</p>
       </div>
 
       <div className={styles.marqueeZone}>
@@ -98,6 +84,24 @@ export default function TrustMarquee({ clients, dict }) {
             );
           })}
         </div>
+      </div>
+
+      <div className={styles.trustStats}>
+        <div className={styles.trustStat}>
+          <span className={styles.trustStatNumber}>{dict.clientsPrinciple1}</span>
+        </div>
+        <div className={styles.trustStat}>
+          <span className={styles.trustStatNumber}>{dict.clientsPrinciple2}</span>
+        </div>
+        <div className={styles.trustStat}>
+          <span className={styles.trustStatNumber}>{dict.clientsPrinciple3}</span>
+        </div>
+      </div>
+      
+      <div className={styles.principlesFooter}>
+        <Link href={`/${lang}/about-us`} className={styles.aboutLink}>
+          {dict.clientsLearnMore} →
+        </Link>
       </div>
     </>
   );

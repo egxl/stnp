@@ -1,40 +1,78 @@
 .trustStats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xl);
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: clamp(4rem, 8vw, 6rem);
+  margin-bottom: 2rem;
+}
+
+.introContainer {
+  max-width: 800px;
+  margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.introText {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin: 0;
 }
 
 .trustStat {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   opacity: 0;
   transform: translateY(12px);
   animation: statReveal 600ms var(--ease-out) forwards;
+  transition: transform 300ms var(--ease-out);
 }
 
 .trustStat:nth-child(1) { animation-delay: 100ms; }
 .trustStat:nth-child(2) { animation-delay: 200ms; }
 .trustStat:nth-child(3) { animation-delay: 300ms; }
-.trustStat:nth-child(4) { animation-delay: 400ms; }
 
-.trustStatNumber {
-  font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 300;
-  color: var(--color-accent);
-  line-height: 1.1;
-  margin-bottom: var(--space-xs);
-  letter-spacing: -0.02em;
+.trustStat:hover {
+  transform: translateY(-4px);
 }
 
-.trustStatLabel {
+.trustStatNumber {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.principlesFooter {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.aboutLink {
+  display: inline-block;
   font-family: var(--font-body-family);
-  font-size: var(--text-sm);
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(196, 163, 90, 0.3);
+  border-radius: var(--radius-sm);
+  transition: all 300ms var(--ease-out);
+}
+
+.aboutLink:hover {
+  background-color: rgba(196, 163, 90, 0.1);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 @keyframes statReveal {
@@ -68,12 +106,27 @@
   opacity: 0.6;
 }
 
+.marqueeSeparator {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  font-weight: 200;
+  opacity: 0.3;
+}
+
 .marqueeName {
   font-family: var(--font-michroma), sans-serif;
   font-size: clamp(1.1rem, 1.8vw, 1.6rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.05em;
+}
+
+.marqueeNameEditorial {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 400;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
 }
 
 .industryTagsContainer {
@@ -215,8 +268,7 @@
 
 @media (max-width: 640px) {
   .trustStats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-lg);
   }
 
@@ -224,7 +276,8 @@
     gap: 1.5rem;
   }
 
-  .marqueeName {
+  .marqueeName,
+  .marqueeNameEditorial {
     font-size: 1.1rem;
   }
   
@@ -235,6 +288,57 @@
   .spotlightGrid {
       grid-template-columns: 1fr;
   }
+}
+
+/* ===== Light Mode Overrides ===== */
+:global(.light) .trustStatNumber {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .aboutLink {
+  color: var(--color-accent-dark);
+  border-color: rgba(196, 163, 90, 0.4);
+}
+
+:global(.light) .aboutLink:hover {
+  background-color: rgba(196, 163, 90, 0.1);
+  border-color: var(--color-accent-dark);
+}
+
+:global(.light) .marqueeName {
+  color: var(--color-primary);
+}
+
+:global(.light) .marqueeDiamond {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .industryTag {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+:global(.light) .industryTag.industryTagActive {
+  border-color: var(--color-accent-dark);
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .spotlightPanel {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+:global(.light) .spotlightTitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+:global(.light) .spotlightClose {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+:global(.light) .spotlightCardName {
+  color: var(--color-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {

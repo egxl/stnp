@@ -174,9 +174,8 @@ export default async function HomePage({ params }) {
         </div>
       </section>
 
-      {/* ===== AUTHORITY STRIP MOVED INSIDE HERO ===== */}
-
-
+      {/* ===== EXPERIENCE HIGHLIGHTS ===== */}
+      <ExperienceHighlights dict={dict} lang={lang} />
 
       {/* ===== FEATURED CLIENTS (NEW TRUST MARQUEE) ===== */}
       <section className={`section ${styles.trustSection} ${styles.snapSection}`}>
@@ -187,7 +186,7 @@ export default async function HomePage({ params }) {
             <hr className={`divider divider--left ${styles.trustDivider}`} />
           </div>
 
-          <TrustMarquee clients={pastClients} dict={dict.home} />
+          <TrustMarquee clients={pastClients} dict={dict.home} lang={lang} />
         </div>
       </section>
 
@@ -267,9 +266,6 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>
-
-      {/* ===== EXPERIENCE HIGHLIGHTS ===== */}
-      <ExperienceHighlights dict={dict} lang={lang} />
 
       {/* ===== QUOTE BANNER ===== */}
       <section className={`${styles.quoteBanner} ${styles.snapSection}`}>

@@ -8,9 +8,9 @@ import styles from './AuthorityStrip.module.css';
  */
 const AuthorityStrip = ({ dict }) => {
   const associations = [
-    { name: 'PERADI', slug: 'peradi' },
-    { name: 'AKPI', slug: 'akpi' },
-    { name: 'HKHSK', slug: 'hkhsk' },
+    { name: 'PERADI', slug: 'peradi', url: 'https://www.peradi.or.id/' },
+    { name: 'AKPI', slug: 'akpi', url: 'https://www.akpi.or.id/' },
+    { name: 'HKHSK', slug: 'hkhsk', url: 'https://hkhsk.id/' },
   ];
 
   // Cache buster to force browser to reload assets
@@ -25,8 +25,11 @@ const AuthorityStrip = ({ dict }) => {
           </span>
           <div className={styles.logoGrid}>
             {associations.map((org) => (
-              <div 
+              <a 
                 key={org.slug} 
+                href={org.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.logoItem}
                 title={org.name}
               >
@@ -35,7 +38,7 @@ const AuthorityStrip = ({ dict }) => {
                   alt={org.name}
                   className={styles.logoImage}
                 />
-              </div>
+              </a>
             ))}
           </div>
         </div>
