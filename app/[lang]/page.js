@@ -13,6 +13,7 @@ import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
 import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
+import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
 import { 
   Scales, 
   Gavel, 
@@ -266,6 +267,9 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>
+
+      {/* ===== EXPERIENCE HIGHLIGHTS ===== */}
+      <ExperienceHighlights dict={dict} lang={lang} />
 
       {/* ===== QUOTE BANNER ===== */}
       <section className={`${styles.quoteBanner} ${styles.snapSection}`}>
