@@ -37,8 +37,9 @@ export default function StaggeredMenu({
   const panelRef = useRef(null);
   const preLayersRef = useRef(null);
   const preLayerElsRef = useRef([]);
-  const plusHRef = useRef(null);
-  const plusVRef = useRef(null);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
+  const line3Ref = useRef(null);
   const iconRef = useRef(null);
   const textInnerRef = useRef(null);
   const toggleBtnRef = useRef(null);
@@ -63,11 +64,12 @@ export default function StaggeredMenu({
     const ctx = gsap.context(() => {
       const panel = panelRef.current;
       const preContainer = preLayersRef.current;
-      const plusH = plusHRef.current;
-      const plusV = plusVRef.current;
+      const l1 = line1Ref.current;
+      const l2 = line2Ref.current;
+      const l3 = line3Ref.current;
       const icon = iconRef.current;
       const textInner = textInnerRef.current;
-      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      if (!panel || !l1 || !l2 || !l3 || !icon || !textInner) return;
 
       const preLayers = preContainer
         ? Array.from(preContainer.querySelectorAll('.sm-prelayer'))
@@ -76,8 +78,12 @@ export default function StaggeredMenu({
 
       // Start all layers off-screen to the right
       gsap.set([panel, ...preLayers], { xPercent: 100 });
-      gsap.set(plusH, { transformOrigin: '50% 50%', rotate: 0 });
-      gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 });
+      
+      // Burger initial state
+      gsap.set(l1, { y: -5 });
+      gsap.set(l2, { opacity: 1 });
+      gsap.set(l3, { y: 5 });
+      
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
       gsap.set(textInner, { yPercent: 0 });
     });
@@ -236,18 +242,25 @@ export default function StaggeredMenu({
   }, []);
 
   /* ------------------------------------------------------------------ */
-  /* Animate icon (plus → X)                                             */
+  /* Animate icon (burger → X)                                             */
   /* ------------------------------------------------------------------ */
   const animateIcon = useCallback(opening => {
-    const icon = iconRef.current;
-    if (!icon) return;
-    spinTweenRef.current?.kill();
-    spinTweenRef.current = gsap.to(icon, {
-      rotate: opening ? 225 : 0,
-      duration: opening ? 0.8 : 0.35,
-      ease: opening ? 'power4.out' : 'power3.inOut',
-      overwrite: 'auto',
-    });
+    const l1 = line1Ref.current;
+    const l2 = line2Ref.current;
+    const l3 = line3Ref.current;
+    if (!l1 || !l2 || !l3) return;
+
+    gsap.killTweensOf([l1, l2, l3]);
+
+    if (opening) {
+      gsap.to(l1, { y: 0, rotate: 45, duration: 0.4, ease: 'power3.inOut' });
+      gsap.to(l2, { opacity: 0, duration: 0.3 });
+      gsap.to(l3, { y: 0, rotate: -45, duration: 0.4, ease: 'power3.inOut' });
+    } else {
+      gsap.to(l1, { y: -5, rotate: 0, duration: 0.4, ease: 'power3.inOut' });
+      gsap.to(l2, { opacity: 1, duration: 0.3, delay: 0.1 });
+      gsap.to(l3, { y: 5, rotate: 0, duration: 0.4, ease: 'power3.inOut' });
+    }
   }, []);
 
   /* ------------------------------------------------------------------ */
@@ -395,8 +408,9 @@ export default function StaggeredMenu({
           </span>
         </span>
         <span ref={iconRef} className="sm-icon" aria-hidden="true">
-          <span ref={plusHRef} className="sm-icon-line" />
-          <span ref={plusVRef} className="sm-icon-line" />
+          <span ref={line1Ref} className="sm-icon-line" />
+          <span ref={line2Ref} className="sm-icon-line" />
+          <span ref={line3Ref} className="sm-icon-line" />
         </span>
       </button>
 

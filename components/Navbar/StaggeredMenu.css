@@ -5,14 +5,14 @@
 
 /* ---- Wrapper ---- */
 .staggered-menu-wrapper {
-  display: none; /* Desktop: hidden — shown via media query in Navbar.module.css */
+  display: none; /* Desktop: hidden by default */
   position: relative;
-  z-index: 1001;
+  z-index: 1010; /* Ensure wrapper is above header elements */
   pointer-events: none;
 }
 
-/* Show only at mobile/tablet breakpoint */
-@media (max-width: 1024px) {
+/* Show at mobile/tablet breakpoint (covers most landscape tablets) */
+@media (max-width: 1366px) {
   .staggered-menu-wrapper {
     display: block;
   }
@@ -142,7 +142,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -156,6 +156,7 @@
   transition: color 0.3s ease;
   overflow: visible;
   pointer-events: auto;
+  z-index: 1010; /* Stay above the panel (1002) */
 }
 
 :global(.light) .sm-toggle {
@@ -194,12 +195,12 @@
   line-height: 1;
 }
 
-/* ---- Plus/X icon ---- */
+/* ---- Burger/X icon ---- */
 .sm-icon {
   position: relative;
-  width: 14px;
+  width: 18px;
   height: 14px;
-  flex: 0 0 14px;
+  flex: 0 0 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -208,14 +209,14 @@
 
 .sm-icon-line {
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 0;
   width: 100%;
-  height: 2px;
+  height: 1.5px;
   background: currentColor;
-  border-radius: 2px;
-  transform: translate(-50%, -50%);
-  will-change: transform;
+  border-radius: 1px;
+  transform: translateY(-50%);
+  will-change: transform, opacity;
 }
 
 /* ---- Panel footer: controls row ---- */

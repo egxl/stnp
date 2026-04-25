@@ -158,7 +158,7 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
   .desktopNavigation {
     display: none;
   }
