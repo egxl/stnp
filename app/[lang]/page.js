@@ -202,7 +202,7 @@ export default async function HomePage({ params }) {
             <h2 className="section-title">Legal Services (Current)</h2>
             <hr className="divider" />
             <p className="section-subtitle">
-              Strategic legal counsel across three core disciplines — from courtroom to boardroom.
+              {dict.home.servicesSubtitle}
             </p>
           </div>
           <div className={styles.atlasContainer}>
