@@ -41,7 +41,24 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
   const [expandedId, setExpandedId] = useState(null);
 
   const toggleAccordion = (id) => {
+    const isExpanding = expandedId !== id;
     setExpandedId(prev => (prev === id ? null : id));
+
+    if (isExpanding) {
+      setTimeout(() => {
+        const element = document.getElementById(`accordion-${id}`);
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 420);
+    }
   };
 
   return (
@@ -53,6 +70,7 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
         return (
           <div 
             key={category.id} 
+            id={`accordion-${category.id}`}
             className={`${styles.accordionRow} ${isExpanded ? styles.accordionRowExpanded : ''}`}
           >
             {/* Header / Trigger */}

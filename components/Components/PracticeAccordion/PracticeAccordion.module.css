@@ -157,10 +157,28 @@
 }
 
 .servicesList {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+/* Custom Scrollbar */
+.servicesList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.servicesList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.servicesList::-webkit-scrollbar-thumb {
+  background: rgba(196, 163, 90, 0.4);
+  border-radius: 2px;
 }
 
 .serviceItem {
@@ -255,6 +273,13 @@
 
   .contentInner {
     padding-left: 0;
+  }
+
+  .servicesList {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
   }
 
   .leadService {
