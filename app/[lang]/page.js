@@ -15,6 +15,7 @@ import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
 import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
 import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
 import FirmPrinciples from '@/components/Components/FirmPrinciples/FirmPrinciples';
+import ConsolidatedPhilosophy from '@/components/Components/ConsolidatedPhilosophy/ConsolidatedPhilosophy';
 import PracticeAccordion from '@/components/Components/PracticeAccordion/PracticeAccordion';
 import { CaretRight } from '@phosphor-icons/react/dist/ssr';
 import styles from './page.module.css';
@@ -181,6 +182,9 @@ export default async function HomePage({ params }) {
           />
         </div>
       </section>
+
+      {/* ===== NEW CONSOLIDATED PHILOSOPHY ===== */}
+      <ConsolidatedPhilosophy dict={dict.home} lang={lang} />
 
       {/* ===== QUOTE BANNER ===== */}
       <section className={`${styles.quoteBanner} ${styles.snapSection}`}>

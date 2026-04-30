@@ -305,6 +305,7 @@ button {
   font-size: var(--text-lg);
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: var(--space-xl);
 }
 
 /* --- Gold Divider --- */
@@ -605,6 +606,7 @@ button {
 :where(.light) [class*="pageHero"],
 :where(.light) [class*="trustSection"],
 :where(.light) [class*="quoteBanner"],
+:where(.light) [class*="philosophySection"],
 :where(.light) [class*="ctaSection"] {
   color: var(--color-white);
 }
@@ -615,6 +617,7 @@ button {
 :where(.light) [class*="pageHero"] h2,
 :where(.light) [class*="trustSection"] h2,
 :where(.light) [class*="quoteBanner"] h2,
+:where(.light) [class*="philosophySection"] h2,
 :where(.light) [class*="ctaSection"] h2,
 :where(.light) [class*="heroTitle"]:not([class*="Accent"]) {
   color: var(--color-white) !important;
@@ -625,7 +628,8 @@ button {
 :where(.light) [class*="trustLabel"],
 :where(.light) [class*="quoteOpen"],
 :where(.light) [class*="quoteClose"],
-:where(.light) [class*="quoteCite"] {
+:where(.light) [class*="quoteCite"],
+:where(.light) [class*="philosophySection"] [class*="eyebrow"] {
   color: var(--color-accent) !important;
 }
 
@@ -634,6 +638,7 @@ button {
 :where(.light) [class*="heroSubtitle"],
 :where(.light) [class*="trustHeader"] p,
 :where(.light) [class*="quoteContent"] p,
+:where(.light) [class*="philosophySection"] p,
 :where(.light) [class*="ctaText"] {
   color: rgba(255, 255, 255, 0.75) !important;
 }

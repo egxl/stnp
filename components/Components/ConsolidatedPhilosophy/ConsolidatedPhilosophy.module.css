@@ -1,0 +1,271 @@
+.philosophySection {
+  position: relative;
+  background-color: #060E1A;
+  color: #FAFBFC;
+  overflow: hidden;
+  padding: calc(var(--space-section) * 1.5) 0;
+}
+
+/* Atmospheric OLED Light Leak */
+.lightLeak {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(44, 95, 124, 0.15) 0%, rgba(6, 14, 26, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 0.8fr 1.2fr; /* Asymmetrical split */
+    gap: calc(var(--space-3xl) * 1.5);
+    align-items: center;
+  }
+}
+
+/* --- Left Column: Principles --- */
+.principlesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.eyebrow {
+  font-family: var(--font-body-family);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #FAFBFC;
+  margin: 0;
+}
+
+.principlesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: var(--space-md);
+}
+
+.principleItem {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  /* Strong ease-out for snappier UI interaction */
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Focus effect: dim non-hovered items */
+.principlesList:hover .principleItem:not(:hover) {
+  opacity: 0.35;
+}
+
+.principleItem:hover {
+  transform: translateX(8px);
+}
+
+.principleNumber {
+  font-family: 'Cal Sans', sans-serif;
+  font-size: var(--text-sm);
+  color: var(--color-accent-dark);
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.25rem;
+}
+
+.principleText {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--leading-relaxed);
+  max-width: 50ch;
+  margin: 0;
+}
+
+/* --- Right Column: Quote Banner --- */
+.quoteColumn {
+  position: relative;
+}
+
+.quoteWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.blockquote {
+  position: relative;
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FAFBFC;
+  margin: 0;
+  max-width: 28ch; /* Strict character limit for massive type */
+}
+
+.blockquote p {
+  font-style: italic;
+  margin: 0;
+}
+
+.quoteMark {
+  position: absolute;
+  font-size: 2.5em;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.4;
+  font-family: serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+.quoteMarkOpen {
+  top: -0.2em;
+  left: -0.5em;
+}
+
+.quoteMarkClose {
+  bottom: -0.6em;
+  right: -0.2em;
+  transform: translateY(30%);
+}
+
+.authorMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.portraitWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.authorName {
+  font-family: var(--font-body-family);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: #FAFBFC;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.signature {
+  width: 100%;
+  max-width: 140px; /* Matches rough width of the author name */
+  height: 32px;
+  background-color: var(--color-accent);
+  -webkit-mask-image: url('/images/quotes/signature.svg');
+  mask-image: url('/images/quotes/signature.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+}
+
+/* --- Interactive CTA --- */
+.ctaWrapper {
+  margin-top: var(--space-sm);
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body-family);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FAFBFC;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Press feedback - Emil Kowalski principle */
+.ctaLink:active {
+  transform: scale(0.97);
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaLink:hover .iconCircle {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #060E1A;
+  transform: translateX(8px);
+}
+
+.ctaLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaLink:hover::after {
+  width: 100%;
+}
