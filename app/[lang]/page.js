@@ -14,7 +14,6 @@ import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
 import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
 import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
-import FirmPrinciples from '@/components/Components/FirmPrinciples/FirmPrinciples';
 import ConsolidatedPhilosophy from '@/components/Components/ConsolidatedPhilosophy/ConsolidatedPhilosophy';
 import PracticeAccordion from '@/components/Components/PracticeAccordion/PracticeAccordion';
 import { CaretRight } from '@phosphor-icons/react/dist/ssr';
@@ -185,37 +184,6 @@ export default async function HomePage({ params }) {
 
       {/* ===== NEW CONSOLIDATED PHILOSOPHY ===== */}
       <ConsolidatedPhilosophy dict={dict.home} lang={lang} />
-
-      {/* ===== QUOTE BANNER ===== */}
-      <section className={`${styles.quoteBanner} ${styles.snapSection}`}>
-        <div className={styles.quotePortrait}>
-          <img src="/images/quotes/portrait.webp" alt="Thomas Jefferson Portrait" />
-        </div>
-        <div className="container">
-          <div className={styles.quoteContent}>
-            <blockquote className={styles.blockquote}>
-              <span className={styles.quoteOpen}>&ldquo;</span>
-              {firmInfo.quote}
-              <span className={styles.quoteClose}>&rdquo;</span>
-            </blockquote>
-            <div className={styles.quoteAuthorInfo}>
-              <cite className={styles.quoteCite}>{firmInfo.quoteAuthor}</cite>
-              <div className={styles.quoteSignature}>
-                <img src="/images/quotes/signature.svg" alt="Thomas Jefferson Signature" />
-              </div>
-            </div>
-            
-            <div className={styles.quoteCta}>
-              <Link href={`/${lang}/about-us`} className={styles.quoteLink}>
-                <span>{dict.home.clientsLearnMore}</span>
-                <CaretRight size={14} weight="bold" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FirmPrinciples dict={dict.home} />
 
       {/* ===== LATEST ARTICLES ===== */}
       {latestPosts.length > 0 && (
