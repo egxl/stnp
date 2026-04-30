@@ -30,7 +30,7 @@
 
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: 0.8fr 1.2fr; /* Asymmetrical split */
+    grid-template-columns: 1.4fr 0.8fr; /* Principles dominant */
     gap: calc(var(--space-3xl) * 1.5);
     align-items: center;
   }
@@ -93,17 +93,17 @@
 
 .principleNumber {
   font-family: 'Cal Sans', sans-serif;
-  font-size: var(--text-sm);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--color-accent-dark);
   font-variant-numeric: tabular-nums;
   margin-top: 0.25rem;
 }
 
 .principleText {
-  font-size: var(--text-lg);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   color: rgba(255, 255, 255, 0.8);
   line-height: var(--leading-relaxed);
-  max-width: 50ch;
+  max-width: 45ch;
   margin: 0;
 }
 
@@ -121,7 +121,7 @@
 .blockquote {
   position: relative;
   font-family: var(--font-heading-family);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem); /* Scaled down */
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.02em;
