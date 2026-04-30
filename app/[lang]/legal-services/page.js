@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { serviceCategories, proBono } from '@/lib/data/services';
 import { getDictionary } from '@/lib/dictionaries';
+import PracticeGrid from '@/components/Components/PracticeGrid/PracticeGrid';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -116,6 +117,25 @@ export default async function LegalServicesPage({ params }) {
               {dict.home.servicesSubtitle}
             </p>
           </div>
+        </div>
+      </section>
+      
+      {/* Practice Areas Overview */}
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">{dict.home.servicesLabel}</span>
+            <h2 className="section-title">{dict.home.servicesTitle}</h2>
+            <hr className="divider" />
+            <p className="section-subtitle">
+              {dict.home.servicesSubtitle}
+            </p>
+          </div>
+          <PracticeGrid 
+            serviceCategories={serviceCategories} 
+            dict={dict.home} 
+            lang={lang} 
+          />
         </div>
       </section>
 

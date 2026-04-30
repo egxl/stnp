@@ -377,160 +377,6 @@
   /* Inherits .snapSection's min-height: 100vh + flex centering */
 }
 
-.atlasContainer {
-  display: flex;
-  flex-direction: column;
-  margin-top: clamp(2rem, 5vw, 4rem);
-}
-
-.atlasRow {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: clamp(1rem, 4vw, 3rem);
-  padding: clamp(2rem, 4vw, 4rem) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  opacity: 0;
-  transform: translateY(16px);
-  animation: atlasRowFade 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: calc(var(--index, 0) * 120ms);
-}
-
-.atlasRow:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-@keyframes atlasRowFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.atlasHeader {
-  display: flex;
-  flex-direction: column;
-  padding-top: 6px;
-}
-
-.atlasCategoryTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  font-weight: 300;
-  color: var(--color-white);
-  line-height: 1.3;
-  margin: 0;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
-.atlasServicesGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.atlasServiceItem {
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  transition: all 300ms var(--ease-out);
-}
-
-.atlasServiceTop {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.atlasServiceIcon {
-  color: var(--color-accent);
-  opacity: 0.8;
-  flex-shrink: 0;
-}
-
-.atlasServiceTitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  font-weight: 400;
-  color: var(--color-white);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.atlasServiceDesc {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.atlasServiceLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: gap 250ms var(--ease-out);
-}
-
-.atlasServiceLink:hover {
-  gap: 12px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .atlasServiceItem:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(196, 163, 90, 0.2);
-    transform: translateY(-4px);
-  }
-}
-
-@media (max-width: 1200px) {
-  .atlasRow {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .atlasHeader {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
-}
-
-@media (max-width: 1024px) {
-  .atlasServicesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .atlasServicesGrid {
-    grid-template-columns: 1fr;
-  }
-  .atlasServiceItem {
-    padding: 1rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .atlasRow {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .atlasBranch:hover {
-    transform: none;
-  }
-}
-
 /* ===== QUOTE BANNER ===== */
 .quoteBanner {
   background: #080d16;
@@ -700,15 +546,16 @@
 }
 
 .articleCard {
-  background: var(--color-surface);
+  background: oklch(15% 0.01 240);
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--color-border-light);
-  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  border: 1px solid oklch(25% 0.01 240 / 0.4);
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  cursor: pointer;
 }
 
 .articleCard:active {
-  transform: scale(0.97);
+  transform: scale(0.975);
 }
 
 .articleImage {
@@ -722,17 +569,18 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 400ms var(--ease-out);
+  transition: transform 500ms var(--ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .articleCard:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    border-color: oklch(60% 0.1 80 / 0.3);
+    box-shadow: 0 12px 32px -8px oklch(15% 0.01 240 / 0.5);
   }
 
   .articleCard:hover .articleImage img {
-    transform: scale(1.03);
+    transform: scale(1.06);
   }
 }
 
@@ -771,14 +619,14 @@
 }
 
 .articleTitle {
-  font-size: 1.15rem;
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
   margin: var(--space-xs) 0;
-  color: var(--color-primary);
+  color: var(--color-white);
   line-height: 1.3;
 }
 
 .articleTitle a:hover {
-  color: var(--color-accent-dark);
+  color: var(--color-accent);
 }
 
 .articleExcerpt {
@@ -786,6 +634,10 @@
   color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .articlesMore {
@@ -795,10 +647,11 @@
 
 /* ===== CONTACT CTA ===== */
 .ctaSection {
-  padding: var(--space-3xl) 0;
+  padding: clamp(5rem, 10vw, 8rem) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid oklch(60% 0.1 80 / 0.15);
 }
 
 .ctaSection::before {
@@ -810,15 +663,6 @@
     radial-gradient(ellipse at 80% 50%, rgba(196, 163, 90, 0.08), transparent 50%);
   z-index: -1;
 }
-
-
-
-
-
-
-
-
-
 
 .ctaContent {
   position: relative;
@@ -833,7 +677,7 @@
 
 .ctaText {
   font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   max-width: 500px;
   margin: 0 auto var(--space-xl);
   line-height: 1.7;
@@ -841,23 +685,33 @@
 
 .ctaActions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-md);
 }
 
 .ctaEmail {
-  font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out), opacity 200ms var(--ease-out);
 }
 
 .ctaEmail span {
   color: var(--color-accent);
   font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms var(--ease-out);
+}
+
+.ctaEmail:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .ctaEmail:hover span {
-  text-decoration: underline;
+  border-color: var(--color-accent);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -1007,4 +861,22 @@
   .trustSection {
     padding: var(--space-3xl) 0;
   }
+}
+
+/* --- Articles Light Mode --- */
+:global(.light) .articleCard {
+  background: oklch(98% 0.005 240);
+  border-color: oklch(90% 0.005 240);
+}
+
+:global(.light) .articleTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .articleTitle a:hover {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .articleCard:hover {
+  box-shadow: 0 12px 32px -8px rgba(10, 22, 40, 0.08);
 }

@@ -16,40 +16,8 @@ import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStri
 import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
 import FirmPrinciples from '@/components/Components/FirmPrinciples/FirmPrinciples';
 import PracticeAccordion from '@/components/Components/PracticeAccordion/PracticeAccordion';
-import { 
-  Scales, 
-  Gavel, 
-  Buildings, 
-  ChartBar, 
-  Bank, 
-  Leaf, 
-  Briefcase, 
-  GitMerge, 
-  Shield, 
-  Lightning, 
-  HardHat, 
-  Compass, 
-  Heart,
-  CaretRight
-} from '@phosphor-icons/react/dist/ssr';
+import { CaretRight } from '@phosphor-icons/react/dist/ssr';
 import styles from './page.module.css';
-
-/* Phosphor icons mapping */
-const iconMapping = {
-  scale: Scales,
-  gavel: Gavel,
-  building: Buildings,
-  chart: ChartBar,
-  landmark: Bank,
-  leaf: Leaf,
-  briefcase: Briefcase,
-  flow: GitMerge,
-  shield: Shield,
-  bolt: Lightning,
-  crane: HardHat,
-  compass: Compass,
-  heart: Heart,
-};
 
 
 
@@ -194,73 +162,9 @@ export default async function HomePage({ params }) {
       </section>
 
 
-      {/* ===== LEGAL SERVICES (CURRENT) ===== */}
-      <section id="practice-areas" className={`section section--alt ${styles.servicesSection} ${styles.snapSection}`}>
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">{dict.home.servicesLabel}</span>
-            <h2 className="section-title">Legal Services (Current)</h2>
-            <hr className="divider" />
-            <p className="section-subtitle">
-              {dict.home.servicesSubtitle}
-            </p>
-          </div>
-          <div className={styles.atlasContainer}>
-            {serviceCategories.map((category, catIndex) => {
-              return (
-                <div 
-                  key={category.id} 
-                  className={styles.atlasRow}
-                  style={{ '--index': catIndex }}
-                >
-                  <div className={styles.atlasHeader}>
-                    <h3 className={styles.atlasCategoryTitle}>
-                      {category.title[lang] || category.title.en}
-                    </h3>
-                  </div>
-                  
-                  <div className={styles.atlasServicesGrid}>
-                    {category.services.map((service) => {
-                      const ServiceIcon = iconMapping[service.icon] || Bank;
-                      return (
-                        <div key={service.id} className={styles.atlasServiceItem}>
-                          <div className={styles.atlasServiceTop}>
-                            <div className={styles.atlasServiceIcon}>
-                              <ServiceIcon weight="light" size={32} />
-                            </div>
-                            <h4 className={styles.atlasServiceTitle}>
-                              {service.title[lang] || service.title.en}
-                            </h4>
-                          </div>
-                          <p className={styles.atlasServiceDesc}>
-                            {service.shortDescription?.[lang] || service.shortDescription?.en || (service.description[lang] || service.description.en).substring(0, 100) + '...'}
-                          </p>
-                          <Link 
-                            href={`/${lang}/legal-services#${service.id}`}
-                            className={styles.atlasServiceLink}
-                          >
-                            <span>{dict.home.learnMore}</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </Link>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== WHAT WE DO (NEW ACCORDION - REVIEW MODE) ===== */}
+      {/* ===== WHAT WE DO (ACCORDION) ===== */}
       <section className={`section ${styles.snapSection}`}>
         <div className="container">
-          <div style={{ display: 'inline-block', padding: '4px 12px', background: 'var(--color-accent)', color: 'var(--color-primary-dark)', fontSize: '0.7rem', fontWeight: 'bold', borderRadius: '4px', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            Review Mode: Option B (Accordion)
-          </div>
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>
             <h2 className="section-title">{dict.home.servicesTitle}</h2>
@@ -317,6 +221,9 @@ export default async function HomePage({ params }) {
               <span className="section-label">{dict.home.insightsLabel}</span>
               <h2 className="section-title">{dict.home.articlesTitle}</h2>
               <hr className="divider" />
+              <p className="section-subtitle">
+                {dict.home.articlesSubtitle}
+              </p>
             </div>
             <div className={styles.articlesGrid}>
               {latestPosts.map((post) => {
@@ -362,7 +269,7 @@ export default async function HomePage({ params }) {
               })}
             </div>
             <div className={styles.articlesMore}>
-              <Link href={`/${lang}/insights`} className="btn btn--dark">
+              <Link href={`/${lang}/insights`} className="btn btn--outline">
                 {dict.home.viewAll}
               </Link>
             </div>
@@ -376,6 +283,7 @@ export default async function HomePage({ params }) {
         <div className="container">
           <div className={styles.ctaContent}>
             <span className="section-label">{dict.home.ctaLabel}</span>
+            <hr className="divider" />
             <h2 className={styles.ctaTitle}>
               {dict.home.ctaTitle}
             </h2>
