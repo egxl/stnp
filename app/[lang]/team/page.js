@@ -1,6 +1,7 @@
 import { team } from '@/lib/data/team';
 import styles from './page.module.css';
 import TeamRoster from './TeamRoster';
+import Aurora from '@/components/Aurora/Aurora';
 
 export const metadata = {
   title: 'Our Team',
@@ -15,6 +16,12 @@ export default async function TeamPage({ params }) {
   return (
     <>
       <section className={styles.splitSurface}>
+        <Aurora 
+          colorStops={['#0A1628', '#1E4A63', '#060E1A']}
+          amplitude={1.2}
+          speed={0.3}
+          blend={0.5}
+        />
         <div className="container container--wide">
           <div className={styles.splitGrid}>
             {/* Left: Sticky Narrative */}

@@ -5,22 +5,11 @@
   position: relative;
   /* Macro-whitespace: padding top for header clearance, bottom for breathing room */
   padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
-  background: var(--color-bg);
+  background: transparent;
   min-height: 100vh;
 }
 
-/* Subtle background mesh/texture placeholder if needed */
-.splitSurface::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.015) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
+/* Subtle background managed by Aurora component */
 
 .splitGrid {
   position: relative;
