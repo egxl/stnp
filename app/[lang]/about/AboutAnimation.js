@@ -15,21 +15,22 @@ export default function AboutAnimation() {
     // in page.module.css (heroAnimate2, heroAnimate3) with proper sequencing.
     // GSAP does NOT target these to avoid double-animation conflict.
 
-    // 2. Philosophy Grid: Staggered entry via data attributes
-    const philosophyItems = document.querySelectorAll('[data-animate="item"]');
-    const philosophyGrid = document.querySelector('[data-animate="grid"]');
-    if (philosophyItems.length && philosophyGrid) {
-      gsap.fromTo(philosophyItems,
-        { y: 40, opacity: 0 },
+    // 2. Philosophy Refractive Scroll: Staggered entry for glass cards
+    const glassCards = document.querySelectorAll('[data-animate="glass-card"]');
+    const philosophyList = document.querySelector('[data-animate="philosophy-list"]');
+    if (glassCards.length && philosophyList) {
+      gsap.fromTo(glassCards,
+        { y: 50, opacity: 0, backdropFilter: 'blur(0px)' },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power2.out',
+          backdropFilter: 'blur(16px)',
+          duration: 0.9,
+          stagger: 0.2,
+          ease: 'power3.out',
           scrollTrigger: {
-            trigger: philosophyGrid,
-            start: 'top 80%',
+            trigger: philosophyList,
+            start: 'top 75%',
           }
         }
       );

@@ -31,8 +31,7 @@ export default async function AboutPage({ params }) {
       {/* ── Hero & Origin Story: Editorial Split ─────────────────────────── */}
       <section className={styles.splitSurface}>
         <div className="container">
-          <div className={styles.splitGrid}>
-
+          <div className={styles.editorialSplit}>
             {/* Left: Sticky narrative anchor */}
             <aside className={styles.splitLeft}>
               <div className={styles.stickyContent}>
@@ -82,55 +81,72 @@ export default async function AboutPage({ params }) {
         </div>
       </section>
 
-      {/* ── Philosophy ───────────────────────────────────────────────────── */}
-      <section className={styles.sectionBlock}>
+      {/* ── Philosophy: Refractive Scroll ────────────────────────────────── */}
+      <section className={styles.philosophySection}>
         <div className="container">
-          <div className={styles.philosophyHeader}>
-            <span className={styles.sectionLabel}>{a.philosophy.label}</span>
-            <p className={styles.philosophyIntro}>{a.philosophy.intro}</p>
+          <div className={styles.editorialSplit}>
+            {/* Left: Sticky Anchor with Motto */}
+            <div className={styles.splitLeft}>
+              <div className={styles.stickyContent}>
+                <span className={styles.sectionLabel}>{a.philosophy.label}</span>
+                <h2 className={styles.philosophyMotto}>
+                  "Enforcing the Law of Truth and Justice Indiscriminately."
+                </h2>
+                <p className={styles.philosophyIntro}>{a.philosophy.intro}</p>
+              </div>
+            </div>
+
+            {/* Right: Glassmorphism Cards */}
+            <div className={styles.splitRight}>
+              <div className={styles.philosophyList} role="list" data-animate="philosophy-list">
+                {philosophyPrinciples.map((p) => (
+                  <div key={p.number} className={styles.philosophyCard} data-animate="glass-card">
+                    <div className={styles.cardHeader}>
+                      <span className={styles.cardNumber}>{p.number}</span>
+                      <h3 className={styles.cardTitle}>{p.title}</h3>
+                    </div>
+                    <p className={styles.cardBody}>{p.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
-          <ul className={styles.philosophyGrid} data-animate="grid" role="list">
-            {philosophyPrinciples.map((p) => (
-              <li key={p.number} className={styles.philosophyItem} data-animate="item">
-                <span className={styles.philoNumber}>{p.number}</span>
-                <h3 className={styles.philoTitle}>{p.title}</h3>
-                <p className={styles.philoDesc}>{p.body}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
-      {/* ── Why STNP: Split ──────────────────────────────────────────────── */}
-      <section className={styles.sectionBlock}>
+      {/* ── Why STNP: Editorial Typography (Huashu Design) ───────────────── */}
+      <section className={styles.whySection}>
         <div className="container">
-          <div className={styles.splitGrid}>
+          <div className={styles.whyEditorial} data-animate="narrative">
+            <div className={styles.whyHeader}>
+              <span className={styles.whyLabel}>{a.why.label}</span>
+              <h2 className={styles.whyTitle}>{a.why.title}</h2>
+              <h3 className={styles.whySubtitle}>{a.why.subtitle}</h3>
+            </div>
+            <div className={styles.whyBody}>
+              <p className={styles.whyTextLead}>{a.why.p1}</p>
+              <p className={styles.whyText}>{a.why.p2}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Commitment (Huashu Design) ─────────────────────────────────────── */}
+      <section className={styles.commitmentSection}>
+        <div className="container">
+          <div className={styles.editorialSplit}>
             <div className={styles.splitLeft}>
-              <div className={styles.stickyContent}>
-                <div className={styles.sectionLabel}>{a.why.label}</div>
-                <h2 className={styles.narrativeTitle}>{a.why.title}</h2>
+              <div className={styles.commitmentHeader}>
+                <span className={styles.commitmentLabel}>{a.commitment.label}</span>
+                <h2 className={styles.commitmentTitle}>{a.commitment.title}</h2>
               </div>
             </div>
             <div className={styles.splitRight}>
-              <div className={styles.flowContent}>
-                <section className={styles.narrativeSection} data-animate="narrative">
-                  <h3 className={styles.unfairSubtitle}>{a.why.subtitle}</h3>
-                  <p className={styles.narrativeText}>{a.why.p1}</p>
-                  <p className={styles.narrativeText}>{a.why.p2}</p>
-                </section>
+              <div className={styles.commitmentBody}>
+                <p className={styles.commitmentText}>{a.commitment.body}</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Commitment ───────────────────────────────────────────────────── */}
-      <section className={styles.sectionBlock}>
-        <div className="container">
-          <div className={styles.proBonoSection}>
-            <span className={styles.sectionLabel}>{a.commitment.label}</span>
-            <h2 className={styles.narrativeTitle}>{a.commitment.title}</h2>
-            <p className={styles.narrativeText}>{a.commitment.body}</p>
           </div>
         </div>
       </section>

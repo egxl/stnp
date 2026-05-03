@@ -41,40 +41,54 @@
   padding: 0;
 }
 
-.splitGrid {
+/* ── Editorial Split Architecture (Huashu Design) ────────── */
+.editorialSplit {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2xl);
+  gap: var(--space-xl);
 }
 
 @media (min-width: 1024px) {
-  .splitGrid {
-    grid-template-columns: 380px 1fr;
-    gap: var(--space-3xl);
-    align-items: start;
+  .editorialSplit {
+    grid-template-columns: 4fr 7fr;
+    gap: 0;
   }
 }
 
-/* ── Left Rail (Sticky) ──────────────────────────────────── */
 .splitLeft {
   position: relative;
   display: block;
+  min-width: 0; /* Prevent long words from breaking grid ratio */
+}
+
+@media (min-width: 1024px) {
+  .splitLeft {
+    padding-right: var(--space-2xl);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+.splitRight {
+  position: relative;
+  min-width: 0; /* Prevent content overflow from breaking grid ratio */
+}
+
+@media (min-width: 1024px) {
+  .splitRight {
+    padding-left: var(--space-2xl);
+  }
 }
 
 .stickyContent {
   position: sticky;
-  top: calc(var(--nav-height) + var(--space-xl));
+  top: calc(var(--nav-height) + var(--space-2xl));
   display: flex;
   flex-direction: column;
-  padding-right: var(--space-lg);
-  padding-bottom: var(--space-lg);
 }
 
 @media (max-width: 1023px) {
   .stickyContent {
     position: static;
-    padding-right: 0;
-    padding-bottom: var(--space-xl);
   }
 }
 
@@ -166,6 +180,86 @@
   margin: 0;
   text-wrap: pretty;
 }
+
+/* ── Refractive Scroll Philosophy Layout ─────────────────── */
+.philosophySection {
+  padding: calc(var(--space-3xl) * 2) 0;
+  position: relative;
+  z-index: 10;
+}
+
+.philosophyMotto {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-wrap: balance;
+  margin: 0;
+  overflow-wrap: break-word; /* Ensure long words like 'Indiscriminately' wrap */
+}
+
+.philosophyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-top: 10vh; /* Offset to start scrolling effect */
+  padding-bottom: 10vh;
+}
+
+/* Liquid Glass Card */
+.philosophyCard {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardNumber {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.cardBody {
+  font-family: var(--font-body-family);
+  font-size: 1.0625rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0;
+  text-wrap: pretty;
+}
+
 
 .milestonesHeader {
   margin-bottom: var(--space-lg);
@@ -270,91 +364,130 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-/* ── Philosophy Grid ─────────────────────────────────────── */
-/*
-   DESIGN_VARIANCE: 8 — asymmetric, not 3-equal-cards.
-   Desktop: 2fr 1.5fr 1fr gives visual hierarchy.
-   Tablet: 2-col. Mobile: 1-col.
-*/
-.philosophyGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-md);
+/* ── Old Philosophy Grid Removed (Replaced by Refractive Scroll) ── */
+
+/* ── Why STNP: Editorial Typography ────────────────────────────────────── */
+.whySection {
+  padding: calc(var(--space-3xl) * 2.5) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 640px) {
-  .philosophyGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 1024px) {
-  .philosophyGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    align-items: start;
-  }
-}
-
-.philosophyItem {
+.whyEditorial {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
+  gap: var(--space-3xl);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-
-.philoNumber {
+.whyLabel {
   font-family: var(--mono);
   font-size: 0.6875rem;
-  color: var(--color-accent);
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 0.25rem;
-  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-lg);
 }
 
-.philoTitle {
+.whyTitle {
   font-family: var(--font-heading-family);
-  font-size: clamp(1.125rem, 1.4vw, 1.25rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  margin: 0;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
   color: var(--color-white);
+  margin: 0 0 var(--space-sm);
+  text-wrap: balance;
 }
 
-.philoDesc {
+.whySubtitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.whyBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .whyBody {
+    padding-left: calc(var(--space-3xl) * 1.5);
+    border-left: 1px solid var(--color-accent);
+  }
+}
+
+.whyTextLead {
   font-family: var(--font-body-family);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.45);
-  line-height: 1.65;
+  font-size: clamp(1.25rem, 1.5vw, 1.375rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   text-wrap: pretty;
 }
 
+.whyText {
+  font-family: var(--font-body-family);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  text-wrap: pretty;
+  max-width: 60ch;
+}
 
+/* ── Commitment: Editorial Layout ────────────────────────────────────── */
+.commitmentSection {
+  padding: calc(var(--space-3xl) * 2) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-/* ── Pro Bono / Commitment Block ─────────────────────────── */
-/* Strict full border with background tint instead of side-stripe border */
-.proBonoSection {
-  padding: var(--space-2xl);
-  background-color: rgba(196, 163, 90, 0.03);
-  border: 1px solid var(--color-border);
-  border-radius: 1.25rem;
+.commitmentHeader {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
 }
 
-.proBonoSection .narrativeTitle {
-  color: var(--color-white);
+.commitmentLabel {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
-.proBonoSection .narrativeText {
-  max-width: 62ch;
+.commitmentTitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.commitmentBody {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.commitmentText {
+  font-family: var(--font-body-family);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.75;
   color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  text-wrap: pretty;
 }
 
 /* ── Address Block ───────────────────────────────────────── */

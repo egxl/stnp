@@ -185,90 +185,94 @@ export default async function HomePage({ params }) {
       {/* ===== NEW CONSOLIDATED PHILOSOPHY ===== */}
       <ConsolidatedPhilosophy dict={dict.home} lang={lang} />
 
-      {/* ===== LATEST ARTICLES ===== */}
+      {/* ===== LATEST ARTICLES (REORGANIZED) ===== */}
       {latestPosts.length > 0 && (
-        <section className={`section ${styles.snapSection}`}>
+        <section className={styles.insightsSection}>
           <div className="container">
-            <div className="section-header">
-              <span className="section-label">{dict.home.insightsLabel}</span>
-              <h2 className="section-title">{dict.home.articlesTitle}</h2>
-              <hr className="divider" />
-              <p className="section-subtitle">
-                {dict.home.articlesSubtitle}
-              </p>
-            </div>
-            <div className={styles.articlesGrid}>
-              {latestPosts.map((post) => {
-                const featuredImg =
-                  post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-                const category =
-                  post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Article';
-                const date = new Date(post.date).toLocaleDateString(lang === 'id' ? 'id-ID' : lang === 'zh' ? 'zh-CN' : 'en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                 });
+            <div className={styles.insightsLayout}>
+              <div className={styles.insightsHeader}>
+                <span className="section-label">{dict.home.insightsLabel}</span>
+                <h2 className={`section-title ${styles.insightsTitle}`}>{dict.home.articlesTitle}</h2>
+                <p className={styles.insightsSubtitle}>
+                  {dict.home.articlesSubtitle}
+                </p>
+                <div className={styles.insightsMoreDesktop}>
+                  <Link href={`/${lang}/insights`} className="btn btn--outline">
+                    {dict.home.viewAll}
+                  </Link>
+                </div>
+              </div>
 
-                return (
-                  <div key={post.id} className={styles.articleCard}>
-                    <div className={styles.articleImage}>
-                      {featuredImg ? (
-                        <img src={featuredImg} alt={post.title.rendered} />
-                      ) : (
-                        <div className={styles.articleImagePlaceholder}>
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <path d="M21 15l-5-5L5 21" />
-                          </svg>
-                        </div>
-                      )}
-                      <span className={styles.articleBadge}>{category}</span>
+              <div className={styles.articlesLedger}>
+                {latestPosts.map((post) => {
+                  const category =
+                    post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Article';
+                  const date = new Date(post.date).toLocaleDateString(lang === 'id' ? 'id-ID' : lang === 'zh' ? 'zh-CN' : 'en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                   });
+
+                  return (
+                    <div key={post.id} className={styles.articleRow}>
+                      <div className={styles.articleMeta}>
+                        <time className={styles.articleDate}>{date}</time>
+                        <span className={styles.articleCategory}>{category}</span>
+                      </div>
+                      <div className={styles.articleContent}>
+                        <h3 className={styles.articleTitle}>
+                          <Link href={`/${lang}/insights/${post.slug}`}>
+                            {decodeHtmlEntities(post.title.rendered)}
+                          </Link>
+                        </h3>
+                        <p className={styles.articleExcerpt}>
+                          {stripHtml(post.excerpt.rendered).substring(0, 140)}…
+                        </p>
+                      </div>
+                      <div className={styles.articleAction}>
+                        <CaretRight size={20} weight="bold" />
+                      </div>
                     </div>
-                    <div className={styles.articleBody}>
-                      <time className={styles.articleDate}>{date}</time>
-                      <h3 className={styles.articleTitle}>
-                        <Link href={`/${lang}/insights/${post.slug}`}>
-                          {decodeHtmlEntities(post.title.rendered)}
-                        </Link>
-                      </h3>
-                      <p className={styles.articleExcerpt}>
-                        {stripHtml(post.excerpt.rendered).substring(0, 120)}…
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className={styles.articlesMore}>
-              <Link href={`/${lang}/insights`} className="btn btn--outline">
-                {dict.home.viewAll}
-              </Link>
+                  );
+                })}
+              </div>
+
+              <div className={styles.insightsMoreMobile}>
+                <Link href={`/${lang}/insights`} className="btn btn--outline">
+                  {dict.home.viewAll}
+                </Link>
+              </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* ===== CONTACT CTA ===== */}
-      <section className={`section--dark ${styles.ctaSection} ${styles.snapSection}`}>
-
+      {/* ===== CONTACT CTA (REDESIGNED AS STRATEGIC HUB) ===== */}
+      <section className={styles.ctaSection}>
         <div className="container">
-          <div className={styles.ctaContent}>
-            <span className="section-label">{dict.home.ctaLabel}</span>
-            <hr className="divider" />
-            <h2 className={styles.ctaTitle}>
-              {dict.home.ctaTitle}
-            </h2>
-            <p className={styles.ctaText}>
-              {dict.home.ctaText}
-            </p>
-            <div className={styles.ctaActions}>
-              <Link href={`/${lang}/contact`} className="btn btn--primary">
-                {dict.home.schedule}
-              </Link>
-              <a href={`mailto:${firmInfo.email}`} className={styles.ctaEmail}>
-                {dict.home.orEmail} <span>{firmInfo.email}</span>
-              </a>
+          <div className={styles.ctaLayout}>
+            <div className={styles.ctaNarrative}>
+              <span className="section-label">{dict.home.ctaLabel}</span>
+              <h2 className={styles.ctaTitle}>
+                {dict.home.ctaTitle}
+              </h2>
+              <p className={styles.ctaText}>
+                {dict.home.ctaText}
+              </p>
+            </div>
+
+            <div className={styles.ctaChannels}>
+              <div className={styles.channelCard}>
+                <Link href={`/${lang}/contact`} className="btn btn--primary" style={{ width: '100%', justifyContent: 'center' }}>
+                  {dict.home.schedule}
+                </Link>
+                <div className={styles.channelDivider}>
+                  <span>or connect directly</span>
+                </div>
+                <a href={`mailto:${firmInfo.email}`} className={styles.ctaEmail}>
+                  <span>{firmInfo.email}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
