@@ -117,7 +117,7 @@
 .flowContent {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space-3xl) * 1.5);
+  gap: var(--space-3xl);
 }
 
 .narrativeSection {
@@ -290,7 +290,8 @@
 
 @media (min-width: 1024px) {
   .philosophyGrid {
-    grid-template-columns: 2fr 1.6fr 1.2fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
     align-items: start;
   }
 }
@@ -303,13 +304,6 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* First card gets more visual weight */
-@media (min-width: 1024px) {
-  .philosophyItem:first-child {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
-  }
-}
 
 .philoNumber {
   font-family: var(--mono);
@@ -365,13 +359,12 @@
 
 /* ── Address Block ───────────────────────────────────────── */
 .addressBlock {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
   font-style: normal;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.4rem;
 }
 
 .addressName {
@@ -393,9 +386,12 @@
 }
 
 .addressContact {
-  margin-top: 0.75rem !important;
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
   transition: color 200ms var(--ease-out);
+}
+
+.addressContact:first-of-type {
+  margin-top: var(--space-xs);
 }
 
 /* ── CTA ─────────────────────────────────────────────────── */
@@ -459,7 +455,6 @@
   flex-direction: column;
   gap: 0;
   border-top: 1px solid var(--color-border);
-  margin-top: var(--space-xl);
 }
 
 .springboardLink {
@@ -504,6 +499,141 @@
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
   border-radius: 4px;
+}
+
+/* ── Visit Us (Minimalist Redesign) ───────────────────────── */
+.visitMinimalistSection {
+  padding: calc(var(--space-3xl) * 2) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.visitMinimalistLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  justify-content: space-between;
+}
+
+.visitMinimalistHeader {
+  max-width: 800px;
+  margin-bottom: calc(var(--space-3xl) * 1.5);
+}
+
+.minimalistTitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: var(--space-md) 0 var(--space-xl);
+  text-wrap: balance;
+}
+
+.minimalistBody {
+  font-family: var(--font-body-family);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.8;
+  max-width: 50ch;
+  margin-bottom: var(--space-2xl);
+}
+
+.minimalistCta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: border-color 300ms var(--ease-out), color 300ms var(--ease-out);
+}
+
+.minimalistCta:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.ctaArrow {
+  margin-left: 0.5rem;
+  transition: transform 300ms var(--ease-out);
+}
+
+.minimalistCta:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+.visitMinimalistFooter {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .visitMinimalistFooter {
+    grid-template-columns: 2fr 1fr;
+    align-items: end;
+  }
+}
+
+.minimalistAddress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xl);
+  font-style: normal;
+}
+
+.addressCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.addressCol p {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.addressCol .addressName {
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+.minimalistSpringboards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .minimalistSpringboards {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.minSpringboard {
+  font-family: var(--font-heading-family);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 300ms var(--ease-out);
+}
+
+.minSpringboard:hover {
+  color: var(--color-white);
 }
 
 /* ── Entry Animations: Handled by AboutAnimation.js (GSAP) ── */

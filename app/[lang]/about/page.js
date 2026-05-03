@@ -135,47 +135,43 @@ export default async function AboutPage({ params }) {
         </div>
       </section>
 
-      {/* ── Visit Us & CTA ───────────────────────────────────────────────── */}
-      <section className={styles.sectionBlock}>
+      {/* ── Visit Us & CTA (Kenya Hara Minimalism) ───────────────────────── */}
+      <section className={styles.visitMinimalistSection}>
         <div className="container">
-          <div className={styles.splitGrid}>
-            <div className={styles.splitLeft}>
-              <div className={styles.stickyContent}>
-                <div className={styles.sectionLabel}>{a.visit.label}</div>
-                <h2 className={styles.narrativeTitle}>{a.visit.title}</h2>
-                <div className={styles.ctaWrap}>
-                  <Link href={`/${lang}/contact`} className={styles.ctaButton} data-animate="cta">
-                    {a.visit.cta}
-                  </Link>
-                </div>
-              </div>
+          <div className={styles.visitMinimalistLayout} data-animate="narrative">
+            <div className={styles.visitMinimalistHeader}>
+              <div className={styles.sectionLabel}>{a.visit.label}</div>
+              <h2 className={styles.minimalistTitle}>{a.visit.title}</h2>
+              <p className={styles.minimalistBody}>{a.visit.body}</p>
+              
+              <Link href={`/${lang}/contact`} className={styles.minimalistCta} data-animate="cta">
+                {a.visit.cta} <span className={styles.ctaArrow}>&rarr;</span>
+              </Link>
             </div>
-            <div className={styles.splitRight}>
-              <div className={styles.flowContent}>
-                <section className={styles.narrativeSection} data-animate="narrative">
-                  <h3 className={styles.unfairSubtitle}>{a.visit.subtitle}</h3>
-                  <p className={styles.narrativeText}>{a.visit.body}</p>
 
-                  <address className={styles.addressBlock}>
-                    <p className={styles.addressName}>{a.visit.addressLabel}</p>
-                    <p>{address.line1}</p>
-                    {address.line2 && <p>{address.line2}</p>}
-                    <p>{address.city}, {address.postal}</p>
-                    <p>{address.country}</p>
-                    {phone?.[0] && <p className={styles.addressContact}>{phone[0]}</p>}
-                    {email && <p className={styles.addressContact}>{email}</p>}
-                  </address>
-                </section>
+            <div className={styles.visitMinimalistFooter}>
+              <address className={styles.minimalistAddress}>
+                <div className={styles.addressCol}>
+                  <p className={styles.addressName}>{a.visit.addressLabel}</p>
+                  <p>{address.line1}</p>
+                  {address.line2 && <p>{address.line2}</p>}
+                  <p>{address.city}, {address.postal}</p>
+                  <p>{address.country}</p>
+                </div>
+                <div className={styles.addressCol}>
+                  <p className={styles.addressName}>Contact</p>
+                  {phone?.[0] && <p>{phone[0]}</p>}
+                  {email && <p>{email}</p>}
+                </div>
+              </address>
 
-                {/* Springboards */}
-                <section className={styles.springboards}>
-                  <Link href={`/${lang}/team`} className={styles.springboardLink}>
-                    {a.springboards.team} &rarr;
-                  </Link>
-                  <Link href={`/${lang}/legal-services`} className={styles.springboardLink}>
-                    {a.springboards.services} &rarr;
-                  </Link>
-                </section>
+              <div className={styles.minimalistSpringboards}>
+                <Link href={`/${lang}/team`} className={styles.minSpringboard}>
+                  {a.springboards.team}
+                </Link>
+                <Link href={`/${lang}/legal-services`} className={styles.minSpringboard}>
+                  {a.springboards.services}
+                </Link>
               </div>
             </div>
           </div>
