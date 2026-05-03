@@ -9,7 +9,9 @@
 .heroSection {
   padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid oklch(25% 0.01 240 / 0.1);
-  background: var(--color-surface); /* Distinct background to separate from ledger */
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .heroLayout {
@@ -304,7 +306,7 @@
 }
 
 :global(.light) .heroSection {
-  background: var(--color-surface);
+  background: transparent;
   border-bottom-color: rgba(0, 0, 0, 0.05);
 }
 

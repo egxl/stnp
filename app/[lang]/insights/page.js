@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getPosts, getCategories } from '@/lib/api';
 import { decodeHtmlEntities } from '@/lib/utils';
+import GrainientDynamic from '@/components/Grainient/GrainientDynamic';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -20,6 +21,13 @@ export default async function ArticlesPage() {
     <div className={styles.insightsWrapper}>
       {/* Hero */}
       <header className={styles.heroSection}>
+        <GrainientDynamic 
+          timeSpeed={0.15}
+          warpSpeed={1.5}
+          noiseScale={2.5}
+          blendSoftness={0.1}
+          opacity={0.6}
+        />
         <div className="container">
           <div className={styles.heroLayout}>
             <div className={styles.heroHeader}>

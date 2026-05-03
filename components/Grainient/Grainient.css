@@ -1,0 +1,14 @@
+.grainient-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.8; /* Adjust based on desired blend */
+}
+
+.grainient-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
