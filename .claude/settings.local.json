@@ -10,7 +10,8 @@
       "Bash(npm show *)",
       "WebFetch(domain:claude.ai)",
       "Bash(npm install *)",
-      "Bash(npm search *)"
+      "Bash(npm search *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/en/about)"
     ]
   }
 }

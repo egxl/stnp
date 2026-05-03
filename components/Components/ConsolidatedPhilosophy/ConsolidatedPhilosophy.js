@@ -55,7 +55,7 @@ export default function ConsolidatedPhilosophy({ dict, lang }) {
               </div>
               
               <div className={styles.ctaWrapper}>
-                <Link href={`/${lang}/about-us`} className={styles.ctaLink}>
+                <Link href={`/${lang}/about`} className={styles.ctaLink}>
                   <span>{dict.clientsLearnMore || "Learn more"}</span>
                   <div className={styles.iconCircle}>
                     <CaretRight size={14} weight="bold" />

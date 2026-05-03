@@ -107,7 +107,7 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 2,
       label: d.about,
-      href: `/${lang}/about-us`,
+      href: `/${lang}/about`,
     },
     {
       id: 3,
@@ -163,7 +163,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
 
   const navLinks = [
     { href: `/${lang}`, label: d.home },
-    { href: `/${lang}/about-us`, label: d.about },
+    { href: `/${lang}/about`, label: d.about },
     { href: `/${lang}/legal-services`, label: d.services },
     { href: `/${lang}/team`, label: d.team },
     { href: `/${lang}/insights`, label: d.insights },

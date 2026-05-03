@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      // Canonical migration: /about-us → /about (301 permanent)
+      { source: '/:lang/about-us', destination: '/:lang/about', permanent: true },
+    ];
+  },
   experimental: {
     viewTransition: true,
     cssChunking: 'strict',

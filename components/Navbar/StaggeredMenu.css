@@ -159,7 +159,7 @@
   z-index: 1010; /* Stay above the panel (1002) */
 }
 
-:global(.light) .sm-toggle {
+.light .sm-toggle {
   color: #020617;
 }
 
