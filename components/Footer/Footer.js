@@ -7,12 +7,22 @@ import { serviceCategories, proBono } from '@/lib/data/services';
 import styles from './Footer.module.css';
 import Beams from './Beams';
 import DisclaimerModal from './DisclaimerModal';
+import ColophonModal from './ColophonModal';
 
 export default function Footer({ dict, lang = 'en' }) {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+  const [isColophonOpen, setIsColophonOpen] = useState(false);
   const [openPracticeArea, setOpenPracticeArea] = useState(null);
   const currentYear = new Date().getFullYear();
   const address = firmInfo.address;
+
+  useEffect(() => {
+    console.log(
+      "%c CRAFTED BY HAVERGAL %c https://www.linkedin.com/in/havergal/ ",
+      "background: #C4A35A; color: #060E1A; padding: 4px 8px; font-weight: bold; border-radius: 2px;",
+      "background: #1E3048; color: #FAFBFC; padding: 4px 8px; border-radius: 2px;"
+    );
+  }, []);
 
   const d = dict?.footer || {
     quickLinks: "Quick Links",
@@ -188,13 +198,25 @@ export default function Footer({ dict, lang = 'en' }) {
             <p className={styles.disclaimer}>
               {d.disclaimer}
             </p>
-            <button 
-              className={styles.disclaimerBtn}
-              onClick={() => setIsDisclaimerOpen(true)}
-            >
-              {d.disclaimerButton}
-            </button>
+            <div className={styles.legalLinks}>
+              <button 
+                className={styles.disclaimerBtn}
+                onClick={() => setIsDisclaimerOpen(true)}
+              >
+                {d.disclaimerButton}
+              </button>
+            </div>
           </div>
+        </div>
+        
+        {/* Absolute bottom signature */}
+        <div className={styles.signatureRow}>
+          <button 
+            className={styles.signatureBtn}
+            onClick={() => setIsColophonOpen(true)}
+          >
+            Design & Engineering by Havergal
+          </button>
         </div>
       </div>
 
@@ -202,6 +224,11 @@ export default function Footer({ dict, lang = 'en' }) {
         isOpen={isDisclaimerOpen} 
         onClose={() => setIsDisclaimerOpen(false)} 
         dict={dict} 
+      />
+
+      <ColophonModal 
+        isOpen={isColophonOpen} 
+        onClose={() => setIsColophonOpen(false)} 
       />
     </footer>
   );

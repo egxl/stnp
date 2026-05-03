@@ -1,0 +1,13 @@
+/* TEAM */
+  Designer & Engineer: Havergal
+  LinkedIn: https://www.linkedin.com/in/havergal/
+  Site: stnp.id
+
+/* THANKS */
+  Soaloan Tua Nababan & Partners
+
+/* SITE */
+  Last update: 2024
+  Standards: HTML5, CSS3, Next.js
+  Components: GSAP, Custom WebGL
+  Software: Next.js, React, Three.js
