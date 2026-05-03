@@ -84,13 +84,9 @@ The Next.js `app` router implements the following main pages:
   - **Specialization**: Commercial litigation and Bankruptcy.
   - **Bio context**: Bachelor from UGM, Magister from University of Christian Indonesia. Member of PERADI and AKPI. Represents International and Indonesian clients.
 
-### Senior Associates
-- **Nirwati S. Salomo, S.H.** 
-  - **Specialization**: Company acquisitions, general corporate, family law, employment, mining, and energy. (UI Alumnus, 1985).
-- **Praya Dwiputra Ramadhan, S.H.** 
-  - **Specialization**: Bankruptcy law and commercial transactions.
-
 ### Associates
+- **Praya Dwiputra Ramadhan, S.H.**
+  - **Specialization**: Bankruptcy law and commercial transactions.
 - **Andreanna Rotua Siahaan, S.H.**
   - Focuses on litigation and corporate practice, case preparation, and legal research.
 - **Imanuel Patar Parsaoran Turnip, S.H.** 
