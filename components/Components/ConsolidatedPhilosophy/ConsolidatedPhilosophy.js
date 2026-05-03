@@ -6,7 +6,7 @@ import { firmInfo } from '@/lib/data/team';
 
 export default function ConsolidatedPhilosophy({ dict, lang }) {
   return (
-    <section className={`${styles.philosophySection} section--dark`}>
+    <section className={styles.philosophySection}>
       {/* Background Atmosphere */}
       <div className={styles.lightLeak} aria-hidden="true" />
       

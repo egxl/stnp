@@ -23,7 +23,6 @@ export default async function ArticlesPage() {
         <div className="container">
           <div className={styles.heroLayout}>
             <div className={styles.heroHeader}>
-              <span className={styles.heroLabel}>Journal</span>
               <h1 className={styles.heroTitle}>
                 Legal<br/>
                 <span className={styles.textAccent}>Perspectives.</span>

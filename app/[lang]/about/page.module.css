@@ -779,3 +779,101 @@
     transition: none;
   }
 }
+
+/* ── Light Mode Fixes ────────────────────────────────────── */
+:global(.light) .main {
+  background-color: var(--color-bg);
+}
+
+:global(.light) .editorialTitle,
+:global(.light) .narrativeTitle,
+:global(.light) .philosophyMotto,
+:global(.light) .cardTitle,
+:global(.light) .whyTitle,
+:global(.light) .commitmentTitle,
+:global(.light) .minimalistTitle,
+:global(.light) .expansionTitle {
+  color: var(--color-primary) !important;
+}
+
+:global(.light) .heroCopy,
+:global(.light) .heroBody,
+:global(.light) .narrativeText,
+:global(.light) .cardBody,
+:global(.light) .whyText,
+:global(.light) .commitmentText,
+:global(.light) .minimalistBody,
+:global(.light) .partnerList li {
+  color: var(--color-text-muted) !important;
+}
+
+:global(.light) .whyTextLead {
+  color: var(--color-primary) !important;
+  opacity: 0.9;
+}
+
+:global(.light) .whySubtitle {
+  color: var(--color-text-light) !important;
+}
+
+:global(.light) .philosophyCard {
+  background: rgba(10, 22, 40, 0.03) !important;
+  border-color: rgba(10, 22, 40, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(10, 22, 40, 0.04) !important;
+}
+
+:global(.light) .philosophyIntro,
+:global(.light) .almaMater {
+  color: var(--color-text-light) !important;
+}
+
+:global(.light) .partnerList strong {
+  color: var(--color-primary) !important;
+}
+
+:global(.light) .minimalistCta {
+  color: var(--color-primary) !important;
+  border-bottom-color: rgba(10, 22, 40, 0.3) !important;
+}
+
+:global(.light) .minimalistCta:hover {
+  color: var(--color-accent-dark) !important;
+  border-bottom-color: var(--color-accent-dark) !important;
+}
+
+:global(.light) .addressCol p {
+  color: var(--color-text) !important; /* Higher contrast for actual address */
+  font-weight: 500;
+}
+
+:global(.light) .addressCol .addressName {
+  color: var(--color-text-muted) !important; /* Stronger label */
+  opacity: 1 !important;
+}
+
+:global(.light) .minSpringboard {
+  color: var(--color-text) !important;
+  font-weight: 500;
+}
+
+:global(.light) .minSpringboard:hover {
+  color: var(--color-accent-dark) !important;
+}
+
+:global(.light) .splitLeft {
+  border-right-color: var(--color-border) !important;
+}
+
+:global(.light) .expansionBlock {
+  border-top-color: var(--color-border) !important;
+}
+
+:global(.light) .whySection,
+:global(.light) .commitmentSection,
+:global(.light) .visitMinimalistSection {
+  border-top-color: var(--color-border) !important;
+}
+
+:global(.light) .visitMinimalistFooter {
+  border-top-color: rgba(0, 0, 0, 0.1) !important;
+}

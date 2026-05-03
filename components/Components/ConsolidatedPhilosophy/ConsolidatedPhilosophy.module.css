@@ -269,3 +269,64 @@
 .ctaLink:hover::after {
   width: 100%;
 }
+
+/* --- Light Mode Overrides --- */
+:global(.light) .philosophySection {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
+}
+
+:global(.light) .lightLeak {
+  background: radial-gradient(circle at center, rgba(196, 163, 90, 0.12) 0%, transparent 70%);
+}
+
+:global(.light) .title {
+  color: var(--color-primary);
+}
+
+:global(.light) .eyebrow {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .principlesList {
+  border-left-color: var(--color-border);
+}
+
+:global(.light) .principleNumber {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .principleText {
+  color: var(--color-text-muted);
+}
+
+:global(.light) .blockquote {
+  color: var(--color-primary);
+}
+
+:global(.light) .authorName {
+  color: var(--color-primary);
+}
+
+:global(.light) .portraitWrapper {
+  border-color: var(--color-border);
+}
+
+:global(.light) .ctaLink {
+  color: var(--color-primary);
+}
+
+:global(.light) .iconCircle {
+  border-color: var(--color-border);
+}
+
+:global(.light) .ctaLink:hover .iconCircle {
+  color: var(--color-white);
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+:global(.light) .ctaLink:hover::after {
+  background-color: var(--color-accent-dark);
+}

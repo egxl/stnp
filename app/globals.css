@@ -558,16 +558,16 @@ button {
 
 /* --- Light Mode Overrides --- */
 .light {
-  --color-bg: #C7C8CA;
-  --color-bg-alt: #BDBEC0;
-  --color-surface: #D1D2D4;
+  --color-bg: #FAF9F6; /* Gallery White / Paper */
+  --color-bg-alt: #F3F2EE; /* Bone / Sand */
+  --color-surface: #FFFFFF;
   
-  --color-text: #1A1A2E;
-  --color-text-muted: #374151;
-  --color-text-light: #4B5563;
+  --color-text: #0A1628; /* Revert to deep navy for text */
+  --color-text-muted: #4B5563;
+  --color-text-light: #6B7280;
 
-  --color-border: #ABACAF;
-  --color-border-light: #B8B9BC;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
   
   --color-primary-light: #1A2744;
   --color-primary-dark: #060E1A;
@@ -604,9 +604,7 @@ button {
 ────────────────────────────────────────────────────────────────────────── */
 :where(.light) [class*="hero"],
 :where(.light) [class*="pageHero"],
-:where(.light) [class*="trustSection"],
 :where(.light) [class*="quoteBanner"],
-:where(.light) [class*="philosophySection"],
 :where(.light) [class*="ctaSection"],
 :where(.light) [class*="footer"] {
   color: var(--color-white);
@@ -616,34 +614,25 @@ button {
 :where(.light) [class*="pageHero"] h1,
 :where(.light) [class*="hero"] h2,
 :where(.light) [class*="pageHero"] h2,
-:where(.light) [class*="trustSection"] h2,
 :where(.light) [class*="quoteBanner"] h2,
-:where(.light) [class*="philosophySection"] h2,
 :where(.light) [class*="ctaSection"] h2,
 :where(.light) [class*="footer"] h1,
 :where(.light) [class*="footer"] h2,
 :where(.light) [class*="footer"] h3,
-:where(.light) [class*="footer"] h4,
-:where(.light) [class*="heroTitle"]:not([class*="Accent"]) {
+:where(.light) [class*="footer"] h4 {
   color: var(--color-white) !important;
 }
 
-:where(.light) [class*="heroTitle"][class*="Accent"],
-:where(.light) [class*="heroLabel"],
-:where(.light) [class*="trustLabel"],
 :where(.light) [class*="quoteOpen"],
 :where(.light) [class*="quoteClose"],
-:where(.light) [class*="quoteCite"],
-:where(.light) [class*="philosophySection"] [class*="eyebrow"] {
+:where(.light) [class*="quoteCite"] {
   color: var(--color-accent) !important;
 }
 
 :where(.light) [class*="hero"] p,
 :where(.light) [class*="pageHero"] p,
 :where(.light) [class*="heroSubtitle"],
-:where(.light) [class*="trustHeader"] p,
 :where(.light) [class*="quoteContent"] p,
-:where(.light) [class*="philosophySection"] p,
 :where(.light) [class*="ctaText"],
 :where(.light) [class*="footer"] p,
 :where(.light) [class*="footer"] span,

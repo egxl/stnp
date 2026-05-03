@@ -7,7 +7,7 @@
 
 /* --- Hero Section --- */
 .heroSection {
-  padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+  padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid oklch(25% 0.01 240 / 0.1);
   background: var(--color-surface); /* Distinct background to separate from ledger */
 }
@@ -75,7 +75,7 @@
 
 /* --- Ledger Area --- */
 .ledgerSection {
-  padding: clamp(4rem, 8vw, 6rem) 0;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem);
   background: var(--color-bg);
 }
 
@@ -296,4 +296,58 @@
   .articlesLedger:hover .articleRow {
     opacity: 1; /* Disable void effect on mobile */
   }
+}
+
+/* ── Light Mode Overrides ────────────────────────────────── */
+:global(.light) .insightsWrapper {
+  background: var(--color-bg);
+}
+
+:global(.light) .heroSection {
+  background: var(--color-surface);
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+:global(.light) .heroTitle {
+  color: var(--color-primary) !important;
+}
+
+:global(.light) .textAccent {
+  color: var(--color-text-muted) !important;
+}
+
+:global(.light) .heroDescription {
+  color: var(--color-text-muted) !important;
+}
+
+:global(.light) .articleRow {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+:global(.light) .articlesLedger {
+  border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+:global(.light) .articleTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .sidebarTitle {
+  color: var(--color-text-light);
+}
+
+:global(.light) .categoryList li {
+  color: var(--color-text-muted);
+}
+
+:global(.light) .categoryList li:hover {
+  color: var(--color-primary);
+}
+
+:global(.light) .categoryActive {
+  color: var(--color-primary) !important;
+}
+
+:global(.light) .articleDate {
+  color: var(--color-text-light);
 }

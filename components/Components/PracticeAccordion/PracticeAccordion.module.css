@@ -305,3 +305,19 @@
 :global(.light) .branchLink {
   color: rgba(0, 0, 0, 0.6);
 }
+
+:global(.light) .categoryIndex {
+  color: var(--color-accent-dark);
+}
+
+:global(.light) .serviceTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .serviceDesc {
+  color: var(--color-text-muted);
+}
+
+:global(.light) .accordionRowExpanded .categoryTitle {
+  color: var(--color-accent-dark);
+}

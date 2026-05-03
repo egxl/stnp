@@ -999,11 +999,11 @@
 
 /* --- Articles Ledger Light Mode --- */
 :global(.light) .articleRow {
-  border-color: oklch(90% 0.005 240);
+  border-color: var(--color-border);
 }
 
 :global(.light) .articleRow:hover {
-  background: oklch(95% 0.005 240);
+  background: rgba(196, 163, 90, 0.05);
 }
 
 :global(.light) .articleTitle {
@@ -1011,5 +1011,45 @@
 }
 
 :global(.light) .articleExcerpt {
+  color: var(--color-text-muted);
+}
+
+:global(.light) .articleDate {
   color: var(--color-text-light);
+}
+
+:global(.light) .articleCategory {
+  color: var(--color-accent-dark);
+}
+
+/* --- Trust Section Light Mode --- */
+:global(.light) .trustSection {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(196, 163, 90, 0.08), transparent 60%),
+    var(--color-bg);
+  border-color: var(--color-border);
+}
+
+:global(.light) .trustTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .trustLabel {
+  color: var(--color-accent-dark);
+}
+
+/* --- Insights Section Light Mode --- */
+:global(.light) .insightsSection {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(196, 163, 90, 0.06), transparent 60%),
+    var(--color-bg);
+  border-color: var(--color-border);
+}
+
+:global(.light) .insightsTitle {
+  color: var(--color-primary);
+}
+
+:global(.light) .insightsSubtitle {
+  color: var(--color-text-muted);
 }
