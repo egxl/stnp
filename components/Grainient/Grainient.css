@@ -4,7 +4,6 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.8; /* Adjust based on desired blend */
 }
 
 .grainient-container canvas {

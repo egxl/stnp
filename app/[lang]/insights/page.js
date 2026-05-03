@@ -19,15 +19,16 @@ export default async function ArticlesPage() {
 
   return (
     <div className={styles.insightsWrapper}>
+      <GrainientDynamic 
+        timeSpeed={0.15}
+        warpSpeed={1.5}
+        noiseScale={2.5}
+        blendSoftness={0.1}
+        opacity={0.4} 
+      />
       {/* Hero */}
       <header className={styles.heroSection}>
-        <GrainientDynamic 
-          timeSpeed={0.15}
-          warpSpeed={1.5}
-          noiseScale={2.5}
-          blendSoftness={0.1}
-          opacity={0.6}
-        />
+
         <div className="container">
           <div className={styles.heroLayout}>
             <div className={styles.heroHeader}>

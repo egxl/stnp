@@ -122,6 +122,7 @@ const Grainient = ({
   centerX = 0.0,
   centerY = 0.0,
   zoom = 0.9,
+  opacity = 1.0,
   className = ''
 }) => {
   const containerRef = useRef(null);
@@ -251,7 +252,7 @@ const Grainient = ({
     color3
   ]);
 
-  return <div ref={containerRef} className={`grainient-container ${className}`.trim()} />;
+  return <div ref={containerRef} className={`grainient-container ${className}`.trim()} style={{ opacity }} />;
 };
 
 export default Grainient;

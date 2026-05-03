@@ -2,6 +2,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { firmInfo } from '@/lib/data/team';
 import styles from './page.module.css';
 import Link from 'next/link';
+import GrainientDynamic from '@/components/Grainient/GrainientDynamic';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -25,6 +26,13 @@ export default async function AboutPage({ params }) {
 
   return (
     <main className={styles.main}>
+      <GrainientDynamic 
+        timeSpeed={0.15}
+        warpSpeed={1.5}
+        noiseScale={2.5}
+        blendSoftness={0.1}
+        opacity={0.3} 
+      />
       <div className={styles.noiseOverlay} aria-hidden="true" />
       <AboutAnimation />
 

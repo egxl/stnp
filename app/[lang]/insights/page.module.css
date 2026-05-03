@@ -3,6 +3,7 @@
   background: var(--color-bg);
   min-height: 100vh;
   padding-top: var(--nav-height);
+  position: relative;
 }
 
 /* --- Hero Section --- */
@@ -78,7 +79,7 @@
 /* --- Ledger Area --- */
 .ledgerSection {
   padding: clamp(2rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem);
-  background: var(--color-bg);
+  background: transparent;
 }
 
 .ledgerLayout {
