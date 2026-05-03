@@ -607,7 +607,8 @@ button {
 :where(.light) [class*="trustSection"],
 :where(.light) [class*="quoteBanner"],
 :where(.light) [class*="philosophySection"],
-:where(.light) [class*="ctaSection"] {
+:where(.light) [class*="ctaSection"],
+:where(.light) [class*="footer"] {
   color: var(--color-white);
 }
 
@@ -619,6 +620,10 @@ button {
 :where(.light) [class*="quoteBanner"] h2,
 :where(.light) [class*="philosophySection"] h2,
 :where(.light) [class*="ctaSection"] h2,
+:where(.light) [class*="footer"] h1,
+:where(.light) [class*="footer"] h2,
+:where(.light) [class*="footer"] h3,
+:where(.light) [class*="footer"] h4,
 :where(.light) [class*="heroTitle"]:not([class*="Accent"]) {
   color: var(--color-white) !important;
 }
@@ -639,7 +644,11 @@ button {
 :where(.light) [class*="trustHeader"] p,
 :where(.light) [class*="quoteContent"] p,
 :where(.light) [class*="philosophySection"] p,
-:where(.light) [class*="ctaText"] {
+:where(.light) [class*="ctaText"],
+:where(.light) [class*="footer"] p,
+:where(.light) [class*="footer"] span,
+:where(.light) [class*="footer"] address,
+:where(.light) [class*="footer"] li {
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
