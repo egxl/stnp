@@ -25,6 +25,7 @@ export default async function AboutPage({ params }) {
 
   return (
     <main className={styles.main}>
+      <div className={styles.noiseOverlay} aria-hidden="true" />
       <AboutAnimation />
 
       {/* ── Hero & Origin Story: Editorial Split ─────────────────────────── */}
@@ -56,7 +57,7 @@ export default async function AboutPage({ params }) {
                   <p className={styles.narrativeText}>{a.story.p1}</p>
                   <p className={styles.narrativeText}>{a.story.p2}</p>
 
-                  <div className={`${styles.expansionBlock} ${styles.glassCard}`}>
+                  <div className={styles.expansionBlock}>
                     <h3 className={styles.expansionTitle}>{a.story.expansion.label}</h3>
                     <p className={styles.narrativeText}>{a.story.expansion.body}</p>
                     <ul className={styles.partnerList}>
@@ -90,27 +91,10 @@ export default async function AboutPage({ params }) {
           </div>
           <ul className={styles.philosophyGrid} data-animate="grid" role="list">
             {philosophyPrinciples.map((p) => (
-              <li key={p.number} className={`${styles.philosophyItem} ${styles.glassCard}`} data-animate="item">
+              <li key={p.number} className={styles.philosophyItem} data-animate="item">
                 <span className={styles.philoNumber}>{p.number}</span>
                 <h3 className={styles.philoTitle}>{p.title}</h3>
                 <p className={styles.philoDesc}>{p.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ── Milestones ───────────────────────────────────────────────────── */}
-      <section className={styles.sectionBlock}>
-        <div className="container">
-          <div className={styles.milestonesHeader}>
-            <span className={styles.sectionLabel}>{a.milestones.label}</span>
-          </div>
-          <ul className={styles.statsSection} data-animate="stats" role="list">
-            {a.milestones.items.map((item) => (
-              <li key={item.stat} className={styles.statCard} data-animate="statItem">
-                <span className={styles.statNumber}>{item.stat}</span>
-                <span className={styles.statLabel}>{item.label}</span>
               </li>
             ))}
           </ul>

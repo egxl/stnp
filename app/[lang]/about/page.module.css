@@ -14,6 +14,15 @@
   color: var(--color-text);
 }
 
+.noiseOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');
+}
+
 /* ── Split Surface (Hero + Origin Story) ─────────────────── */
 .splitSurface {
   padding-top: calc(var(--nav-height) + var(--space-2xl));
@@ -72,10 +81,11 @@
 /* ── Hero Typography ─────────────────────────────────────── */
 .editorialTitle {
   font-family: var(--font-heading-family);
-  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 400;
   /* Editorial tight tracking */
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   color: var(--color-white);
   margin: 0 0 var(--space-md);
   text-wrap: balance;
@@ -109,7 +119,7 @@
 .flowContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
+  gap: calc(var(--space-3xl) * 1.5);
 }
 
 .narrativeSection {
@@ -132,8 +142,8 @@
 
 /* ── Section Blocks ──────────────────────────────────────── */
 .sectionBlock {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-3xl);
+  padding-top: calc(var(--space-3xl) * 1.5);
+  padding-bottom: calc(var(--space-3xl) * 1.5);
 }
 
 /* Thin rule between major blocks — no card boxing needed */
@@ -175,11 +185,11 @@
 /* ── Narrative Typography ────────────────────────────────── */
 .narrativeTitle {
   font-family: var(--font-heading-family);
-  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   /* Tighter, authoritative leading */
   line-height: 1.1;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   margin: 0;
   color: var(--color-white);
   text-wrap: balance;
@@ -199,46 +209,18 @@
   font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.6);
-  max-width: 68ch;
+  max-width: 70ch;
   text-wrap: pretty;
   margin: 0;
 }
 
-/* ── Liquid Glass Card ───────────────────────────────────── */
-/*
-   True liquid glass: not just backdrop-blur.
-   1px inner border simulates physical edge refraction.
-   Inner shadow gives material depth.
-*/
-.glassCard {
-  background: rgba(255, 255, 255, 0.025);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  /* Inner refraction line */
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.12);
-  border-radius: 1.25rem;
-  transition:
-    transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
-}
 
-.glassCard:hover {
-  transform: translateY(-3px);
-  border-color: rgba(196, 163, 90, 0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 16px 40px rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(196, 163, 90, 0.06);
-}
 
 /* ── Expansion Block (2021 Partners) ─────────────────────── */
 .expansionBlock {
-  margin-top: var(--space-lg);
-  padding: var(--space-lg) var(--space-xl);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
 }
 
 .expansionTitle {
@@ -319,7 +301,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  padding: var(--space-lg) var(--space-lg);
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 /* First card gets more visual weight */
@@ -338,6 +321,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .philoTitle {
@@ -358,97 +342,15 @@
   text-wrap: pretty;
 }
 
-/* ── Milestones / Stats Strip ────────────────────────────── */
-/*
-   Stats as a horizontal rule-separated strip, not boxed cards.
-   Uses negative space + rule — no glassCard here.
-*/
-.statsSection {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid var(--color-border);
-  border-radius: 1.25rem;
-  overflow: hidden;
-}
 
-@media (min-width: 640px) {
-  .statsSection {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.statCard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.375rem;
-  padding: var(--space-xl) var(--space-lg);
-  border-right: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  /* No background, no glass — pure spacing and type */
-  background: transparent;
-  border-radius: 0;
-  transition: background-color 250ms var(--ease-out);
-}
-
-.statCard:hover {
-  background-color: rgba(255, 255, 255, 0.02);
-  transform: none;
-  box-shadow: none;
-  border-color: var(--color-border);
-}
-
-/* Remove right border from last in each row */
-@media (min-width: 640px) {
-  .statCard:nth-child(4n) {
-    border-right: none;
-  }
-}
-@media (max-width: 639px) {
-  .statCard:nth-child(2n) {
-    border-right: none;
-  }
-}
-
-/* Remove bottom border from last row */
-.statCard:nth-last-child(-n+4) {
-  border-bottom: none;
-}
-@media (max-width: 639px) {
-  .statCard:nth-last-child(-n+2) {
-    border-bottom: none;
-  }
-}
-
-.statNumber {
-  font-family: var(--mono);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 700;
-  color: var(--color-white);
-  display: inline-block;
-  letter-spacing: -0.02em;
-}
-
-.statLabel {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
-  margin-top: 0.125rem;
-}
 
 /* ── Pro Bono / Commitment Block ─────────────────────────── */
-/*
-   Left-aligned — not centered. Avoids generic centered "feature" cliché.
-   Left accent bar signals ethical weight without shouting.
-*/
-/* Strict left-border: no padding-left, border is the element */
+/* Strict full border with background tint instead of side-stripe border */
 .proBonoSection {
-  padding: var(--space-xl) var(--space-2xl);
-  border-left: 3px solid var(--color-accent);
-  border-radius: 0 1.25rem 1.25rem 0;
+  padding: var(--space-2xl);
+  background-color: rgba(196, 163, 90, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -548,6 +450,11 @@
   transform: translateY(0) scale(0.98);
 }
 
+.ctaButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
 /* ── Springboard Links ───────────────────────────────────── */
 .springboards {
   display: flex;
@@ -593,6 +500,12 @@
 .springboardLink:hover::after {
   opacity: 1;
   transform: translateX(0);
+}
+
+.springboardLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* ── Entry Animations: Handled by AboutAnimation.js (GSAP) ── */
