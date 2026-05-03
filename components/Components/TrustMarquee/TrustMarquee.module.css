@@ -22,6 +22,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 900px;
 }
 
 .industryTag {
