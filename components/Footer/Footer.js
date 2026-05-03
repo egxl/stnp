@@ -8,6 +8,7 @@ import styles from './Footer.module.css';
 import Beams from './Beams';
 import DisclaimerModal from './DisclaimerModal';
 import ColophonModal from './ColophonModal';
+import { InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 
 export default function Footer({ dict, lang = 'en' }) {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
@@ -17,10 +18,19 @@ export default function Footer({ dict, lang = 'en' }) {
   const address = firmInfo.address;
 
   useEffect(() => {
+    const ascii = `
+  █  █  █▀▀█  █  █  █▀▀  █▀▀█  █▀▀▀  █▀▀█  █    
+  █▀▀█  █▄▄█  ▀▄▄▀  █▀▀  █▄▄▀  █ ▀█  █▄▄█  █    
+  ▀  ▀  ▀  ▀   ▀▀   ▀▀▀  ▀  ▀  ▀▀▀▀  ▀  ▀  ▀▀▀▀ 
+    `;
     console.log(
-      "%c CRAFTED BY HAVERGAL %c https://www.linkedin.com/in/havergal/ ",
-      "background: #C4A35A; color: #060E1A; padding: 4px 8px; font-weight: bold; border-radius: 2px;",
-      "background: #1E3048; color: #FAFBFC; padding: 4px 8px; border-radius: 2px;"
+      `%c${ascii}%c\n%c OBJECTION! %c This code is legally binding and exceptionally crafted. \n\n%c Crafted by Havergal %c https://www.linkedin.com/in/havergal/ `,
+      "color: #C4A35A; font-weight: bold; font-family: monospace;",
+      "",
+      "background: #C4A35A; color: #060E1A; padding: 2px 6px; font-weight: bold; border-radius: 3px 0 0 3px;",
+      "background: #1E3048; color: #FAFBFC; padding: 2px 6px; border-radius: 0 3px 3px 0;",
+      "color: #C4A35A; font-weight: bold; text-decoration: underline;",
+      "color: #9CA3AF;"
     );
   }, []);
 
@@ -185,6 +195,28 @@ export default function Footer({ dict, lang = 'en' }) {
               <a href={`mailto:${firmInfo.email}`}>{firmInfo.email}</a>
             </div>
           </address>
+
+          {/* Social Links */}
+          <div className={styles.socialLinks}>
+            <a 
+              href="https://www.linkedin.com/company/soaloan-tua-nababan/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.socialLink}
+              aria-label="LinkedIn"
+            >
+              <LinkedinLogo size={20} />
+            </a>
+            <a 
+              href="https://www.instagram.com/soaloantuanababan/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.socialLink}
+              aria-label="Instagram"
+            >
+              <InstagramLogo size={20} />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -195,9 +227,15 @@ export default function Footer({ dict, lang = 'en' }) {
             &copy; {currentYear} {firmInfo.fullName}. All rights reserved.
           </p>
           <div className={styles.disclaimerGroup}>
-            <p className={styles.disclaimer}>
-              {d.disclaimer}
-            </p>
+            <div className={styles.disclaimer}>
+              {Array.isArray(d.disclaimer) ? (
+                d.disclaimer.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))
+              ) : (
+                <p>{d.disclaimer}</p>
+              )}
+            </div>
             <div className={styles.legalLinks}>
               <button 
                 className={styles.disclaimerBtn}
@@ -209,15 +247,16 @@ export default function Footer({ dict, lang = 'en' }) {
           </div>
         </div>
         
-        {/* Absolute bottom signature */}
-        <div className={styles.signatureRow}>
-          <button 
-            className={styles.signatureBtn}
-            onClick={() => setIsColophonOpen(true)}
-          >
-            Design & Engineering by Havergal
-          </button>
-        </div>
+      </div>
+
+      {/* Absolute bottom signature */}
+      <div className={styles.signatureRow}>
+        <button 
+          className={styles.signatureBtn}
+          onClick={() => setIsColophonOpen(true)}
+        >
+          Design & Engineering by Havergal
+        </button>
       </div>
 
       <DisclaimerModal 

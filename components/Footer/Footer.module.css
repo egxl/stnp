@@ -302,6 +302,32 @@
   }
 }
 
+/* --- Social Links --- */
+.socialLinks {
+  display: flex;
+  gap: 16px;
+  margin-top: var(--space-md);
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialLink:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .socialLink:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+}
+
 .bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-md) 0;
@@ -310,26 +336,34 @@
 }
 
 .copyright {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.35);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.45);
   white-space: nowrap;
 }
 
 .bottomContent {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-xl);
 }
 
 .disclaimer {
+  text-align: right;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disclaimer p {
   font-size: 10px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.3);
-  text-align: right;
-  max-width: 700px;
   font-family: var(--font-body);
   letter-spacing: 0.01em;
+  margin: 0;
+  max-width: 100%; /* Override global p max-width if needed */
 }
 
 .disclaimerGroup {
@@ -348,30 +382,29 @@
 
 .signatureRow {
   width: 100%;
+  background: #000000;
   display: flex;
   justify-content: center;
-  margin-top: var(--space-lg);
-  padding-top: var(--space-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 12px 0;
+  position: relative;
+  z-index: 10;
 }
 
 .signatureBtn {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   font-weight: 500;
   background: none;
   border: none;
-  padding: 8px 16px;
+  padding: 4px 16px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: color 0.4s var(--ease-out);
 }
 
 .signatureBtn:hover {
   color: var(--color-accent);
-  opacity: 1;
-  letter-spacing: 0.2em;
 }
 
 .disclaimerBtn {

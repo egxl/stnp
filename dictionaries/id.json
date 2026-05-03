@@ -139,7 +139,10 @@
     "ourTeam": "Tim Kami",
     "insights": "Wawasan",
     "contact": "Kontak",
-    "disclaimer": "Situs web ini hanya untuk tujuan informasi dan bukan merupakan nasihat hukum atau membentuk hubungan klien-pengacara. Hasil masa lalu tidak menjamin hasil yang sama. STNP melepaskan tanggung jawab atas tindakan yang diambil berdasarkan konten situs ini.",
+    "disclaimer": [
+      "Situs web ini hanya untuk tujuan informasi dan bukan merupakan nasihat hukum atau membentuk hubungan klien-pengacara.",
+      "Hasil masa lalu tidak menjamin hasil yang sama. STNP melepaskan tanggung jawab atas tindakan yang diambil berdasarkan konten situs ini."
+    ],
     "disclaimerButton": "Sanggahan Hukum",
     "disclaimerFull": {
       "title": "Sanggahan Hukum",

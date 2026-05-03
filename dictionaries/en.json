@@ -139,7 +139,10 @@
     "ourTeam": "Our Team",
     "insights": "Insights",
     "contact": "Contact",
-    "disclaimer": "This website is for informational purposes only and does not constitute legal advice or establish an attorney-client relationship. Prior results do not guarantee similar outcomes. STNP disclaims all liability for actions taken based on this site's content.",
+    "disclaimer": [
+      "This website is for informational purposes only and does not constitute legal advice or establish an attorney-client relationship.",
+      "Prior results do not guarantee similar outcomes. STNP disclaims all liability for actions taken based on this site's content."
+    ],
     "disclaimerButton": "Legal Disclaimer",
     "disclaimerFull": {
       "title": "Legal Disclaimer",
