@@ -11,21 +11,9 @@ export default function AboutAnimation() {
   const container = useRef();
 
   useGSAP(() => {
-    // 1. Hero Reveal: Target via data-animate attribute
-    const heroElements = document.querySelectorAll('[data-animate="hero"]');
-    if (heroElements.length) {
-      gsap.fromTo(heroElements,
-        { y: 30, opacity: 0, filter: 'blur(4px)' },
-        {
-          y: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration: 1,
-          stagger: 0.15,
-          ease: 'power3.out'
-        }
-      );
-    }
+    // Note: Hero elements (h1, heroCopy, heroBody) are animated via CSS keyframes
+    // in page.module.css (heroAnimate2, heroAnimate3) with proper sequencing.
+    // GSAP does NOT target these to avoid double-animation conflict.
 
     // 2. Philosophy Grid: Staggered entry via data attributes
     const philosophyItems = document.querySelectorAll('[data-animate="item"]');

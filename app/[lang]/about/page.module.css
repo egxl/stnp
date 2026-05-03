@@ -20,6 +20,18 @@
   padding-bottom: var(--space-3xl);
 }
 
+/* Reset semantic lists */
+:global(ul[role="list"]) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:global(ul[role="list"] li) {
+  margin: 0;
+  padding: 0;
+}
+
 .splitGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -37,6 +49,7 @@
 /* ── Left Rail (Sticky) ──────────────────────────────────── */
 .splitLeft {
   position: relative;
+  display: block;
 }
 
 .stickyContent {

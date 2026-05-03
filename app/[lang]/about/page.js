@@ -33,7 +33,7 @@ export default async function AboutPage({ params }) {
           <div className={styles.splitGrid}>
 
             {/* Left: Sticky narrative anchor */}
-            <div className={styles.splitLeft}>
+            <aside className={styles.splitLeft}>
               <div className={styles.stickyContent}>
                 <h1 className={styles.editorialTitle} data-animate="hero">
                   {a.hero.title}
@@ -45,7 +45,7 @@ export default async function AboutPage({ params }) {
                   {a.hero.body}
                 </p>
               </div>
-            </div>
+            </aside>
 
             {/* Right: Content flow */}
             <div className={styles.splitRight}>
@@ -88,15 +88,15 @@ export default async function AboutPage({ params }) {
             <span className={styles.sectionLabel}>{a.philosophy.label}</span>
             <p className={styles.philosophyIntro}>{a.philosophy.intro}</p>
           </div>
-          <div className={styles.philosophyGrid} data-animate="grid">
+          <ul className={styles.philosophyGrid} data-animate="grid" role="list">
             {philosophyPrinciples.map((p) => (
-              <div key={p.number} className={`${styles.philosophyItem} ${styles.glassCard}`} data-animate="item">
+              <li key={p.number} className={`${styles.philosophyItem} ${styles.glassCard}`} data-animate="item">
                 <span className={styles.philoNumber}>{p.number}</span>
                 <h3 className={styles.philoTitle}>{p.title}</h3>
                 <p className={styles.philoDesc}>{p.body}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -106,14 +106,14 @@ export default async function AboutPage({ params }) {
           <div className={styles.milestonesHeader}>
             <span className={styles.sectionLabel}>{a.milestones.label}</span>
           </div>
-          <div className={styles.statsSection} data-animate="stats">
+          <ul className={styles.statsSection} data-animate="stats" role="list">
             {a.milestones.items.map((item) => (
-              <div key={item.stat} className={styles.statCard} data-animate="statItem">
+              <li key={item.stat} className={styles.statCard} data-animate="statItem">
                 <span className={styles.statNumber}>{item.stat}</span>
                 <span className={styles.statLabel}>{item.label}</span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -175,11 +175,11 @@ export default async function AboutPage({ params }) {
                   <address className={styles.addressBlock}>
                     <p className={styles.addressName}>{a.visit.addressLabel}</p>
                     <p>{address.line1}</p>
-                    <p>{address.line2}</p>
+                    {address.line2 && <p>{address.line2}</p>}
                     <p>{address.city}, {address.postal}</p>
                     <p>{address.country}</p>
-                    <p className={styles.addressContact}>{phone[0]}</p>
-                    <p className={styles.addressContact}>{email}</p>
+                    {phone?.[0] && <p className={styles.addressContact}>{phone[0]}</p>}
+                    {email && <p className={styles.addressContact}>{email}</p>}
                   </address>
                 </section>
 
