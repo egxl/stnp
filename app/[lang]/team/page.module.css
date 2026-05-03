@@ -1,17 +1,16 @@
 /* =========================================
-   Editorial Luxury Hero
+   Split Editorial Team Surface
    ========================================= */
-.editorialHero {
+.splitSurface {
   position: relative;
-  /* Macro-whitespace: Massive vertical padding for tension */
-  padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
+  /* Macro-whitespace: padding top for header clearance, bottom for breathing room */
+  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
   background: var(--color-bg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* Subtle background mesh/texture placeholder if needed */
-.editorialHero::before {
+.splitSurface::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -23,18 +22,25 @@
   z-index: 0;
 }
 
-.heroGrid {
+.splitGrid {
   position: relative;
   z-index: 1;
   display: grid;
-  /* Editorial Split: Asymmetric ratio */
-  grid-template-columns: 1.2fr 1fr;
-  gap: var(--space-2xl);
-  align-items: center;
+  /* Left column narrower, Right column wider */
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
 }
 
-.heroMain {
-  max-width: 760px;
+/* Left: Sticky Narrative */
+.splitLeft {
+  /* No specific styles needed on wrapper, sticky happens on inner content */
+}
+
+.stickyContent {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-xl));
+  padding-right: var(--space-lg);
 }
 
 /* Microscopic Pill Badge */
@@ -54,12 +60,12 @@
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Massive Serif Headline */
+/* Massive Serif Headline - Scaled down slightly for sticky column */
 .editorialTitle {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color-white);
   margin: 0 0 var(--space-lg);
@@ -72,95 +78,18 @@
 
 .heroCopy {
   font-family: var(--font-sans);
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.6;
   text-wrap: pretty;
   margin: 0;
-  max-width: 580px;
 }
 
-/* =========================================
-   Double-Bezel Authority Panel
-   ========================================= */
-.heroSide {
-  position: relative;
-  /* Anchoring right */
-  justify-self: end;
-  width: 100%;
-  max-width: 420px;
-}
-
-/* Outer Shell */
-.authorityShell {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 6px;
-  border-radius: 2rem; /* Massive squircle */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* Inner Core */
-.authorityCore {
-  background: var(--color-bg);
-  border-radius: calc(2rem - 6px); /* Concentric math */
-  padding: var(--space-xl);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-.panelLabel {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin: 0 0 var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.panelList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.panelList li {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), color 300ms cubic-bezier(0.23, 1, 0.32, 1);
-  cursor: default;
-}
-
-.panelList li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  flex-shrink: 0;
-  opacity: 0.5;
-  transition: opacity 300ms ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .panelList li:hover {
-    transform: translateX(4px);
-    color: var(--color-white);
-  }
-  .panelList li:hover::before {
-    opacity: 1;
-    box-shadow: 0 0 8px var(--color-accent);
-  }
+/* Right: Roster & Filters */
+.splitRight {
+  /* Let it flow naturally */
+  min-width: 0; /* Prevent grid blowout */
 }
 
 /* =========================================
@@ -169,8 +98,8 @@
 @keyframes cinematicRise {
   from {
     opacity: 0;
-    transform: translateY(32px);
-    filter: blur(8px);
+    transform: translateY(24px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
@@ -184,32 +113,33 @@
 .heroAnimate3,
 .heroAnimate4 {
   opacity: 0;
-  animation: cinematicRise 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: cinematicRise 800ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-.heroAnimate1 { animation-delay: 100ms; }
-.heroAnimate2 { animation-delay: 200ms; }
-.heroAnimate3 { animation-delay: 300ms; }
-.heroAnimate4 { animation-delay: 400ms; }
+.heroAnimate1 { animation-delay: 50ms; }
+.heroAnimate2 { animation-delay: 150ms; }
+.heroAnimate3 { animation-delay: 250ms; }
+.heroAnimate4 { animation-delay: 350ms; }
 
 /* Responsive Collapse */
 @media (max-width: 1024px) {
-  .heroGrid {
+  .splitGrid {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
   }
 
-  .heroSide {
-    justify-self: start;
-    max-width: 100%;
-  }
-
-  .authorityShell {
-    border-radius: 1.5rem;
+  .stickyContent {
+    position: relative;
+    top: auto;
+    padding-right: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
   }
   
-  .authorityCore {
-    border-radius: calc(1.5rem - 6px);
+  .heroCopy {
+    text-align: left; /* Keep body readable */
+    margin: 0 auto;
   }
 }
 

@@ -47,7 +47,7 @@ export default function TeamRoster({ team, lang }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{
-                  layout: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] },
+                  layout: { duration: 0.3, ease: 'easeOut' },
                   opacity: { duration: 0.2 },
                   scale: { duration: 0.2 }
                 }}
