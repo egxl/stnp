@@ -71,7 +71,7 @@ export default function Footer({ dict, lang = 'en' }) {
           <ul className={styles.linkList}>
             <li><Link href={`/${lang}/about-us`}>{d.aboutUs}</Link></li>
             <li><Link href={`/${lang}/legal-services`}>{d.legalServices}</Link></li>
-            <li><Link href={`/${lang}/team-profile`}>{d.ourTeam}</Link></li>
+            <li><Link href={`/${lang}/team`}>{d.ourTeam}</Link></li>
             <li><Link href={`/${lang}/insights`}>{d.insights}</Link></li>
             <li><Link href={`/${lang}/contact`}>{d.contact}</Link></li>
           </ul>

@@ -37,7 +37,7 @@ export default function TeamProfileDetail({ member, lang }) {
               <nav className={styles.breadcrumb}>
                 <Link href={`/${lang}`}>Home</Link>
                 <span> / </span>
-                <Link href={`/${lang}/team-profile`}>Team</Link>
+                <Link href={`/${lang}/team`}>Team</Link>
                 <span> / {member.slug}</span>
               </nav>
               

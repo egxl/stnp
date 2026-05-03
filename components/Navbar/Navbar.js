@@ -135,7 +135,7 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 4,
       label: d.team,
-      href: `/${lang}/team-profile`,
+      href: `/${lang}/team`,
     },
     {
       id: 5,
@@ -165,7 +165,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
     { href: `/${lang}`, label: d.home },
     { href: `/${lang}/about-us`, label: d.about },
     { href: `/${lang}/legal-services`, label: d.services },
-    { href: `/${lang}/team-profile`, label: d.team },
+    { href: `/${lang}/team`, label: d.team },
     { href: `/${lang}/insights`, label: d.insights },
     { href: `/${lang}/contact`, label: d.contact },
   ];
