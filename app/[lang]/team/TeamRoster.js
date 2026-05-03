@@ -22,11 +22,6 @@ export default function TeamRoster({ team, lang }) {
 
   return (
     <div className={styles.rosterContainer}>
-      <div className={styles.introSection}>
-        <p className={styles.introCopy}>
-          A collective of seasoned legal minds dedicated to strategic resolution and principled efficiency.
-        </p>
-      </div>
       <div className={styles.filterBar}>
         {filterOptions.map((option) => (
           <button
