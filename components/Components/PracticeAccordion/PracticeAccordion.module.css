@@ -24,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 2rem);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -151,8 +151,6 @@
 .contentInner {
   padding-bottom: clamp(2rem, 5vw, 4rem);
   padding-left: clamp(3rem, 8vw, 5.5rem);
-  display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 4rem;
 }
 
@@ -161,25 +159,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   width: 100%;
-  max-height: 70vh;
-  overflow-y: auto;
   padding-right: 1rem;
 }
 
-/* Custom Scrollbar */
-.servicesList::-webkit-scrollbar {
-  width: 4px;
-}
 
-.servicesList::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-}
-
-.servicesList::-webkit-scrollbar-thumb {
-  background: rgba(196, 163, 90, 0.4);
-  border-radius: 2px;
-}
 
 .serviceItem {
   display: flex;

@@ -163,7 +163,7 @@ export default async function HomePage({ params }) {
 
 
       {/* ===== WHAT WE DO (ACCORDION) ===== */}
-      <section className={`section ${styles.snapSection}`}>
+      <section id="what-we-do-section" className={`section ${styles.snapSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">{dict.home.servicesLabel}</span>

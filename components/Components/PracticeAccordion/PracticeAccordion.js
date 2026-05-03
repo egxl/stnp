@@ -48,6 +48,23 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
       setTimeout(() => {
         const element = document.getElementById(`accordion-${id}`);
         if (element) {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          let targetScroll = window.scrollY + rect.top - (windowHeight - rect.height) / 2;
+          
+          const minScroll = window.scrollY + rect.top - 80;
+          targetScroll = Math.min(targetScroll, minScroll);
+
+          window.scrollTo({
+            top: targetScroll,
+            behavior: "smooth"
+          });
+        }
+      }, 420);
+    } else {
+      setTimeout(() => {
+        const element = document.getElementById('what-we-do-section');
+        if (element) {
           const headerOffset = 80;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - headerOffset;
