@@ -373,9 +373,6 @@
 
 
 /* ===== SERVICES (Practice Atlas) ===== */
-.servicesSection {
-  /* Inherits .snapSection's min-height: 100vh + flex centering */
-}
 
 /* ===== QUOTE BANNER ===== */
 .quoteBanner {
@@ -636,6 +633,7 @@
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

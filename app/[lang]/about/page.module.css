@@ -112,9 +112,7 @@
 }
 
 /* ── Right Content Flow ──────────────────────────────────── */
-.splitRight {
-  /* Removed padding to ensure perfect top alignment with left column */
-}
+/* .splitRight: Removed padding to ensure perfect top alignment with left column */
 
 .flowContent {
   display: flex;
