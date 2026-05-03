@@ -1,8 +1,10 @@
 "use client";
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 import './Aurora.css';
+
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -111,13 +113,33 @@ void main() {
 `;
 
 export default function Aurora(props) {
-  const { colorStops = ['#0A1628', '#1E4A63', '#060E1A'], amplitude = 1.0, blend = 0.5 } = props;
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  // Define default color stops based on theme
+  const darkStops = ['#0A1628', '#1E4A63', '#060E1A'];
+  const lightStops = ['#93C5FD', '#C4A35A', '#F8FAFC'];
+  
+  const currentTheme = resolvedTheme || theme || 'dark';
+  const defaultStops = currentTheme === 'dark' ? darkStops : lightStops;
+
+  const { 
+    colorStops = defaultStops, 
+    amplitude = 1.0, 
+    blend = 0.5 
+  } = props;
+
   const propsRef = useRef(props);
-  propsRef.current = props;
+  propsRef.current = { ...props, colorStops };
 
   const ctnDom = useRef(null);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const ctn = ctnDom.current;
     if (!ctn) return;
 
@@ -197,7 +219,7 @@ export default function Aurora(props) {
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+  }, [mounted, amplitude]);
 
   return <div ref={ctnDom} className="aurora-container" />;
 }

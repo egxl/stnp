@@ -17,7 +17,6 @@ export default async function TeamPage({ params }) {
     <>
       <section className={styles.splitSurface}>
         <Aurora 
-          colorStops={['#0A1628', '#1E4A63', '#060E1A']}
           amplitude={1.2}
           speed={0.3}
           blend={0.5}

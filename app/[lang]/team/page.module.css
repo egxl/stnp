@@ -5,7 +5,7 @@
   position: relative;
   /* Macro-whitespace: padding top for header clearance, bottom for breathing room */
   padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
-  background: transparent;
+  background: var(--color-bg);
   min-height: 100vh;
 }
 
@@ -40,27 +40,40 @@
 /* Massive Serif Headline - Scaled down slightly for sticky column */
 .editorialTitle {
   font-family: var(--font-heading-family);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color-white);
   margin: 0 0 var(--space-lg);
-  /* Slight gradient mask for luxury feel */
-  background: linear-gradient(180deg, #FFFFFF 30%, rgba(255, 255, 255, 0.7) 100%);
+  /* Cinematic gradient for dark mode */
+  background: linear-gradient(180deg, #FFFFFF 40%, rgba(255, 255, 255, 0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: color 0.4s ease;
+}
+
+:global(.light) .editorialTitle {
+  background: none;
+  -webkit-text-fill-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .heroCopy {
   font-family: var(--font-body-family);
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   text-wrap: pretty;
   margin: 0;
+  max-width: 40ch;
+}
+
+:global(.light) .heroCopy {
+  color: var(--color-text-muted);
+  font-weight: 400;
 }
 
 /* Right: Roster & Filters */
@@ -176,10 +189,18 @@
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out), border-color 300ms var(--ease-out);
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:global(.light) .teamCard {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 }
 
 .teamCard:active {
@@ -244,7 +265,16 @@
   font-weight: 600;
   color: var(--color-accent);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+}
+
+:global(.light) .memberName {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+:global(.light) .memberTitle {
+  color: var(--color-accent-dark);
 }
 
 .detailBtn {
