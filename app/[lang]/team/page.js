@@ -1,7 +1,7 @@
 import { team } from '@/lib/data/team';
 import styles from './page.module.css';
 import TeamRoster from './TeamRoster';
-import Aurora from '@/components/Aurora/Aurora';
+import GrainientDynamic from '@/components/Grainient/GrainientDynamic';
 
 export const metadata = {
   title: 'Our Team',
@@ -16,10 +16,12 @@ export default async function TeamPage({ params }) {
   return (
     <>
       <section className={styles.splitSurface}>
-        <Aurora 
-          amplitude={1.2}
-          speed={0.3}
-          blend={0.5}
+        <GrainientDynamic 
+          timeSpeed={0.12}
+          warpSpeed={1.2}
+          noiseScale={2.2}
+          blendSoftness={0.12}
+          opacity={0.35} 
         />
         <div className="container container--wide">
           <div className={styles.splitGrid}>

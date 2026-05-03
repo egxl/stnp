@@ -359,7 +359,7 @@
 .disclaimer p {
   font-size: 10px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
   font-family: var(--font-body);
   letter-spacing: 0.01em;
   margin: 0;
@@ -392,7 +392,7 @@
 
 .signatureBtn {
   font-size: 8px;
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.25);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 500;

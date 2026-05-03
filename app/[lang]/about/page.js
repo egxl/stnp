@@ -69,14 +69,10 @@ export default async function AboutPage({ params }) {
                     <p className={styles.narrativeText}>{a.story.expansion.body}</p>
                     <ul className={styles.partnerList}>
                       <li>
-                        <strong>{a.story.expansion.partner1Name}</strong>
-                        {' '}—{' '}{a.story.expansion.partner1Role}
-                        {' '}—{' '}{a.story.expansion.partner1Bio}
+                        <strong>{a.story.expansion.partner1Name}</strong>. {a.story.expansion.partner1Bio}
                       </li>
                       <li>
-                        <strong>{a.story.expansion.partner2Name}</strong>
-                        {' '}—{' '}{a.story.expansion.partner2Role}
-                        {' '}—{' '}{a.story.expansion.partner2Bio}
+                        <strong>{a.story.expansion.partner2Name}</strong>. {a.story.expansion.partner2Bio}
                       </li>
                     </ul>
                     <p className={styles.almaMater}>{a.story.expansion.almaMater}</p>
