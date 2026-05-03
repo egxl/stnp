@@ -16,8 +16,8 @@ This document contains all the core content and structural information for the S
 ### Contact Details
 - **Email**: `admin@stnp.co.id`
 - **Phone**: 
-  - `+6221-2952-7087 ext. 120`
-  - `+6221 5795-7668`
+  - `+62 813-8506-7960`
+  - `+62 813-2057-582`
 - **Address**: 
   Prudential Tower, Lantai 19
   Jl. Jenderal Sudirman Kav. 79
