@@ -20,9 +20,6 @@ export default async function TeamPage({ params }) {
             {/* Left: Sticky Narrative */}
             <div className={styles.splitLeft}>
               <div className={styles.stickyContent}>
-                <div className={styles.heroAnimate1}>
-                  <span className={styles.eyebrowBadge}>STNP Professionals</span>
-                </div>
                 <h1 className={`${styles.editorialTitle} ${styles.heroAnimate2}`}>
                   The legal minds behind complex disputes and strategic counsel.
                 </h1>
