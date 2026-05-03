@@ -200,6 +200,19 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+
+          <div className={styles.mapPlaceholder}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.302305370211!2d106.81998357582531!3d-6.20963026094602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5005f6a484f%3A0xa695d1d572dbf6ae!2sSoaloan%20Tua%20Nababan%20%26%20Partners!5e0!3m2!1sen!2sid!4v1712850000000!5m2!1sen!2sid"
+              width="100%"
+              height="100%"
+              style={{ border: 0, borderRadius: 'var(--radius-md)' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="STNP Office Location"
+            />
+          </div>
         </div>
       </section>
     </>

@@ -41,6 +41,7 @@ Daerah Khusus Ibukota Jakarta 12910, Indonesia
 *   **Main Number**: `+62 813-8506-7960`
 *   **Secondary Number**: `+62 813-2057-582`
 *   **LinkedIn**: [Soaloan Tua Nababan & Partners](https://www.linkedin.com/company/soaloan-tua-nababan/)
+*   **Instagram**: [@soaloantuanababan](https://www.instagram.com/soaloantuanababan/)
 
 ---
 

@@ -207,3 +207,19 @@
     grid-template-columns: 1fr;
   }
 }
+
+.mapPlaceholder {
+  aspect-ratio: 21/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  margin-top: var(--space-3xl);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mapPlaceholder {
+    aspect-ratio: 4/3;
+  }
+}
