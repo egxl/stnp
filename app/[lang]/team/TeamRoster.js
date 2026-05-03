@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './page.module.css';
 import { Button05 } from '@/components/ui/arrow-dots-button';
@@ -34,23 +33,18 @@ export default function TeamRoster({ team, lang }) {
         ))}
       </div>
 
-      <motion.div layout className={styles.teamGrid}>
-        <AnimatePresence mode="popLayout">
+      <div className={styles.teamGrid}>
+        <AnimatePresence mode="wait">
           {filteredTeam.map((member) => {
             const profileHref = `/${lang}/team/${member.slug}`;
             
             return (
               <motion.div
                 key={member.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{
-                  layout: { duration: 0.3, ease: 'easeOut' },
-                  opacity: { duration: 0.2 },
-                  scale: { duration: 0.2 }
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 className={styles.teamCard}
               >
                 <div className={styles.photoWrapper}>
@@ -76,7 +70,7 @@ export default function TeamRoster({ team, lang }) {
             );
           })}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </div>
   );
 }

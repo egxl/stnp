@@ -201,7 +201,7 @@
   overflow: hidden;
   transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms var(--ease-out);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
 }
 
@@ -222,18 +222,18 @@
 }
 
 .photoWrapper {
-  width: 140px;
-  flex-shrink: 0;
+  width: 100%;
   background: var(--color-bg-alt);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .photo {
   width: 100%;
-  height: auto; /* Let the height be determined by portrait natural ratio to avoid cropping */
+  height: auto;
   display: block;
   transition: transform 400ms var(--ease-out);
 }
@@ -244,8 +244,8 @@
 }
 
 .cardBody {
-  padding: var(--space-md);
-  padding-bottom: 64px; /* Space for the absolute positioned button */
+  padding: var(--space-lg);
+  padding-bottom: 80px; /* Space for the absolute positioned button */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -272,8 +272,8 @@
 
 .detailBtn {
   position: absolute;
-  bottom: var(--space-md);
-  left: var(--space-md);
+  bottom: var(--space-lg);
+  left: var(--space-lg);
   display: inline-flex;
   align-items: center;
   gap: 8px;
