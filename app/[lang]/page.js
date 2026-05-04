@@ -111,10 +111,15 @@ export default async function HomePage({ params }) {
           visibleClass={styles.videoVisible} 
         /> */}
 
-        <FloatingLines 
-          className={`${styles.heroVideo} ${styles.videoVisible}`} 
-          linesGradient={['#C4A35A', '#2C5F7C', '#051020']}
-          mixBlendMode="screen"
+        <img 
+          src="/images/nightshot.webp" 
+          alt="STNP Night Shot" 
+          className={`${styles.heroVideo} ${styles.videoVisible} ${styles.heroBgDark}`} 
+        />
+        <img 
+          src="/images/dayshot.webp" 
+          alt="STNP Day Shot" 
+          className={`${styles.heroVideo} ${styles.videoVisible} ${styles.heroBgLight}`} 
         />
 
         <div className={styles.heroSticky}>

@@ -78,6 +78,22 @@
   opacity: 1;
 }
 
+.heroBgDark {
+  display: block;
+}
+
+:global(.light) .heroBgDark {
+  display: none !important;
+}
+
+.heroBgLight {
+  display: none;
+}
+
+:global(.light) .heroBgLight {
+  display: block !important;
+}
+
 .heroShell {
   position: relative;
   z-index: 1;

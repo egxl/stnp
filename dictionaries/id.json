@@ -99,10 +99,22 @@
     "milestones": {
       "label": "Firma Sekilas",
       "items": [
-        { "stat": "2018", "label": "Tahun Berdiri" },
-        { "stat": "3", "label": "Mitra" },
-        { "stat": "6+", "label": "Bidang Praktik" },
-        { "stat": "Jakarta", "label": "Lokasi Kantor" }
+        {
+          "stat": "2018",
+          "label": "Tahun Berdiri"
+        },
+        {
+          "stat": "3",
+          "label": "Mitra"
+        },
+        {
+          "stat": "6+",
+          "label": "Bidang Praktik"
+        },
+        {
+          "stat": "Jakarta",
+          "label": "Lokasi Kantor"
+        }
       ]
     },
     "why": {
@@ -128,6 +140,204 @@
     "springboards": {
       "team": "Tim Kami",
       "services": "Bidang Praktik"
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Legal Services — Soaloan Tua Nababan & Partners",
+      "description": "Our core practice areas spanning dispute resolution, corporate transactions, and industry-focused advisory."
+    },
+    "hero": {
+      "label": "Practice Areas",
+      "title": "Strategic Counsel Across Every Front",
+      "subtitle": "Three practice pillars. Twelve areas of expertise. One standard: the highest.",
+      "body": "We do not believe in superficial breadth. We offer counsel exclusively in areas where our partners possess deep, tested expertise and a proven track record of resolution. Our practice is structured to address the most complex legal, regulatory, and commercial challenges facing businesses in Indonesia today."
+    },
+    "categories": {
+      "disputeResolution": {
+        "id": "dispute-resolution",
+        "number": "01",
+        "title": "Dispute Resolution",
+        "intro": "STNP's dispute resolution practice is the backbone of the firm. We represent clients in high-stakes civil, commercial, and administrative litigation across all levels of the Indonesian judicial system, with a particular focus on complex bankruptcy proceedings and industrial relations.",
+        "services": {
+          "commercialLitigation": {
+            "number": "01.A",
+            "title": "Commercial Litigation",
+            "tagline": "Court-ready. Indonesia-wide.",
+            "p1": "Commercial disputes in Indonesia require more than just a strong legal argument—they require an acute understanding of procedural strategy, local judicial context, and commercial leverage. We approach litigation not as an academic exercise, but as a strategic tool to resolve business conflicts effectively.",
+            "p2": "Our partners have successfully represented major corporations, financial institutions, and high-net-worth individuals in breach of contract claims, shareholder disputes, torts, and complex administrative challenges against government bodies.",
+            "proofPoints": [
+              "Representation across District Courts, High Courts, and the Supreme Court of Indonesia.",
+              "Successful defense in multi-million dollar breach of contract claims.",
+              "Extensive experience in administrative court proceedings challenging state agency decisions."
+            ]
+          },
+          "bankruptcy": {
+            "number": "01.B",
+            "title": "Bankruptcy & Suspension of Debt Payment",
+            "tagline": "Navigating distress. Protecting value.",
+            "p1": "Insolvency proceedings in Indonesia (PKPU and Kepailitan) move rapidly and carry severe consequences. We act for both creditors seeking to recover substantial debts and debtors needing to restructure their obligations to survive.",
+            "p2": "Led by Daniel Perdana Saoloan Nababan, a licensed Receiver and Administrator registered with the Ministry of Law and Human Rights, our team possesses the technical accreditation and practical experience to navigate the Commercial Court with precision.",
+            "proofPoints": [
+              "Partner Daniel Perdana is a registered Receiver and Administrator (Kurator dan Pengurus).",
+              "Active member of the Indonesian Association of Receivers and Administrators (AKPI).",
+              "Representation of multinational banks in high-profile debt recovery proceedings."
+            ]
+          },
+          "industrialRelations": {
+            "number": "01.C",
+            "title": "Industrial Relations",
+            "tagline": "Managing the human element of business.",
+            "p1": "Labor disputes can disrupt operations and damage corporate reputation. We advise employers on the full spectrum of industrial relations, from navigating complex mass terminations and union negotiations to litigating before the Industrial Relations Court.",
+            "p2": "Our approach balances strict legal compliance with the practical realities of managing a workforce in Indonesia, ensuring that labor issues are resolved cleanly and with minimal operational friction.",
+            "proofPoints": [
+              "Extensive litigation experience at the Industrial Relations Court (PHI).",
+              "Strategic counsel on workforce restructuring and mass termination compliance.",
+              "Drafting and negotiation of Collective Labor Agreements (PKB)."
+            ]
+          },
+          "alternativeDispute": {
+            "number": "01.D",
+            "title": "Alternative Dispute Resolution",
+            "tagline": "Resolution without the courtroom.",
+            "p1": "Litigation is not always the most effective path to resolution. We actively pursue alternative dispute resolution (ADR) mechanisms, including arbitration and structured mediation, to achieve faster, more private, and commercially sensible outcomes.",
+            "p2": "Our partners are skilled negotiators who understand how to structure settlements that protect our clients' long-term interests while avoiding the unpredictability of prolonged litigation.",
+            "proofPoints": [
+              "Representation in domestic and international arbitration proceedings.",
+              "Strategic out-of-court settlements for complex commercial disputes."
+            ]
+          }
+        }
+      },
+      "corporateCommercial": {
+        "id": "corporate-commercial",
+        "number": "02",
+        "title": "Corporate & Commercial",
+        "intro": "Our corporate practice provides the legal architecture that allows businesses to operate, grow, and transact securely in Indonesia. We combine rigorous legal structuring with an understanding of our clients' commercial imperatives.",
+        "services": {
+          "generalCorporate": {
+            "number": "02.A",
+            "title": "General Corporate",
+            "tagline": "The foundation of compliance.",
+            "p1": "Operating a business in Indonesia requires navigating a complex and frequently shifting regulatory environment. We act as external counsel to domestic and foreign companies, providing day-to-day legal support to ensure operational compliance.",
+            "p2": "From establishing foreign direct investment (PT PMA) companies to advising on corporate governance, licensing (OSS), and regulatory compliance, we provide the steady hand that keeps businesses running smoothly.",
+            "proofPoints": [
+              "Establishment and structuring of foreign investment companies (PT PMA).",
+              "Comprehensive legal audits and compliance reviews.",
+              "Advisory on Indonesia's Risk-Based Licensing System (OSS-RBA)."
+            ]
+          },
+          "mergersAcquisitions": {
+            "number": "02.B",
+            "title": "Mergers & Acquisitions",
+            "tagline": "Structuring growth. Mitigating risk.",
+            "p1": "Transactions in Indonesia require meticulous due diligence and creative structuring to overcome regulatory hurdles. We represent buyers, sellers, and investors in complex domestic and cross-border M&A transactions.",
+            "p2": "Our team handles the entire lifecycle of the deal: from initial legal due diligence and risk assessment to the drafting and negotiation of transaction documents, ensuring that the deal closes efficiently and securely.",
+            "proofPoints": [
+              "Conducted comprehensive Legal Due Diligence (LDD) for major corporate acquisitions.",
+              "Structuring of complex joint ventures and strategic alliances.",
+              "Navigating anti-monopoly notifications with the KPPU."
+            ]
+          },
+          "bankingFinance": {
+            "number": "02.C",
+            "title": "Banking & Finance",
+            "tagline": "Securing capital. Structuring credit.",
+            "p1": "We advise financial institutions, corporate borrowers, and private investors on a wide range of financing transactions. Our expertise covers bilateral and syndicated lending, project finance, and debt restructuring.",
+            "p2": "We are adept at structuring complex security packages under Indonesian law, ensuring that lenders are fully protected while providing borrowers with the workable frameworks they need to secure necessary capital.",
+            "proofPoints": [
+              "Advised on a USD 120 million syndicated credit facility.",
+              "Extensive experience in creating and registering complex security interests (Hak Tanggungan, Fidusia).",
+              "Counsel to major domestic and international banking institutions."
+            ]
+          },
+          "intellectualProperty": {
+            "number": "02.D",
+            "title": "Intellectual Property",
+            "tagline": "Protecting your most valuable assets.",
+            "p1": "A company's brand and innovations are often its most valuable assets. We provide comprehensive intellectual property services to protect, manage, and enforce our clients' IP portfolios in Indonesia.",
+            "p2": "Our services range from trademark and patent registration to aggressive enforcement actions against infringement, ensuring that our clients' intellectual capital remains secure.",
+            "proofPoints": [
+              "Successful registration and management of extensive trademark portfolios.",
+              "Enforcement actions against trademark infringement and counterfeiting."
+            ]
+          }
+        }
+      },
+      "industryFocus": {
+        "id": "industry-focus",
+        "number": "03",
+        "title": "Industry Focus",
+        "intro": "Certain sectors require more than general legal knowledge—they require deep industry fluency. STNP has developed specialized expertise in several of Indonesia's most critical and heavily regulated industries.",
+        "services": {
+          "miningEnergy": {
+            "number": "03.A",
+            "title": "Mining & Energy",
+            "tagline": "Navigating a highly regulated landscape.",
+            "p1": "Indonesia's mining and energy sectors are notoriously complex, governed by frequently changing regulations and overlapping jurisdictions. We advise clients on the acquisition of mining assets, operational compliance, and regulatory strategy.",
+            "p2": "Our deep understanding of the regulatory framework—from IUP issuance to downstream processing obligations—allows us to provide actionable advice to mining companies and contractors.",
+            "proofPoints": [
+              "Advisory on complex IUP (Mining Business License) acquisitions and transfers.",
+              "Structuring of mining contractor agreements and operational contracts.",
+              "Navigating overlapping land use and forestry regulations."
+            ]
+          },
+          "infrastructureRealEstate": {
+            "number": "03.B",
+            "title": "Infrastructure & Real Estate",
+            "tagline": "Building the physical foundation.",
+            "p1": "Real estate and infrastructure development in Indonesia involves navigating complex land acquisition laws, spatial planning regulations, and construction contracts. We advise developers, investors, and contractors at every stage of the project lifecycle.",
+            "p2": "Our expertise ensures that projects are built on secure legal foundations, mitigating the significant risks associated with land disputes and regulatory non-compliance in Indonesia.",
+            "proofPoints": [
+              "Advisory on large-scale land acquisition and spatial planning compliance.",
+              "Drafting and negotiation of complex EPC (Engineering, Procurement, and Construction) contracts.",
+              "Structuring of commercial and residential property developments."
+            ]
+          },
+          "plantationAgribusiness": {
+            "number": "03.C",
+            "title": "Plantation & Agribusiness",
+            "tagline": "Counsel for the core economy.",
+            "p1": "Agribusiness is a cornerstone of the Indonesian economy, but it is fraught with regulatory and land-use challenges. We have extensive experience advising plantation companies, particularly in the palm oil sector.",
+            "p2": "We assist clients with land acquisition, plasma partnerships, environmental compliance, and the resolution of land disputes with local communities—ensuring sustainable and legally secure operations.",
+            "proofPoints": [
+              "Advisory on HGU (Right to Cultivate) acquisition and extension.",
+              "Structuring of mandatory plasma partnership schemes.",
+              "Resolution of complex land disputes and overlapping concessions."
+            ]
+          },
+          "tourismHospitality": {
+            "number": "03.D",
+            "title": "Tourism & Hospitality",
+            "tagline": "Supporting the experience economy.",
+            "p1": "The tourism and hospitality sector requires navigating a unique intersection of foreign investment rules, property law, and specialized operational licensing. We advise hotel operators, developers, and investors in this dynamic sector.",
+            "p2": "From the structuring of hotel management agreements to the acquisition of beachfront land and the securing of necessary operational permits, we provide the legal framework for successful hospitality ventures.",
+            "proofPoints": [
+              "Drafting and negotiation of Hotel Management Agreements (HMA).",
+              "Advisory on foreign investment structuring for resort developments.",
+              "Navigating complex coastal and small island utilization permits."
+            ]
+          }
+        }
+      }
+    },
+    "proBono": {
+      "label": "Our Commitment",
+      "title": "Pro Bono & Social Responsibility",
+      "body": "Access to rigorous legal representation should not be entirely determined by financial circumstance. STNP is committed to pro bono practice as a core professional obligation, dedicating time and resources to provide high-level counsel to those who need it most.",
+      "quote": "The most sacred of the duties of a government is to do equal and exact justice to all its citizens.",
+      "quoteAuthor": "Thomas Jefferson"
+    },
+    "cta": {
+      "label": "Get in Touch",
+      "title": "Your Matter Deserves Partner-Level Attention",
+      "body": "Complex legal challenges require strategic clarity and decisive action. Reach out to discuss how our partners can support your specific needs.",
+      "button": "Schedule a Consultation"
+    },
+    "springboards": {
+      "team": "Meet Our Team",
+      "about": "About STNP",
+      "insights": "Read Insights"
     }
   },
   "footer": {

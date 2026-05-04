@@ -137,9 +137,9 @@ const Grainient = ({
   const isDark = currentTheme === 'dark';
 
   // Use elegant STNP color palette for light/dark
-  const color1 = isDark ? '#0A1628' : '#93C5FD';
+  const color1 = isDark ? '#0A1628' : '#2C5F7C';
   const color2 = isDark ? '#1E4A63' : '#C4A35A';
-  const color3 = isDark ? '#060E1A' : '#F8FAFC';
+  const color3 = isDark ? '#060E1A' : '#FAF9F6';
 
   useEffect(() => {
     if (!containerRef.current || !mounted) return;
