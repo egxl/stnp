@@ -36,6 +36,19 @@ export function DropdownNavigation({
   const [openMenu, setOpenMenu] = React.useState(null);
   const [hoveredId, setHoveredId] = React.useState(null);
 
+  const activeItemId = React.useMemo(() => {
+    let matchedId = null;
+    for (const item of navItems) {
+      if (itemMatchesPath(item, currentPath)) {
+        matchedId = item.id;
+        break;
+      }
+    }
+    // Fallback to Home (id: 1) if no route matches (e.g., 404 page)
+    // This ensures the navbar font color exactly matches the root hero section
+    return matchedId || 1;
+  }, [navItems, currentPath]);
+
   const handleLinkClick = (e, href) => {
     if (!href) return;
     const normalizedHref = href.endsWith("/") && href !== "/" ? href.slice(0, -1) : href;
@@ -56,7 +69,7 @@ export function DropdownNavigation({
         {navItems.map((navItem) => {
           const isOpen = openMenu === navItem.label;
           const isHovered = hoveredId === navItem.id;
-          const isActive = itemMatchesPath(navItem, currentPath);
+          const isActive = navItem.id === activeItemId;
           const hasSubMenus = Boolean(navItem.subMenus?.length);
 
           return (

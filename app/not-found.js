@@ -1,45 +1,5 @@
 import NotFoundComponent from "@/components/NotFound/NotFound";
-import { Jost, Newsreader, Julius_Sans_One, Michroma, Syncopate } from "next/font/google";
-import { getDictionary } from '@/lib/dictionaries';
-import Navbar from "@/components/Navbar/Navbar";
-import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
-import "flag-icons/css/flag-icons.min.css";
-import "./globals.css";
-
-const jost = Jost({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-body",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading",
-});
-
-const juliusSansOne = Julius_Sans_One({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-julius",
-});
-
-const michroma = Michroma({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-michroma",
-});
-
-const syncopate = Syncopate({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-  variable: "--font-syncopate",
-});
+import RootLayout from "./[lang]/layout";
 
 export const metadata = {
   title: "Page Not Found | Soaloan Tua Nababan & Partners",
@@ -47,24 +7,12 @@ export const metadata = {
 };
 
 export default async function GlobalNotFound() {
-  const lang = 'en'; // Default to English for global 404
-  const dict = await getDictionary(lang);
-
+  // Mock the params promise expected by the RootLayout
+  const params = Promise.resolve({ lang: 'en' });
+  
   return (
-    <html
-      lang={lang}
-      suppressHydrationWarning
-      className={`${jost.variable} ${newsreader.variable} ${juliusSansOne.variable} ${michroma.variable} ${syncopate.variable}`}
-    >
-      <body style={{ backgroundColor: 'transparent' }}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>
-          <ScrollReset />
-          <Navbar navDict={dict.nav} lang={lang} />
-          <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <NotFoundComponent showNav={false} />
-          </main>
-        </ThemeProvider>
-      </body>
-    </html>
+    <RootLayout params={params}>
+      <NotFoundComponent showNav={false} />
+    </RootLayout>
   );
 }

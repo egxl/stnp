@@ -1,32 +1,53 @@
 'use client';
 
 import { ViewTransition } from 'react';
-import { useEffect, useState } from 'react';
 
-/**
- * Wraps <ViewTransition> and suppresses the "document hidden" InvalidStateError
- * by checking document.visibilityState before allowing the transition to mount.
- * The children always render — only the animation is suppressed when hidden.
- */
+// Patch document.startViewTransition globally on the client
+// to prevent InvalidStateError when document is hidden.
+if (typeof document !== 'undefined' && document.startViewTransition) {
+  const originalStartViewTransition = document.startViewTransition.bind(document);
+  document.startViewTransition = function (callback) {
+    if (document.hidden) {
+      if (callback) {
+        // Run the callback synchronously to ensure UI updates
+        const result = callback();
+        if (result instanceof Promise) {
+          result.catch(() => {});
+        }
+      }
+      return {
+        finished: Promise.resolve(),
+        ready: Promise.resolve(),
+        updateCallbackDone: Promise.resolve(),
+        skipTransition: () => {},
+      };
+    }
+    
+    try {
+      return originalStartViewTransition(callback);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'InvalidStateError') {
+        if (callback) {
+          const result = callback();
+          if (result instanceof Promise) {
+            result.catch(() => {});
+          }
+        }
+        return {
+          finished: Promise.resolve(),
+          ready: Promise.resolve(),
+          updateCallbackDone: Promise.resolve(),
+          skipTransition: () => {},
+        };
+      }
+      throw error;
+    }
+  };
+}
+
 export default function ViewTransitionGuard({ children, ...props }) {
-  const [visible, setVisible] = useState(
-    () => typeof document !== 'undefined' && document.visibilityState === 'visible'
-  );
-
-  useEffect(() => {
-    const handleVisibility = () => {
-      setVisible(document.visibilityState === 'visible');
-    };
-
-    document.addEventListener('visibilitychange', handleVisibility);
-    return () => document.removeEventListener('visibilitychange', handleVisibility);
-  }, []);
-
-  // If not visible, we skip the ViewTransition wrapper entirely.
-  // This prevents React from calling startViewTransition() which would fail.
-  if (!visible) {
-    return <>{children}</>;
-  }
-
+  // We can now safely render ViewTransition because document.startViewTransition is patched.
+  // We just return it directly.
   return <ViewTransition {...props}>{children}</ViewTransition>;
 }
+

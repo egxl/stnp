@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const member = team.find(m => m.slug === slug);
   
-  if (!member) return {};
+  if (!member || member.role === 'associate') return {};
 
   return {
     title: member.name,
@@ -20,7 +20,7 @@ export default async function TeamMemberPage({ params }) {
   // Find member by slug
   const member = team.find(m => m.slug === slug);
 
-  if (!member) {
+  if (!member || member.role === 'associate') {
     notFound();
   }
 

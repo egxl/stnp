@@ -8,7 +8,26 @@ import styles from './NotFound.module.css';
 export default function NotFound({ showNav = false, lang = 'en' }) {
   useEffect(() => {
     document.body.classList.add('hide-footer');
-    return () => document.body.classList.remove('hide-footer');
+
+    // Force navbar font to black in light mode on the 404 page
+    const style = document.createElement('style');
+    style.id = 'notfound-navbar-override';
+    style.textContent = `
+      .light #site-header nav a,
+      .light #site-header nav button,
+      .light #site-header nav span,
+      .light #site-header [class*="desktopControls"],
+      .light #site-header [class*="switcherToggle"] {
+        color: #020617 !important;
+        text-shadow: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.body.classList.remove('hide-footer');
+      document.getElementById('notfound-navbar-override')?.remove();
+    };
   }, []);
 
   return (
@@ -20,7 +39,15 @@ export default function NotFound({ showNav = false, lang = 'en' }) {
           fill
           priority
           quality={100}
-          className={styles.backgroundImage}
+          className={`${styles.backgroundImage} ${styles.backgroundImageDark}`}
+        />
+        <Image 
+          src="/images/404-bg-light.png"
+          alt="Bright Daytime Sky"
+          fill
+          priority
+          quality={100}
+          className={`${styles.backgroundImage} ${styles.backgroundImageLight}`}
         />
         <div className={styles.overlay}></div>
         <div className={styles.overlayDark}></div>

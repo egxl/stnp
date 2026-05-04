@@ -24,7 +24,7 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     const nextTheme = isDark ? "light" : "dark";
 
-    if (!document.startViewTransition) {
+    if (!document.startViewTransition || document.hidden) {
       setTheme(nextTheme);
       return;
     }

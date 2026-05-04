@@ -1,6 +1,7 @@
 .container {
   flex: 1;
   width: 100%;
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,6 +24,22 @@
   height: 100%;
   opacity: 0.75;
   transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+}
+
+.backgroundImageDark {
+  display: block;
+}
+
+:global(.light) .backgroundImageDark {
+  display: none;
+}
+
+.backgroundImageLight {
+  display: none;
+}
+
+:global(.light) .backgroundImageLight {
+  display: block;
 }
 
 /* Vignette overlay for depth and readability */

@@ -165,6 +165,7 @@ body.hide-footer #site-footer {
   display: none !important;
 }
 
+
 /* Subtle grain overlay for surface texture - Temporarily disabled for troubleshooting GPU issues
 body::after {
   content: '';
@@ -563,8 +564,8 @@ button {
   --color-surface: #FFFFFF;
   
   --color-text: #0A1628; /* Revert to deep navy for text */
-  --color-text-muted: #4B5563;
-  --color-text-light: #6B7280;
+  --color-text-muted: #2D3A4D; /* Navy-tinted muted text */
+  --color-text-light: #5A6B84; /* Lighter navy-tinted text */
 
   --color-border: #E5E7EB;
   --color-border-light: #F3F4F6;
