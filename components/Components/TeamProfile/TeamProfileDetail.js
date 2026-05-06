@@ -4,6 +4,11 @@ import styles from './TeamProfileDetail.module.css';
 export default function TeamProfileDetail({ member, lang }) {
   if (!member) return null;
 
+  const isIndo = lang === 'id';
+
+  // Helper to get multi-lang content
+  const getContent = (en, id) => (isIndo ? id || en : en);
+
   return (
     <article className={styles.profilePage}>
       {/* Hero Section */}
@@ -35,40 +40,114 @@ export default function TeamProfileDetail({ member, lang }) {
             {/* Info side */}
             <div className={styles.infoContent}>
               <nav className={styles.breadcrumb}>
-                <Link href={`/${lang}`}>Home</Link>
+                <Link href={`/${lang}`}>{isIndo ? 'Beranda' : 'Home'}</Link>
                 <span> / </span>
-                <Link href={`/${lang}/team`}>Team</Link>
+                <Link href={`/${lang}/team`}>{isIndo ? 'Tim' : 'Team'}</Link>
                 <span> / {member.slug}</span>
               </nav>
               
               <h1 className={styles.name}>{member.name}</h1>
               <span className={styles.title}>
-                {Array.isArray(member.title) ? member.title[0] : member.title}
+                {getContent(member.title, member.titleId)}
               </span>
               
               <hr className={styles.divider} />
               
-              <div className={styles.shortBio}>
-                {/* Optional short description could go here if available */}
+              <div className={styles.metaInfo}>
+                {member.education && (
+                  <div className={styles.metaItem}>
+                    <span className={styles.metaLabel}>{isIndo ? 'Pendidikan' : 'Education'}</span>
+                    <p className={styles.metaValue}>{getContent(member.education, member.educationId)}</p>
+                  </div>
+                )}
+                
+                {member.credentials && member.credentials.length > 0 && (
+                  <div className={styles.metaItem}>
+                    <span className={styles.metaLabel}>{isIndo ? 'Sertifikasi' : 'Credentials'}</span>
+                    <ul className={styles.metaList}>
+                      {(isIndo ? member.credentialsId || member.credentials : member.credentials).map((cred, idx) => (
+                        <li key={idx}>{cred}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Bio Section */}
-      <section className={styles.bioSection}>
-        <div className="container">
-          <div className={styles.bioGrid}>
-            <div className={styles.bioLabel}>
-              Biography
-            </div>
-            <div className={styles.bioText}>
-              {lang === 'id' ? member.bioId || member.bio : member.bio}
+      {/* Main Content Sections */}
+      <div className={styles.mainContent}>
+        {/* Bio Section */}
+        <section className={styles.detailSection}>
+          <div className="container">
+            <div className={styles.detailGrid}>
+              <div className={styles.sectionLabel}>
+                {isIndo ? 'Biografi' : 'Biography'}
+              </div>
+              <div className={styles.sectionContent}>
+                <p className={styles.bioText}>
+                  {getContent(member.bio, member.bioId)}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Specialization Section */}
+        {member.specialization && (
+          <section className={styles.detailSection}>
+            <div className="container">
+              <div className={styles.detailGrid}>
+                <div className={styles.sectionLabel}>
+                  {isIndo ? 'Spesialisasi' : 'Specialization'}
+                </div>
+                <div className={styles.sectionContent}>
+                  <div className={styles.specGrid}>
+                    {(isIndo ? member.specializationId || member.specialization : member.specialization).map((spec, idx) => (
+                      <div key={idx} className={styles.specTag}>
+                        {spec}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Track Record Section */}
+        {member.trackRecord && member.trackRecord.length > 0 && (
+          <section className={styles.detailSection}>
+            <div className="container">
+              <div className={styles.detailGrid}>
+                <div className={styles.sectionLabel}>
+                  {isIndo ? 'Rekam Jejak' : 'Track Record'}
+                </div>
+                <div className={styles.sectionContent}>
+                  <div className={styles.trackRecordContainer}>
+                    {member.trackRecord.map((cat, idx) => (
+                      <div key={idx} className={styles.trackCategory}>
+                        <h3 className={styles.categoryTitle}>
+                          {getContent(cat.category, cat.categoryId)}
+                        </h3>
+                        <ul className={styles.trackList}>
+                          {cat.items.map((item, itemIdx) => (
+                            <li key={itemIdx} className={styles.trackItem}>
+                              {getContent(item.en, item.id)}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
     </article>
   );
 }

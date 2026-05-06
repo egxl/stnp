@@ -12,6 +12,7 @@ import HeroParallax from '@/components/Animations/HeroParallax/HeroParallax';
 import TrustMarquee from '@/components/Components/TrustMarquee/TrustMarquee';
 import HeroVideo from '@/components/Components/HeroVideo/HeroVideo';
 import FloatingLines from '@/components/Animations/FloatingLines/FloatingLines';
+import HeroBackground from '@/components/Animations/HeroBackground/HeroBackground';
 import AuthorityStrip from '@/components/Components/AuthorityStrip/AuthorityStrip';
 import ExperienceHighlights from '@/components/Components/ExperienceHighlights/ExperienceHighlights';
 import ConsolidatedPhilosophy from '@/components/Components/ConsolidatedPhilosophy/ConsolidatedPhilosophy';
@@ -111,16 +112,7 @@ export default async function HomePage({ params }) {
           visibleClass={styles.videoVisible} 
         /> */}
 
-        <img 
-          src="/images/nightshot.webp" 
-          alt="STNP Night Shot" 
-          className={`${styles.heroVideo} ${styles.videoVisible} ${styles.heroBgDark}`} 
-        />
-        <img 
-          src="/images/dayshot.webp" 
-          alt="STNP Day Shot" 
-          className={`${styles.heroVideo} ${styles.videoVisible} ${styles.heroBgLight}`} 
-        />
+        <HeroBackground />
 
         <div className={styles.heroSticky}>
           <HeroParallax className={styles.heroShell}>
