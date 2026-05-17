@@ -2,7 +2,7 @@
 .main {
   position: relative;
   min-height: 100dvh;
-  background-color: var(--color-background, #0a0a0a);
+  background-color: transparent;
   color: var(--color-foreground, #f5f5f5);
   overflow: hidden;
   padding-bottom: 12rem;
@@ -207,7 +207,7 @@
 
 /* ── Light Mode Overrides ── */
 :global(.light) .main {
-  background-color: var(--color-background, #fdfcf9);
+  background-color: transparent;
   color: var(--color-foreground, #1a1a1a);
 }
 
@@ -216,7 +216,10 @@
   mix-blend-mode: multiply;
 }
 
-:global(.light) .heroTitle,
+:global(.light) .heroTitle {
+  color: var(--color-primary);
+}
+
 :global(.light) .quoteText,
 :global(.light) .itemText,
 :global(.light) .ctaBody {

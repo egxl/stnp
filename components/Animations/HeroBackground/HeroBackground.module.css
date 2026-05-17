@@ -11,7 +11,7 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background-color: #050a12;
+  background-color: transparent;
 }
 
 /* Base image styling */
@@ -104,16 +104,7 @@
   transform-origin: center center;
 }
 
-/* Black overlay for GSAP Scroll Fade */
+/* Black overlay for GSAP Scroll Fade - REMOVED since we fade the wrapper now */
 .fadeOverlay {
-  position: absolute;
-  inset: 0;
-  background-color: #060e1a; /* Match body dark background */
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-:global(.light) .fadeOverlay {
-  background-color: #FAF9F6; /* Match body light background */
+  display: none;
 }

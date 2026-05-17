@@ -49,6 +49,10 @@
   -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
 }
 
+:global(.light) .heroSticky::before {
+  background: linear-gradient(180deg, rgba(212, 185, 122, 0.8), rgba(212, 185, 122, 1));
+}
+
 .heroSticky::after {
   display: none;
 }
@@ -154,6 +158,16 @@
   opacity: 0.6;
 }
 
+:global(.light) .heroLabel {
+  color: #14345B !important;
+  text-shadow: 0 1px 8px rgba(20, 52, 91, 0.25) !important;
+}
+
+:global(.light) .heroLabel::before {
+  background-color: #14345B !important;
+  box-shadow: 0 1px 8px rgba(20, 52, 91, 0.25) !important;
+}
+
 .heroTitle {
   max-width: 25ch;
   font-family: var(--font-julius), sans-serif;
@@ -195,6 +209,17 @@
 .heroTitleAccent {
   color: var(--color-accent);
   letter-spacing: 0.055em;
+}
+
+:global(.light) .heroTitle,
+:global(.light) .heroTitleLine {
+  color: var(--color-white) !important;
+  text-shadow: 0 2px 10px rgba(6, 14, 26, 0.4) !important;
+}
+
+:global(.light) .heroTitleAccent {
+  color: #14345B !important;
+  text-shadow: 0 2px 12px rgba(20, 52, 91, 0.3) !important;
 }
 
 :global(html[lang="zh"]) .heroTitle {
@@ -303,6 +328,11 @@
   animation-delay: 380ms;
 }
 
+:global(.light) .heroSubtitle {
+  color: var(--color-white) !important;
+  text-shadow: 0 2px 12px rgba(6, 14, 26, 0.3) !important;
+}
+
 .heroDivider {
   display: none;
 }
@@ -314,6 +344,19 @@
   opacity: 0;
   animation: heroReveal 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
   animation-delay: 480ms;
+}
+
+:global(.light) .heroCta :global(.btn--primary) {
+  background: #14345B !important;
+  color: var(--color-accent) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global(.light) .heroCta :global(.btn--primary):hover {
+    background: #1A4475 !important;
+    color: var(--color-accent-light) !important;
+    box-shadow: 0 6px 20px rgba(20, 52, 91, 0.4) !important;
+  }
 }
 
 .heroCtaOutline {
@@ -353,6 +396,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .heroLabel,
   .heroTitle,
   .heroSubtitle,
@@ -368,6 +412,7 @@
   .heroCtaOutline:hover {
     color: var(--color-white);
   }
+
   .heroCtaOutline:hover::after {
     transform: translateX(4px);
   }
@@ -383,7 +428,8 @@
 }
 
 .snapSection.hero {
-  margin-bottom: 0; /* Tighten up */
+  margin-bottom: 0;
+  /* Tighten up */
 }
 
 
@@ -556,7 +602,7 @@
 .insightsSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
   border-top: 1px solid oklch(25% 0.01 240 / 0.4);
-  background: 
+  background:
     radial-gradient(ellipse at 50% 0%, rgba(44, 95, 124, 0.12), transparent 60%),
     #050a14;
   position: relative;
@@ -701,7 +747,7 @@
   position: relative;
   overflow: hidden;
   background-color: #050a12;
-  background-image: 
+  background-image:
     linear-gradient(to right, #050a12 20%, rgba(5, 10, 18, 0.8) 50%, rgba(5, 10, 18, 0.4) 100%),
     url('/images/cta-atmosphere.webp');
   background-size: cover;
@@ -974,9 +1020,7 @@
 
 /* ===== NEW TRUST MARQUEE SECTION ===== */
 .trustSection {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(44, 95, 124, 0.15), transparent 60%),
-    linear-gradient(180deg, #060E1A 0%, #0A1628 100%);
+  background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding: clamp(2rem, 5vw, 4rem) 0;
@@ -1040,9 +1084,7 @@
 
 /* --- Trust Section Light Mode --- */
 :global(.light) .trustSection {
-  background: 
-    radial-gradient(ellipse at 50% 0%, rgba(196, 163, 90, 0.08), transparent 60%),
-    var(--color-bg);
+  background: transparent;
   border-color: var(--color-border);
 }
 
@@ -1056,9 +1098,7 @@
 
 /* --- Insights Section Light Mode --- */
 :global(.light) .insightsSection {
-  background: 
-    radial-gradient(ellipse at 50% 0%, rgba(196, 163, 90, 0.06), transparent 60%),
-    var(--color-bg);
+  background: transparent;
   border-color: var(--color-border);
 }
 

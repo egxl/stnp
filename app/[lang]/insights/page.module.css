@@ -1,6 +1,6 @@
 /* --- Wrappers --- */
 .insightsWrapper {
-  background: var(--color-bg);
+  background: transparent;
   min-height: 100vh;
   padding-top: var(--nav-height);
   position: relative;
@@ -303,7 +303,7 @@
 
 /* ── Light Mode Overrides ────────────────────────────────── */
 :global(.light) .insightsWrapper {
-  background: var(--color-bg);
+  background: transparent;
 }
 
 :global(.light) .heroSection {

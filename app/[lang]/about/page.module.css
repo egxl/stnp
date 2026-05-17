@@ -10,7 +10,7 @@
   --mono: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
   min-height: 100dvh;
   padding-bottom: var(--space-3xl);
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text);
   position: relative;
 }
@@ -367,7 +367,6 @@
 
 /* ── Old Philosophy Grid Removed (Replaced by Refractive Scroll) ── */
 
-/* ── Why STNP: Editorial Typography ────────────────────────────────────── */
 .whySection {
   padding: calc(var(--space-3xl) * 2.5) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -393,13 +392,24 @@
 
 .whyTitle {
   font-family: var(--font-heading-family);
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--color-white);
   margin: 0 0 var(--space-sm);
   text-wrap: balance;
+}
+
+.whyStatRow {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: var(--space-sm) 0 var(--space-md);
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-sm);
 }
 
 .whySubtitle {
@@ -783,7 +793,7 @@
 
 /* ── Light Mode Fixes ────────────────────────────────────── */
 :global(.light) .main {
-  background-color: var(--color-bg);
+  background-color: transparent;
 }
 
 :global(.light) .editorialTitle,

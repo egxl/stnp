@@ -40,14 +40,14 @@ export default function HeroBackground() {
           },
         });
 
-        // Fade to background color to blend seamlessly into the next section
-        gsap.to(fadeOverlay, {
-          opacity: 0.95,
+        // Fade out the entire hero background to reveal the Grainient
+        gsap.to(wrapper, {
+          opacity: 0,
           ease: 'none',
           scrollTrigger: {
             trigger: document.body,
-            start: '10% top',
-            end: '100% top',
+            start: 'top top',
+            end: '100vh top',
             scrub: true,
           },
         });
@@ -55,13 +55,13 @@ export default function HeroBackground() {
     } else {
       // Parallax disabled — still run the scroll fade for clean section blending
       scrollCtx = gsap.context(() => {
-        gsap.to(fadeOverlay, {
-          opacity: 0.95,
+        gsap.to(wrapper, {
+          opacity: 0,
           ease: 'none',
           scrollTrigger: {
             trigger: document.body,
-            start: '10% top',
-            end: '100% top',
+            start: 'top top',
+            end: '100vh top',
             scrub: true,
           },
         });

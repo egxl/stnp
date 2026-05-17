@@ -8,6 +8,7 @@ import Footer from "@/components/Footer/Footer";
 import LoadingProvider from "@/components/LoadingScreen/LoadingProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollReset from "@/components/Components/ScrollReset/ScrollReset";
+import GrainientDynamic from "@/components/Grainient/GrainientDynamic";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -76,6 +77,13 @@ export default async function RootLayout({ children, params }) {
     >
       <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} enableColorScheme={false}>
+          <GrainientDynamic 
+            timeSpeed={0.15}
+            warpSpeed={1.5}
+            noiseScale={2.5}
+            blendSoftness={0.1}
+            opacity={0.3} 
+          />
           <LoadingProvider>
           <ScrollReset />
           <Navbar navDict={dict.nav} lang={lang} />

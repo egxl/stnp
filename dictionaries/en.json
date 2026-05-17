@@ -120,10 +120,12 @@
     },
     "why": {
       "label": "Why STNP",
-      "title": "The Unfair Advantage",
-      "subtitle": "The agility of a boutique firm. The pedigree of top-tier counsel.",
+      "title": "The Structure Is the Advantage",
+      "subtitle": "At STNP, senior partner attention isn't a perk. It's the model.",
+      "statRow": "3 Partners · 20+ Years · One Standard",
       "p1": "Unlike larger firms where partner attention is rationed by hierarchy, STNP operates on a different premise: our founding partners are directly involved in your matter from the initial consultation to final resolution. You will not be handed off to a junior associate while your partner moves to the next client. You get senior partner attention throughout.",
-      "p2": "This is not a service promise — it is a structural fact of how we are built. The firm's deliberate size means every client relationship matters, every matter receives genuine focus, and every strategy is developed at the level where legal judgment is actually formed. We combine the rigor of a top-tier firm with the responsiveness that only a boutique can offer."
+      "p2": "This is not a service promise — it is a structural fact of how we are built. The firm's deliberate size means every client relationship matters, every matter receives genuine focus, and every strategy is developed at the level where legal judgment is actually formed. We combine the rigor of a top-tier firm with the responsiveness that only a boutique can offer.",
+      "p3": "Our three founding partners, all trained at Universitas Gadjah Mada (UGM), each bring distinct, complementary specializations spanning complex litigation, commercial curatorship, and high-stakes corporate transactions. We offer the depth and credentialing of a legacy firm, executed with the precision and speed of a specialized boutique."
     },
     "commitment": {
       "label": "Our Commitment",
@@ -249,7 +251,7 @@
             "proofPoints": [
               "Advised on a USD 120 million syndicated credit facility.",
               "Extensive experience in creating and registering complex security interests (Hak Tanggungan, Fidusia).",
-              "Counsel to major domestic and international banking institutions."
+              "Counsel to major domestic banks, international banking institutions, and fintech lending companies."
             ]
           },
           "intellectualProperty": {
@@ -260,7 +262,8 @@
             "p2": "Our services range from trademark and patent registration to aggressive enforcement actions against infringement, ensuring that our clients' intellectual capital remains secure.",
             "proofPoints": [
               "Successful registration and management of extensive trademark portfolios.",
-              "Enforcement actions against trademark infringement and counterfeiting."
+              "Enforcement actions against trademark infringement and counterfeiting.",
+              "Representation of an international music label (Warner Music Group) in a Tort (PMH) defense proceeding in Indonesia."
             ]
           }
         }
@@ -304,7 +307,9 @@
             "proofPoints": [
               "Advisory on HGU (Right to Cultivate) acquisition and extension.",
               "Structuring of mandatory plasma partnership schemes.",
-              "Resolution of complex land disputes and overlapping concessions."
+              "Resolution of complex land disputes and overlapping concessions.",
+              "Representation of palm oil plantation companies in multiple forest concession and land area disputes.",
+              "Legal counsel on the transfer of Timber Forest Utilization Licenses (IUPHHK-HA) in Natural Forest zones, covering full regulatory and due diligence requirements."
             ]
           },
           "tourismHospitality": {
