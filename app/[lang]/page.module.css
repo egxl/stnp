@@ -438,14 +438,11 @@
 
 /* ===== QUOTE BANNER ===== */
 .quoteBanner {
-  background: #080d16;
-  /* Darker navy for better contrast */
+  background: transparent;
   padding: var(--space-4xl) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   min-height: 500px;
@@ -601,10 +598,7 @@
 /* ===== INSIGHTS (Split Editorial Ledger) ===== */
 .insightsSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  border-top: 1px solid oklch(25% 0.01 240 / 0.4);
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(44, 95, 124, 0.12), transparent 60%),
-    #050a14;
+  background: transparent;
   position: relative;
   z-index: 2;
 }
@@ -1021,8 +1015,6 @@
 /* ===== NEW TRUST MARQUEE SECTION ===== */
 .trustSection {
   background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding: clamp(2rem, 5vw, 4rem) 0;
   display: flex;
   flex-direction: column;

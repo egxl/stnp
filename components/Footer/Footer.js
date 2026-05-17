@@ -69,8 +69,8 @@ export default function Footer({ dict, lang = 'en' }) {
         {/* Column 1: About */}
         <div className={styles.col}>
           <div className={styles.footerLogo}>
-            <img 
-              src="/images/logo.png" 
+            <img
+              src="/images/logo.png"
               alt="Soaloan Tua Nababan & Partners Logo"
               className={styles.logoImage}
             />
@@ -198,19 +198,19 @@ export default function Footer({ dict, lang = 'en' }) {
 
           {/* Social Links */}
           <div className={styles.socialLinks}>
-            <a 
-              href="https://www.linkedin.com/company/soaloan-tua-nababan/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/company/soaloan-tua-nababan/"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="LinkedIn"
             >
               <LinkedinLogo size={20} />
             </a>
-            <a 
-              href="https://www.instagram.com/soaloantuanababan/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.instagram.com/soaloantuanababan/"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="Instagram"
             >
@@ -237,7 +237,7 @@ export default function Footer({ dict, lang = 'en' }) {
               )}
             </div>
             <div className={styles.legalLinks}>
-              <button 
+              <button
                 className={styles.disclaimerBtn}
                 onClick={() => setIsDisclaimerOpen(true)}
               >
@@ -246,28 +246,28 @@ export default function Footer({ dict, lang = 'en' }) {
             </div>
           </div>
         </div>
-        
+
       </div>
 
       {/* Absolute bottom signature */}
       <div className={styles.signatureRow}>
-        <button 
+        <button
           className={styles.signatureBtn}
           onClick={() => setIsColophonOpen(true)}
         >
-          Design & Engineering by Havergal
+          Design by Havergal
         </button>
       </div>
 
-      <DisclaimerModal 
-        isOpen={isDisclaimerOpen} 
-        onClose={() => setIsDisclaimerOpen(false)} 
-        dict={dict} 
+      <DisclaimerModal
+        isOpen={isDisclaimerOpen}
+        onClose={() => setIsDisclaimerOpen(false)}
+        dict={dict}
       />
 
-      <ColophonModal 
-        isOpen={isColophonOpen} 
-        onClose={() => setIsColophonOpen(false)} 
+      <ColophonModal
+        isOpen={isColophonOpen}
+        onClose={() => setIsColophonOpen(false)}
       />
     </footer>
   );

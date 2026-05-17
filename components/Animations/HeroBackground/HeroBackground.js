@@ -26,7 +26,7 @@ export default function HeroBackground() {
     let scrollCtx;
 
     if (PARALLAX_ENABLED) {
-      // --- GSAP Scroll Parallax & Fade ---
+      // --- GSAP Scroll Parallax ---
       scrollCtx = gsap.context(() => {
         // Move image down slightly as user scrolls down
         gsap.to(imageContainer, {
@@ -40,20 +40,20 @@ export default function HeroBackground() {
           },
         });
 
-        // Fade out the entire hero background to reveal the Grainient
+        // Fade out the entire hero background VERY slowly to reveal the Grainient
         gsap.to(wrapper, {
           opacity: 0,
           ease: 'none',
           scrollTrigger: {
             trigger: document.body,
             start: 'top top',
-            end: '100vh top',
+            end: '250vh top',
             scrub: true,
           },
         });
       }, wrapper);
     } else {
-      // Parallax disabled — still run the scroll fade for clean section blending
+      // Parallax disabled — still run the slow scroll fade for clean blending
       scrollCtx = gsap.context(() => {
         gsap.to(wrapper, {
           opacity: 0,
@@ -61,7 +61,7 @@ export default function HeroBackground() {
           scrollTrigger: {
             trigger: document.body,
             start: 'top top',
-            end: '100vh top',
+            end: '250vh top',
             scrub: true,
           },
         });
