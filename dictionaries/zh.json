@@ -7,7 +7,8 @@
     "insights": "洞察与见解",
     "contact": "联系我们",
     "consultation": "法律咨询",
-    "freeConsultation": "免费咨询"
+    "freeConsultation": "免费咨询",
+    "proBono": "公益服务"
   },
   "home": {
     "memberOf": "会员单位",
@@ -246,6 +247,32 @@
       "team": "Meet Our Team",
       "about": "About STNP",
       "insights": "Read Insights"
+    }
+  },
+  "proBono": {
+    "meta": {
+      "title": "公益服务与社会责任 — Soaloan Tua Nababan & Partners",
+      "description": "STNP 投入切实力量开展公益服务，为面临真正法律需求的人士和组织提供免费法律援助。"
+    },
+    "hero": {
+      "label": "公益服务 // 我们的承诺",
+      "title": "正义无例外",
+      "subtitle": "STNP 投入切实力量开展公益服务——不是作为边缘项目，而是作为一项职业义务。"
+    },
+    "belief": {
+      "quote": "政府最神圣的职责是对所有公民提供平等而准确的正义。",
+      "quoteAuthor": "托马斯·杰斐逊 (Thomas Jefferson)",
+      "body": "我们认为，获得法律代理不应取决于经济状况。STNP 投入力量开展公益服务，为无力承担代理费用但面临真正法律需求的人士和组织提供免费法律援助。这项承诺并不是我们业务的边缘部分。它表明了我们是一家什么样的事务所，以及我们信仰什么样的法律。"
+    },
+    "practice": {
+      "item1": "为无力承担律师费用的人士提供免费法律代理。",
+      "item2": "为注册非政府组织及社会团体提供咨询支持。",
+      "item3": "享有与付费客户同等水平的合伙人关注。"
+    },
+    "cta": {
+      "label": "取得联系",
+      "body": "如果您或您认识的人需要法律援助但无力承担代理费用，请与我们联系。我们将评估每一项咨询。",
+      "button": "→ 联系我们"
     }
   },
   "footer": {

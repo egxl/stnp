@@ -7,7 +7,8 @@
     "insights": "Insights",
     "contact": "Contact",
     "consultation": "Consultation",
-    "freeConsultation": "Free Consultation"
+    "freeConsultation": "Free Consultation",
+    "proBono": "Pro Bono"
   },
   "home": {
     "memberOf": "Member of",
@@ -338,6 +339,32 @@
       "team": "Meet Our Team",
       "about": "About STNP",
       "insights": "Read Insights"
+    }
+  },
+  "proBono": {
+    "meta": {
+      "title": "Pro Bono & Social Responsibility — Soaloan Tua Nababan & Partners",
+      "description": "STNP dedicates real capacity to pro bono work — providing free legal assistance to individuals and organisations who face genuine legal need."
+    },
+    "hero": {
+      "label": "Pro Bono // Our Commitment",
+      "title": "Justice Without Exception",
+      "subtitle": "STNP dedicates real capacity to pro bono work — not as a peripheral program, but as a professional obligation."
+    },
+    "belief": {
+      "quote": "The most sacred of the duties of a government is to do equal and exact justice to all its citizens.",
+      "quoteAuthor": "Thomas Jefferson",
+      "body": "We believe that access to legal representation should not depend on financial means. STNP dedicates capacity to pro bono work — providing free legal assistance to individuals and organisations who cannot afford representation but face genuine legal need. This commitment is not peripheral to our practice. It is a statement about the kind of firm we are, and the kind of law we believe in."
+    },
+    "practice": {
+      "item1": "Free legal representation for individuals who cannot afford counsel.",
+      "item2": "Advisory support for registered NGOs and social organisations.",
+      "item3": "Access to the same partner-level attention as any retained client."
+    },
+    "cta": {
+      "label": "Get in touch",
+      "body": "If you or someone you know requires legal assistance and cannot afford representation, reach out. We will assess every inquiry.",
+      "button": "→ Contact Us"
     }
   },
   "footer": {

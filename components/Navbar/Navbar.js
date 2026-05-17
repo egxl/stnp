@@ -128,7 +128,7 @@ function buildDropdownNavItems(d, lang) {
       })),
       footer: {
         label: proBono.title[lang] || proBono.title.en,
-        href: `/${lang}/legal-services#${proBono.id}`,
+        href: `/${lang}/pro-bono`,
         icon: Heart,
       },
     },
@@ -141,6 +141,11 @@ function buildDropdownNavItems(d, lang) {
       id: 5,
       label: d.insights,
       href: `/${lang}/insights`,
+    },
+    {
+      id: 5.5,
+      label: d.proBono || 'Pro Bono',
+      href: `/${lang}/pro-bono`,
     },
     {
       id: 6,
@@ -167,6 +172,7 @@ export default function Navbar({ navDict, lang = 'en' }) {
     { href: `/${lang}/legal-services`, label: d.services },
     { href: `/${lang}/team`, label: d.team },
     { href: `/${lang}/insights`, label: d.insights },
+    { href: `/${lang}/pro-bono`, label: d.proBono || 'Pro Bono' },
     { href: `/${lang}/contact`, label: d.contact },
   ];
 

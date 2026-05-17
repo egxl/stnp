@@ -250,70 +250,7 @@
   margin-top: var(--space-xl);
 }
 
-/* === ACT 4: PRO BONO === */
-.proBonoSection {
-  position: relative;
-  z-index: 2;
-  padding: var(--space-3xl) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(6, 14, 26, 0.3);
-}
 
-.proBonoLayout {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-}
-
-@media (min-width: 768px) {
-  .proBonoLayout {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-  }
-}
-
-.proBonoTitle {
-  font-family: var(--font-heading-family);
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  font-weight: 400;
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
-}
-
-.proBonoText {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.quoteBlock {
-  border-left: 1px solid var(--color-accent);
-  padding-left: var(--space-lg);
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.quoteBlock p {
-  font-family: var(--font-heading-family);
-  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
-}
-
-.quoteBlock cite {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  font-style: normal;
-}
 
 /* === ACT 5: CTA === */
 .ctaSection {
@@ -467,7 +404,6 @@
 
 :global(.light) .heroTitle,
 :global(.light) .detailTitle,
-:global(.light) .proBonoTitle,
 :global(.light) .ctaTitle {
   color: var(--color-primary);
 }
@@ -475,7 +411,6 @@
 :global(.light) .heroSubtitle,
 :global(.light) .heroBody,
 :global(.light) .detailText,
-:global(.light) .proBonoText,
 :global(.light) .ctaBody {
   color: var(--color-text-muted);
 }
@@ -505,7 +440,6 @@
 }
 
 :global(.light) .heroSection,
-:global(.light) .proBonoSection,
 :global(.light) .ctaSection,
 :global(.light) .springboards {
   border-color: var(--color-border);
@@ -515,13 +449,7 @@
   border-right-color: var(--color-border);
 }
 
-:global(.light) .proBonoSection {
-  background: rgba(10, 22, 40, 0.03);
-}
 
-:global(.light) .quoteBlock p {
-  color: var(--color-primary);
-}
 
 :global(.light) .addressBlock {
   color: var(--color-text-light);

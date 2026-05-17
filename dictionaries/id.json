@@ -7,7 +7,8 @@
     "insights": "Wawasan",
     "contact": "Kontak",
     "consultation": "Konsultasi",
-    "freeConsultation": "Konsultasi Gratis"
+    "freeConsultation": "Konsultasi Gratis",
+    "proBono": "Pro Bono"
   },
   "home": {
     "memberOf": "Anggota",
@@ -338,6 +339,32 @@
       "team": "Meet Our Team",
       "about": "About STNP",
       "insights": "Read Insights"
+    }
+  },
+  "proBono": {
+    "meta": {
+      "title": "Pro Bono & Tanggung Jawab Sosial — Soaloan Tua Nababan & Partners",
+      "description": "STNP mendedikasikan kapasitas nyata untuk pekerjaan pro bono — memberikan bantuan hukum gratis kepada individu dan organisasi yang menghadapi kebutuhan hukum yang mendesak."
+    },
+    "hero": {
+      "label": "Pro Bono // Komitmen Kami",
+      "title": "Keadilan Tanpa Pengecualian",
+      "subtitle": "STNP mendedikasikan kapasitas nyata untuk pekerjaan pro bono — bukan sebagai program sampingan, melainkan sebagai kewajiban profesional."
+    },
+    "belief": {
+      "quote": "Tugas paling suci dari sebuah pemerintahan adalah memberikan keadilan yang setara dan tepat bagi seluruh warganya.",
+      "quoteAuthor": "Thomas Jefferson",
+      "body": "Kami percaya bahwa akses terhadap representasi hukum seharusnya tidak bergantung pada kondisi keuangan. STNP mendedikasikan kapasitas untuk pekerjaan pro bono — memberikan bantuan hukum gratis kepada individu dan organisasi yang tidak mampu membayar perwakilan hukum tetapi menghadapi kebutuhan hukum yang mendesak. Komitmen ini bukanlah hal pinggiran dalam praktik kami. Ini adalah pernyataan tentang jenis firma seperti apa kami ini, dan jenis hukum yang kami yakini."
+    },
+    "practice": {
+      "item1": "Representasi hukum gratis bagi individu yang tidak mampu membayar penasihat hukum.",
+      "item2": "Dukungan konsultasi untuk LSM dan organisasi sosial yang terdaftar.",
+      "item3": "Akses ke tingkat perhatian mitra yang sama seperti klien berbayar lainnya."
+    },
+    "cta": {
+      "label": "Hubungi kami",
+      "body": "Jika Anda atau seseorang yang Anda kenal membutuhkan bantuan hukum dan tidak mampu membayar perwakilan, hubungi kami. Kami akan menilai setiap pertanyaan.",
+      "button": "→ Hubungi Kami"
     }
   },
   "footer": {

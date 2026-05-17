@@ -58,23 +58,6 @@ export default async function LegalServicesPage({ params }) {
       {/* ACT 2 & 3 — LEDGER (Index + Detail) */}
       <ServiceLedger services={s} lang={lang} />
 
-      {/* ACT 4 — PRO BONO */}
-      <section className={styles.proBonoSection}>
-        <div className="container">
-          <div className={styles.proBonoLayout}>
-            <div className={styles.proBonoHeader}>
-              <span className={styles.sectionLabel}>{s.proBono.label}</span>
-              <h2 className={styles.proBonoTitle}>{s.proBono.title}</h2>
-              <p className={styles.proBonoText}>{s.proBono.body}</p>
-            </div>
-            <blockquote className={styles.quoteBlock}>
-              <p>"{s.proBono.quote}"</p>
-              <cite>— {s.proBono.quoteAuthor}</cite>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
       {/* ACT 5 — CTA & SPRINGBOARDS */}
       <section className={styles.ctaSection}>
         <div className="container">
@@ -105,6 +88,9 @@ export default async function LegalServicesPage({ params }) {
               </Link>
               <Link href={`/${lang}/about`} className={styles.springboardLink}>
                 {s.springboards.about} <span>→</span>
+              </Link>
+              <Link href={`/${lang}/pro-bono`} className={styles.springboardLink}>
+                {s.proBono.title} <span>→</span>
               </Link>
               <Link href={`/${lang}/insights`} className={styles.springboardLink}>
                 {s.springboards.insights} <span>→</span>

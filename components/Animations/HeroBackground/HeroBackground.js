@@ -5,6 +5,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './HeroBackground.module.css';
 
+// ─── Feature Flags ────────────────────────────────────────────────────────────
+// Set to `true` to re-enable the scroll + mouse parallax on the background.
+const PARALLAX_ENABLED = false;
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function HeroBackground() {
   const wrapperRef = useRef(null);
   const imageContainerRef = useRef(null);
@@ -18,55 +23,66 @@ export default function HeroBackground() {
     const imageContainer = imageContainerRef.current;
     const fadeOverlay = fadeOverlayRef.current;
 
-    // --- 2. GSAP Scroll Parallax & Fade ---
-    let scrollCtx = gsap.context(() => {
-      // Setup the timeline triggered by scrolling the window
-      // Since the wrapper is fixed, we use the body/html scroll to drive the animation
-      gsap.to(imageContainer, {
-        yPercent: 8, // Move image down slightly as user scrolls down
-        ease: 'none',
-        scrollTrigger: {
-          trigger: document.body,
-          start: 'top top',
-          end: '150% top', // Effect ends when scrolled 1.5x viewport height
-          scrub: true,
-        },
-      });
+    let scrollCtx;
 
-      // Fade to background color to blend seamlessly into the next section
-      gsap.to(fadeOverlay, {
-        opacity: 0.95, // Almost fully opaque to match background
-        ease: 'none',
-        scrollTrigger: {
-          trigger: document.body,
-          start: '10% top', // Start fading slightly after scroll begins
-          end: '100% top',
-          scrub: true,
-        },
-      });
-    }, wrapper);
+    if (PARALLAX_ENABLED) {
+      // --- GSAP Scroll Parallax & Fade ---
+      scrollCtx = gsap.context(() => {
+        // Move image down slightly as user scrolls down
+        gsap.to(imageContainer, {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: '150% top',
+            scrub: true,
+          },
+        });
 
-    // --- 3. Mouse Tracking Parallax ---
+        // Fade to background color to blend seamlessly into the next section
+        gsap.to(fadeOverlay, {
+          opacity: 0.95,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: '10% top',
+            end: '100% top',
+            scrub: true,
+          },
+        });
+      }, wrapper);
+    } else {
+      // Parallax disabled — still run the scroll fade for clean section blending
+      scrollCtx = gsap.context(() => {
+        gsap.to(fadeOverlay, {
+          opacity: 0.95,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: '10% top',
+            end: '100% top',
+            scrub: true,
+          },
+        });
+      }, wrapper);
+    }
+
+    // --- Mouse Tracking Parallax ---
     const handleMouseMove = (e) => {
-      // Only apply mouse parallax if we are near the top of the page
-      // otherwise it's wasted computation
+      if (!PARALLAX_ENABLED) return;
       if (window.scrollY > window.innerHeight) return;
 
       const { innerWidth, innerHeight } = window;
-      const clientX = e.clientX;
-      const clientY = e.clientY;
+      const xPos = (e.clientX / innerWidth - 0.5) * 2;
+      const yPos = (e.clientY / innerHeight - 0.5) * 2;
 
-      // Calculate relative position (-1 to 1)
-      const xPos = (clientX / innerWidth - 0.5) * 2;
-      const yPos = (clientY / innerHeight - 0.5) * 2;
-
-      // Subtle movement (e.g., max 1.5% shift in opposite direction)
       gsap.to(imageContainer, {
         x: `${-xPos * 1.5}%`,
         y: `${-yPos * 1.5}%`,
         duration: 1.2,
         ease: 'power2.out',
-        overwrite: 'auto', // Allow smooth overriding of continuous movement
+        overwrite: 'auto',
       });
     };
 

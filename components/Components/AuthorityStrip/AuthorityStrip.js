@@ -10,7 +10,6 @@ const AuthorityStrip = ({ dict }) => {
   const associations = [
     { name: 'PERADI', slug: 'peradi', url: 'https://www.peradi.or.id/' },
     { name: 'AKPI', slug: 'akpi', url: 'https://www.akpi.or.id/' },
-    { name: 'HKHSK', slug: 'hkhsk', url: 'https://hkhsk.id/' },
   ];
 
   // Cache buster to force browser to reload assets
