@@ -37,6 +37,22 @@ const iconMapping = {
   heart: Heart,
 };
 
+// Map services.js IDs to en.json dictionary keys
+const dictionaryKeyMapping = {
+  'litigation': 'commercialLitigation',
+  'banking-finance': 'bankingFinance',
+  'bankruptcy': 'bankruptcy',
+  'industrial-relations': 'industrialRelations',
+  'corporate': 'generalCorporate',
+  'mergers': 'mergersAcquisitions',
+  'financing': 'bankingFinance',
+  'ip': 'intellectualProperty',
+  'energy-mining': 'miningEnergy',
+  'infrastructure': 'infrastructureRealEstate',
+  'plantation': 'plantationAgribusiness',
+  'tourism': 'tourismHospitality'
+};
+
 export default function PracticeAccordion({ serviceCategories, dict, lang }) {
   const [expandedId, setExpandedId] = useState(null);
 
@@ -123,6 +139,7 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
                   <div className={styles.servicesList}>
                     {category.services.map((service, sIndex) => {
                       const ServiceIcon = iconMapping[service.icon] || Bank;
+                      const dictKey = dictionaryKeyMapping[service.id] || service.id;
                       return (
                         <div 
                           key={service.id} 
@@ -140,7 +157,7 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
                               {service.description[lang] || service.description.en}
                             </p>
                             <Link 
-                              href={`/${lang}/legal-services#${service.id}`}
+                              href={`/${lang}/legal-services?service=${dictKey}`}
                               className={styles.learnMoreLink}
                             >
                               <span>{dict.learnMore}</span>

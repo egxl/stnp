@@ -1,6 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,6 +10,8 @@ import styles from './page.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ServiceLedger({ services, lang }) {
+  const searchParams = useSearchParams();
+  
   // Flatten services list
   const categories = Object.entries(services.categories);
   const allServices = categories.flatMap(([catKey, cat]) =>
@@ -17,10 +20,53 @@ export default function ServiceLedger({ services, lang }) {
     }))
   );
 
-  const [activeId, setActiveId] = useState(`${categories[0][0]}.${Object.keys(categories[0][1].services)[0]}`);
+  const [activeId, setActiveId] = useState(() => {
+    // Check search params on initial render to prevent flash of wrong content
+    const svcParam = searchParams.get('service');
+    if (svcParam) {
+      const target = allServices.find(s => s.svcKey === svcParam);
+      if (target) return `${target.catKey}.${target.svcKey}`;
+    }
+    return `${categories[0][0]}.${Object.keys(categories[0][1].services)[0]}`;
+  });
+
   const [isTransitioning, setIsTransitioning] = useState(false);
   const detailRef = useRef(null);
   const containerRef = useRef(null);
+
+  // If the search parameter changes while we are already on the page
+  useEffect(() => {
+    const svcParam = searchParams.get('service');
+    if (svcParam) {
+      const targetService = allServices.find(s => s.svcKey === svcParam);
+      if (targetService) {
+        setActiveId(`${targetService.catKey}.${targetService.svcKey}`);
+        
+        // Let React update the DOM, then scroll to center the section
+        setTimeout(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            // Calculate scroll target to vertically center the container
+            let targetScroll = window.scrollY + rect.top - (windowHeight - rect.height) / 2;
+            
+            // Don't scroll higher than the top of the element minus a sticky header offset
+            const minScroll = window.scrollY + rect.top - 100;
+            
+            // If the element is taller than the window, prioritize showing its top
+            if (rect.height > windowHeight) {
+              targetScroll = minScroll;
+            }
+
+            window.scrollTo({
+              top: targetScroll,
+              behavior: 'smooth'
+            });
+          }
+        }, 300); // Slight delay for page transition/hydration
+      }
+    }
+  }, [searchParams, allServices]);
 
   const activeService = allServices.find(s => `${s.catKey}.${s.svcKey}` === activeId) || allServices[0];
   const activeCat = services.categories[activeService.catKey];
@@ -57,7 +103,7 @@ export default function ServiceLedger({ services, lang }) {
   }, { scope: containerRef });
 
   return (
-    <section className={styles.ledgerSection} ref={containerRef}>
+    <section className={styles.ledgerSection} ref={containerRef} id="ledger">
       <div className="container">
         <div className={styles.ledgerContainer}>
           {/* LEFT — Sticky Index */}
