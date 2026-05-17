@@ -580,9 +580,7 @@ button {
   color: var(--color-primary);
 }
 
-.light p {
-  color: var(--color-text-muted);
-}
+
 
 .light .section--dark {
   background-color: transparent;
@@ -604,8 +602,7 @@ button {
 /* ── Enforce dark text on traditionally dark sections in light mode ── */
 :where(.light) [class*="hero"],
 :where(.light) [class*="pageHero"],
-:where(.light) [class*="quoteBanner"],
-:where(.light) [class*="ctaSection"] {
+:where(.light) [class*="quoteBanner"] {
   color: var(--color-text-muted);
 }
 
@@ -613,8 +610,7 @@ button {
 :where(.light) [class*="pageHero"] h1,
 :where(.light) [class*="hero"] h2,
 :where(.light) [class*="pageHero"] h2,
-:where(.light) [class*="quoteBanner"] h2,
-:where(.light) [class*="ctaSection"] h2 {
+:where(.light) [class*="quoteBanner"] h2 {
   color: var(--color-primary) !important;
 }
 
@@ -627,8 +623,7 @@ button {
 :where(.light) [class*="hero"] p,
 :where(.light) [class*="pageHero"] p,
 :where(.light) [class*="heroSubtitle"],
-:where(.light) [class*="quoteContent"] p,
-:where(.light) [class*="ctaText"] {
+:where(.light) [class*="quoteContent"] p {
   color: var(--color-text-muted) !important;
 }
 
@@ -664,9 +659,4 @@ button {
   color: var(--color-white) !important;
 }
 
-:where(.light) [class*="footer"] p,
-:where(.light) [class*="footer"] span,
-:where(.light) [class*="footer"] address,
-:where(.light) [class*="footer"] li {
-  color: rgba(255, 255, 255, 0.75) !important;
-}
+
