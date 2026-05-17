@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useGSAP } from '@gsap/react';
@@ -12,13 +12,15 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ServiceLedger({ services, lang }) {
   const searchParams = useSearchParams();
   
-  // Flatten services list
-  const categories = Object.entries(services.categories);
-  const allServices = categories.flatMap(([catKey, cat]) =>
-    Object.entries(cat.services).map(([svcKey, svc]) => ({
-      ...svc, catKey, catTitle: cat.title, catNumber: cat.number, svcKey
-    }))
-  );
+  // Flatten services list — memoized so the reference is stable across renders
+  const categories = useMemo(() => Object.entries(services.categories), [services.categories]);
+  const allServices = useMemo(() =>
+    categories.flatMap(([catKey, cat]) =>
+      Object.entries(cat.services).map(([svcKey, svc]) => ({
+        ...svc, catKey, catTitle: cat.title, catNumber: cat.number, svcKey
+      }))
+    ),
+  [categories]);
 
   const [activeId, setActiveId] = useState(() => {
     // Check search params on initial render to prevent flash of wrong content
@@ -33,40 +35,32 @@ export default function ServiceLedger({ services, lang }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const detailRef = useRef(null);
   const containerRef = useRef(null);
-
-  // If the search parameter changes while we are already on the page
+  // Read ?service= param and set the active panel. Scrolling is handled
+  // natively by the browser via the #ledger hash in the URL.
   useEffect(() => {
     const svcParam = searchParams.get('service');
-    if (svcParam) {
-      const targetService = allServices.find(s => s.svcKey === svcParam);
-      if (targetService) {
-        setActiveId(`${targetService.catKey}.${targetService.svcKey}`);
-        
-        // Let React update the DOM, then scroll to center the section
-        setTimeout(() => {
-          if (containerRef.current) {
-            const rect = containerRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            // Calculate scroll target to vertically center the container
-            let targetScroll = window.scrollY + rect.top - (windowHeight - rect.height) / 2;
-            
-            // Don't scroll higher than the top of the element minus a sticky header offset
-            const minScroll = window.scrollY + rect.top - 100;
-            
-            // If the element is taller than the window, prioritize showing its top
-            if (rect.height > windowHeight) {
-              targetScroll = minScroll;
-            }
-
-            window.scrollTo({
-              top: targetScroll,
-              behavior: 'smooth'
-            });
-          }
-        }, 300); // Slight delay for page transition/hydration
-      }
+    if (!svcParam) return;
+    const targetService = allServices.find(s => s.svcKey === svcParam);
+    if (targetService) {
+      setActiveId(`${targetService.catKey}.${targetService.svcKey}`);
     }
   }, [searchParams, allServices]);
+
+  // On initial page load only: if a ?service= param is present, scroll to the
+  // ledger section. Next.js client-side navigation does not fire native hash
+  // scrolling, so we do it manually — once, on mount.
+  useEffect(() => {
+    const svcParam = searchParams.get('service');
+    if (!svcParam) return;
+    const ledger = document.getElementById('ledger');
+    if (!ledger) return;
+    // Small delay to let the page finish rendering before scrolling
+    const timer = setTimeout(() => {
+      ledger.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty deps = run once on mount only
 
   const activeService = allServices.find(s => `${s.catKey}.${s.svcKey}` === activeId) || allServices[0];
   const activeCat = services.categories[activeService.catKey];

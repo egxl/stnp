@@ -157,7 +157,7 @@ export default function PracticeAccordion({ serviceCategories, dict, lang }) {
                               {service.description[lang] || service.description.en}
                             </p>
                             <Link 
-                              href={`/${lang}/legal-services?service=${dictKey}`}
+                              href={`/${lang}/legal-services?service=${dictKey}#ledger`}
                               className={styles.learnMoreLink}
                             >
                               <span>{dict.learnMore}</span>
