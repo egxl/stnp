@@ -25,48 +25,35 @@ export default function HeroBackground() {
 
     let scrollCtx;
 
-    if (PARALLAX_ENABLED) {
-      // --- GSAP Scroll Parallax ---
-      scrollCtx = gsap.context(() => {
+    scrollCtx = gsap.context(() => {
+      const triggerEl = wrapper.closest('section') || wrapper.parentElement || document.body;
+
+      if (PARALLAX_ENABLED) {
         // Move image down slightly as user scrolls down
         gsap.to(imageContainer, {
           yPercent: 8,
           ease: 'none',
           scrollTrigger: {
-            trigger: document.body,
+            trigger: triggerEl,
             start: 'top top',
-            end: '150% top',
+            end: 'bottom top',
             scrub: true,
           },
         });
+      }
 
-        // Fade out the entire hero background VERY slowly to reveal the Grainient
-        gsap.to(wrapper, {
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: document.body,
-            start: 'top top',
-            end: '250vh top',
-            scrub: true,
-          },
-        });
-      }, wrapper);
-    } else {
-      // Parallax disabled — still run the slow scroll fade for clean blending
-      scrollCtx = gsap.context(() => {
-        gsap.to(wrapper, {
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: document.body,
-            start: 'top top',
-            end: '250vh top',
-            scrub: true,
-          },
-        });
-      }, wrapper);
-    }
+      // Clip the entire hero background from bottom to top as user scrolls down
+      gsap.to(wrapper, {
+        clipPath: 'inset(0% 0% 100% 0%)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: triggerEl,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+    }, wrapper);
 
     // --- Mouse Tracking Parallax ---
     const handleMouseMove = (e) => {

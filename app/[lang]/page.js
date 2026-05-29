@@ -106,12 +106,6 @@ export default async function HomePage({ params }) {
     <>
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} ${styles.snapSection}`}>
-        {/* Background Video Component - BACKUP */}
-        {/* <HeroVideo 
-          className={styles.heroVideo} 
-          visibleClass={styles.videoVisible} 
-        /> */}
-
         <HeroBackground />
 
         <div className={styles.heroSticky}>
@@ -133,12 +127,12 @@ export default async function HomePage({ params }) {
                   {dict.home.secondaryCta2}
                 </Link>
               </div>
+
+              <div className={styles.heroAuthorityWrapper}>
+                <AuthorityStrip dict={dict} />
+              </div>
             </div>
           </HeroParallax>
-          
-
-          
-          <AuthorityStrip dict={dict} />
         </div>
       </section>
 

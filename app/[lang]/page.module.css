@@ -26,78 +26,6 @@
   overflow: visible;
 }
 
-
-
-
-/* ── Navy slab — spans full viewport height (behind the navbar) ────────────── 
-   Sits on the sticky wrapper so that top: 0 reaches the very top of the screen.
-   Aligned to the content container (1440px) to ensure the navbar logo
-   is always above the navy backdrop.
-────────────────────────────────────────────────────────────────────────────── */
-.heroSticky::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 70vw;
-  pointer-events: none;
-  z-index: 0;
-  /* Simplified background to reduce GPU composite strain */
-  background: linear-gradient(180deg, rgba(5, 16, 32, 0.98), rgba(7, 20, 38, 0.95));
-  mask-image: linear-gradient(to right, black 30%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
-}
-
-:global(.light) .heroSticky::before {
-  background: linear-gradient(180deg, rgba(212, 185, 122, 0.8), rgba(212, 185, 122, 1));
-}
-
-.heroSticky::after {
-  display: none;
-}
-
-/* ── Fixed background video & overlay ──────────────────────────────────────
-   Both the video and its dark overlay are pinned to the viewport with
-   position:fixed. They sit behind EVERYTHING (z-index: -2 / -1).
-   When the user scrolls, later sections (which all carry a solid bg-color)
-   glide over the top of the frozen video, creating the parallax illusion.
-──────────────────────────────────────────────────────────────────────── */
-.heroVideo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  object-fit: cover;
-  object-position: 64% center;
-  z-index: -1;
-  /* Removed filter and contrast as they are very expensive on fixed high-res videos */
-  opacity: 0;
-  transition: opacity 1s var(--ease-out);
-  pointer-events: none;
-}
-
-.videoVisible {
-  opacity: 1;
-}
-
-.heroBgDark {
-  display: block;
-}
-
-:global(.light) .heroBgDark {
-  display: none !important;
-}
-
-.heroBgLight {
-  display: none;
-}
-
-:global(.light) .heroBgLight {
-  display: block !important;
-}
-
 .heroShell {
   position: relative;
   z-index: 1;
@@ -129,8 +57,6 @@
   margin-left: clamp(0rem, 6vw, 8rem);
 }
 
-
-
 .heroLabel {
   display: inline-flex;
   align-items: center;
@@ -140,7 +66,7 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
   position: relative;
   padding-left: 3rem;
   opacity: 0;
@@ -159,25 +85,24 @@
 }
 
 :global(.light) .heroLabel {
-  color: #14345B !important;
-  text-shadow: 0 1px 8px rgba(20, 52, 91, 0.25) !important;
+  color: var(--color-primary) !important;
 }
 
 :global(.light) .heroLabel::before {
-  background-color: #14345B !important;
-  box-shadow: 0 1px 8px rgba(20, 52, 91, 0.25) !important;
+  background-color: var(--color-primary) !important;
+  box-shadow: none !important;
 }
 
 .heroTitle {
   max-width: 25ch;
   font-family: var(--font-julius), sans-serif;
-  font-size: clamp(2.25rem, 3.55vw, 3.9rem);
+  font-size: clamp(2.1rem, 3.4vw, 3.7rem);
   font-weight: 400;
   color: var(--color-white);
   line-height: 1.1;
   margin-bottom: 0;
   letter-spacing: 0.045em;
-  text-shadow: 0 4px 32px rgba(6, 14, 26, 0.8), 0 2px 8px rgba(6, 14, 26, 0.6);
+  text-shadow: none;
   white-space: normal;
   overflow-wrap: normal;
   position: relative;
@@ -213,13 +138,13 @@
 
 :global(.light) .heroTitle,
 :global(.light) .heroTitleLine {
-  color: var(--color-white) !important;
-  text-shadow: 0 4px 24px rgba(6, 14, 26, 0.6), 0 2px 8px rgba(6, 14, 26, 0.8) !important;
+  color: var(--color-primary) !important;
+  text-shadow: none !important;
 }
 
 :global(.light) .heroTitleAccent {
-  color: #14345B !important;
-  text-shadow: 0 2px 12px rgba(20, 52, 91, 0.3) !important;
+  color: var(--color-primary-light) !important;
+  text-shadow: none !important;
 }
 
 :global(html[lang="zh"]) .heroTitle {
@@ -248,15 +173,11 @@
   white-space: normal;
 }
 
-
-
 @media (max-width: 1280px) {
   .heroTitle {
     max-width: 25ch;
-    font-size: clamp(2.05rem, 4vw, 3.4rem);
+    font-size: clamp(1.9rem, 3.8vw, 3.2rem);
   }
-
-
 }
 
 @media (max-width: 1024px) {
@@ -279,8 +200,6 @@
     max-width: 15ch;
     line-height: 1.12;
   }
-
-
 
   :global(html[lang="en"]) .heroTitleLineNoWrap,
   :global(html[lang="id"]) .heroTitleLineNoWrap {
@@ -314,13 +233,13 @@
 }
 
 .heroSubtitle {
-  font-size: clamp(1.1rem, 1.25vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.7);
   max-width: 48ch;
   line-height: 1.7;
-  margin-top: clamp(1.25rem, 2vw, 1.75rem);
-  margin-bottom: clamp(2rem, 3.5vw, 3.5rem);
-  text-shadow: 0 1px 20px rgba(6, 14, 26, 0.5);
+  margin-top: clamp(1rem, 1.8vw, 1.5rem);
+  margin-bottom: clamp(1.8rem, 3vw, 2.8rem);
+  text-shadow: none;
   position: relative;
   z-index: 1;
   opacity: 0;
@@ -329,8 +248,8 @@
 }
 
 :global(.light) .heroSubtitle {
-  color: var(--color-white) !important;
-  text-shadow: 0 2px 16px rgba(6, 14, 26, 0.6), 0 1px 4px rgba(6, 14, 26, 0.8) !important;
+  color: var(--color-text-muted) !important;
+  text-shadow: none !important;
 }
 
 .heroDivider {
@@ -347,7 +266,7 @@
 }
 
 :global(.light) .heroCta :global(.btn--primary) {
-  background: #14345B !important;
+  background: var(--color-primary) !important;
   color: var(--color-accent) !important;
 }
 
@@ -381,6 +300,14 @@
   content: "→";
   font-size: 1.1em;
   transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.heroAuthorityWrapper {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  width: 100%;
+  opacity: 0;
+  animation: heroReveal 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: 580ms;
 }
 
 @keyframes heroReveal {
