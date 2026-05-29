@@ -131,10 +131,11 @@ export function DropdownNavigation({
                 {isOpen && hasSubMenus ? (
                   <motion.div
                     className={`${styles.dropdownWrap} ${navItem.aside ? styles.dropdownWrapMega : ""}`}
-                    initial={{ opacity: 0, x: "-50%", y: 12 }}
-                    animate={{ opacity: 1, x: "-50%", y: 0 }}
-                    exit={{ opacity: 0, x: "-50%", y: 10 }}
-                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                    initial={{ opacity: 0, x: "-50%", y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, x: "-50%", y: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: "-50%", y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                    style={{ transformOrigin: "top center" }}
                   >
                     <motion.div
                       className={`${styles.dropdownPanel} ${navItem.aside ? styles.dropdownPanelMega : ""}`}
@@ -165,7 +166,6 @@ export function DropdownNavigation({
                                 <h3 className={styles.groupTitle}>{subMenu.title}</h3>
                                 <ul className={styles.groupList}>
                                   {subMenu.items.map((item) => {
-                                    const Icon = item.icon;
                                     const isSubItemActive = hrefMatchesPath(currentPath, item.href);
 
                                     return (
@@ -182,18 +182,8 @@ export function DropdownNavigation({
                                           }
                                           onClick={(e) => handleLinkClick(e, item.href)}
                                         >
-                                          {Icon && !navItem.aside && (
-                                            <div className={styles.iconWrap}>
-                                              <Icon className={styles.icon} aria-hidden="true" />
-                                            </div>
-                                          )}
                                           <div className={styles.copyWrap}>
                                             <p className={styles.subMenuLabel}>{item.label}</p>
-                                            {item.description && !navItem.aside && (
-                                              <p className={styles.subMenuDescription}>
-                                                {item.description}
-                                              </p>
-                                            )}
                                           </div>
                                         </Link>
                                       </li>
@@ -211,9 +201,6 @@ export function DropdownNavigation({
                                 className={styles.footerLink}
                                 onClick={(e) => handleLinkClick(e, navItem.footer.href)}
                               >
-                                {navItem.footer.icon && (
-                                  <navItem.footer.icon className={styles.footerIcon} aria-hidden="true" />
-                                )}
                                 <span>{navItem.footer.label}</span>
                               </Link>
                             </div>

@@ -25,7 +25,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import StaggeredMenu from './StaggeredMenu';
 import DropdownNavigation from '@/components/ui/dropdown-navigation';
 import GradualBlur from './GradualBlur';
-import { serviceCategories, proBono } from '@/lib/data/services';
+import { serviceCategories, proBono, dictionaryKeyMapping } from '@/lib/data/services';
 
 const SERVICE_ICON_MAP = {
   'dispute-resolution': Scale,
@@ -121,7 +121,7 @@ function buildDropdownNavItems(d, lang) {
         title: category.title[lang] || category.title.en,
         items: category.services.map((service) => ({
           label: service.title[lang] || service.title.en,
-          href: `/${lang}/legal-services#${category.id}`, // Anchor per category as requested
+          href: `/${lang}/legal-services?service=${dictionaryKeyMapping[service.id] || service.id}#ledger`,
           icon: SERVICE_ICON_MAP[service.id] || Scale,
           description: '', // Optional: keeping it clean
         })),

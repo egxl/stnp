@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { firmInfo } from '@/lib/data/team';
-import { serviceCategories, proBono } from '@/lib/data/services';
+import { serviceCategories, proBono, dictionaryKeyMapping } from '@/lib/data/services';
 import styles from './Footer.module.css';
 import Beams from './Beams';
 import DisclaimerModal from './DisclaimerModal';
@@ -108,7 +108,11 @@ export default function Footer({ dict, lang = 'en' }) {
                 <div key={category.id} className={styles.practiceGroup}>
                   <div className={styles.practiceGroupHeader}>
                     <Link
-                      href={`/${lang}/legal-services#${category.id}`}
+                      href={(() => {
+                        const firstService = category.services[0];
+                        const dictKey = firstService ? (dictionaryKeyMapping[firstService.id] || firstService.id) : '';
+                        return dictKey ? `/${lang}/legal-services?service=${dictKey}#ledger` : `/${lang}/legal-services#ledger`;
+                      })()}
                       className={styles.practiceGroupTitleLink}
                     >
                       {category.title[lang] || category.title.en}
@@ -140,7 +144,7 @@ export default function Footer({ dict, lang = 'en' }) {
                       <ul className={styles.practiceServiceList}>
                         {category.services.map((service) => (
                           <li key={service.id}>
-                            <Link href={`/${lang}/legal-services#${category.id}`}>
+                            <Link href={`/${lang}/legal-services?service=${dictionaryKeyMapping[service.id] || service.id}#ledger`}>
                               {service.title[lang] || service.title.en}
                             </Link>
                           </li>
@@ -154,7 +158,7 @@ export default function Footer({ dict, lang = 'en' }) {
 
             <div className={styles.practiceGroup}>
               <Link
-                href={`/${lang}/legal-services#${proBono.id}`}
+                href={`/${lang}/pro-bono`}
                 className={styles.practiceGroupTitleLink}
               >
                 {proBono.title[lang] || proBono.title.en}
