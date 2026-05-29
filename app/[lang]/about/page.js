@@ -25,7 +25,6 @@ export default async function AboutPage({ params }) {
 
   return (
     <main className={styles.main}>
-      <div className={styles.noiseOverlay} aria-hidden="true" />
       <AboutAnimation />
 
       {/* ── Hero & Origin Story: Editorial Split ─────────────────────────── */}

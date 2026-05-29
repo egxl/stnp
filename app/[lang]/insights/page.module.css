@@ -6,6 +6,7 @@
   position: relative;
 }
 
+
 /* --- Hero Section --- */
 .heroSection {
   padding: clamp(3rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 3rem);

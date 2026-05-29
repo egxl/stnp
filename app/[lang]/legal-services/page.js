@@ -33,7 +33,6 @@ export default async function LegalServicesPage({ params }) {
 
   return (
     <main className={styles.main}>
-      <div className={styles.noiseOverlay} />
 
       {/* ACT 1 — HERO */}
       <section className={styles.heroSection}>

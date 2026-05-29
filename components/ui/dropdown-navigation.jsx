@@ -168,7 +168,20 @@ export function DropdownNavigation({
                           <div className={styles.dropdownInner}>
                             {navItem.subMenus.map((subMenu) => (
                               <div className={styles.groupColumn} key={subMenu.title}>
-                                <h3 className={styles.groupTitle}>{subMenu.title}</h3>
+                                <h3 className={styles.groupTitle}>
+                                  {(() => {
+                                    const title = subMenu.title;
+                                    if (title.includes(" & ")) {
+                                      const parts = title.split(" & ");
+                                      return <>{parts[0]} &<br />{parts[1]}</>;
+                                    }
+                                    const words = title.split(" ");
+                                    if (words.length > 1) {
+                                      return <>{words[0]}<br />{words.slice(1).join(" ")}</>;
+                                    }
+                                    return title;
+                                  })()}
+                                </h3>
                                 <ul className={styles.groupList}>
                                   {subMenu.items.map((item) => {
                                     const isSubItemActive = hrefMatchesPath(currentPath, item.href);

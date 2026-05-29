@@ -19,7 +19,6 @@ export default async function ProBonoPage({ params }) {
 
   return (
     <main className={styles.main}>
-      <div className={styles.noiseOverlay} aria-hidden="true" />
 
       {/* ── Section 1: Hero ────────────────────────────────────────── */}
       <section className={styles.heroSection}>

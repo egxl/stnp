@@ -128,7 +128,7 @@
 .megaMenuSplit {
   display: grid;
   grid-template-columns: 320px 1fr;
-  min-height: 480px;
+  min-height: 360px;
 }
 
 .dropdownAside {

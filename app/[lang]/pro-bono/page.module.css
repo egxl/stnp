@@ -8,16 +8,6 @@
   padding-bottom: 12rem;
 }
 
-.noiseOverlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: url('/noise.png');
-  background-repeat: repeat;
-  opacity: 0.04;
-  z-index: 1;
-  mix-blend-mode: overlay;
-}
 
 /* ── Container ── */
 /* Assuming .container is global, but just in case we need grid inside */
@@ -211,10 +201,6 @@
   color: var(--color-foreground, #1a1a1a);
 }
 
-:global(.light) .noiseOverlay {
-  opacity: 0.02;
-  mix-blend-mode: multiply;
-}
 
 :global(.light) .heroTitle {
   color: var(--color-primary);

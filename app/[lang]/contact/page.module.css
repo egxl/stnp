@@ -9,7 +9,7 @@
 .page {
   --mono: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
   --subtle-rule: 1px solid rgba(255, 255, 255, 0.07);
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text);
   padding-top: var(--nav-height);
   /* Account for fixed navbar */
