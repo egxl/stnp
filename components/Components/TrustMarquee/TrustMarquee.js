@@ -7,6 +7,7 @@ export default function TrustMarquee({ clients, dict, lang }) {
   const [selectedIndustry, setSelectedIndustry] = useState(null);
 
   const industries = [...new Set(clients.map(c => c.industry))].filter(Boolean);
+  const getIndustryLabel = (industry) => dict?.industries?.[industry] || industry;
 
   const handlePillClick = (industry) => {
     setSelectedIndustry(prev => prev === industry ? null : industry);
@@ -33,7 +34,7 @@ export default function TrustMarquee({ clients, dict, lang }) {
               onClick={() => handlePillClick(industry)}
               aria-pressed={isActive}
             >
-              {industry}
+              {getIndustryLabel(industry)}
             </button>
           );
         })}
@@ -68,7 +69,7 @@ export default function TrustMarquee({ clients, dict, lang }) {
           >
             <div className={styles.spotlightHeader}>
               <span className={styles.spotlightTitle}>
-                {selectedIndustry}
+                {getIndustryLabel(selectedIndustry)}
               </span>
               <button
                 className={styles.spotlightClose}

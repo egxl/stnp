@@ -158,7 +158,7 @@ export default function ServiceLedger({ services, lang }) {
               
               <div className={styles.detailCtaWrapper}>
                 <Link href={`/${lang}/contact`} className="btn btn--outline">
-                  Discuss this matter
+                  {services.discussThisMatter || 'Discuss this matter'}
                 </Link>
               </div>
             </article>

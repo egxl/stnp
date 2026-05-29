@@ -123,6 +123,8 @@ const categoryIcons = {
 };
 
 export default function ExperienceHighlights({ dict, lang }) {
+  const highlightTranslations = dict?.home?.highlightsList || {};
+
   return (
     <section className={styles.section} aria-labelledby="highlights-heading">
       <div className={styles.container}>
@@ -141,38 +143,43 @@ export default function ExperienceHighlights({ dict, lang }) {
 
         {/* Bento Grid */}
         <div className={styles.grid}>
-          {highlights.map((item) => (
-            <article
-              key={item.id}
-              className={`${styles.card} ${item.size === 'large' ? styles.cardLarge : item.size === 'wide' ? styles.cardWide : item.size === 'full' ? styles.cardFull : ''}`}
-            >
-              <div className={styles.cardTop}>
-                <div className={styles.cardMeta}>
-                  <span className={styles.cardIcon}>
-                    {categoryIcons[item.category]}
-                  </span>
-                  <span className={styles.cardCategory}>{item.category}</span>
+          {highlights.map((item) => {
+            const translatedItem = highlightTranslations[item.id] || item;
+            const tags = translatedItem.tags || item.tags;
+
+            return (
+              <article
+                key={item.id}
+                className={`${styles.card} ${item.size === 'large' ? styles.cardLarge : item.size === 'wide' ? styles.cardWide : item.size === 'full' ? styles.cardFull : ''}`}
+              >
+                <div className={styles.cardTop}>
+                  <div className={styles.cardMeta}>
+                    <span className={styles.cardIcon}>
+                      {categoryIcons[item.category]}
+                    </span>
+                    <span className={styles.cardCategory}>{translatedItem.category}</span>
+                  </div>
+                  <div className={styles.cardValue}>{translatedItem.value}</div>
                 </div>
-                <div className={styles.cardValue}>{item.value}</div>
-              </div>
 
-              <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{item.title}</h3>
-                <p className={styles.cardDesc}>{item.description}</p>
-              </div>
-
-              <div className={styles.cardFooter}>
-                <div className={styles.tagList} aria-label="Practice areas">
-                  {item.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardTitle}>{translatedItem.title}</h3>
+                  <p className={styles.cardDesc}>{translatedItem.description}</p>
                 </div>
-              </div>
 
-              {/* Decorative accent line */}
-              <div className={styles.cardAccent} aria-hidden="true" />
-            </article>
-          ))}
+                <div className={styles.cardFooter}>
+                  <div className={styles.tagList} aria-label="Practice areas">
+                    {tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Decorative accent line */}
+                <div className={styles.cardAccent} aria-hidden="true" />
+              </article>
+            );
+          })}
         </div>
 
         {/* Disclaimer note */}

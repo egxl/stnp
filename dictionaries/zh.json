@@ -72,122 +72,250 @@
         "category": "银行与金融",
         "title": "银团信贷额度",
         "description": "担任一家大型煤炭开采公司在多债权人银团信贷额度项目中的首席顾问 —— 该项目为该行业内最大规模的信贷之一。",
-        "tags": ["项目融资", "矿业", "银团贷款"]
+        "tags": [
+          "项目融资",
+          "矿业",
+          "银团贷款"
+        ]
       },
       "state-energy": {
         "value": "国营项目",
         "category": "能源与天然气",
         "title": "国营电网天然气供应",
         "description": "代表一家天然气公司与大型国营能源企业进行复杂的定价谈判并达成供应协议。",
-        "tags": ["能源", "监管", "谈判"]
+        "tags": [
+          "能源",
+          "监管",
+          "谈判"
+        ]
       },
       "property-litigation": {
         "value": "终审阶段",
         "category": "商事诉讼",
         "title": "上市房地产公司纠纷",
         "description": "在与消费者的商事纠纷中，代表一家大型上市房地产公司应对从地区法院到最高法院的所有诉讼阶段。",
-        "tags": ["诉讼", "房地产", "民法"]
+        "tags": [
+          "诉讼",
+          "房地产",
+          "民法"
+        ]
       },
       "bankruptcy-curator": {
         "value": "跨区域项目",
         "category": "破产与重组",
         "title": "商事法院",
         "description": "被指定为法院破产管理人，在泗水商事法院管理和处置横跨东加里曼丹和西加里曼丹的破产资产。",
-        "tags": ["破产", "债务暂缓", "资产管理"]
+        "tags": [
+          "破产",
+          "债务暂缓",
+          "资产管理"
+        ]
       },
       "company-liquidation": {
         "value": "法定职责",
         "category": "破产与清算",
         "title": "企业清算",
         "description": "在多起企业清算程序中担任法院指定的清算人，监督有限责任公司的资产分配和法定注销。",
-        "tags": ["清算", "破产", "企业"]
+        "tags": [
+          "清算",
+          "破产",
+          "企业"
+        ]
       },
       "foreign-bank": {
         "value": "金融科技",
         "category": "金融诉讼",
         "title": "金融科技债权回收",
         "description": "代表一家金融科技借贷公司处理不良贷款，包括债权转让 (cessie) 和担保物执行。",
-        "tags": ["诉讼", "金融", "债权转让"]
+        "tags": [
+          "诉讼",
+          "金融",
+          "债权转让"
+        ]
       },
       "plantation-dispute": {
         "value": "特许权区域",
         "category": "种植业与土地法",
         "title": "棕榈油土地纠纷",
         "description": "代表棕榈油种植公司处理多起森林特许权和种植园土地纠纷，通过诉讼和谈判解决土地重叠主张。",
-        "tags": ["种植业", "土地法", "诉讼"]
+        "tags": [
+          "种植业",
+          "土地法",
+          "诉讼"
+        ]
       },
       "forestry-license": {
         "value": "监管转移",
         "category": "自然资源",
         "title": "天然林木材许可证转让",
         "description": "在天然林区域木材出产利用企业许可证的全面监管转让中向买方提供建议并进行代理，涵盖所有行政和法律尽职调查要求。",
-        "tags": ["林业", "许可审批", "并购"]
+        "tags": [
+          "林业",
+          "许可审批",
+          "并购"
+        ]
       }
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "关于我们事务所 — Soaloan Tua Nababan & Partners",
+      "description": "STNP是一家成立于2018年的雅加达全方位服务律师事务所。我们在商业诉讼、公司交易、破产以及特定行业咨询方面提供战略性的法律顾问服务，并且每个案件都有合伙人直接参与。"
+    },
+    "hero": {
+      "title": "关于我们事务所",
+      "subtitle": "自2018起在雅加达建立的战略顾问传承。",
+      "body": "Soaloan Tua Nababan & Partners 是一所有着单一且明确专注的印度尼西亚全方位服务律师事务所：为最需要严谨、合伙人主导的法律顾问的客户和事务提供服务。我们结合了资深执业经验的深度与精品事务所的敏捷性。"
+    },
+    "story": {
+      "label": "我们的故事",
+      "title": "通过卓越法律赢得信任",
+      "p1": "Soaloan Tua Nababan & Partners 由 Oswald Anggi Soaloan, S.H. 于2018年创立 —— 最初名为 Soaloan and Partners —— 带着明确而深思熟虑的目的：在国际水准的法律服务与只有多年深耕印尼法律环境才能获得的深厚实践经验之间架起桥梁。",
+      "p2": "在创立事务所之前，Oswald 在商业法领域建立了卓越的职业生涯，工作横跨矿业、种植业、房地产、银行、金融和能源行业。他曾担任多家印尼大型企业的法律顾问，亲身经历了高风险法律事务的复杂性与重大后果。这一背景并非偶然 —— 它是STNP以客户为先哲学有意构建的基石。",
+      "expansion": {
+        "label": "2021年的扩张",
+        "body": "经过三年稳健、有原则的成长，STNP于2021年扩大了其合伙人关系 —— 这是一个战略性决定，深化了事务所在交易、商业诉讼和破产程序方面的能力。",
+        "partner1Name": "Gideon Putra Tua Sitorus, S.H., M.H.",
+        "partner1Role": "合伙人",
+        "partner1Bio": "Gideon在公司交易、商业诉讼和种植业法方面拥有丰富的经验，他的加入巩固了事务所的交易与咨询能力。",
+        "partner2Name": "Daniel Perdana Saoloan Nababan, S.H., M.H.",
+        "partner2Role": "合伙人",
+        "partner2Bio": "Daniel是面向国际和印尼客户的破产与清算程序专家，他的加入扩大了事务所处理最复杂的重组与债权人代表事务的能力。",
+        "almaMater": "三位创始合伙人都是印度尼西亚最负盛名的法学院之一——加查马达大学（UGM）法学系的校友。他们共同的学术根基，结合数十年的互补专业经验，为一家能够满怀信心应对重大、高风险事务的事务所创造了条件。"
+      }
+    },
+    "philosophy": {
+      "label": "STNP的哲学",
+      "intro": "这些不是营销口号。它们是指导我们如何工作以及如何不工作的操作承诺。",
+      "p01": {
+        "number": "01",
+        "title": "战略解决",
+        "body": "我们不孤立地对待法律问题。在我们建议任何行动方案之前，我们会花时间了解客户的底层业务目标、风险承受能力和长期定位。解决眼前问题但带来未来隐患的法律建议绝非好建议。我们制定的战略旨在持久地解决问题。"
+      },
+      "p02": {
+        "number": "02",
+        "title": "原则效率",
+        "body": "我们相信有效的法律代理不需要不必要的工作。我们不是那种为了证明其收费合理而引入复杂性的事务所。我们的职责是建议以最有效的成本采取最有效的行动方案 —— 优先考虑真正的互利，而不是表面上的彻底。"
+      },
+      "p03": {
+        "number": "03",
+        "title": "稳固关系",
+        "body": "准确的法律顾问需要诚实的信息。我们培养那种信息自由流动的客户关系 —— 建立在持续沟通、经过验证的可靠性以及利益明确一致的基础之上。我们不转交案件，而是始终参与。这种连续性正是我们真正理解客户需求的方式。"
+      }
+    },
+    "milestones": {
+      "label": "事务所一览",
+      "items": [
+        {
+          "stat": "2018",
+          "label": "创立年份"
+        },
+        {
+          "stat": "3",
+          "label": "合伙人"
+        },
+        {
+          "stat": "6+",
+          "label": "业务领域"
+        },
+        {
+          "stat": "雅加达",
+          "label": "办公室地点"
+        }
+      ]
+    },
+    "why": {
+      "label": "为什么选择STNP",
+      "title": "结构即优势",
+      "subtitle": "在STNP，高级合伙人的关注不是福利。而是我们的模式。",
+      "statRow": "3位合伙人 · 20+年经验 · 一个标准",
+      "p1": "与高级合伙人关注度被层级限制的大型事务所不同，STNP基于不同的前提运营：我们的创始合伙人从最初的咨询到最终的解决都直接参与您的事务。您不会在合伙人转向下一个客户时被转交给初级律师。您在整个过程中都将获得高级合伙人的直接关注。",
+      "p2": "这不仅是一个服务承诺 —— 更是我们如何构建的结构性事实。事务所深思熟虑的规模意味着每个客户关系都至关重要，每个事务都得到真正的关注，每个战略都是在真正形成法律判断的层面上制定的。我们结合了顶级事务所的严谨性与只有精品事务所才能提供的响应速度。",
+      "p3": "我们的三位创始合伙人均毕业于加查马达大学（UGM），每个人都带来了截然不同且互补的专业领域，涵盖复杂的诉讼、商业清算和高风险的企业交易。我们提供传承事务所的深度与资质，并以专业精品事务所的精准度与速度来执行。"
+    },
+    "commitment": {
+      "label": "我们的承诺",
+      "title": "公益服务与社会责任",
+      "body": "获得法律代理的机会不应由财务状况决定。STNP致力于公益实践，以此作为指导我们付费工作的相同原则的体现 —— 不是作为一个边缘项目，而是一个真正的职业义务。我们投入时间和资源，为需要且无法负担的个人和组织提供法律援助。在我们的眼里，正义不是一项高端服务。"
+    },
+    "visit": {
+      "label": "访问我们",
+      "title": "准备好讨论您的法律需求了吗？",
+      "subtitle": "我们的办公室",
+      "body": "我们位于雅加达中央商务区的核心地带，地理位置优越，为全雅加达和印尼各地的客户提供服务。",
+      "addressLabel": "Soaloan Tua Nababan & Partners",
+      "cta": "讨论您的法律需求"
+    },
+    "springboards": {
+      "team": "我们的团队",
+      "services": "业务领域"
     }
   },
   "services": {
     "meta": {
-      "title": "Legal Services — Soaloan Tua Nababan & Partners",
-      "description": "Our core practice areas spanning dispute resolution, corporate transactions, and industry-focused advisory."
+      "title": "法律服务 — Soaloan Tua Nababan & Partners",
+      "description": "我们的核心业务领域涵盖争议解决、公司交易及行业专项法律咨询。"
     },
+    "loading": "加载中...",
+    "discussThisMatter": "咨询此事项",
     "hero": {
-      "label": "Practice Areas",
-      "title": "Strategic Counsel Across Every Front",
-      "subtitle": "Three practice pillars. Twelve areas of expertise. One standard: the highest.",
-      "body": "We do not believe in superficial breadth. We offer counsel exclusively in areas where our partners possess deep, tested expertise and a proven track record of resolution. Our practice is structured to address the most complex legal, regulatory, and commercial challenges facing businesses in Indonesia today."
+      "label": "业务领域",
+      "title": "覆盖关键领域的战略法律顾问",
+      "subtitle": "三大业务支柱。十二个专业领域。一个标准：最高标准。",
+      "body": "我们不追求表面的广泛覆盖。我们只在合伙人具备深厚、经验证的专业能力和成功处理经验的领域提供法律服务。我们的业务架构旨在应对当今印尼企业面临的复杂法律、监管和商业挑战。"
     },
     "categories": {
       "disputeResolution": {
         "id": "dispute-resolution",
         "number": "01",
-        "title": "Dispute Resolution",
-        "intro": "STNP's dispute resolution practice is the backbone of the firm. We represent clients in high-stakes civil, commercial, and administrative litigation across all levels of the Indonesian judicial system, with a particular focus on complex bankruptcy proceedings and industrial relations.",
+        "title": "争议解决",
+        "intro": "STNP 的争议解决业务是本所的核心。我们在印尼各级司法体系中代理客户处理高风险民事、商事及行政诉讼，尤其专注于复杂破产程序和劳资关系事项。",
         "services": {
           "commercialLitigation": {
             "number": "01.A",
-            "title": "Commercial Litigation",
-            "tagline": "Court-ready. Indonesia-wide.",
-            "p1": "Commercial disputes in Indonesia require more than just a strong legal argument—they require an acute understanding of procedural strategy, local judicial context, and commercial leverage. We approach litigation not as an academic exercise, but as a strategic tool to resolve business conflicts effectively.",
-            "p2": "Our partners have successfully represented major corporations, financial institutions, and high-net-worth individuals in breach of contract claims, shareholder disputes, torts, and complex administrative challenges against government bodies.",
+            "title": "商事诉讼",
+            "tagline": "为庭审而准备，服务覆盖印尼全境。",
+            "p1": "印尼商事争议需要的不只是有力的法律论点，还需要对程序策略、当地司法环境及商业谈判筹码的敏锐理解。我们将诉讼视为解决商业冲突的战略工具，而不是纯粹的理论练习。",
+            "p2": "我们的合伙人曾成功代表大型公司、金融机构及高净值个人处理违约索赔、股东争议、侵权纠纷，以及针对政府机构的复杂行政挑战。",
             "proofPoints": [
-              "Representation across District Courts, High Courts, and the Supreme Court of Indonesia.",
-              "Successful defense in multi-million dollar breach of contract claims.",
-              "Extensive experience in administrative court proceedings challenging state agency decisions."
+              "代理案件覆盖地区法院、高等法院及印尼最高法院。",
+              "成功抗辩数百万美元级别的违约索赔。",
+              "在挑战国家机构决定的行政诉讼中具备丰富经验。"
             ]
           },
           "bankruptcy": {
             "number": "01.B",
-            "title": "Bankruptcy & Suspension of Debt Payment",
-            "tagline": "Navigating distress. Protecting value.",
-            "p1": "Insolvency proceedings in Indonesia (PKPU and Kepailitan) move rapidly and carry severe consequences. We act for both creditors seeking to recover substantial debts and debtors needing to restructure their obligations to survive.",
-            "p2": "Led by Daniel Perdana Saoloan Nababan, a licensed Receiver and Administrator registered with the Ministry of Law and Human Rights, our team possesses the technical accreditation and practical experience to navigate the Commercial Court with precision.",
+            "title": "破产与债务支付延期",
+            "tagline": "应对困境，保护价值。",
+            "p1": "印尼的 PKPU 和破产程序推进迅速，后果重大。我们既代表债权人追收重大债权，也协助债务人重组债务以维持经营。",
+            "p2": "本团队由 Daniel Perdana Saoloan Nababan 领导。他是登记于印尼法律与人权部的持牌破产管理人和管理人，团队具备在商事法院精准处理案件所需的技术资质与实践经验。",
             "proofPoints": [
-              "Partner Daniel Perdana is a registered Receiver and Administrator (Kurator dan Pengurus).",
-              "Active member of the Indonesian Association of Receivers and Administrators (AKPI).",
-              "Representation of multinational banks in high-profile debt recovery proceedings."
+              "Daniel Perdana 合伙人为登记破产管理人和管理人。",
+              "印尼破产管理人协会（AKPI）活跃会员。",
+              "曾代理跨国银行处理高关注度债务追偿程序。"
             ]
           },
           "industrialRelations": {
             "number": "01.C",
-            "title": "Industrial Relations",
-            "tagline": "Managing the human element of business.",
-            "p1": "Labor disputes can disrupt operations and damage corporate reputation. We advise employers on the full spectrum of industrial relations, from navigating complex mass terminations and union negotiations to litigating before the Industrial Relations Court.",
-            "p2": "Our approach balances strict legal compliance with the practical realities of managing a workforce in Indonesia, ensuring that labor issues are resolved cleanly and with minimal operational friction.",
+            "title": "劳资关系",
+            "tagline": "管理商业中的人力因素。",
+            "p1": "劳动争议可能扰乱运营并损害企业声誉。我们就劳资关系全领域为雇主提供建议，包括大规模裁员、工会谈判以及劳动关系法院诉讼。",
+            "p2": "我们的方法兼顾严格法律合规与印尼劳动力管理的现实需求，帮助客户以清晰且尽量减少运营摩擦的方式解决劳动问题。",
             "proofPoints": [
-              "Extensive litigation experience at the Industrial Relations Court (PHI).",
-              "Strategic counsel on workforce restructuring and mass termination compliance.",
-              "Drafting and negotiation of Collective Labor Agreements (PKB)."
+              "在劳动关系法院（PHI）拥有丰富诉讼经验。",
+              "就 workforce 重组和大规模裁员合规提供战略建议。",
+              "起草和谈判公司规章及集体劳动协议（PKB）。"
             ]
           },
           "alternativeDispute": {
             "number": "01.D",
-            "title": "Alternative Dispute Resolution",
-            "tagline": "Resolution without the courtroom.",
-            "p1": "Litigation is not always the most effective path to resolution. We actively pursue alternative dispute resolution (ADR) mechanisms, including arbitration and structured mediation, to achieve faster, more private, and commercially sensible outcomes.",
-            "p2": "Our partners are skilled negotiators who understand how to structure settlements that protect our clients' long-term interests while avoiding the unpredictability of prolonged litigation.",
+            "title": "替代性争议解决",
+            "tagline": "不经法庭的解决路径。",
+            "p1": "诉讼并不总是最有效的解决方式。我们积极运用仲裁、结构化调解等替代性争议解决机制，以实现更快速、更私密且更具商业合理性的结果。",
+            "p2": "我们的合伙人是经验丰富的谈判者，懂得如何设计既保护客户长期利益、又避免漫长诉讼不确定性的和解方案。",
             "proofPoints": [
-              "Representation in domestic and international arbitration proceedings.",
-              "Strategic out-of-court settlements for complex commercial disputes."
+              "代理国内及国际仲裁程序。",
+              "为复杂商事争议达成战略性庭外和解。"
             ]
           }
         }
@@ -195,54 +323,55 @@
       "corporateCommercial": {
         "id": "corporate-commercial",
         "number": "02",
-        "title": "Corporate & Commercial",
-        "intro": "Our corporate practice provides the legal architecture that allows businesses to operate, grow, and transact securely in Indonesia. We combine rigorous legal structuring with an understanding of our clients' commercial imperatives.",
+        "title": "公司与商业",
+        "intro": "我们的公司业务为企业在印尼安全运营、成长和交易提供法律架构。我们将严谨的法律结构设计与对客户商业目标的理解相结合。",
         "services": {
           "generalCorporate": {
             "number": "02.A",
-            "title": "General Corporate",
-            "tagline": "The foundation of compliance.",
-            "p1": "Operating a business in Indonesia requires navigating a complex and frequently shifting regulatory environment. We act as external counsel to domestic and foreign companies, providing day-to-day legal support to ensure operational compliance.",
-            "p2": "From establishing foreign direct investment (PT PMA) companies to advising on corporate governance, licensing (OSS), and regulatory compliance, we provide the steady hand that keeps businesses running smoothly.",
+            "title": "一般公司事务",
+            "tagline": "合规的基础。",
+            "p1": "在印尼经营业务意味着需要面对复杂且不断变化的监管环境。我们作为本地及外国公司的外部法律顾问，提供日常法律支持以确保运营合规。",
+            "p2": "从设立外商投资公司（PT PMA），到公司治理、OSS 许可及监管合规，我们为企业顺畅运营提供稳定支持。",
             "proofPoints": [
-              "Establishment and structuring of foreign investment companies (PT PMA).",
-              "Comprehensive legal audits and compliance reviews.",
-              "Advisory on Indonesia's Risk-Based Licensing System (OSS-RBA)."
+              "设立和搭建外商投资公司（PT PMA）结构。",
+              "全面法律审计与合规审查。",
+              "就印尼风险导向营业许可系统（OSS-RBA）提供建议。"
             ]
           },
           "mergersAcquisitions": {
             "number": "02.B",
-            "title": "Mergers & Acquisitions",
-            "tagline": "Structuring growth. Mitigating risk.",
-            "p1": "Transactions in Indonesia require meticulous due diligence and creative structuring to overcome regulatory hurdles. We represent buyers, sellers, and investors in complex domestic and cross-border M&A transactions.",
-            "p2": "Our team handles the entire lifecycle of the deal: from initial legal due diligence and risk assessment to the drafting and negotiation of transaction documents, ensuring that the deal closes efficiently and securely.",
+            "title": "兼并与收购",
+            "tagline": "设计增长结构，降低交易风险。",
+            "p1": "印尼交易需要细致的尽职调查和富有创造性的结构设计，以克服监管障碍。我们代表买方、卖方和投资者处理复杂的境内及跨境并购交易。",
+            "p2": "我们的团队处理交易全流程：从法律尽职调查和风险评估，到交易文件起草与谈判，确保交易高效且稳妥地完成。",
             "proofPoints": [
-              "Conducted comprehensive Legal Due Diligence (LDD) for major corporate acquisitions.",
-              "Structuring of complex joint ventures and strategic alliances.",
-              "Navigating anti-monopoly notifications with the KPPU."
+              "为重大企业收购开展全面法律尽职调查（LDD）。",
+              "设计复杂合资企业和战略联盟结构。",
+              "协助处理向 KPPU 提交的反垄断通知。"
             ]
           },
           "bankingFinance": {
             "number": "02.C",
-            "title": "Banking & Finance",
-            "tagline": "Securing capital. Structuring credit.",
-            "p1": "We advise financial institutions, corporate borrowers, and private investors on a wide range of financing transactions. Our expertise covers bilateral and syndicated lending, project finance, and debt restructuring.",
-            "p2": "We are adept at structuring complex security packages under Indonesian law, ensuring that lenders are fully protected while providing borrowers with the workable frameworks they need to secure necessary capital.",
+            "title": "银行与金融",
+            "tagline": "保障资本，构建信贷。",
+            "p1": "我们为金融机构、企业借款人和私人投资者就多类融资交易提供法律建议，业务涵盖双边及银团贷款、项目融资和债务重组。",
+            "p2": "我们擅长根据印尼法律设计复杂担保组合，确保贷款人获得充分保护，同时为借款人提供可执行的融资框架。",
             "proofPoints": [
-              "Advised on a USD 120 million syndicated credit facility.",
-              "Extensive experience in creating and registering complex security interests (Hak Tanggungan, Fidusia).",
-              "Counsel to major domestic and international banking institutions."
+              "就 1.2 亿美元银团贷款融资提供法律建议。",
+              "在设立及登记复杂担保权益方面经验丰富，包括 Hak Tanggungan 和 Fidusia。",
+              "为主要本地银行、国际银行机构和金融科技借贷公司提供法律服务。"
             ]
           },
           "intellectualProperty": {
             "number": "02.D",
-            "title": "Intellectual Property",
-            "tagline": "Protecting your most valuable assets.",
-            "p1": "A company's brand and innovations are often its most valuable assets. We provide comprehensive intellectual property services to protect, manage, and enforce our clients' IP portfolios in Indonesia.",
-            "p2": "Our services range from trademark and patent registration to aggressive enforcement actions against infringement, ensuring that our clients' intellectual capital remains secure.",
+            "title": "知识产权",
+            "tagline": "保护您最有价值的资产。",
+            "p1": "企业品牌和创新往往是最重要的资产。我们提供全面的知识产权服务，协助客户在印尼保护、管理并执行其知识产权组合。",
+            "p2": "我们的服务涵盖商标和专利注册，以及针对侵权行为的积极维权，确保客户的智力资本得到保护。",
             "proofPoints": [
-              "Successful registration and management of extensive trademark portfolios.",
-              "Enforcement actions against trademark infringement and counterfeiting."
+              "成功注册并管理广泛的商标组合。",
+              "针对商标侵权和假冒行为采取维权行动。",
+              "在印尼侵权诉讼抗辩中代表国际音乐厂牌 Warner Music Group。"
             ]
           }
         }
@@ -250,77 +379,79 @@
       "industryFocus": {
         "id": "industry-focus",
         "number": "03",
-        "title": "Industry Focus",
-        "intro": "Certain sectors require more than general legal knowledge—they require deep industry fluency. STNP has developed specialized expertise in several of Indonesia's most critical and heavily regulated industries.",
+        "title": "行业专项",
+        "intro": "某些行业需要的不只是一般法律知识，而是深入的行业理解。STNP 在印尼若干关键且高度监管的行业中积累了专项经验。",
         "services": {
           "miningEnergy": {
             "number": "03.A",
-            "title": "Mining & Energy",
-            "tagline": "Navigating a highly regulated landscape.",
-            "p1": "Indonesia's mining and energy sectors are notoriously complex, governed by frequently changing regulations and overlapping jurisdictions. We advise clients on the acquisition of mining assets, operational compliance, and regulatory strategy.",
-            "p2": "Our deep understanding of the regulatory framework—from IUP issuance to downstream processing obligations—allows us to provide actionable advice to mining companies and contractors.",
+            "title": "矿业与能源",
+            "tagline": "穿越高度监管的行业环境。",
+            "p1": "印尼矿业和能源行业极为复杂，受频繁变化的法规和重叠管辖影响。我们就矿业资产收购、运营合规及监管策略为客户提供建议。",
+            "p2": "我们对监管框架有深入理解，从 IUP 许可到下游加工义务，能够为矿业公司和承包商提供可执行的建议。",
             "proofPoints": [
-              "Advisory on complex IUP (Mining Business License) acquisitions and transfers.",
-              "Structuring of mining contractor agreements and operational contracts.",
-              "Navigating overlapping land use and forestry regulations."
+              "就复杂 IUP 收购和转让提供建议。",
+              "设计矿业承包协议和运营合同。",
+              "处理土地使用与林业法规的重叠问题。"
             ]
           },
           "infrastructureRealEstate": {
             "number": "03.B",
-            "title": "Infrastructure & Real Estate",
-            "tagline": "Building the physical foundation.",
-            "p1": "Real estate and infrastructure development in Indonesia involves navigating complex land acquisition laws, spatial planning regulations, and construction contracts. We advise developers, investors, and contractors at every stage of the project lifecycle.",
-            "p2": "Our expertise ensures that projects are built on secure legal foundations, mitigating the significant risks associated with land disputes and regulatory non-compliance in Indonesia.",
+            "title": "基础设施与房地产",
+            "tagline": "构建实体项目的法律基础。",
+            "p1": "印尼房地产和基础设施开发涉及复杂的土地征收、空间规划和建设合同问题。我们在项目全周期为开发商、投资者和承包商提供建议。",
+            "p2": "我们的专业能力帮助项目建立稳固法律基础，降低印尼土地争议和监管不合规带来的重大风险。",
             "proofPoints": [
-              "Advisory on large-scale land acquisition and spatial planning compliance.",
-              "Drafting and negotiation of complex EPC (Engineering, Procurement, and Construction) contracts.",
-              "Structuring of commercial and residential property developments."
+              "就大规模土地征收和空间规划合规提供建议。",
+              "起草和谈判复杂 EPC 合同。",
+              "设计商业及住宅地产开发结构。"
             ]
           },
           "plantationAgribusiness": {
             "number": "03.C",
-            "title": "Plantation & Agribusiness",
-            "tagline": "Counsel for the core economy.",
-            "p1": "Agribusiness is a cornerstone of the Indonesian economy, but it is fraught with regulatory and land-use challenges. We have extensive experience advising plantation companies, particularly in the palm oil sector.",
-            "p2": "We assist clients with land acquisition, plasma partnerships, environmental compliance, and the resolution of land disputes with local communities—ensuring sustainable and legally secure operations.",
+            "title": "种植园与农业综合业务",
+            "tagline": "服务核心经济领域的法律顾问。",
+            "p1": "农业综合业务是印尼经济的重要支柱，但伴随复杂的监管和土地使用挑战。我们在为种植园公司，尤其是棕榈油行业客户提供建议方面拥有丰富经验。",
+            "p2": "我们协助客户处理土地取得、plasma 合作、环境合规，以及与当地社区的土地争议解决，确保运营可持续且具备法律安全性。",
             "proofPoints": [
-              "Advisory on HGU (Right to Cultivate) acquisition and extension.",
-              "Structuring of mandatory plasma partnership schemes.",
-              "Resolution of complex land disputes and overlapping concessions."
+              "就 HGU 的取得和续期提供建议。",
+              "设计强制性 plasma 合作安排。",
+              "解决复杂土地争议和重叠特许权问题。",
+              "代理棕榈油种植园公司处理多起森林特许权和种植园土地争议。",
+              "就天然林区域 IUPHHK-HA 许可证转让提供法律建议，涵盖监管及尽调要求。"
             ]
           },
           "tourismHospitality": {
             "number": "03.D",
-            "title": "Tourism & Hospitality",
-            "tagline": "Supporting the experience economy.",
-            "p1": "The tourism and hospitality sector requires navigating a unique intersection of foreign investment rules, property law, and specialized operational licensing. We advise hotel operators, developers, and investors in this dynamic sector.",
-            "p2": "From the structuring of hotel management agreements to the acquisition of beachfront land and the securing of necessary operational permits, we provide the legal framework for successful hospitality ventures.",
+            "title": "旅游与酒店",
+            "tagline": "支持体验经济。",
+            "p1": "旅游与酒店行业需要同时处理外资规则、房地产法律和专项运营许可。我们为酒店运营商、开发商和投资者提供法律建议。",
+            "p2": "从酒店管理协议结构设计，到海滨土地收购和必要运营许可取得，我们为成功的酒店及旅游项目提供法律框架。",
             "proofPoints": [
-              "Drafting and negotiation of Hotel Management Agreements (HMA).",
-              "Advisory on foreign investment structuring for resort developments.",
-              "Navigating complex coastal and small island utilization permits."
+              "起草和谈判酒店管理协议（HMA）。",
+              "就度假项目外资结构提供建议。",
+              "处理复杂的海岸和小岛利用许可。"
             ]
           }
         }
       }
     },
     "proBono": {
-      "label": "Our Commitment",
-      "title": "Pro Bono & Social Responsibility",
-      "body": "Access to rigorous legal representation should not be entirely determined by financial circumstance. STNP is committed to pro bono practice as a core professional obligation, dedicating time and resources to provide high-level counsel to those who need it most.",
-      "quote": "The most sacred of the duties of a government is to do equal and exact justice to all its citizens.",
+      "label": "我们的承诺",
+      "title": "公益服务与社会责任",
+      "body": "获得严谨法律代理不应完全取决于经济条件。STNP 将公益法律服务视为核心职业义务，投入时间和资源，为最需要帮助的人士提供高质量法律支持。",
+      "quote": "政府最神圣的职责是向所有公民提供平等而准确的正义。",
       "quoteAuthor": "Thomas Jefferson"
     },
     "cta": {
-      "label": "Get in Touch",
-      "title": "Your Matter Deserves Partner-Level Attention",
-      "body": "Complex legal challenges require strategic clarity and decisive action. Reach out to discuss how our partners can support your specific needs.",
-      "button": "Schedule a Consultation"
+      "label": "联系我们",
+      "title": "您的事项值得合伙人级别的关注",
+      "body": "复杂法律挑战需要战略清晰度和果断行动。请联系我们，讨论我们的合伙人如何支持您的具体需求。",
+      "button": "安排咨询"
     },
     "springboards": {
-      "team": "Meet Our Team",
-      "about": "About STNP",
-      "insights": "Read Insights"
+      "team": "认识我们的团队",
+      "about": "关于 STNP",
+      "insights": "阅读洞察"
     }
   },
   "proBono": {

@@ -72,56 +72,88 @@
         "category": "Perbankan & Keuangan",
         "title": "Fasilitas Kredit Sindikasi",
         "description": "Kuasa hukum utama untuk perusahaan pertambangan batu bara terkemuka dalam fasilitas kredit sindikasi multi-kreditur — salah satu yang terbesar di sektor ini.",
-        "tags": ["Keuangan Proyek", "Pertambangan", "Sindikasi"]
+        "tags": [
+          "Keuangan Proyek",
+          "Pertambangan",
+          "Sindikasi"
+        ]
       },
       "state-energy": {
         "value": "Milik Negara",
         "category": "Energi & Gas",
         "title": "Pasokan Gas ke Jaringan Energi Negara",
         "description": "Mewakili perusahaan gas dalam negosiasi harga yang kompleks dan perjanjian pasokan dengan perusahaan energi milik negara terkemuka.",
-        "tags": ["Energi", "Regulasi", "Negosiasi"]
+        "tags": [
+          "Energi",
+          "Regulasi",
+          "Negosiasi"
+        ]
       },
       "property-litigation": {
         "value": "Tingkat Kasasi",
         "category": "Litigasi Komersial",
         "title": "Sengketa Properti Perusahaan Terbuka (Tbk)",
         "description": "Mewakili perusahaan properti terbuka terkemuka di semua tingkatan pengadilan — dari Pengadilan Negeri hingga Mahkamah Agung — dalam sengketa komersial dengan konsumen.",
-        "tags": ["Litigasi", "Properti", "Hukum Perdata"]
+        "tags": [
+          "Litigasi",
+          "Properti",
+          "Hukum Perdata"
+        ]
       },
       "bankruptcy-curator": {
         "value": "Lintas Wilayah",
         "category": "Kepailitan & Insolvensi",
         "title": "Pengadilan Niaga",
         "description": "Ditunjuk sebagai Kurator Pengadilan untuk mengelola dan membereskan aset-aset kepailitan yang tersebar di Kalimantan Timur dan Barat pada Pengadilan Niaga Surabaya.",
-        "tags": ["Kepailitan", "PKPU", "Pengurusan Aset"]
+        "tags": [
+          "Kepailitan",
+          "PKPU",
+          "Pengurusan Aset"
+        ]
       },
       "company-liquidation": {
         "value": "Peran Statuter",
         "category": "Insolvensi & Likuidasi",
         "title": "Likuidasi Korporasi",
         "description": "Ditunjuk sebagai Likuidator oleh Pengadilan dalam beberapa proses likuidasi korporasi, mengawasi distribusi aset dan pembubaran statuter perseroan terbatas.",
-        "tags": ["Likuidasi", "Insolvensi", "Korporasi"]
+        "tags": [
+          "Likuidasi",
+          "Insolvensi",
+          "Korporasi"
+        ]
       },
       "foreign-bank": {
         "value": "Fintech",
         "category": "Litigasi Perbankan",
         "title": "Pemulihan Cessie Fintech",
         "description": "Mewakili perusahaan pendanaan fintech dalam menangani kredit bermasalah, termasuk pengalihan piutang (cessie) dan eksekusi jaminan.",
-        "tags": ["Litigasi", "Perbankan", "Cessie"]
+        "tags": [
+          "Litigasi",
+          "Perbankan",
+          "Cessie"
+        ]
       },
       "plantation-dispute": {
         "value": "Area Konsesi",
         "category": "Perkebunan & Agraria",
         "title": "Sengketa Lahan Kelapa Sawit",
         "description": "Mewakili perusahaan perkebunan kelapa sawit dalam berbagai sengketa atas konsesi hutan dan area lahan perkebunan, menyelesaikan klaim tumpang tindih lahan melalui litigasi dan negosiasi.",
-        "tags": ["Perkebunan", "Hukum Pertanahan", "Litigasi"]
+        "tags": [
+          "Perkebunan",
+          "Hukum Pertanahan",
+          "Litigasi"
+        ]
       },
       "forestry-license": {
         "value": "Pengalihan Izin",
         "category": "Sumber Daya Alam",
         "title": "Pengalihan Izin Hutan Tanaman",
         "description": "Menasihati dan mewakili pembeli dalam pengalihan regulasi penuh atas Izin Usaha Pemanfaatan Hasil Hutan Kayu pada zona Hutan Alam, mencakup semua persyaratan uji tuntas administratif dan hukum.",
-        "tags": ["Kehutanan", "Perizinan", "M&A"]
+        "tags": [
+          "Kehutanan",
+          "Perizinan",
+          "M&A"
+        ]
       }
     }
   },
@@ -221,67 +253,69 @@
   },
   "services": {
     "meta": {
-      "title": "Legal Services — Soaloan Tua Nababan & Partners",
-      "description": "Our core practice areas spanning dispute resolution, corporate transactions, and industry-focused advisory."
+      "title": "Layanan Hukum — Soaloan Tua Nababan & Partners",
+      "description": "Bidang praktik utama kami mencakup penyelesaian sengketa, transaksi korporasi, dan konsultasi berbasis industri."
     },
+    "loading": "Memuat...",
+    "discussThisMatter": "Diskusikan perkara ini",
     "hero": {
-      "label": "Practice Areas",
-      "title": "Strategic Counsel Across Every Front",
-      "subtitle": "Three practice pillars. Twelve areas of expertise. One standard: the highest.",
-      "body": "We do not believe in superficial breadth. We offer counsel exclusively in areas where our partners possess deep, tested expertise and a proven track record of resolution. Our practice is structured to address the most complex legal, regulatory, and commercial challenges facing businesses in Indonesia today."
+      "label": "Bidang Praktik",
+      "title": "Nasihat Strategis di Setiap Lini",
+      "subtitle": "Tiga pilar praktik. Dua belas bidang keahlian. Satu standar: yang tertinggi.",
+      "body": "Kami tidak percaya pada keluasan yang dangkal. Kami memberikan nasihat hanya pada bidang yang benar-benar dikuasai para mitra kami, dengan keahlian teruji dan rekam jejak penyelesaian yang kuat. Praktik kami disusun untuk menjawab tantangan hukum, regulasi, dan komersial paling kompleks yang dihadapi bisnis di Indonesia saat ini."
     },
     "categories": {
       "disputeResolution": {
         "id": "dispute-resolution",
         "number": "01",
-        "title": "Dispute Resolution",
-        "intro": "STNP's dispute resolution practice is the backbone of the firm. We represent clients in high-stakes civil, commercial, and administrative litigation across all levels of the Indonesian judicial system, with a particular focus on complex bankruptcy proceedings and industrial relations.",
+        "title": "Penyelesaian Sengketa",
+        "intro": "Praktik penyelesaian sengketa STNP merupakan tulang punggung firma. Kami mewakili klien dalam litigasi perdata, komersial, dan administratif bernilai tinggi di seluruh tingkat peradilan Indonesia, dengan fokus khusus pada proses kepailitan kompleks dan hubungan industrial.",
         "services": {
           "commercialLitigation": {
             "number": "01.A",
-            "title": "Commercial Litigation",
-            "tagline": "Court-ready. Indonesia-wide.",
-            "p1": "Commercial disputes in Indonesia require more than just a strong legal argument—they require an acute understanding of procedural strategy, local judicial context, and commercial leverage. We approach litigation not as an academic exercise, but as a strategic tool to resolve business conflicts effectively.",
-            "p2": "Our partners have successfully represented major corporations, financial institutions, and high-net-worth individuals in breach of contract claims, shareholder disputes, torts, and complex administrative challenges against government bodies.",
+            "title": "Litigasi Komersial",
+            "tagline": "Siap beracara. Menjangkau seluruh Indonesia.",
+            "p1": "Sengketa komersial di Indonesia membutuhkan lebih dari argumentasi hukum yang kuat; ia menuntut pemahaman tajam atas strategi prosedural, konteks peradilan lokal, dan leverage komersial. Kami memandang litigasi bukan sebagai latihan akademis, melainkan sebagai alat strategis untuk menyelesaikan konflik bisnis secara efektif.",
+            "p2": "Para mitra kami telah berhasil mewakili perusahaan besar, lembaga keuangan, dan individu bernilai aset tinggi dalam klaim wanprestasi, sengketa pemegang saham, perbuatan melawan hukum, serta gugatan administratif yang kompleks terhadap badan pemerintah.",
             "proofPoints": [
-              "Representation across District Courts, High Courts, and the Supreme Court of Indonesia.",
-              "Successful defense in multi-million dollar breach of contract claims.",
-              "Extensive experience in administrative court proceedings challenging state agency decisions."
+              "Representasi di Pengadilan Negeri, Pengadilan Tinggi, dan Mahkamah Agung Republik Indonesia.",
+              "Keberhasilan pembelaan dalam klaim wanprestasi bernilai jutaan dolar.",
+              "Pengalaman luas dalam perkara tata usaha negara yang menggugat keputusan lembaga negara."
             ]
           },
           "bankruptcy": {
             "number": "01.B",
-            "title": "Bankruptcy & Suspension of Debt Payment",
-            "tagline": "Navigating distress. Protecting value.",
-            "p1": "Insolvency proceedings in Indonesia (PKPU and Kepailitan) move rapidly and carry severe consequences. We act for both creditors seeking to recover substantial debts and debtors needing to restructure their obligations to survive.",
-            "p2": "Led by Daniel Perdana Saoloan Nababan, a licensed Receiver and Administrator registered with the Ministry of Law and Human Rights, our team possesses the technical accreditation and practical experience to navigate the Commercial Court with precision.",
+            "title": "Kepailitan & Penundaan Kewajiban Pembayaran Utang",
+            "tagline": "Menavigasi distress. Melindungi nilai.",
+            "p1": "Proses insolvensi di Indonesia, baik PKPU maupun kepailitan, bergerak cepat dan membawa konsekuensi serius. Kami bertindak bagi kreditur yang berupaya memulihkan piutang besar maupun debitur yang perlu merestrukturisasi kewajiban agar tetap bertahan.",
+            "p2": "Dipimpin oleh Daniel Perdana Saoloan Nababan, kurator dan pengurus berlisensi yang terdaftar di Kementerian Hukum dan HAM, tim kami memiliki akreditasi teknis dan pengalaman praktis untuk menavigasi Pengadilan Niaga dengan presisi.",
             "proofPoints": [
-              "Partner Daniel Perdana is a registered Receiver and Administrator (Kurator dan Pengurus).",
-              "Active member of the Indonesian Association of Receivers and Administrators (AKPI).",
-              "Representation of multinational banks in high-profile debt recovery proceedings."
+              "Partner Daniel Perdana merupakan Kurator dan Pengurus terdaftar.",
+              "Anggota aktif Asosiasi Kurator dan Pengurus Indonesia (AKPI).",
+              "Representasi bank multinasional dalam proses penagihan utang bernilai tinggi."
             ]
           },
           "industrialRelations": {
             "number": "01.C",
-            "title": "Industrial Relations",
-            "tagline": "Managing the human element of business.",
-            "p1": "Labor disputes can disrupt operations and damage corporate reputation. We advise employers on the full spectrum of industrial relations, from navigating complex mass terminations and union negotiations to litigating before the Industrial Relations Court.",
-            "p2": "Our approach balances strict legal compliance with the practical realities of managing a workforce in Indonesia, ensuring that labor issues are resolved cleanly and with minimal operational friction.",
+            "title": "Hubungan Industrial",
+            "tagline": "Mengelola aspek manusia dalam bisnis.",
+            "p1": "Sengketa ketenagakerjaan dapat mengganggu operasi dan reputasi perusahaan. Kami menasihati pemberi kerja dalam seluruh spektrum hubungan industrial, mulai dari pemutusan hubungan kerja massal dan negosiasi serikat pekerja hingga litigasi di Pengadilan Hubungan Industrial.",
+            "p2": "Pendekatan kami menyeimbangkan kepatuhan hukum yang ketat dengan realitas praktis pengelolaan tenaga kerja di Indonesia, agar persoalan ketenagakerjaan terselesaikan dengan bersih dan dengan gangguan operasional yang minimal.",
             "proofPoints": [
-              "Extensive litigation experience at the Industrial Relations Court (PHI).",
-              "Strategic counsel on workforce restructuring and mass termination compliance.",
-              "Drafting and negotiation of Collective Labor Agreements (PKB)."
+              "Pengalaman litigasi luas di Pengadilan Hubungan Industrial (PHI).",
+              "Nasihat strategis mengenai restrukturisasi tenaga kerja dan kepatuhan PHK massal.",
+              "Penyusunan dan negosiasi Peraturan Perusahaan serta Perjanjian Kerja Bersama (PKB)."
             ]
           },
           "alternativeDispute": {
             "number": "01.D",
-            "title": "Alternative Dispute Resolution",
-            "tagline": "Resolution without the courtroom.",
-            "p1": "Litigation is not always the most effective path to resolution. We actively pursue alternative dispute resolution (ADR) mechanisms, including arbitration and structured mediation, to achieve faster, more private, and commercially sensible outcomes.",
-            "p2": "Our partners are skilled negotiators who understand how to structure settlements that protect our clients' long-term interests while avoiding the unpredictability of prolonged litigation.",
+            "title": "Alternatif Penyelesaian Sengketa",
+            "tagline": "Penyelesaian tanpa ruang sidang.",
+            "p1": "Litigasi tidak selalu menjadi jalan paling efektif menuju penyelesaian. Kami secara aktif mengejar mekanisme alternatif penyelesaian sengketa, termasuk arbitrase dan mediasi terstruktur, untuk mencapai hasil yang lebih cepat, lebih privat, dan masuk akal secara komersial.",
+            "p2": "Para mitra kami adalah negosiator yang memahami cara menyusun penyelesaian yang melindungi kepentingan jangka panjang klien sekaligus menghindari ketidakpastian litigasi berkepanjangan.",
             "proofPoints": [
-              "Representation in domestic and international arbitration proceedings.",
-              "Strategic out-of-court settlements for complex commercial disputes."
+              "Representasi dalam arbitrase domestik dan internasional.",
+              "Penyelesaian di luar pengadilan yang strategis untuk sengketa komersial kompleks."
             ]
           }
         }
@@ -289,55 +323,55 @@
       "corporateCommercial": {
         "id": "corporate-commercial",
         "number": "02",
-        "title": "Corporate & Commercial",
-        "intro": "Our corporate practice provides the legal architecture that allows businesses to operate, grow, and transact securely in Indonesia. We combine rigorous legal structuring with an understanding of our clients' commercial imperatives.",
+        "title": "Korporasi & Komersial",
+        "intro": "Praktik korporasi kami menyediakan arsitektur hukum yang memungkinkan bisnis beroperasi, bertumbuh, dan bertransaksi secara aman di Indonesia. Kami menggabungkan struktur hukum yang teliti dengan pemahaman atas imperatif komersial klien.",
         "services": {
           "generalCorporate": {
             "number": "02.A",
-            "title": "General Corporate",
-            "tagline": "The foundation of compliance.",
-            "p1": "Operating a business in Indonesia requires navigating a complex and frequently shifting regulatory environment. We act as external counsel to domestic and foreign companies, providing day-to-day legal support to ensure operational compliance.",
-            "p2": "From establishing foreign direct investment (PT PMA) companies to advising on corporate governance, licensing (OSS), and regulatory compliance, we provide the steady hand that keeps businesses running smoothly.",
+            "title": "Korporasi Umum",
+            "tagline": "Fondasi kepatuhan.",
+            "p1": "Menjalankan bisnis di Indonesia berarti menavigasi lingkungan regulasi yang kompleks dan kerap berubah. Kami bertindak sebagai penasihat eksternal bagi perusahaan domestik maupun asing, memberikan dukungan hukum harian untuk memastikan kepatuhan operasional.",
+            "p2": "Mulai dari pendirian perusahaan penanaman modal asing (PT PMA) hingga tata kelola perusahaan, perizinan OSS, dan kepatuhan regulasi, kami menyediakan pegangan yang stabil agar bisnis berjalan lancar.",
             "proofPoints": [
-              "Establishment and structuring of foreign investment companies (PT PMA).",
-              "Comprehensive legal audits and compliance reviews.",
-              "Advisory on Indonesia's Risk-Based Licensing System (OSS-RBA)."
+              "Pendirian dan penataan perusahaan penanaman modal asing (PT PMA).",
+              "Audit hukum dan tinjauan kepatuhan menyeluruh.",
+              "Nasihat mengenai sistem Perizinan Berusaha Berbasis Risiko (OSS-RBA)."
             ]
           },
           "mergersAcquisitions": {
             "number": "02.B",
-            "title": "Mergers & Acquisitions",
-            "tagline": "Structuring growth. Mitigating risk.",
-            "p1": "Transactions in Indonesia require meticulous due diligence and creative structuring to overcome regulatory hurdles. We represent buyers, sellers, and investors in complex domestic and cross-border M&A transactions.",
-            "p2": "Our team handles the entire lifecycle of the deal: from initial legal due diligence and risk assessment to the drafting and negotiation of transaction documents, ensuring that the deal closes efficiently and securely.",
+            "title": "Merger & Akuisisi",
+            "tagline": "Menata pertumbuhan. Memitigasi risiko.",
+            "p1": "Transaksi di Indonesia membutuhkan uji tuntas yang cermat dan struktur kreatif untuk mengatasi hambatan regulasi. Kami mewakili pembeli, penjual, dan investor dalam transaksi M&A domestik maupun lintas negara yang kompleks.",
+            "p2": "Tim kami menangani seluruh siklus transaksi, mulai dari uji tuntas hukum dan penilaian risiko hingga penyusunan dan negosiasi dokumen transaksi, agar transaksi dapat ditutup secara efisien dan aman.",
             "proofPoints": [
-              "Conducted comprehensive Legal Due Diligence (LDD) for major corporate acquisitions.",
-              "Structuring of complex joint ventures and strategic alliances.",
-              "Navigating anti-monopoly notifications with the KPPU."
+              "Pelaksanaan Legal Due Diligence (LDD) komprehensif untuk akuisisi korporasi besar.",
+              "Penataan joint venture dan aliansi strategis yang kompleks.",
+              "Pendampingan notifikasi anti-monopoli kepada KPPU."
             ]
           },
           "bankingFinance": {
             "number": "02.C",
-            "title": "Banking & Finance",
-            "tagline": "Securing capital. Structuring credit.",
-            "p1": "We advise financial institutions, corporate borrowers, and private investors on a wide range of financing transactions. Our expertise covers bilateral and syndicated lending, project finance, and debt restructuring.",
-            "p2": "We are adept at structuring complex security packages under Indonesian law, ensuring that lenders are fully protected while providing borrowers with the workable frameworks they need to secure necessary capital.",
+            "title": "Perbankan & Keuangan",
+            "tagline": "Mengamankan modal. Menata kredit.",
+            "p1": "Kami menasihati lembaga keuangan, peminjam korporasi, dan investor privat dalam berbagai transaksi pembiayaan. Keahlian kami mencakup pinjaman bilateral dan sindikasi, pembiayaan proyek, serta restrukturisasi utang.",
+            "p2": "Kami berpengalaman menyusun paket jaminan yang kompleks berdasarkan hukum Indonesia, memastikan pemberi pinjaman terlindungi sepenuhnya sekaligus menyediakan kerangka kerja yang dapat dijalankan oleh peminjam.",
             "proofPoints": [
-              "Advised on a USD 120 million syndicated credit facility.",
-              "Extensive experience in creating and registering complex security interests (Hak Tanggungan, Fidusia).",
-              "Counsel to major domestic banks, international banking institutions, and fintech lending companies."
+              "Nasihat pada fasilitas kredit sindikasi senilai USD 120 juta.",
+              "Pengalaman luas dalam pembentukan dan pendaftaran hak jaminan kompleks, termasuk Hak Tanggungan dan Fidusia.",
+              "Kuasa hukum bagi bank domestik besar, institusi perbankan internasional, dan perusahaan pendanaan fintech."
             ]
           },
           "intellectualProperty": {
             "number": "02.D",
-            "title": "Intellectual Property",
-            "tagline": "Protecting your most valuable assets.",
-            "p1": "A company's brand and innovations are often its most valuable assets. We provide comprehensive intellectual property services to protect, manage, and enforce our clients' IP portfolios in Indonesia.",
-            "p2": "Our services range from trademark and patent registration to aggressive enforcement actions against infringement, ensuring that our clients' intellectual capital remains secure.",
+            "title": "Kekayaan Intelektual",
+            "tagline": "Melindungi aset Anda yang paling bernilai.",
+            "p1": "Merek dan inovasi perusahaan kerap menjadi aset paling bernilai. Kami menyediakan layanan kekayaan intelektual yang komprehensif untuk melindungi, mengelola, dan menegakkan portofolio KI klien di Indonesia.",
+            "p2": "Layanan kami mencakup pendaftaran merek dan paten hingga tindakan penegakan terhadap pelanggaran, memastikan modal intelektual klien tetap terlindungi.",
             "proofPoints": [
-              "Successful registration and management of extensive trademark portfolios.",
-              "Enforcement actions against trademark infringement and counterfeiting.",
-              "Representation of an international music label (Warner Music Group) in a Tort (PMH) defense proceeding in Indonesia."
+              "Pendaftaran dan pengelolaan portofolio merek yang luas.",
+              "Tindakan penegakan terhadap pelanggaran merek dan pemalsuan.",
+              "Representasi label musik internasional Warner Music Group dalam pembelaan perkara Perbuatan Melawan Hukum (PMH) di Indonesia."
             ]
           }
         }
@@ -345,79 +379,79 @@
       "industryFocus": {
         "id": "industry-focus",
         "number": "03",
-        "title": "Industry Focus",
-        "intro": "Certain sectors require more than general legal knowledge—they require deep industry fluency. STNP has developed specialized expertise in several of Indonesia's most critical and heavily regulated industries.",
+        "title": "Fokus Industri",
+        "intro": "Sektor tertentu membutuhkan lebih dari pengetahuan hukum umum; ia membutuhkan pemahaman industri yang mendalam. STNP telah membangun keahlian khusus di beberapa industri paling penting dan paling teregulasi di Indonesia.",
         "services": {
           "miningEnergy": {
             "number": "03.A",
-            "title": "Mining & Energy",
-            "tagline": "Navigating a highly regulated landscape.",
-            "p1": "Indonesia's mining and energy sectors are notoriously complex, governed by frequently changing regulations and overlapping jurisdictions. We advise clients on the acquisition of mining assets, operational compliance, and regulatory strategy.",
-            "p2": "Our deep understanding of the regulatory framework—from IUP issuance to downstream processing obligations—allows us to provide actionable advice to mining companies and contractors.",
+            "title": "Pertambangan & Energi",
+            "tagline": "Menavigasi lanskap yang sangat teregulasi.",
+            "p1": "Sektor pertambangan dan energi Indonesia terkenal kompleks, diatur oleh regulasi yang sering berubah dan yurisdiksi yang saling tumpang tindih. Kami menasihati klien mengenai akuisisi aset tambang, kepatuhan operasional, dan strategi regulasi.",
+            "p2": "Pemahaman mendalam kami atas kerangka regulasi, mulai dari penerbitan IUP hingga kewajiban hilirisasi, memungkinkan kami memberikan nasihat yang dapat dijalankan bagi perusahaan tambang dan kontraktor.",
             "proofPoints": [
-              "Advisory on complex IUP (Mining Business License) acquisitions and transfers.",
-              "Structuring of mining contractor agreements and operational contracts.",
-              "Navigating overlapping land use and forestry regulations."
+              "Nasihat atas akuisisi dan pengalihan IUP yang kompleks.",
+              "Penyusunan perjanjian kontraktor pertambangan dan kontrak operasional.",
+              "Navigasi regulasi penggunaan lahan dan kehutanan yang saling tumpang tindih."
             ]
           },
           "infrastructureRealEstate": {
             "number": "03.B",
-            "title": "Infrastructure & Real Estate",
-            "tagline": "Building the physical foundation.",
-            "p1": "Real estate and infrastructure development in Indonesia involves navigating complex land acquisition laws, spatial planning regulations, and construction contracts. We advise developers, investors, and contractors at every stage of the project lifecycle.",
-            "p2": "Our expertise ensures that projects are built on secure legal foundations, mitigating the significant risks associated with land disputes and regulatory non-compliance in Indonesia.",
+            "title": "Infrastruktur & Real Estat",
+            "tagline": "Membangun fondasi fisik.",
+            "p1": "Pengembangan real estat dan infrastruktur di Indonesia melibatkan hukum pengadaan tanah, tata ruang, dan kontrak konstruksi yang kompleks. Kami menasihati pengembang, investor, dan kontraktor di setiap tahap siklus proyek.",
+            "p2": "Keahlian kami memastikan proyek dibangun di atas fondasi hukum yang aman, memitigasi risiko besar yang terkait dengan sengketa tanah dan ketidakpatuhan regulasi di Indonesia.",
             "proofPoints": [
-              "Advisory on large-scale land acquisition and spatial planning compliance.",
-              "Drafting and negotiation of complex EPC (Engineering, Procurement, and Construction) contracts.",
-              "Structuring of commercial and residential property developments."
+              "Nasihat atas pengadaan tanah skala besar dan kepatuhan tata ruang.",
+              "Penyusunan dan negosiasi kontrak EPC yang kompleks.",
+              "Penataan pengembangan properti komersial dan residensial."
             ]
           },
           "plantationAgribusiness": {
             "number": "03.C",
-            "title": "Plantation & Agribusiness",
-            "tagline": "Counsel for the core economy.",
-            "p1": "Agribusiness is a cornerstone of the Indonesian economy, but it is fraught with regulatory and land-use challenges. We have extensive experience advising plantation companies, particularly in the palm oil sector.",
-            "p2": "We assist clients with land acquisition, plasma partnerships, environmental compliance, and the resolution of land disputes with local communities—ensuring sustainable and legally secure operations.",
+            "title": "Perkebunan & Agribisnis",
+            "tagline": "Nasihat untuk inti perekonomian.",
+            "p1": "Agribisnis merupakan pilar ekonomi Indonesia, tetapi sarat dengan tantangan regulasi dan penggunaan lahan. Kami memiliki pengalaman luas menasihati perusahaan perkebunan, khususnya di sektor kelapa sawit.",
+            "p2": "Kami membantu klien dalam pengadaan tanah, kemitraan plasma, kepatuhan lingkungan, dan penyelesaian sengketa tanah dengan masyarakat lokal, untuk memastikan operasi yang berkelanjutan dan aman secara hukum.",
             "proofPoints": [
-              "Advisory on HGU (Right to Cultivate) acquisition and extension.",
-              "Structuring of mandatory plasma partnership schemes.",
-              "Resolution of complex land disputes and overlapping concessions.",
-              "Representation of palm oil plantation companies in multiple forest concession and land area disputes.",
-              "Legal counsel on the transfer of Timber Forest Utilization Licenses (IUPHHK-HA) in Natural Forest zones, covering full regulatory and due diligence requirements."
+              "Nasihat atas perolehan dan perpanjangan HGU.",
+              "Penataan skema kemitraan plasma wajib.",
+              "Penyelesaian sengketa tanah kompleks dan konsesi yang tumpang tindih.",
+              "Representasi perusahaan perkebunan kelapa sawit dalam berbagai sengketa konsesi hutan dan area lahan.",
+              "Nasihat hukum atas pengalihan IUPHHK-HA pada zona Hutan Alam, mencakup seluruh persyaratan regulasi dan uji tuntas."
             ]
           },
           "tourismHospitality": {
             "number": "03.D",
-            "title": "Tourism & Hospitality",
-            "tagline": "Supporting the experience economy.",
-            "p1": "The tourism and hospitality sector requires navigating a unique intersection of foreign investment rules, property law, and specialized operational licensing. We advise hotel operators, developers, and investors in this dynamic sector.",
-            "p2": "From the structuring of hotel management agreements to the acquisition of beachfront land and the securing of necessary operational permits, we provide the legal framework for successful hospitality ventures.",
+            "title": "Pariwisata & Perhotelan",
+            "tagline": "Mendukung ekonomi pengalaman.",
+            "p1": "Sektor pariwisata dan perhotelan membutuhkan navigasi atas aturan investasi asing, hukum properti, dan perizinan operasional yang spesifik. Kami menasihati operator hotel, pengembang, dan investor dalam sektor yang dinamis ini.",
+            "p2": "Mulai dari penataan perjanjian pengelolaan hotel hingga akuisisi lahan pantai dan perolehan izin operasional yang diperlukan, kami menyediakan kerangka hukum untuk usaha perhotelan yang berhasil.",
             "proofPoints": [
-              "Drafting and negotiation of Hotel Management Agreements (HMA).",
-              "Advisory on foreign investment structuring for resort developments.",
-              "Navigating complex coastal and small island utilization permits."
+              "Penyusunan dan negosiasi Hotel Management Agreement (HMA).",
+              "Nasihat atas struktur investasi asing untuk pengembangan resor.",
+              "Navigasi izin pemanfaatan pesisir dan pulau-pulau kecil yang kompleks."
             ]
           }
         }
       }
     },
     "proBono": {
-      "label": "Our Commitment",
-      "title": "Pro Bono & Social Responsibility",
-      "body": "Access to rigorous legal representation should not be entirely determined by financial circumstance. STNP is committed to pro bono practice as a core professional obligation, dedicating time and resources to provide high-level counsel to those who need it most.",
-      "quote": "The most sacred of the duties of a government is to do equal and exact justice to all its citizens.",
+      "label": "Komitmen Kami",
+      "title": "Pro Bono & Tanggung Jawab Sosial",
+      "body": "Akses terhadap representasi hukum yang kuat seharusnya tidak sepenuhnya ditentukan oleh keadaan finansial. STNP berkomitmen pada praktik pro bono sebagai kewajiban profesional inti, mendedikasikan waktu dan sumber daya untuk memberikan nasihat berkualitas tinggi kepada mereka yang paling membutuhkan.",
+      "quote": "Tugas paling suci dari sebuah pemerintahan adalah memberikan keadilan yang setara dan tepat bagi seluruh warganya.",
       "quoteAuthor": "Thomas Jefferson"
     },
     "cta": {
-      "label": "Get in Touch",
-      "title": "Your Matter Deserves Partner-Level Attention",
-      "body": "Complex legal challenges require strategic clarity and decisive action. Reach out to discuss how our partners can support your specific needs.",
-      "button": "Schedule a Consultation"
+      "label": "Hubungi Kami",
+      "title": "Perkara Anda Layak Mendapat Perhatian Tingkat Mitra",
+      "body": "Tantangan hukum yang kompleks membutuhkan kejelasan strategis dan tindakan tegas. Hubungi kami untuk mendiskusikan bagaimana para mitra kami dapat mendukung kebutuhan spesifik Anda.",
+      "button": "Jadwalkan Konsultasi"
     },
     "springboards": {
-      "team": "Meet Our Team",
-      "about": "About STNP",
-      "insights": "Read Insights"
+      "team": "Temui Tim Kami",
+      "about": "Tentang STNP",
+      "insights": "Baca Wawasan"
     }
   },
   "proBono": {

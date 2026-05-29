@@ -47,7 +47,7 @@ export default async function LegalServicesPage({ params }) {
       </section>
 
       {/* ACT 2 & 3 — LEDGER (Index + Detail) */}
-      <React.Suspense fallback={<div className="container" style={{padding: '100px 0', textAlign: 'center'}}>Loading...</div>}>
+      <React.Suspense fallback={<div className="container" style={{padding: '100px 0', textAlign: 'center'}}>{s.loading || 'Loading...'}</div>}>
         <ServiceLedger services={s} lang={lang} />
       </React.Suspense>
 
