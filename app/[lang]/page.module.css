@@ -143,7 +143,7 @@
 }
 
 :global(.light) .heroTitleAccent {
-  color: var(--color-primary-light) !important;
+  color: var(--color-accent-dark) !important;
   text-shadow: none !important;
 }
 
