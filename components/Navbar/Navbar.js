@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -244,11 +244,13 @@ export default function Navbar({ navDict, lang = 'en' }) {
         </Link>
 
         <div className={styles.desktopNavigation}>
-          <DropdownNavigation
-            navItems={dropdownNavItems}
-            currentPath={pathname}
-            getTransitionType={getTransitionType}
-          />
+          <Suspense fallback={null}>
+            <DropdownNavigation
+              navItems={dropdownNavItems}
+              currentPath={pathname}
+              getTransitionType={getTransitionType}
+            />
+          </Suspense>
         </div>
 
         {/* Desktop: CTA Button, Language Switcher, and Theme Toggle */}

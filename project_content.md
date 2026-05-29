@@ -50,7 +50,7 @@ The Next.js `app` router implements the following main pages:
 - **Commercial Litigation**: We have deep knowledge and experience in Indonesian law enforcement mechanism and have represented many major clients in various civil and commercial litigations from District Court until Supreme Court. All of our lawyers are registered in Indonesian Bar and can act before a court in Indonesia. Our team also have involved in some administrative litigations.
 - **Banking & Finance**
 - **Bankruptcy & Insolvency**: We have experience in representing both creditors and debtors on all aspects of insolvency and bankruptcy. Our lawyers have registered as members of Association of Trustee in Bankruptcy and Receiver Indonesia.
-- **Industrial Relations (Labor Law)**: We regularly assist and provide advice to our clients on all types of employment industrial relation matters, such as company regulation, collective employment agreement, fixed and permanent terms employment agreement, labour union, employment termination and severance payment, and industrial relation dispute.
+- **Industrial Relations**: We regularly assist and provide advice to our clients on all types of employment industrial relation matters, such as company regulation, collective employment agreement, fixed and permanent terms employment agreement, labour union, employment termination and severance payment, and industrial relation dispute.
 
 ### Corporate & Commercial
 - **General Corporate**: We provide advice and assistance on corporate and commercial business legal matters in Indonesia from the establishment of the company, license, acquisition, closure, and day-to-day legal issues.

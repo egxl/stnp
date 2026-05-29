@@ -238,31 +238,49 @@ export default async function HomePage({ params }) {
         </section>
       )}
 
-      {/* ===== CONTACT CTA (REDESIGNED AS STRATEGIC HUB) ===== */}
-      <section className={styles.ctaSection}>
+      {/* ===== CONTACT CTA (PENTAGRAM GRID REDESIGN) ===== */}
+      <section className={`${styles.ctaSection} ${styles.snapSection}`}>
         <div className="container">
           <div className={styles.ctaLayout}>
-            <div className={styles.ctaNarrative}>
+            <div className={styles.ctaLeft}>
               <span className="section-label">{dict.home.ctaLabel}</span>
-              <h2 className={styles.ctaTitle}>
-                {dict.home.ctaTitle}
-              </h2>
-              <p className={styles.ctaText}>
-                {dict.home.ctaText}
-              </p>
+              <h2 className={styles.ctaTitle}>{dict.home.ctaTitle}</h2>
+              <p className={styles.ctaText}>{dict.home.ctaText}</p>
+              <div className={styles.ctaAction}>
+                <Link href={`/${lang}/contact`} className={styles.ctaBtn}>
+                  {dict.home.schedule}
+                  <span className={styles.ctaArrow}>→</span>
+                </Link>
+              </div>
             </div>
 
-            <div className={styles.ctaChannels}>
-              <div className={styles.channelCard}>
-                <Link href={`/${lang}/contact`} className="btn btn--primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  {dict.home.schedule}
-                </Link>
-                <div className={styles.channelDivider}>
-                  <span>or connect directly</span>
+            <div className={styles.ctaRight}>
+              <div className={styles.infoColumn}>
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>GENERAL INQUIRIES</span>
+                  <a href={`mailto:${firmInfo.email}`} className={styles.infoValue}>
+                    {firmInfo.email}
+                  </a>
                 </div>
-                <a href={`mailto:${firmInfo.email}`} className={styles.ctaEmail}>
-                  <span>{firmInfo.email}</span>
-                </a>
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>TELEPHONE</span>
+                  <div className={styles.infoGroup}>
+                    {firmInfo.phone.map((p, i) => (
+                      <a key={i} href={`tel:${p.replace(/\s+/g, '')}`} className={styles.infoValue}>
+                        {p}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <span className={styles.infoLabel}>MAIN OFFICE</span>
+                  <address className={styles.infoAddress}>
+                    <strong>{firmInfo.address.line1}</strong>
+                    <span>{firmInfo.address.line2}</span>
+                    <span>{firmInfo.address.city}, {firmInfo.address.postal}</span>
+                    <span>{firmInfo.address.country}</span>
+                  </address>
+                </div>
               </div>
             </div>
           </div>

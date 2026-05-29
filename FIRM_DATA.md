@@ -237,7 +237,7 @@ Daniel's capabilities have been proven independently through his involvement as 
 *   **Compliance**: Assisted in reporting/notification to the Business Competition Supervisory Commission (KPPU) regarding acquisition transactions.
 *   **Legal Advisory**: Provided legal views regarding various newly issued regulations or problems faced by clients.
 
-#### Industrial Relations (Labor Law)
+#### Industrial Relations
 *   **Company Policy**: Drafted Company Regulations (PP) and Collective Labor Agreements (PKB).
 *   **Employment Contracts**: Drafted Indefinite Term Employment Agreements (PKWTT/Permanent) and Fixed Term Employment Agreements (PKWT/Contract).
 

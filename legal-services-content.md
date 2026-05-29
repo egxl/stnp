@@ -91,7 +91,7 @@ We represent both creditors and debtors: filing PKPU (Suspension of Debt Payment
 
 ---
 
-### Service 01.D — Industrial Relations (Labor Law)
+### Service 01.D — Industrial Relations
 
 **Tagline:** *From company policy to dispute resolution.*
 

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import styles from "./dropdown-navigation.module.css";
 
 function cleanPath(path) {
@@ -12,23 +13,32 @@ function cleanPath(path) {
   return clean.endsWith("/") && clean !== "/" ? clean.slice(0, -1) : clean;
 }
 
-function hrefMatchesPath(currentPath, href) {
+function hrefMatchesPath(currentPath, href, currentService) {
   if (!href) return false;
   const normalizedHref = cleanPath(href);
   const normalizedCurrent = cleanPath(currentPath);
 
-  if (normalizedHref === normalizedCurrent) return true;
+  if (normalizedHref !== normalizedCurrent) {
+    const hrefDepth = normalizedHref.split("/").filter(Boolean).length;
+    if (!(hrefDepth > 1 && normalizedCurrent.startsWith(`${normalizedHref}/`))) {
+      return false;
+    }
+  }
 
-  const hrefDepth = normalizedHref.split("/").filter(Boolean).length;
-  if (hrefDepth > 1 && normalizedCurrent.startsWith(`${normalizedHref}/`)) return true;
+  // If the link is a sub-service link (contains ?service=), check if it matches currentService
+  if (href.includes("?service=")) {
+    const urlObj = new URL(href, "https://stnp.co");
+    const hrefService = urlObj.searchParams.get("service");
+    return hrefService === currentService;
+  }
 
-  return false;
+  return true;
 }
 
-function itemMatchesPath(item, currentPath) {
-  if (hrefMatchesPath(currentPath, item.href)) return true;
+function itemMatchesPath(item, currentPath, currentService) {
+  if (hrefMatchesPath(currentPath, item.href, currentService)) return true;
   return (item.subMenus || []).some((group) =>
-    group.items.some((subItem) => hrefMatchesPath(currentPath, subItem.href))
+    group.items.some((subItem) => hrefMatchesPath(currentPath, subItem.href, currentService))
   );
 }
 
@@ -40,11 +50,13 @@ export function DropdownNavigation({
 }) {
   const [openMenu, setOpenMenu] = React.useState(null);
   const [hoveredId, setHoveredId] = React.useState(null);
+  const searchParams = useSearchParams();
+  const currentService = searchParams ? searchParams.get("service") : null;
 
   const activeItemId = React.useMemo(() => {
     let matchedId = null;
     for (const item of navItems) {
-      if (itemMatchesPath(item, currentPath)) {
+      if (itemMatchesPath(item, currentPath, currentService)) {
         matchedId = item.id;
         break;
       }
@@ -52,7 +64,7 @@ export function DropdownNavigation({
     // Fallback to Home (id: 1) if no route matches (e.g., 404 page)
     // This ensures the navbar font color exactly matches the root hero section
     return matchedId || 1;
-  }, [navItems, currentPath]);
+  }, [navItems, currentPath, currentService]);
 
   const handleLinkClick = (e, href) => {
     if (!href) return;
@@ -184,7 +196,7 @@ export function DropdownNavigation({
                                 </h3>
                                 <ul className={styles.groupList}>
                                   {subMenu.items.map((item) => {
-                                    const isSubItemActive = hrefMatchesPath(currentPath, item.href);
+                                    const isSubItemActive = hrefMatchesPath(currentPath, item.href, currentService);
 
                                     return (
                                       <li key={`${subMenu.title}-${item.label}`}>

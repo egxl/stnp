@@ -32,7 +32,9 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  transition: color var(--transition-fast);
+  transition:
+    color 200ms ease,
+    transform 150ms ease;
   text-shadow: 0 1px 10px rgba(6, 14, 26, 0.22);
 }
 
@@ -41,10 +43,20 @@
   background: transparent;
 }
 
-.navTriggerActive,
-.navTrigger:hover,
-.navLink:hover {
+.navTriggerActive {
   color: var(--color-white);
+}
+
+.navTrigger:active,
+.navLink:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navTrigger:hover,
+  .navLink:hover {
+    color: var(--color-white);
+  }
 }
 
 .hoverBackground {
@@ -66,10 +78,15 @@
   -webkit-text-stroke: 0;
 }
 
-:global(.light) .navTriggerActive,
-:global(.light) .navTrigger:hover,
-:global(.light) .navLink:hover {
+:global(.light) .navTriggerActive {
   color: #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global(.light) .navTrigger:hover,
+  :global(.light) .navLink:hover {
+    color: #000;
+  }
 }
 
 :global(.light) .hoverBackground {
@@ -224,50 +241,80 @@
   align-items: start;
   padding: 0.75rem;
   transition:
-    background-color var(--transition-fast),
-    transform var(--transition-fast),
-    border-color var(--transition-fast);
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 150ms ease;
   border: 1px solid transparent;
+}
+
+.subMenuLink:active {
+  transform: scale(0.98) !important;
 }
 
 .subMenuLinkCompact {
   position: relative;
   display: block;
   padding: 0.4rem 0 0.4rem 0.75rem;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   border-left: 2px solid transparent;
   background: transparent;
   border-radius: 0;
   transition:
-    border-color var(--transition-fast),
-    padding-left var(--transition-fast),
-    color var(--transition-fast);
+    border-color 200ms ease,
+    padding-left 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    color 200ms ease,
+    transform 150ms ease;
+}
+
+.subMenuLinkCompact:active {
+  transform: scale(0.98) !important;
 }
 
 .subMenuLinkCompact .subMenuLabel {
   font-weight: 500;
   font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.75);
-  transition: color var(--transition-fast);
+  transition: color 200ms ease;
 }
 
-.subMenuLinkCompact:hover .subMenuLabel,
 .subMenuLinkCompact.subMenuLinkActive .subMenuLabel {
   color: var(--color-accent);
 }
 
-.subMenuLink:hover,
 .subMenuLinkActive {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
 }
 
-.subMenuLinkCompact:hover,
 .subMenuLinkCompact.subMenuLinkActive {
   background: transparent;
+  border-color: transparent;
   border-left-color: var(--color-accent);
-  padding-left: 1.1rem;
+  padding-left: 1.15rem;
   transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .subMenuLinkCompact:hover .subMenuLabel {
+    color: var(--color-accent);
+  }
+
+  .subMenuLink:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .subMenuLinkCompact:hover {
+    background: transparent;
+    border-color: transparent;
+    border-left-color: var(--color-accent);
+    padding-left: 1.15rem;
+    transform: none;
+  }
 }
 
 .iconWrap {
@@ -359,21 +406,36 @@
   color: #334155 !important;
 }
 
-:global(.light) .subMenuLinkCompact:hover .subMenuLabel,
 :global(.light) .subMenuLinkCompact.subMenuLinkActive .subMenuLabel {
-  color: #85641B !important; /* High contrast gold-bronze on hover/active */
+  color: #85641B !important; /* High contrast gold-bronze on active */
 }
 
-:global(.light) .subMenuLink:hover,
 :global(.light) .subMenuLinkActive {
   background: rgba(0, 0, 0, 0.03) !important;
   border-color: rgba(0, 0, 0, 0.05) !important;
 }
 
-:global(.light) .subMenuLinkCompact:hover,
 :global(.light) .subMenuLinkCompact.subMenuLinkActive {
   background: transparent !important;
+  border-color: transparent !important;
   border-left-color: #85641B !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :global(.light) .subMenuLinkCompact:hover .subMenuLabel {
+    color: #85641B !important; /* High contrast gold-bronze on hover */
+  }
+
+  :global(.light) .subMenuLink:hover {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  :global(.light) .subMenuLinkCompact:hover {
+    background: transparent !important;
+    border-color: transparent !important;
+    border-left-color: #85641B !important;
+  }
 }
 
 :global(.light) .footerLink {
