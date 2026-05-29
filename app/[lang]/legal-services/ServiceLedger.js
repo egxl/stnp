@@ -34,17 +34,38 @@ export default function ServiceLedger({ services, lang }) {
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const detailRef = useRef(null);
+  const detailWrapperRef = useRef(null);
   const containerRef = useRef(null);
-  // Read ?service= param and set the active panel. Scrolling is handled
-  // natively by the browser via the #ledger hash in the URL.
+
+  // Read ?service= param and set the active panel with a smooth transition.
+  // Scrolling is handled natively by the browser via the #ledger hash in the URL.
   useEffect(() => {
     const svcParam = searchParams.get('service');
-    if (!svcParam) return;
-    const targetService = allServices.find(s => s.svcKey === svcParam);
-    if (targetService) {
-      setActiveId(`${targetService.catKey}.${targetService.svcKey}`);
+    const targetService = svcParam ? allServices.find(s => s.svcKey === svcParam) : null;
+    const targetId = targetService
+      ? `${targetService.catKey}.${targetService.svcKey}`
+      : `${categories[0][0]}.${Object.keys(categories[0][1].services)[0]}`;
+
+    if (targetId !== activeId) {
+      setIsTransitioning(true);
+
+      // Smoothly scroll the ledger section into view
+      const ledger = document.getElementById('ledger');
+      if (ledger) {
+        ledger.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      const timer = setTimeout(() => {
+        setActiveId(targetId);
+        setIsTransitioning(false);
+        // Reset scroll position of the detail panel when the content swaps
+        if (detailWrapperRef.current) {
+          detailWrapperRef.current.scrollTop = 0;
+        }
+      }, 200);
+      return () => clearTimeout(timer);
     }
-  }, [searchParams, allServices]);
+  }, [searchParams, allServices, activeId, categories]);
 
   // On initial page load only: if a ?service= param is present, scroll to the
   // ledger section. Next.js client-side navigation does not fire native hash
@@ -64,17 +85,6 @@ export default function ServiceLedger({ services, lang }) {
 
   const activeService = allServices.find(s => `${s.catKey}.${s.svcKey}` === activeId) || allServices[0];
   const activeCat = services.categories[activeService.catKey];
-
-  function handleSelect(catKey, svcKey) {
-    if (`${catKey}.${svcKey}` === activeId) return;
-    
-    setIsTransitioning(true);
-    // Short timeout to allow fade out, then swap content and fade in
-    setTimeout(() => {
-      setActiveId(`${catKey}.${svcKey}`);
-      setIsTransitioning(false);
-    }, 200);
-  }
 
   // Initial load animation for index
   useGSAP(() => {
@@ -106,21 +116,22 @@ export default function ServiceLedger({ services, lang }) {
               <div key={catKey} className={styles.indexGroup}>
                 <span className={styles.indexCategory}>{cat.title}</span>
                 {Object.entries(cat.services).map(([svcKey, svc]) => (
-                  <button
+                  <Link
                     key={svcKey}
+                    href={`/${lang}/legal-services?service=${svcKey}#ledger`}
                     className={`${styles.indexItem} ${activeId === `${catKey}.${svcKey}` ? styles.indexItemActive : ''}`}
-                    onClick={() => handleSelect(catKey, svcKey)}
+                    scroll={false}
                   >
                     <span className={styles.indexMarker} />
                     {svc.title}
-                  </button>
+                  </Link>
                 ))}
               </div>
             ))}
           </nav>
 
           {/* RIGHT — Detail Panel */}
-          <div className={styles.ledgerDetailWrapper}>
+          <div className={styles.ledgerDetailWrapper} ref={detailWrapperRef}>
             <article 
               ref={detailRef} 
               className={`${styles.ledgerDetail} ${isTransitioning ? styles.transitioningOut : styles.transitioningIn}`}

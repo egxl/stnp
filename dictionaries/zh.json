@@ -49,7 +49,81 @@
     "highlightsLabel": "业绩记录",
     "highlightsTitle": "实力，用成果说话",
     "highlightsSubtitle": "精选由我们合伙人处理的重大法律事务，涵盖复杂行业与高价值交易。",
-    "highlightsDisclaimer": "案例以匿名形式呈现。过往结果不保证类似结果。"
+    "highlightsDisclaimer": "案例以匿名形式呈现。过往结果不保证类似结果。",
+    "philosophyLabel": "我们的哲学",
+    "philosophyTitle": "执业标准",
+    "generalInquiries": "一般咨询",
+    "telephone": "电话",
+    "mainOffice": "主办公室",
+    "industries": {
+      "Energy & Resources": "能源与资源",
+      "Media & Entertainment": "媒体与娱乐",
+      "Trade & Logistics": "贸易与物流",
+      "Property & Development": "房地产与开发",
+      "Agriculture": "农业",
+      "Tourism & Hospitality": "旅游与酒店",
+      "Logistics": "物流",
+      "Technology": "技术",
+      "Finance & Banking": "金融与银行"
+    },
+    "highlightsList": {
+      "syndicated-finance": {
+        "value": "1.2 亿美元+",
+        "category": "银行与金融",
+        "title": "银团信贷额度",
+        "description": "担任一家大型煤炭开采公司在多债权人银团信贷额度项目中的首席顾问 —— 该项目为该行业内最大规模的信贷之一。",
+        "tags": ["项目融资", "矿业", "银团贷款"]
+      },
+      "state-energy": {
+        "value": "国营项目",
+        "category": "能源与天然气",
+        "title": "国营电网天然气供应",
+        "description": "代表一家天然气公司与大型国营能源企业进行复杂的定价谈判并达成供应协议。",
+        "tags": ["能源", "监管", "谈判"]
+      },
+      "property-litigation": {
+        "value": "终审阶段",
+        "category": "商事诉讼",
+        "title": "上市房地产公司纠纷",
+        "description": "在与消费者的商事纠纷中，代表一家大型上市房地产公司应对从地区法院到最高法院的所有诉讼阶段。",
+        "tags": ["诉讼", "房地产", "民法"]
+      },
+      "bankruptcy-curator": {
+        "value": "跨区域项目",
+        "category": "破产与重组",
+        "title": "商事法院",
+        "description": "被指定为法院破产管理人，在泗水商事法院管理和处置横跨东加里曼丹和西加里曼丹的破产资产。",
+        "tags": ["破产", "债务暂缓", "资产管理"]
+      },
+      "company-liquidation": {
+        "value": "法定职责",
+        "category": "破产与清算",
+        "title": "企业清算",
+        "description": "在多起企业清算程序中担任法院指定的清算人，监督有限责任公司的资产分配和法定注销。",
+        "tags": ["清算", "破产", "企业"]
+      },
+      "foreign-bank": {
+        "value": "金融科技",
+        "category": "金融诉讼",
+        "title": "金融科技债权回收",
+        "description": "代表一家金融科技借贷公司处理不良贷款，包括债权转让 (cessie) 和担保物执行。",
+        "tags": ["诉讼", "金融", "债权转让"]
+      },
+      "plantation-dispute": {
+        "value": "特许权区域",
+        "category": "种植业与土地法",
+        "title": "棕榈油土地纠纷",
+        "description": "代表棕榈油种植公司处理多起森林特许权和种植园土地纠纷，通过诉讼和谈判解决土地重叠主张。",
+        "tags": ["种植业", "土地法", "诉讼"]
+      },
+      "forestry-license": {
+        "value": "监管转移",
+        "category": "自然资源",
+        "title": "天然林木材许可证转让",
+        "description": "在天然林区域木材出产利用企业许可证的全面监管转让中向买方提供建议并进行代理，涵盖所有行政和法律尽职调查要求。",
+        "tags": ["林业", "许可审批", "并购"]
+      }
+    }
   },
   "services": {
     "meta": {

@@ -49,7 +49,81 @@
     "highlightsLabel": "Rekam Jejak",
     "highlightsTitle": "Pengalaman yang Berbicara Sendiri",
     "highlightsSubtitle": "Rangkaian perkara penting yang ditangani oleh mitra kami di industri kompleks dan transaksi bernilai tinggi.",
-    "highlightsDisclaimer": "Perkara disajikan dalam bentuk anonim. Hasil masa lalu tidak menjamin hasil serupa."
+    "highlightsDisclaimer": "Perkara disajikan dalam bentuk anonim. Hasil masa lalu tidak menjamin hasil serupa.",
+    "philosophyLabel": "Filosofi Kami",
+    "philosophyTitle": "Standar Praktik",
+    "generalInquiries": "Pertanyaan Umum",
+    "telephone": "Telepon",
+    "mainOffice": "Kantor Pusat",
+    "industries": {
+      "Energy & Resources": "Energi & Sumber Daya",
+      "Media & Entertainment": "Media & Hiburan",
+      "Trade & Logistics": "Perdagangan & Logistik",
+      "Property & Development": "Properti & Pengembangan",
+      "Agriculture": "Pertanian",
+      "Tourism & Hospitality": "Pariwisata & Perhotelan",
+      "Logistics": "Logistik",
+      "Technology": "Teknologi",
+      "Finance & Banking": "Keuangan & Perbankan"
+    },
+    "highlightsList": {
+      "syndicated-finance": {
+        "value": "USD 120JT+",
+        "category": "Perbankan & Keuangan",
+        "title": "Fasilitas Kredit Sindikasi",
+        "description": "Kuasa hukum utama untuk perusahaan pertambangan batu bara terkemuka dalam fasilitas kredit sindikasi multi-kreditur — salah satu yang terbesar di sektor ini.",
+        "tags": ["Keuangan Proyek", "Pertambangan", "Sindikasi"]
+      },
+      "state-energy": {
+        "value": "Milik Negara",
+        "category": "Energi & Gas",
+        "title": "Pasokan Gas ke Jaringan Energi Negara",
+        "description": "Mewakili perusahaan gas dalam negosiasi harga yang kompleks dan perjanjian pasokan dengan perusahaan energi milik negara terkemuka.",
+        "tags": ["Energi", "Regulasi", "Negosiasi"]
+      },
+      "property-litigation": {
+        "value": "Tingkat Kasasi",
+        "category": "Litigasi Komersial",
+        "title": "Sengketa Properti Perusahaan Terbuka (Tbk)",
+        "description": "Mewakili perusahaan properti terbuka terkemuka di semua tingkatan pengadilan — dari Pengadilan Negeri hingga Mahkamah Agung — dalam sengketa komersial dengan konsumen.",
+        "tags": ["Litigasi", "Properti", "Hukum Perdata"]
+      },
+      "bankruptcy-curator": {
+        "value": "Lintas Wilayah",
+        "category": "Kepailitan & Insolvensi",
+        "title": "Pengadilan Niaga",
+        "description": "Ditunjuk sebagai Kurator Pengadilan untuk mengelola dan membereskan aset-aset kepailitan yang tersebar di Kalimantan Timur dan Barat pada Pengadilan Niaga Surabaya.",
+        "tags": ["Kepailitan", "PKPU", "Pengurusan Aset"]
+      },
+      "company-liquidation": {
+        "value": "Peran Statuter",
+        "category": "Insolvensi & Likuidasi",
+        "title": "Likuidasi Korporasi",
+        "description": "Ditunjuk sebagai Likuidator oleh Pengadilan dalam beberapa proses likuidasi korporasi, mengawasi distribusi aset dan pembubaran statuter perseroan terbatas.",
+        "tags": ["Likuidasi", "Insolvensi", "Korporasi"]
+      },
+      "foreign-bank": {
+        "value": "Fintech",
+        "category": "Litigasi Perbankan",
+        "title": "Pemulihan Cessie Fintech",
+        "description": "Mewakili perusahaan pendanaan fintech dalam menangani kredit bermasalah, termasuk pengalihan piutang (cessie) dan eksekusi jaminan.",
+        "tags": ["Litigasi", "Perbankan", "Cessie"]
+      },
+      "plantation-dispute": {
+        "value": "Area Konsesi",
+        "category": "Perkebunan & Agraria",
+        "title": "Sengketa Lahan Kelapa Sawit",
+        "description": "Mewakili perusahaan perkebunan kelapa sawit dalam berbagai sengketa atas konsesi hutan dan area lahan perkebunan, menyelesaikan klaim tumpang tindih lahan melalui litigasi dan negosiasi.",
+        "tags": ["Perkebunan", "Hukum Pertanahan", "Litigasi"]
+      },
+      "forestry-license": {
+        "value": "Pengalihan Izin",
+        "category": "Sumber Daya Alam",
+        "title": "Pengalihan Izin Hutan Tanaman",
+        "description": "Menasihati dan mewakili pembeli dalam pengalihan regulasi penuh atas Izin Usaha Pemanfaatan Hasil Hutan Kayu pada zona Hutan Alam, mencakup semua persyaratan uji tuntas administratif dan hukum.",
+        "tags": ["Kehutanan", "Perizinan", "M&A"]
+      }
+    }
   },
   "about": {
     "meta": {

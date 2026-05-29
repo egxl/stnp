@@ -257,13 +257,13 @@ export default async function HomePage({ params }) {
             <div className={styles.ctaRight}>
               <div className={styles.infoColumn}>
                 <div className={styles.infoRow}>
-                  <span className={styles.infoLabel}>GENERAL INQUIRIES</span>
+                  <span className={styles.infoLabel}>{dict.home.generalInquiries || "GENERAL INQUIRIES"}</span>
                   <a href={`mailto:${firmInfo.email}`} className={styles.infoValue}>
                     {firmInfo.email}
                   </a>
                 </div>
                 <div className={styles.infoRow}>
-                  <span className={styles.infoLabel}>TELEPHONE</span>
+                  <span className={styles.infoLabel}>{dict.home.telephone || "TELEPHONE"}</span>
                   <div className={styles.infoGroup}>
                     {firmInfo.phone.map((p, i) => (
                       <a key={i} href={`tel:${p.replace(/\s+/g, '')}`} className={styles.infoValue}>
@@ -273,7 +273,7 @@ export default async function HomePage({ params }) {
                   </div>
                 </div>
                 <div className={styles.infoRow}>
-                  <span className={styles.infoLabel}>MAIN OFFICE</span>
+                  <span className={styles.infoLabel}>{dict.home.mainOffice || "MAIN OFFICE"}</span>
                   <address className={styles.infoAddress}>
                     <strong>{firmInfo.address.line1}</strong>
                     <span>{firmInfo.address.line2}</span>

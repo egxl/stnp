@@ -13,8 +13,8 @@ export default function ConsolidatedPhilosophy({ dict, lang }) {
           {/* Left Column: Principles (Asymmetric Layout) */}
           <div className={styles.principlesColumn}>
             <div className={styles.sectionHeader}>
-              <span className={styles.eyebrow}>Our Philosophy</span>
-              <h2 className={styles.title}>The Standard of Practice</h2>
+              <span className={styles.eyebrow}>{dict.philosophyLabel || 'Our Philosophy'}</span>
+              <h2 className={styles.title}>{dict.philosophyTitle || 'The Standard of Practice'}</h2>
             </div>
             
             <div className={styles.principlesList}>

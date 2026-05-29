@@ -3,9 +3,87 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
+import Link from 'next/link';
 import styles from './TeamProfileDetail.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Mapping of English and Indonesian specializations to services.js keys
+const specToServiceKey = {
+  // English specializations
+  'Commercial Litigation': 'commercialLitigation',
+  'Bankruptcy & Insolvency': 'bankruptcy',
+  'Mining & Energy': 'miningEnergy',
+  'Plantation': 'plantationAgribusiness',
+  'General Corporate': 'generalCorporate',
+  'Plantation Law': 'plantationAgribusiness',
+  'Industrial Relations': 'industrialRelations',
+  'Corporate Restructuring': 'bankruptcy',
+  'Capital Markets': 'generalCorporate',
+  'Foreign Investment': 'generalCorporate',
+  'Company Acquisitions': 'mergersAcquisitions',
+  'Family Law': 'commercialLitigation',
+  'Employment Law': 'industrialRelations',
+  'Infrastructure': 'infrastructureRealEstate',
+
+  // Indonesian specializations
+  'Litigasi Komersial': 'commercialLitigation',
+  'Kepailitan & Penundaan Kewajiban Pembayaran Utang': 'bankruptcy',
+  'Pertambangan & Energi': 'miningEnergy',
+  'Perkebunan': 'plantationAgribusiness',
+  'Korporasi Umum': 'generalCorporate',
+  'Hukum Perkebunan': 'plantationAgribusiness',
+  'Hubungan Industrial': 'industrialRelations',
+  'Restrukturisasi Korporasi': 'bankruptcy',
+  'Pasar Modal': 'generalCorporate',
+  'Penanaman Modal Asing': 'generalCorporate',
+  'Akuisisi Perusahaan': 'mergersAcquisitions',
+  'Hukum Keluarga': 'commercialLitigation',
+  'Hukum Ketenagakerjaan': 'industrialRelations',
+  'Infrastruktur': 'infrastructureRealEstate'
+};
+
+const getServiceKey = (specName) => {
+  if (!specName) return null;
+  const cleanSpec = specName.trim();
+  
+  // Direct match check
+  if (specToServiceKey[cleanSpec]) return specToServiceKey[cleanSpec];
+
+  // Case-insensitive check
+  const lower = cleanSpec.toLowerCase();
+  for (const [key, value] of Object.entries(specToServiceKey)) {
+    if (key.toLowerCase() === lower) return value;
+  }
+
+  // Soft fallback matching based on keywords
+  if (lower.includes('litigasi') || lower.includes('litigation') || lower.includes('keluarga') || lower.includes('family')) {
+    return 'commercialLitigation';
+  }
+  if (lower.includes('kepailitan') || lower.includes('bankruptcy') || lower.includes('insolvensi') || lower.includes('restrukturisasi') || lower.includes('restructuring')) {
+    return 'bankruptcy';
+  }
+  if (lower.includes('korporasi') || lower.includes('corporate') || lower.includes('investasi') || lower.includes('investment') || lower.includes('pasar modal') || lower.includes('capital market')) {
+    return 'generalCorporate';
+  }
+  if (lower.includes('akuisisi') || lower.includes('acquisition') || lower.includes('merger')) {
+    return 'mergersAcquisitions';
+  }
+  if (lower.includes('pertambangan') || lower.includes('mining') || lower.includes('energi') || lower.includes('energy')) {
+    return 'miningEnergy';
+  }
+  if (lower.includes('perkebunan') || lower.includes('plantation')) {
+    return 'plantationAgribusiness';
+  }
+  if (lower.includes('hubungan industrial') || lower.includes('industrial relation') || lower.includes('tenaga kerja') || lower.includes('employment') || lower.includes('labor')) {
+    return 'industrialRelations';
+  }
+  if (lower.includes('infrastruktur') || lower.includes('infrastructure') || lower.includes('properti') || lower.includes('property') || lower.includes('real estate')) {
+    return 'infrastructureRealEstate';
+  }
+  
+  return null;
+};
 
 export default function TeamProfileDetail({ member, lang }) {
   const containerRef = useRef(null);
@@ -146,11 +224,25 @@ export default function TeamProfileDetail({ member, lang }) {
                 </div>
                 <div className={styles.sectionContent}>
                   <div className={styles.specGrid}>
-                    {(isIndo ? member.specializationId || member.specialization : member.specialization).map((spec, idx) => (
-                      <div key={idx} className={styles.specTag}>
-                        {spec}
-                      </div>
-                    ))}
+                    {(isIndo ? member.specializationId || member.specialization : member.specialization).map((spec, idx) => {
+                      const svcKey = getServiceKey(spec);
+                      if (svcKey) {
+                        return (
+                          <Link 
+                            key={idx} 
+                            href={`/${lang}/legal-services?service=${svcKey}#ledger`} 
+                            className={styles.specTag}
+                          >
+                            {spec}
+                          </Link>
+                        );
+                      }
+                      return (
+                        <div key={idx} className={styles.specTag}>
+                          {spec}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
