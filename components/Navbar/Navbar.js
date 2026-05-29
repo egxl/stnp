@@ -112,6 +112,7 @@ function buildDropdownNavItems(d, lang) {
     {
       id: 3,
       label: d.services,
+      href: `/${lang}/legal-services`,
       aside: {
         title: copy.practiceAreas,
         description: copy.practiceAreasDesc,

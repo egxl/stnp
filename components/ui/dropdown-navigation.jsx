@@ -6,11 +6,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import styles from "./dropdown-navigation.module.css";
 
+function cleanPath(path) {
+  if (!path) return "";
+  let clean = path.split("#")[0].split("?")[0];
+  return clean.endsWith("/") && clean !== "/" ? clean.slice(0, -1) : clean;
+}
+
 function hrefMatchesPath(currentPath, href) {
   if (!href) return false;
-  const normalizedHref = href.endsWith("/") && href !== "/" ? href.slice(0, -1) : href;
-  const normalizedCurrent =
-    currentPath.endsWith("/") && currentPath !== "/" ? currentPath.slice(0, -1) : currentPath;
+  const normalizedHref = cleanPath(href);
+  const normalizedCurrent = cleanPath(currentPath);
 
   if (normalizedHref === normalizedCurrent) return true;
 
