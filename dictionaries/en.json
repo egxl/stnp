@@ -224,6 +224,7 @@
       "title": "Our Team — Soaloan Tua Nababan & Partners",
       "description": "Meet the experienced legal professionals at Soaloan Tua Nababan & Partners."
     },
+    "profileMetaDescription": "Professional profile of {name} at Soaloan Tua Nababan & Partners.",
     "hero": {
       "title": "The legal minds behind complex disputes and strategic counsel.",
       "body": "A collective of seasoned legal minds dedicated to strategic resolution and principled efficiency. Our practice is senior-led, commercially grounded, and built on disciplined execution."
@@ -239,6 +240,13 @@
       "partner": "Partner",
       "seniorAssociate": "Senior Associate",
       "associate": "Associate"
+    },
+    "profile": {
+      "education": "Education",
+      "credentials": "Credentials",
+      "fullBiography": "Full Biography",
+      "specialization": "Specialization",
+      "trackRecord": "Track Record"
     },
     "detail": "Detail"
   },
@@ -444,6 +452,31 @@
       "about": "About STNP",
       "insights": "Read Insights"
     }
+  },
+  "insights": {
+    "meta": {
+      "title": "Insights — Soaloan Tua Nababan & Partners",
+      "description": "A curated ledger of legal perspectives and institutional knowledge from Soaloan Tua Nababan & Partners."
+    },
+    "hero": {
+      "titleLine1": "Legal",
+      "titleLine2": "Perspectives.",
+      "description": "Analysis, regulatory shifts, and strategic precedents shaping the Indonesian commercial landscape."
+    },
+    "indexTitle": "Index",
+    "allPerspectives": "All Perspectives",
+    "articleFallback": "Article",
+    "categories": {
+      "article": "Article",
+      "Article": "Article"
+    },
+    "byline": "By {author}",
+    "backToInsights": "Back to Insights",
+    "articleNotFound": {
+      "title": "Article Not Found",
+      "body": "The article you're looking for doesn't exist."
+    },
+    "emptyState": "No insights published yet."
   },
   "proBono": {
     "meta": {

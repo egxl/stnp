@@ -1,20 +1,35 @@
 import Link from 'next/link';
 import { getPosts, getCategories } from '@/lib/api';
+import { getDictionary } from '@/lib/dictionaries';
 import { decodeHtmlEntities } from '@/lib/utils';
 import styles from './page.module.css';
 
-export const metadata = {
-  title: 'Insights',
-  description: 'A curated ledger of legal perspectives and institutional knowledge from Soaloan Tua Nababan & Partners.',
-};
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
 
-export default async function ArticlesPage() {
+  return {
+    title: dict.insights?.meta?.title || 'Insights',
+    description:
+      dict.insights?.meta?.description ||
+      'A curated ledger of legal perspectives and institutional knowledge from Soaloan Tua Nababan & Partners.',
+  };
+}
+
+export default async function ArticlesPage({ params }) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  const i = dict.insights;
   const [postsResult, categories] = await Promise.all([
     getPosts({ perPage: 24 }),
     getCategories(),
   ]);
 
   const posts = postsResult.data || [];
+  const getCategoryLabel = (category) => {
+    if (!category) return i?.articleFallback || 'Article';
+    return i?.categories?.[category.slug] || i?.categories?.[category.name] || category.name;
+  };
 
   return (
     <div className={styles.insightsWrapper}>
@@ -25,14 +40,14 @@ export default async function ArticlesPage() {
           <div className={styles.heroLayout}>
             <div className={styles.heroHeader}>
               <h1 className={styles.heroTitle}>
-                Legal<br/>
-                <span className={styles.textAccent}>Perspectives.</span>
+                {i?.hero?.titleLine1 || 'Legal'}<br/>
+                <span className={styles.textAccent}>{i?.hero?.titleLine2 || 'Perspectives.'}</span>
               </h1>
             </div>
             <div className={styles.heroContent}>
               <div className={styles.goldDivider}></div>
               <p className={styles.heroDescription}>
-                Analysis, regulatory shifts, and strategic precedents shaping the Indonesian commercial landscape.
+                {i?.hero?.description || 'Analysis, regulatory shifts, and strategic precedents shaping the Indonesian commercial landscape.'}
               </p>
             </div>
           </div>
@@ -45,11 +60,11 @@ export default async function ArticlesPage() {
           <div className={styles.ledgerLayout}>
             {/* Sidebar / Categories */}
             <aside className={styles.ledgerSidebar}>
-              <h2 className={styles.sidebarTitle}>Index</h2>
+              <h2 className={styles.sidebarTitle}>{i?.indexTitle || 'Index'}</h2>
               <ul className={styles.categoryList}>
-                <li className={styles.categoryActive}>All Perspectives</li>
+                <li className={styles.categoryActive}>{i?.allPerspectives || 'All Perspectives'}</li>
                 {categories.filter(c => c.slug !== 'uncategorized').map((cat) => (
-                  <li key={cat.id}>{cat.name}</li>
+                  <li key={cat.id}>{getCategoryLabel(cat)}</li>
                 ))}
               </ul>
             </aside>
@@ -59,8 +74,8 @@ export default async function ArticlesPage() {
               {posts.length > 0 ? (
                 <div className={styles.articlesLedger}>
                   {posts.map((post) => {
-                    const category = post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Article';
-                    const date = new Date(post.date).toLocaleDateString('en-US', {
+                    const category = getCategoryLabel(post._embedded?.['wp:term']?.[0]?.[0]);
+                    const date = new Date(post.date).toLocaleDateString(lang === 'id' ? 'id-ID' : lang === 'zh' ? 'zh-CN' : 'en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -69,7 +84,7 @@ export default async function ArticlesPage() {
                     return (
                       <Link 
                         key={post.id} 
-                        href={`/insights/${post.slug}`}
+                        href={`/${lang}/insights/${post.slug}`}
                         className={styles.articleRow}
                       >
                         <div className={styles.articleMeta}>
@@ -95,7 +110,7 @@ export default async function ArticlesPage() {
                 </div>
               ) : (
                 <div className={styles.emptyState}>
-                  <p>No insights published yet.</p>
+                  <p>{i?.emptyState || 'No insights published yet.'}</p>
                 </div>
               )}
             </main>

@@ -256,6 +256,7 @@
       "title": "Tim Kami — Soaloan Tua Nababan & Partners",
       "description": "Kenali para profesional hukum berpengalaman di Soaloan Tua Nababan & Partners."
     },
+    "profileMetaDescription": "Profil profesional {name} di Soaloan Tua Nababan & Partners.",
     "hero": {
       "title": "Para pemikir hukum di balik sengketa kompleks dan nasihat strategis.",
       "body": "Sebuah kolektif praktisi hukum berpengalaman yang berdedikasi pada resolusi strategis dan efisiensi berprinsip. Praktik kami dipimpin oleh senior, berlandaskan pertimbangan komersial, dan dibangun di atas eksekusi yang disiplin."
@@ -271,6 +272,13 @@
       "partner": "Partner",
       "seniorAssociate": "Senior Associate",
       "associate": "Associate"
+    },
+    "profile": {
+      "education": "Pendidikan",
+      "credentials": "Sertifikasi",
+      "fullBiography": "Profil Lengkap",
+      "specialization": "Spesialisasi",
+      "trackRecord": "Rekam Jejak"
     },
     "detail": "Detail"
   },
@@ -476,6 +484,21 @@
       "about": "Tentang STNP",
       "insights": "Baca Wawasan"
     }
+  },
+  "insights": {
+    "meta": {
+      "title": "Wawasan — Soaloan Tua Nababan & Partners",
+      "description": "Kumpulan perspektif hukum dan pengetahuan institusional dari Soaloan Tua Nababan & Partners."
+    },
+    "hero": {
+      "titleLine1": "Perspektif",
+      "titleLine2": "Hukum.",
+      "description": "Analisis, perubahan regulasi, dan preseden strategis yang membentuk lanskap komersial Indonesia."
+    },
+    "indexTitle": "Indeks",
+    "allPerspectives": "Semua Perspektif",
+    "articleFallback": "Artikel",
+    "emptyState": "Belum ada wawasan yang diterbitkan."
   },
   "proBono": {
     "meta": {

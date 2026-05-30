@@ -85,7 +85,7 @@ const getServiceKey = (specName) => {
   return null;
 };
 
-export default function TeamProfileDetail({ member, lang }) {
+export default function TeamProfileDetail({ member, lang, dict }) {
   const containerRef = useRef(null);
   
   if (!member) return null;
@@ -94,6 +94,18 @@ export default function TeamProfileDetail({ member, lang }) {
 
   // Helper to get multi-lang content
   const getContent = (en, id) => (isIndo ? id || en : en);
+  const profileCopy = dict || {};
+  const getTitle = (title) => {
+    const value = Array.isArray(title) ? title[0] : title;
+    const titleKeys = {
+      'Managing Partner': 'managingPartner',
+      Partner: 'partner',
+      'Senior Associate': 'seniorAssociate',
+      Associate: 'associate',
+    };
+
+    return profileCopy.titles?.[titleKeys[value]] || getContent(member.title, member.titleId);
+  };
 
   useGSAP(() => {
     // Fade in sections on scroll
@@ -158,14 +170,14 @@ export default function TeamProfileDetail({ member, lang }) {
               <div className={styles.dossierMeta}>
                 {member.education && (
                   <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}>{isIndo ? 'Pendidikan' : 'Education'}</span>
+                    <span className={styles.metaLabel}>{profileCopy.profile?.education || (isIndo ? 'Pendidikan' : 'Education')}</span>
                     <p className={styles.metaValue}>{getContent(member.education, member.educationId)}</p>
                   </div>
                 )}
                 
                 {member.credentials && member.credentials.length > 0 && (
                   <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}>{isIndo ? 'Sertifikasi' : 'Credentials'}</span>
+                    <span className={styles.metaLabel}>{profileCopy.profile?.credentials || (isIndo ? 'Sertifikasi' : 'Credentials')}</span>
                     <ul className={styles.metaList}>
                       {(isIndo ? member.credentialsId || member.credentials : member.credentials).map((cred, idx) => (
                         <li key={idx}>{cred}</li>
@@ -181,7 +193,7 @@ export default function TeamProfileDetail({ member, lang }) {
               <div className={styles.nameHeader}>
                 <h1 className={styles.name}>{member.name}</h1>
                 <span className={styles.title}>
-                  {getContent(member.title, member.titleId)}
+                  {getTitle(member.title)}
                 </span>
                 <div className={styles.divider} />
               </div>
@@ -203,7 +215,7 @@ export default function TeamProfileDetail({ member, lang }) {
           <div className="container">
             <div className={styles.detailGrid}>
               <div className={styles.sectionLabel}>
-                {isIndo ? 'Profil Lengkap' : 'Full Biography'}
+                {profileCopy.profile?.fullBiography || (isIndo ? 'Profil Lengkap' : 'Full Biography')}
               </div>
               <div className={styles.sectionContent}>
                 <p className={styles.bioText}>
@@ -220,7 +232,7 @@ export default function TeamProfileDetail({ member, lang }) {
             <div className="container">
               <div className={styles.detailGrid}>
                 <div className={styles.sectionLabel}>
-                  {isIndo ? 'Spesialisasi' : 'Specialization'}
+                  {profileCopy.profile?.specialization || (isIndo ? 'Spesialisasi' : 'Specialization')}
                 </div>
                 <div className={styles.sectionContent}>
                   <div className={styles.specGrid}>
@@ -256,7 +268,7 @@ export default function TeamProfileDetail({ member, lang }) {
             <div className="container">
               <div className={styles.detailGrid}>
                 <div className={styles.sectionLabel}>
-                  {isIndo ? 'Rekam Jejak' : 'Track Record'}
+                  {profileCopy.profile?.trackRecord || (isIndo ? 'Rekam Jejak' : 'Track Record')}
                 </div>
                 <div className={styles.sectionContent}>
                   <div className={styles.ledgerContainer}>

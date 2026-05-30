@@ -256,6 +256,7 @@
       "title": "我们的团队 — Soaloan Tua Nababan & Partners",
       "description": "认识 Soaloan Tua Nababan & Partners 经验丰富的法律专业团队。"
     },
+    "profileMetaDescription": "{name} 在 Soaloan Tua Nababan & Partners 的专业档案。",
     "hero": {
       "title": "处理复杂争议与战略法律顾问工作的专业团队。",
       "body": "我们是一支经验丰富的法律团队，专注于战略性解决方案与有原则的效率。我们的执业由资深律师主导，以商业现实为基础，并建立在严谨执行之上。"
@@ -271,6 +272,13 @@
       "partner": "合伙人",
       "seniorAssociate": "高级律师",
       "associate": "律师"
+    },
+    "profile": {
+      "education": "教育背景",
+      "credentials": "专业资质",
+      "fullBiography": "完整履历",
+      "specialization": "专业领域",
+      "trackRecord": "代表业绩"
     },
     "detail": "详情"
   },
@@ -476,6 +484,21 @@
       "about": "关于 STNP",
       "insights": "阅读洞察"
     }
+  },
+  "insights": {
+    "meta": {
+      "title": "洞察与见解 — Soaloan Tua Nababan & Partners",
+      "description": "来自 Soaloan Tua Nababan & Partners 的法律观点与机构知识精选。"
+    },
+    "hero": {
+      "titleLine1": "法律",
+      "titleLine2": "观点。",
+      "description": "解析影响印尼商业环境的监管变化、战略性先例与法律趋势。"
+    },
+    "indexTitle": "索引",
+    "allPerspectives": "全部观点",
+    "articleFallback": "文章",
+    "emptyState": "暂无已发布的洞察文章。"
   },
   "proBono": {
     "meta": {
