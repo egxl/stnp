@@ -498,6 +498,18 @@
     "indexTitle": "索引",
     "allPerspectives": "全部观点",
     "articleFallback": "文章",
+    "categories": {
+      "article": "文章",
+      "Article": "文章",
+      "news": "新闻",
+      "News": "新闻"
+    },
+    "byline": "作者：{author}",
+    "backToInsights": "返回洞察",
+    "articleNotFound": {
+      "title": "未找到文章",
+      "body": "您查找的文章不存在。"
+    },
     "emptyState": "暂无已发布的洞察文章。"
   },
   "proBono": {
@@ -525,6 +537,49 @@
       "body": "如果您或您认识的人需要法律援助但无力承担代理费用，请与我们联系。我们将评估每一项咨询。",
       "button": "→ 联系我们"
     }
+  },
+  "contact": {
+    "meta": {
+      "title": "联系我们 — Soaloan Tua Nababan & Partners",
+      "description": "联系 Soaloan Tua Nababan & Partners，讨论您的法律需求。"
+    },
+    "hero": {
+      "titleLine1": "从一封",
+      "titleLine2": "来信开始。",
+      "lead": "STNP 的每一段客户关系都始于一次对话。请写信给我们，我们将在一个工作日内回复。"
+    },
+    "info": {
+      "office": "办公室",
+      "viewMap": "在地图上查看 ↓",
+      "phone": "电话",
+      "email": "电子邮件",
+      "hours": "办公时间",
+      "weekdays": "星期一 — 星期五",
+      "officeHours": "09:00 — 17:00 WIB"
+    },
+    "form": {
+      "eyebrow": "写信给我们",
+      "success": "消息已收到。我们将在一个工作日内与您联系。",
+      "error": "发生错误。请发送电子邮件至 {email}。",
+      "name": "姓名",
+      "namePlaceholder": "您的姓名",
+      "email": "电子邮件",
+      "emailPlaceholder": "name@email.com",
+      "phone": "电话",
+      "phonePlaceholder": "+62 xxx xxxx xxxx",
+      "subject": "主题",
+      "subjectPlaceholder": "我们如何协助您？",
+      "message": "留言",
+      "messagePlaceholder": "请描述您的法律事项…",
+      "sending": "发送中…",
+      "send": "发送消息",
+      "disclaimer": "所有咨询均严格保密。"
+    },
+    "aria": {
+      "contactInfo": "联系信息",
+      "scrollToMap": "滚动至地图"
+    },
+    "mapTitle": "STNP 办公地点 — Prudential Tower, Jakarta Selatan"
   },
   "footer": {
     "quickLinks": "快速链接",

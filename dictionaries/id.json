@@ -498,6 +498,18 @@
     "indexTitle": "Indeks",
     "allPerspectives": "Semua Perspektif",
     "articleFallback": "Artikel",
+    "categories": {
+      "article": "Artikel",
+      "Article": "Artikel",
+      "news": "Berita",
+      "News": "Berita"
+    },
+    "byline": "Oleh {author}",
+    "backToInsights": "Kembali ke Wawasan",
+    "articleNotFound": {
+      "title": "Artikel Tidak Ditemukan",
+      "body": "Artikel yang Anda cari tidak tersedia."
+    },
     "emptyState": "Belum ada wawasan yang diterbitkan."
   },
   "proBono": {
@@ -525,6 +537,49 @@
       "body": "Jika Anda atau seseorang yang Anda kenal membutuhkan bantuan hukum dan tidak mampu membayar perwakilan, hubungi kami. Kami akan menilai setiap pertanyaan.",
       "button": "→ Hubungi Kami"
     }
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontak — Soaloan Tua Nababan & Partners",
+      "description": "Hubungi Soaloan Tua Nababan & Partners untuk mendiskusikan kebutuhan hukum Anda."
+    },
+    "hero": {
+      "titleLine1": "Mulai dengan",
+      "titleLine2": "sebuah pesan.",
+      "lead": "Setiap hubungan klien di STNP dimulai dengan cara yang sama — sebuah percakapan. Tulis kepada kami dan kami akan merespons dalam satu hari kerja."
+    },
+    "info": {
+      "office": "Kantor",
+      "viewMap": "Lihat di peta ↓",
+      "phone": "Telepon",
+      "email": "Email",
+      "hours": "Jam Operasional",
+      "weekdays": "Senin — Jumat",
+      "officeHours": "09:00 — 17:00 WIB"
+    },
+    "form": {
+      "eyebrow": "Tulis kepada kami",
+      "success": "Pesan diterima. Kami akan menghubungi Anda dalam satu hari kerja.",
+      "error": "Terjadi kesalahan. Email kami di {email}.",
+      "name": "Nama Lengkap",
+      "namePlaceholder": "Nama lengkap Anda",
+      "email": "Email",
+      "emailPlaceholder": "nama@email.com",
+      "phone": "Telepon",
+      "phonePlaceholder": "+62 xxx xxxx xxxx",
+      "subject": "Subjek",
+      "subjectPlaceholder": "Bagaimana kami dapat membantu?",
+      "message": "Pesan",
+      "messagePlaceholder": "Jelaskan perkara hukum Anda…",
+      "sending": "Mengirim…",
+      "send": "Kirim Pesan",
+      "disclaimer": "Seluruh pertanyaan diperlakukan secara sangat rahasia."
+    },
+    "aria": {
+      "contactInfo": "Informasi kontak",
+      "scrollToMap": "Gulir ke peta"
+    },
+    "mapTitle": "Lokasi Kantor STNP — Prudential Tower, Jakarta Selatan"
   },
   "footer": {
     "quickLinks": "Tautan Cepat",

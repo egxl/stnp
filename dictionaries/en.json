@@ -468,7 +468,9 @@
     "articleFallback": "Article",
     "categories": {
       "article": "Article",
-      "Article": "Article"
+      "Article": "Article",
+      "news": "News",
+      "News": "News"
     },
     "byline": "By {author}",
     "backToInsights": "Back to Insights",
@@ -503,6 +505,49 @@
       "body": "If you or someone you know requires legal assistance and cannot afford representation, reach out. We will assess every inquiry.",
       "button": "→ Contact Us"
     }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Soaloan Tua Nababan & Partners",
+      "description": "Contact Soaloan Tua Nababan & Partners to discuss your legal needs."
+    },
+    "hero": {
+      "titleLine1": "Begin with",
+      "titleLine2": "a letter.",
+      "lead": "Every client relationship at STNP starts the same way — a conversation. Write to us and we will respond within one business day."
+    },
+    "info": {
+      "office": "Office",
+      "viewMap": "View on map ↓",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Hours",
+      "weekdays": "Monday — Friday",
+      "officeHours": "09:00 — 17:00 WIB"
+    },
+    "form": {
+      "eyebrow": "Write to us",
+      "success": "Message received. We'll be in touch within one business day.",
+      "error": "Something went wrong. Email us at {email}.",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+62 xxx xxxx xxxx",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Please describe your legal matter…",
+      "sending": "Sending…",
+      "send": "Send Message",
+      "disclaimer": "All enquiries treated in strict confidence."
+    },
+    "aria": {
+      "contactInfo": "Contact information",
+      "scrollToMap": "Scroll to map"
+    },
+    "mapTitle": "STNP Office Location — Prudential Tower, Jakarta Selatan"
   },
   "footer": {
     "quickLinks": "Quick Links",
