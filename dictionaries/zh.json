@@ -251,6 +251,29 @@
       "services": "业务领域"
     }
   },
+  "team": {
+    "meta": {
+      "title": "我们的团队 — Soaloan Tua Nababan & Partners",
+      "description": "认识 Soaloan Tua Nababan & Partners 经验丰富的法律专业团队。"
+    },
+    "hero": {
+      "title": "处理复杂争议与战略法律顾问工作的专业团队。",
+      "body": "我们是一支经验丰富的法律团队，专注于战略性解决方案与有原则的效率。我们的执业由资深律师主导，以商业现实为基础，并建立在严谨执行之上。"
+    },
+    "filters": {
+      "all": "全部",
+      "partner": "合伙人",
+      "seniorAssociate": "高级律师",
+      "associate": "律师"
+    },
+    "titles": {
+      "managingPartner": "管理合伙人",
+      "partner": "合伙人",
+      "seniorAssociate": "高级律师",
+      "associate": "律师"
+    },
+    "detail": "详情"
+  },
   "services": {
     "meta": {
       "title": "法律服务 — Soaloan Tua Nababan & Partners",

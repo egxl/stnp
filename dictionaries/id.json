@@ -251,6 +251,29 @@
       "services": "Bidang Praktik"
     }
   },
+  "team": {
+    "meta": {
+      "title": "Tim Kami — Soaloan Tua Nababan & Partners",
+      "description": "Kenali para profesional hukum berpengalaman di Soaloan Tua Nababan & Partners."
+    },
+    "hero": {
+      "title": "Para pemikir hukum di balik sengketa kompleks dan nasihat strategis.",
+      "body": "Sebuah kolektif praktisi hukum berpengalaman yang berdedikasi pada resolusi strategis dan efisiensi berprinsip. Praktik kami dipimpin oleh senior, berlandaskan pertimbangan komersial, dan dibangun di atas eksekusi yang disiplin."
+    },
+    "filters": {
+      "all": "Semua",
+      "partner": "Partner",
+      "seniorAssociate": "Senior Associate",
+      "associate": "Associate"
+    },
+    "titles": {
+      "managingPartner": "Managing Partner",
+      "partner": "Partner",
+      "seniorAssociate": "Senior Associate",
+      "associate": "Associate"
+    },
+    "detail": "Detail"
+  },
   "services": {
     "meta": {
       "title": "Layanan Hukum — Soaloan Tua Nababan & Partners",

@@ -6,13 +6,20 @@ import styles from './page.module.css';
 import { Button05 } from '@/components/ui/arrow-dots-button';
 
 const filterOptions = [
-  { id: 'all', label: 'All' },
-  { id: 'partner', label: 'Partners' },
-  { id: 'senior_associate', label: 'Senior Associates' },
-  { id: 'associate', label: 'Associates' },
+  { id: 'all', labelKey: 'all' },
+  { id: 'partner', labelKey: 'partner' },
+  { id: 'senior_associate', labelKey: 'seniorAssociate' },
+  { id: 'associate', labelKey: 'associate' },
 ];
 
-export default function TeamRoster({ team, lang }) {
+const titleKeyByValue = {
+  'Managing Partner': 'managingPartner',
+  Partner: 'partner',
+  'Senior Associate': 'seniorAssociate',
+  Associate: 'associate',
+};
+
+export default function TeamRoster({ team, lang, dict }) {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredTeam = team.filter((member) =>
@@ -28,7 +35,7 @@ export default function TeamRoster({ team, lang }) {
             onClick={() => setActiveFilter(option.id)}
             className={`${styles.filterBtn} ${activeFilter === option.id ? styles.filterBtnActive : ''}`}
           >
-            {option.label}
+            {dict?.filters?.[option.labelKey] || option.labelKey}
           </button>
         ))}
       </div>
@@ -62,9 +69,11 @@ export default function TeamRoster({ team, lang }) {
                 <div className={styles.cardBody}>
                   <div className={styles.cardHeader}>
                     <h3 className={styles.memberName}>{member.name}</h3>
-                    <span className={styles.memberTitle}>{Array.isArray(member.title) ? member.title[0] : member.title}</span>
+                    <span className={styles.memberTitle}>
+                      {dict?.titles?.[titleKeyByValue[Array.isArray(member.title) ? member.title[0] : member.title]] || (Array.isArray(member.title) ? member.title[0] : member.title)}
+                    </span>
                   </div>
-                  <Button05 href={profileHref} text="Detail" />
+                  <Button05 href={profileHref} text={dict?.detail || 'Detail'} />
                 </div>
               </motion.div>
             );

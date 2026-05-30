@@ -1,16 +1,18 @@
 import { notFound } from 'next/navigation';
 import { team } from '@/lib/data/team';
+import { getDictionary } from '@/lib/dictionaries';
 import TeamProfileDetail from '@/components/Components/TeamProfile/TeamProfileDetail';
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
   const member = team.find(m => m.slug === slug);
+  const dict = await getDictionary(lang);
   
   if (!member || member.role === 'associate') return {};
 
   return {
     title: member.name,
-    description: `Professional profile of ${member.name} at Soaloan Tua Nababan & Partners.`,
+    description: (dict.team?.profileMetaDescription || 'Professional profile of {name} at Soaloan Tua Nababan & Partners.').replace('{name}', member.name),
   };
 }
 
@@ -24,5 +26,7 @@ export default async function TeamMemberPage({ params }) {
     notFound();
   }
 
-  return <TeamProfileDetail member={member} lang={lang} />;
+  const dict = await getDictionary(lang);
+
+  return <TeamProfileDetail member={member} lang={lang} dict={dict.team} />;
 }

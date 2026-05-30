@@ -219,6 +219,29 @@
       "services": "Practice Areas"
     }
   },
+  "team": {
+    "meta": {
+      "title": "Our Team — Soaloan Tua Nababan & Partners",
+      "description": "Meet the experienced legal professionals at Soaloan Tua Nababan & Partners."
+    },
+    "hero": {
+      "title": "The legal minds behind complex disputes and strategic counsel.",
+      "body": "A collective of seasoned legal minds dedicated to strategic resolution and principled efficiency. Our practice is senior-led, commercially grounded, and built on disciplined execution."
+    },
+    "filters": {
+      "all": "All",
+      "partner": "Partners",
+      "seniorAssociate": "Senior Associates",
+      "associate": "Associates"
+    },
+    "titles": {
+      "managingPartner": "Managing Partner",
+      "partner": "Partner",
+      "seniorAssociate": "Senior Associate",
+      "associate": "Associate"
+    },
+    "detail": "Detail"
+  },
   "services": {
     "meta": {
       "title": "Legal Services — Soaloan Tua Nababan & Partners",

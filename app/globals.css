@@ -635,14 +635,12 @@ button {
   background-color: var(--color-accent) !important;
 }
 
-:where(.light) [class*="hero"] .btn--outline,
-:where(.light) [class*="pageHero"] .btn--outline {
+:where(.light) .btn--outline {
   color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
 }
 
-:where(.light) [class*="hero"] .btn--outline:hover,
-:where(.light) [class*="pageHero"] .btn--outline:hover {
+:where(.light) .btn--outline:hover {
   color: var(--color-accent) !important;
   border-color: var(--color-accent) !important;
 }
