@@ -12,6 +12,11 @@
   },
   "home": {
     "memberOf": "会员单位",
+    "professionalAffiliations": "专业机构资质",
+    "photoCredit": {
+      "prefix": "照片由",
+      "connector": "提供，发布于"
+    },
     "heroLabel": "Soaloan Tua Nababan & Partners // STNP",
     "heroTitle1": "雅加达值得信赖的",
     "heroTitle2": "高风险法律事务顾问",

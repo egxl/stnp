@@ -12,6 +12,11 @@
   },
   "home": {
     "memberOf": "Anggota",
+    "professionalAffiliations": "Afiliasi Profesional",
+    "photoCredit": {
+      "prefix": "Foto oleh",
+      "connector": "di"
+    },
     "heroLabel": "Soaloan Tua Nababan & Partners // STNP",
     "heroTitle1": "Penasihat Hukum Terpercaya Jakarta",
     "heroTitle2": "untuk Perkara Hukum Berisiko Tinggi",

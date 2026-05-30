@@ -7,6 +7,7 @@ import styles from './AuthorityStrip.module.css';
  * Handles non-transparent assets using CSS blend modes.
  */
 const AuthorityStrip = ({ dict }) => {
+  const photoCredit = dict.home?.photoCredit || {};
   const associations = [
     { name: 'PERADI', slug: 'peradi', url: 'https://www.peradi.or.id/' },
     { name: 'AKPI', slug: 'akpi', url: 'https://www.akpi.or.id/' },
@@ -16,11 +17,11 @@ const AuthorityStrip = ({ dict }) => {
   const version = 'v=3';
 
   return (
-    <section className={styles.authorityStrip} aria-label="Professional Affiliations">
+    <section className={styles.authorityStrip} aria-label={dict.home?.professionalAffiliations || 'Professional Affiliations'}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.credit}>
-            Photo by <a href="https://unsplash.com/@javaistan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Afif Ramdhasuma</a> on <a href="https://unsplash.com/photos/vehicle-beside-concrete-building-during-daytime-XYQPyn4KkiY?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a>
+            {photoCredit.prefix || 'Photo by'} <a href="https://unsplash.com/@javaistan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Afif Ramdhasuma</a> {photoCredit.connector || 'on'} <a href="https://unsplash.com/photos/vehicle-beside-concrete-building-during-daytime-XYQPyn4KkiY?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank" rel="noopener noreferrer">Unsplash</a>
           </div>
           <div className={styles.rightSide}>
             <span className={styles.label}>
