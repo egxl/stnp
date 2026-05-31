@@ -191,6 +191,7 @@
     },
     "philosophy": {
       "label": "STNP的哲学",
+      "motto": "不偏不倚地执行真理与正义之法。",
       "intro": "这些不是营销口号。它们是指导我们如何工作以及如何不工作的操作承诺。",
       "p01": {
         "number": "01",
@@ -249,6 +250,7 @@
       "subtitle": "我们的办公室",
       "body": "我们位于雅加达中央商务区的核心地带，地理位置优越，为全雅加达和印尼各地的客户提供服务。",
       "addressLabel": "Soaloan Tua Nababan & Partners",
+      "contactLabel": "联系方式",
       "cta": "讨论您的法律需求"
     },
     "springboards": {
@@ -609,6 +611,19 @@
       "p3": "您应假设 STNP 可能与本网站中提到的商品和服务提供商有业务往来。STNP 不一定认可，也不对通过本网站访问的任何第三方内容负责。",
       "p4": "使用本网站及其包含的信息还受我们的隐私政策中概述的条款和条件的约束。如果您对这些条款有任何疑问，请通过 admin@stnp.co.id 联系我们。",
       "closeButton": "我明白了"
+    },
+    "colophon": {
+      "title": "制作说明",
+      "intro": "Soaloan Tua Nababan & Partners 的这一数字化之家在设计与开发中，专注于社论排版节奏、机构权威感以及流动的交互体验。",
+      "close": "关闭",
+      "designEngineering": "设计与工程开发",
+      "technology": "技术支持",
+      "technologyValue": "基于 Next.js 构建，使用 GSAP 实现动效，并采用自定义 WebGL 打造氛围背景。",
+      "typography": "排版字体",
+      "typographyValue": "选用 Cal Sans 及精选衬线字体，以保持权威且现代的法律美学。",
+      "system": "系统版本",
+      "systemValue": "STNP 数字化品牌形象 v1.0",
+      "signature": "由 Havergal 设计开发"
     }
   }
 }

@@ -85,12 +85,12 @@ export default async function AboutPage({ params }) {
               <div className={styles.stickyContent}>
                 <span className={styles.sectionLabel}>{a.philosophy.label}</span>
                 <h2 className={styles.philosophyMotto}>
-                  "Enforcing the Law of Truth and Justice Indiscriminately."
+                  "{a.philosophy.motto}"
                 </h2>
                 <p className={styles.philosophyIntro}>{a.philosophy.intro}</p>
               </div>
             </div>
-
+ 
             {/* Right: Glassmorphism Cards */}
             <div className={styles.splitRight}>
               <div className={styles.philosophyList} role="list" data-animate="philosophy-list">
@@ -105,11 +105,11 @@ export default async function AboutPage({ params }) {
                 ))}
               </div>
             </div>
-
+ 
           </div>
         </div>
       </section>
-
+ 
       {/* ── Why STNP: Editorial Typography (Huashu Design) ───────────────── */}
       <section className={styles.whySection}>
         <div className="container">
@@ -128,7 +128,7 @@ export default async function AboutPage({ params }) {
           </div>
         </div>
       </section>
-
+ 
       {/* ── Commitment (Huashu Design) ─────────────────────────────────────── */}
       <section className={styles.commitmentSection}>
         <div className="container">
@@ -147,7 +147,7 @@ export default async function AboutPage({ params }) {
           </div>
         </div>
       </section>
-
+ 
       {/* ── Visit Us & CTA (Kenya Hara Minimalism) ───────────────────────── */}
       <section className={styles.visitMinimalistSection}>
         <div className="container">
@@ -161,7 +161,7 @@ export default async function AboutPage({ params }) {
                 {a.visit.cta} <span className={styles.ctaArrow}>&rarr;</span>
               </Link>
             </div>
-
+ 
             <div className={styles.visitMinimalistFooter}>
               <address className={styles.minimalistAddress}>
                 <div className={styles.addressCol}>
@@ -172,7 +172,7 @@ export default async function AboutPage({ params }) {
                   <p>{address.country}</p>
                 </div>
                 <div className={styles.addressCol}>
-                  <p className={styles.addressName}>Contact</p>
+                  <p className={styles.addressName}>{a.visit.contactLabel}</p>
                   {phone?.[0] && <p>{phone[0]}</p>}
                   {email && <p>{email}</p>}
                 </div>

@@ -259,7 +259,7 @@ export default function Footer({ dict, lang = 'en' }) {
           className={styles.signatureBtn}
           onClick={() => setIsColophonOpen(true)}
         >
-          Design by Havergal
+          {d.colophon?.signature || "Design by Havergal"}
         </button>
       </div>
 
@@ -272,6 +272,7 @@ export default function Footer({ dict, lang = 'en' }) {
       <ColophonModal
         isOpen={isColophonOpen}
         onClose={() => setIsColophonOpen(false)}
+        dict={dict}
       />
     </footer>
   );

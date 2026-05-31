@@ -8,7 +8,7 @@ import styles from './TeamProfileDetail.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Mapping of English and Indonesian specializations to services.js keys
+// Mapping of English, Indonesian, and Chinese specializations to services.js keys
 const specToServiceKey = {
   // English specializations
   'Commercial Litigation': 'commercialLitigation',
@@ -40,7 +40,23 @@ const specToServiceKey = {
   'Akuisisi Perusahaan': 'mergersAcquisitions',
   'Hukum Keluarga': 'commercialLitigation',
   'Hukum Ketenagakerjaan': 'industrialRelations',
-  'Infrastruktur': 'infrastructureRealEstate'
+  'Infrastruktur': 'infrastructureRealEstate',
+
+  // Chinese specializations
+  '商业诉讼': 'commercialLitigation',
+  '破产与清算': 'bankruptcy',
+  '矿业与能源': 'miningEnergy',
+  '种植业': 'plantationAgribusiness',
+  '种植业法': 'plantationAgribusiness',
+  '通用公司业务': 'generalCorporate',
+  '劳动关系': 'industrialRelations',
+  '公司重组': 'bankruptcy',
+  '资本市场': 'generalCorporate',
+  '外商投资': 'generalCorporate',
+  '公司收购': 'mergersAcquisitions',
+  '婚姻家庭法': 'commercialLitigation',
+  '劳动法': 'industrialRelations',
+  '基础设施': 'infrastructureRealEstate'
 };
 
 const getServiceKey = (specName) => {
@@ -57,28 +73,28 @@ const getServiceKey = (specName) => {
   }
 
   // Soft fallback matching based on keywords
-  if (lower.includes('litigasi') || lower.includes('litigation') || lower.includes('keluarga') || lower.includes('family')) {
+  if (lower.includes('litigasi') || lower.includes('litigation') || lower.includes('keluarga') || lower.includes('family') || lower.includes('诉讼') || lower.includes('家庭')) {
     return 'commercialLitigation';
   }
-  if (lower.includes('kepailitan') || lower.includes('bankruptcy') || lower.includes('insolvensi') || lower.includes('restrukturisasi') || lower.includes('restructuring')) {
+  if (lower.includes('kepailitan') || lower.includes('bankruptcy') || lower.includes('insolvensi') || lower.includes('restrukturisasi') || lower.includes('restructuring') || lower.includes('破产') || lower.includes('清算') || lower.includes('重组')) {
     return 'bankruptcy';
   }
-  if (lower.includes('korporasi') || lower.includes('corporate') || lower.includes('investasi') || lower.includes('investment') || lower.includes('pasar modal') || lower.includes('capital market')) {
+  if (lower.includes('korporasi') || lower.includes('corporate') || lower.includes('investasi') || lower.includes('investment') || lower.includes('pasar modal') || lower.includes('capital market') || lower.includes('公司') || lower.includes('投资') || lower.includes('资本市场')) {
     return 'generalCorporate';
   }
-  if (lower.includes('akuisisi') || lower.includes('acquisition') || lower.includes('merger')) {
+  if (lower.includes('akuisisi') || lower.includes('acquisition') || lower.includes('merger') || lower.includes('收购')) {
     return 'mergersAcquisitions';
   }
-  if (lower.includes('pertambangan') || lower.includes('mining') || lower.includes('energi') || lower.includes('energy')) {
+  if (lower.includes('pertambangan') || lower.includes('mining') || lower.includes('energi') || lower.includes('energy') || lower.includes('矿业') || lower.includes('能源')) {
     return 'miningEnergy';
   }
-  if (lower.includes('perkebunan') || lower.includes('plantation')) {
+  if (lower.includes('perkebunan') || lower.includes('plantation') || lower.includes('种植')) {
     return 'plantationAgribusiness';
   }
-  if (lower.includes('hubungan industrial') || lower.includes('industrial relation') || lower.includes('tenaga kerja') || lower.includes('employment') || lower.includes('labor')) {
+  if (lower.includes('hubungan industrial') || lower.includes('industrial relation') || lower.includes('tenaga kerja') || lower.includes('employment') || lower.includes('labor') || lower.includes('劳动') || lower.includes('关系')) {
     return 'industrialRelations';
   }
-  if (lower.includes('infrastruktur') || lower.includes('infrastructure') || lower.includes('properti') || lower.includes('property') || lower.includes('real estate')) {
+  if (lower.includes('infrastruktur') || lower.includes('infrastructure') || lower.includes('properti') || lower.includes('property') || lower.includes('real estate') || lower.includes('基础设施')) {
     return 'infrastructureRealEstate';
   }
   
@@ -91,9 +107,14 @@ export default function TeamProfileDetail({ member, lang, dict }) {
   if (!member) return null;
 
   const isIndo = lang === 'id';
+  const isZh = lang === 'zh';
 
   // Helper to get multi-lang content
-  const getContent = (en, id) => (isIndo ? id || en : en);
+  const getContent = (en, id, zh) => {
+    if (isZh) return zh || en;
+    if (isIndo) return id || en;
+    return en;
+  };
   const profileCopy = dict || {};
   const getTitle = (title) => {
     const value = Array.isArray(title) ? title[0] : title;
@@ -104,7 +125,7 @@ export default function TeamProfileDetail({ member, lang, dict }) {
       Associate: 'associate',
     };
 
-    return profileCopy.titles?.[titleKeys[value]] || getContent(member.title, member.titleId);
+    return profileCopy.titles?.[titleKeys[value]] || getContent(member.title, member.titleId, member.titleZh);
   };
 
   useGSAP(() => {
@@ -170,16 +191,16 @@ export default function TeamProfileDetail({ member, lang, dict }) {
               <div className={styles.dossierMeta}>
                 {member.education && (
                   <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}>{profileCopy.profile?.education || (isIndo ? 'Pendidikan' : 'Education')}</span>
-                    <p className={styles.metaValue}>{getContent(member.education, member.educationId)}</p>
+                    <span className={styles.metaLabel}>{profileCopy.profile?.education || (isZh ? '教育背景' : isIndo ? 'Pendidikan' : 'Education')}</span>
+                    <p className={styles.metaValue}>{getContent(member.education, member.educationId, member.educationZh)}</p>
                   </div>
                 )}
                 
                 {member.credentials && member.credentials.length > 0 && (
                   <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}>{profileCopy.profile?.credentials || (isIndo ? 'Sertifikasi' : 'Credentials')}</span>
+                    <span className={styles.metaLabel}>{profileCopy.profile?.credentials || (isZh ? '专业资质' : isIndo ? 'Sertifikasi' : 'Credentials')}</span>
                     <ul className={styles.metaList}>
-                      {(isIndo ? member.credentialsId || member.credentials : member.credentials).map((cred, idx) => (
+                      {getContent(member.credentials, member.credentialsId, member.credentialsZh).map((cred, idx) => (
                         <li key={idx}>{cred}</li>
                       ))}
                     </ul>
@@ -187,7 +208,7 @@ export default function TeamProfileDetail({ member, lang, dict }) {
                 )}
               </div>
             </aside>
-
+ 
             {/* Right: Primary Info */}
             <div className={styles.heroMain}>
               <div className={styles.nameHeader}>
@@ -200,14 +221,14 @@ export default function TeamProfileDetail({ member, lang, dict }) {
               
               <div className={styles.introBio}>
                 <p className={styles.bioTextLarge}>
-                  {getContent(member.bio, member.bioId).split('\n\n')[0]}
+                  {getContent(member.bio, member.bioId, member.bioZh).split('\n\n')[0]}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
+ 
       {/* Main Content Sections */}
       <div className={styles.mainContent}>
         {/* Full Biography */}
@@ -215,28 +236,28 @@ export default function TeamProfileDetail({ member, lang, dict }) {
           <div className="container">
             <div className={styles.detailGrid}>
               <div className={styles.sectionLabel}>
-                {profileCopy.profile?.fullBiography || (isIndo ? 'Profil Lengkap' : 'Full Biography')}
+                {profileCopy.profile?.fullBiography || (isZh ? '完整履历' : isIndo ? 'Profil Lengkap' : 'Full Biography')}
               </div>
               <div className={styles.sectionContent}>
                 <p className={styles.bioText}>
-                  {getContent(member.bio, member.bioId).split('\n\n').slice(1).join('\n\n')}
+                  {getContent(member.bio, member.bioId, member.bioZh).split('\n\n').slice(1).join('\n\n')}
                 </p>
               </div>
             </div>
           </div>
         </section>
-
+ 
         {/* Specialization Section */}
         {member.specialization && (
           <section className={styles.detailSection}>
             <div className="container">
               <div className={styles.detailGrid}>
                 <div className={styles.sectionLabel}>
-                  {profileCopy.profile?.specialization || (isIndo ? 'Spesialisasi' : 'Specialization')}
+                  {profileCopy.profile?.specialization || (isZh ? '专业领域' : isIndo ? 'Spesialisasi' : 'Specialization')}
                 </div>
                 <div className={styles.sectionContent}>
                   <div className={styles.specGrid}>
-                    {(isIndo ? member.specializationId || member.specialization : member.specialization).map((spec, idx) => {
+                    {getContent(member.specialization, member.specializationId, member.specializationZh).map((spec, idx) => {
                       const svcKey = getServiceKey(spec);
                       if (svcKey) {
                         return (
@@ -261,21 +282,21 @@ export default function TeamProfileDetail({ member, lang, dict }) {
             </div>
           </section>
         )}
-
+ 
         {/* Track Record Section */}
         {member.trackRecord && member.trackRecord.length > 0 && (
           <section className={styles.detailSection}>
             <div className="container">
               <div className={styles.detailGrid}>
                 <div className={styles.sectionLabel}>
-                  {profileCopy.profile?.trackRecord || (isIndo ? 'Rekam Jejak' : 'Track Record')}
+                  {profileCopy.profile?.trackRecord || (isZh ? '业务记录' : isIndo ? 'Rekam Jejak' : 'Track Record')}
                 </div>
                 <div className={styles.sectionContent}>
                   <div className={styles.ledgerContainer}>
                     {member.trackRecord.map((cat, idx) => (
                       <div key={idx} className={styles.ledgerCategory}>
                         <h3 className={styles.categoryTitle}>
-                          {getContent(cat.category, cat.categoryId)}
+                          {getContent(cat.category, cat.categoryId, cat.categoryZh)}
                         </h3>
                         <div className={styles.ledgerList}>
                           {cat.items.map((item, itemIdx) => (
@@ -284,7 +305,7 @@ export default function TeamProfileDetail({ member, lang, dict }) {
                                 {(itemIdx + 1).toString().padStart(2, '0')}
                               </span>
                               <div className={styles.ledgerContent}>
-                                {getContent(item.en, item.id)}
+                                {getContent(item.en, item.id, item.zh)}
                               </div>
                             </div>
                           ))}

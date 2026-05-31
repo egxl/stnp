@@ -191,6 +191,7 @@
     },
     "philosophy": {
       "label": "Filosofi STNP",
+      "motto": "Menegakkan Hukum Kebenaran dan Keadilan Tanpa Pandang Bulu.",
       "intro": "Ini bukan sekadar prinsip pemasaran. Ini adalah komitmen operasional yang mengatur cara kami bekerja — dan cara kami tidak bekerja.",
       "p01": {
         "number": "01",
@@ -249,6 +250,7 @@
       "subtitle": "Kantor Kami",
       "body": "Kami berlokasi di jantung kawasan pusat bisnis Jakarta, dengan posisi strategis untuk melayani klien di seluruh kota dan di seluruh Indonesia.",
       "addressLabel": "Soaloan Tua Nababan & Partners",
+      "contactLabel": "Kontak",
       "cta": "Diskusikan Kebutuhan Hukum Anda"
     },
     "springboards": {
@@ -609,6 +611,19 @@
       "p3": "Anda harus berasumsi bahwa STNP mungkin memiliki hubungan profesional dengan penyedia barang dan jasa yang disebutkan dalam situs web ini. STNP tidak serta merta mendukung, dan tidak bertanggung jawab atas, konten pihak ketiga mana pun yang mungkin diakses melalui situs web ini.",
       "p4": "Penggunaan situs web ini dan informasi yang dikandungnya juga tunduk pada syarat dan ketentuan yang diuraikan dalam Kebijakan Privasi kami. Jika Anda memiliki pertanyaan mengenai ketentuan ini, silakan hubungi kami di admin@stnp.co.id.",
       "closeButton": "Saya Mengerti"
+    },
+    "colophon": {
+      "title": "Kolofon",
+      "intro": "Rumah digital untuk Soaloan Tua Nababan & Partners ini dirancang dan dibangun dengan fokus pada ritme editorial, wibawa institusional, dan interaktivitas yang lancar.",
+      "close": "TUTUP",
+      "designEngineering": "Desain & Rekayasa",
+      "technology": "Teknologi",
+      "technologyValue": "Dibangun menggunakan Next.js, GSAP untuk animasi, dan WebGL Kustom untuk latar belakang atmosferik.",
+      "typography": "Tipografi",
+      "typographyValue": "Menggunakan Cal Sans dan pilihan rupa huruf serif untuk mempertahankan estetika hukum yang berwibawa namun modern.",
+      "system": "Sistem",
+      "systemValue": "STNP Digital Identity v1.0",
+      "signature": "Desain oleh Havergal"
     }
   }
 }

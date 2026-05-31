@@ -191,6 +191,7 @@
     },
     "philosophy": {
       "label": "The STNP Philosophy",
+      "motto": "Enforcing the Law of Truth and Justice Indiscriminately.",
       "intro": "These are not marketing principles. They are the operating commitments that govern how we work — and how we do not.",
       "p01": {
         "number": "01",
@@ -249,6 +250,7 @@
       "subtitle": "Our Office",
       "body": "We are based in the heart of Jakarta's central business district, well-positioned to serve clients across the city and throughout Indonesia.",
       "addressLabel": "Soaloan Tua Nababan & Partners",
+      "contactLabel": "Contact",
       "cta": "Discuss Your Legal Needs"
     },
     "springboards": {
@@ -609,6 +611,19 @@
       "p3": "You should assume that STNP may have professional relationships with providers of goods and services mentioned within this website. STNP does not necessarily endorse, and is not responsible for, any third-party content that may be accessed through this website.",
       "p4": "The use of this website and the information it contains is also subject to the terms and conditions outlined in our Privacy Policy. If you have any questions regarding these terms, please contact us at admin@stnp.co.id.",
       "closeButton": "I Understand"
+    },
+    "colophon": {
+      "title": "Colophon",
+      "intro": "This digital home for Soaloan Tua Nababan & Partners was designed and engineered with a focus on editorial rhythm, institutional authority, and fluid interactivity.",
+      "close": "CLOSE",
+      "designEngineering": "Design & Engineering",
+      "technology": "Technology",
+      "technologyValue": "Built with Next.js, GSAP for motion, and Custom WebGL for atmospheric backgrounds.",
+      "typography": "Typography",
+      "typographyValue": "Set in Cal Sans and curated serif typefaces to maintain an authoritative yet modern legal aesthetic.",
+      "system": "System",
+      "systemValue": "STNP Digital Identity v1.0",
+      "signature": "Design by Havergal"
     }
   }
 }
