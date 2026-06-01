@@ -53,8 +53,8 @@ export default function StaggeredMenu({
 
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
 
-  // STNP brand prelayer colours (navy tones)
-  const colors = ['#1A2744', '#0A1628'];
+  // STNP brand prelayer colours (navy tones by default, light tones in light mode via CSS variables)
+  const colors = ['var(--sm-prelayer-1)', 'var(--sm-prelayer-2)'];
   const accentColor = '#C4A35A';
 
   /* ------------------------------------------------------------------ */
@@ -449,7 +449,7 @@ export default function StaggeredMenu({
 
           {/* Footer controls: Language switcher, theme toggle, CTA */}
           <div className="sm-panel-controls">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'rgba(255,255,255,0.8)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--sm-text-muted, rgba(255,255,255,0.8))' }}>
               <LanguageSwitcher lang={lang} pathname={pathname} router={router} />
               <ThemeToggle />
             </div>

@@ -76,51 +76,6 @@ const highlights = [
   },
 ];
 
-// Minimal SVG icons using Phosphor-style paths (inline, no dependency)
-const categoryIcons = {
-  'Banking & Finance': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  ),
-  'Energy & Gas': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-    </svg>
-  ),
-  'Capital Markets': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="18" y1="20" x2="18" y2="10" />
-      <line x1="12" y1="20" x2="12" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="14" />
-    </svg>
-  ),
-  'Bankruptcy & Insolvency': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
-      <line x1="12" y1="17" x2="12.01" y2="17" />
-    </svg>
-  ),
-  'Banking Litigation': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  ),
-  'Natural Resources': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M17 8C8 10 5.9 16.17 3.82 19.34a1 1 0 001.66 1.06C7 18.5 10 16 12 13.5" />
-      <path d="M17 8l4-4" />
-      <path d="M14 13l-4 4" />
-    </svg>
-  ),
-  'Commercial Litigation': (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M18 3a3 3 0 00-3 3v12a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3H6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3V6a3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3h12a3 3 0 003-3 3 3 0 00-3-3z" />
-    </svg>
-  ),
-};
 
 export default function ExperienceHighlights({ dict, lang }) {
   const highlightTranslations = dict?.home?.highlightsList || {};
@@ -154,9 +109,6 @@ export default function ExperienceHighlights({ dict, lang }) {
               >
                 <div className={styles.cardTop}>
                   <div className={styles.cardMeta}>
-                    <span className={styles.cardIcon}>
-                      {categoryIcons[item.category]}
-                    </span>
                     <span className={styles.cardCategory}>{translatedItem.category}</span>
                   </div>
                   <div className={styles.cardValue}>{translatedItem.value}</div>

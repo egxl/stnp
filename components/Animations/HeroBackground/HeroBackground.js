@@ -42,16 +42,34 @@ export default function HeroBackground() {
         });
       }
 
-      // Clip the entire hero background from bottom to top as user scrolls down
-      gsap.to(wrapper, {
-        clipPath: 'inset(0% 0% 100% 0%)',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: triggerEl,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
+      const mm = gsap.matchMedia();
+
+      // Mobile/Tablet: Smooth opacity fade-out to prevent sharp lines
+      mm.add("(max-width: 768px)", () => {
+        gsap.to(wrapper, {
+          opacity: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      });
+
+      // Desktop: Keep the original clip-path mask reveal
+      mm.add("(min-width: 769px)", () => {
+        gsap.to(wrapper, {
+          clipPath: 'inset(0% 0% 100% 0%)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: triggerEl,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
       });
     }, wrapper);
 

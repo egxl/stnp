@@ -269,6 +269,18 @@
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
+@keyframes dropdownUpIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+:global(.sm-panel-controls) .switcherDropdown {
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform-origin: bottom right;
+  animation: dropdownUpIn 0.2s var(--ease-out) both;
+}
+
 .switcherItem {
   display: flex;
   align-items: center;
