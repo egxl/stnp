@@ -13,8 +13,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        // Current live WP host — keep until DNS migration is complete
         protocol: 'https',
         hostname: 'stnp.co.id',
+        pathname: '/wp-content/**',
+      },
+      {
+        // Headless CMS subdomain (active after DirectAdmin migration)
+        protocol: 'https',
+        hostname: 'cms.stnp.co.id',
         pathname: '/wp-content/**',
       },
       {

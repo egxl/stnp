@@ -10,6 +10,7 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+
 export async function generateMetadata({ params }) {
   const { slug, lang } = await params;
   const dict = await getDictionary(lang);
@@ -17,9 +18,31 @@ export async function generateMetadata({ params }) {
   if (!post) return { title: dict.insights?.articleNotFound?.title || 'Article Not Found' };
 
   const yoast = post.yoast_head_json;
+  const title = yoast?.title || decodeHtmlEntities(post.title.rendered);
+  const description = yoast?.description || stripHtml(post.excerpt?.rendered || '').substring(0, 160);
+  const featuredImg = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://stnp.co.id';
+
   return {
-    title: yoast?.title || decodeHtmlEntities(post.title.rendered),
-    description: yoast?.description || stripHtml(post.excerpt.rendered).substring(0, 160),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/${lang}/insights/${slug}`,
+      type: 'article',
+      publishedTime: post.date,
+      modifiedTime: post.modified,
+      ...(featuredImg && {
+        images: [{ url: featuredImg, width: 1200, height: 630, alt: title }],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      ...(featuredImg && { images: [featuredImg] }),
+    },
   };
 }
 
