@@ -19,7 +19,13 @@ const nextConfig = {
         pathname: '/wp-content/**',
       },
       {
-        // Headless CMS subdomain (active after DirectAdmin migration)
+        // Headless CMS subdomain (using id.stnp.co.id)
+        protocol: 'https',
+        hostname: 'id.stnp.co.id',
+        pathname: '/wp-content/**',
+      },
+      {
+        // Headless CMS subdomain (using cms.stnp.co.id just in case)
         protocol: 'https',
         hostname: 'cms.stnp.co.id',
         pathname: '/wp-content/**',
